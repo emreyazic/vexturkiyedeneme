@@ -262,7 +262,7 @@ export function Navbar({ language = 'TR', onLanguageToggle }: NavbarProps) {
                         {/* Mobile Menu */}
                         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                             <SheetTrigger asChild className="lg:hidden">
-                                <Button variant="ghost" size="icon" className="text-gray-700">
+                                <Button variant="ghost" size="icon" className="text-gray-700" aria-label="Menüyü aç">
                                     <Menu className="h-6 w-6" />
                                 </Button>
                             </SheetTrigger>

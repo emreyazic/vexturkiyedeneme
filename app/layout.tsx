@@ -1,6 +1,6 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -9,12 +9,7 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
   display: "swap",
   preload: true,
-});
-const geistMono = Geist_Mono({
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-geist-mono",
-  display: "swap",
-  preload: true,
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -46,8 +41,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="tr">
-      <body className={`${geistSans.className} ${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+    <html lang="tr" className={`${geistSans.className} ${geistSans.variable}`}>
+      <body className="font-sans antialiased">
         {children}
         <Analytics />
       </body>

@@ -877,6 +877,7 @@ export default function VEXTurkiyeLanding() {
                       size="icon"
                       className="rounded-full bg-white shadow-lg border-gray-100 w-12 h-12 hover:bg-primary hover:text-white transition-all"
                       onClick={prevNewsSlide}
+                      aria-label="Önceki haberler"
                     >
                       <ChevronLeft className="w-6 h-6" />
                     </Button>
@@ -887,6 +888,7 @@ export default function VEXTurkiyeLanding() {
                       size="icon"
                       className="rounded-full bg-white shadow-lg border-gray-100 w-12 h-12 hover:bg-primary hover:text-white transition-all"
                       onClick={nextNewsSlide}
+                      aria-label="Sonraki haberler"
                     >
                       <ChevronRight className="w-6 h-6" />
                     </Button>
@@ -1036,6 +1038,7 @@ export default function VEXTurkiyeLanding() {
                     size="icon"
                     className="rounded-full bg-white shadow-md border-gray-100 w-10 h-10"
                     onClick={prevMobileNewsSlide}
+                    aria-label="Önceki haber"
                   >
                     <ChevronLeft className="w-5 h-5" />
                   </Button>
@@ -1044,6 +1047,7 @@ export default function VEXTurkiyeLanding() {
                     size="icon"
                     className="rounded-full bg-white shadow-md border-gray-100 w-10 h-10"
                     onClick={nextMobileNewsSlide}
+                    aria-label="Sonraki haber"
                   >
                     <ChevronRight className="w-5 h-5" />
                   </Button>
@@ -1120,7 +1124,7 @@ export default function VEXTurkiyeLanding() {
 
                     {/* Tags */}
                     <div className="flex items-center gap-2 mb-4">
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full border border-primary/20">
+                      <span className="px-3 py-1 bg-red-100 text-red-800 text-xs font-medium rounded-full border border-red-200">
                         {program.ageGroup}
                       </span>
                       <span className="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full border border-gray-200">
@@ -1607,7 +1611,7 @@ export default function VEXTurkiyeLanding() {
                         {t.cta.cityLabel}
                       </Label>
                       <Select>
-                        <SelectTrigger className="bg-white border-gray-300 text-gray-900 focus:border-primary focus:ring-primary">
+                        <SelectTrigger className="bg-white border-gray-300 text-gray-900 focus:border-primary focus:ring-primary" aria-label="Şehir seçiniz">
                           <SelectValue placeholder={t.cta.cityPlaceholder} />
                         </SelectTrigger>
                         <SelectContent>
@@ -1626,7 +1630,7 @@ export default function VEXTurkiyeLanding() {
                         {t.cta.roleLabel}
                       </Label>
                       <Select>
-                        <SelectTrigger className="bg-white border-gray-300 text-gray-900 focus:border-primary focus:ring-primary">
+                        <SelectTrigger className="bg-white border-gray-300 text-gray-900 focus:border-primary focus:ring-primary" aria-label="Rol seçiniz">
                           <SelectValue placeholder={t.cta.rolePlaceholder} />
                         </SelectTrigger>
                         <SelectContent>
@@ -1647,7 +1651,7 @@ export default function VEXTurkiyeLanding() {
                       {t.cta.purposeLabel}
                     </Label>
                     <Select>
-                      <SelectTrigger className="bg-white border-gray-300 text-gray-900 focus:border-primary focus:ring-primary">
+                      <SelectTrigger className="bg-white border-gray-300 text-gray-900 focus:border-primary focus:ring-primary" aria-label="Amaç seçiniz">
                         <SelectValue placeholder={t.cta.purposePlaceholder} />
                       </SelectTrigger>
                       <SelectContent>
@@ -1714,7 +1718,7 @@ export default function VEXTurkiyeLanding() {
                   href="https://instagram.com/vexroboticsturkiye"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary hover:text-white transition-colors"
+                  className="inline-flex items-center gap-2 text-red-400 hover:text-white transition-colors"
                   aria-label="Instagram"
                 >
                   <Instagram className="h-6 w-6" />
@@ -1724,7 +1728,7 @@ export default function VEXTurkiyeLanding() {
 
               {/* Column 2 - VEX Ecosystem */}
               <div>
-                <h3 className="text-primary font-bold mb-6 text-lg tracking-wide uppercase">VEX NEDİR?</h3>
+                <h3 className="text-red-400 font-bold mb-6 text-lg tracking-wide uppercase">VEX NEDİR?</h3>
                 <ul className="space-y-3 text-sm">
                   <li>
                     <Link href="/vex-nedir/vex-go" className="hover:text-primary transition-colors">VEX GO</Link>
@@ -1749,7 +1753,7 @@ export default function VEXTurkiyeLanding() {
 
               {/* Column 3 - Participation */}
               <div>
-                <h3 className="text-primary font-bold mb-6 text-lg tracking-wide uppercase">KATILIM</h3>
+                <h3 className="text-red-400 font-bold mb-6 text-lg tracking-wide uppercase">KATILIM</h3>
                 <ul className="space-y-3 text-sm">
                   <li>
                     <Link href="/yarismalar/etkinlik-takvimi/tum-etkinlikler" className="hover:text-primary transition-colors">Tüm Etkinlikler</Link>
@@ -1771,7 +1775,7 @@ export default function VEXTurkiyeLanding() {
 
               {/* Column 4 - Contact */}
               <div>
-                <h3 className="text-primary font-bold mb-6 text-lg tracking-wide uppercase">BİZE ULAŞIN</h3>
+                <h3 className="text-red-400 font-bold mb-6 text-lg tracking-wide uppercase">BİZE ULAŞIN</h3>
                 <ul className="space-y-3 text-sm mb-6">
                   <li>
                     <Link href="/kurumsal/hakkimizda" className="hover:text-primary transition-colors">Hakkımızda</Link>
@@ -1799,7 +1803,7 @@ export default function VEXTurkiyeLanding() {
             </div>
 
             {/* Copyright Bar */}
-            <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+            <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400">
               <p>© 2026 VEX Türkiye. Tüm Hakları Saklıdır.</p>
               <div className="flex items-center gap-6">
                 <Link href="#" className="hover:text-primary transition-colors">Kullanım Koşulları</Link>
