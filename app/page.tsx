@@ -13,9 +13,11 @@ import { LazyMotion, domAnimation, m } from 'framer-motion'
 import dynamic from 'next/dynamic'
 
 const V5SeasonSection = dynamic(() => import('@/components/V5SeasonSection').then(mod => ({ default: mod.V5SeasonSection })), {
+  ssr: false,
   loading: () => <div className="w-full py-24 bg-gray-50 animate-pulse" />,
 })
 const CommunitySection = dynamic(() => import('@/components/CommunitySection').then(mod => ({ default: mod.CommunitySection })), {
+  ssr: false,
   loading: () => <div className="w-full py-24 bg-white animate-pulse" />,
 })
 import { Navbar } from '@/components/Navbar'
