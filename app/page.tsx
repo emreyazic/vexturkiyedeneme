@@ -752,7 +752,7 @@ export default function VEXTurkiyeLanding() {
                     <ChevronRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <Link href="/vex-nedir">
+                <Link href="/vex-nedir" aria-label="VEX Nedir - Daha fazla bilgi">
                   <Button
                     size="lg"
                     variant="outline"
@@ -1298,6 +1298,7 @@ export default function VEXTurkiyeLanding() {
                 <Link
                   href="/vex-nedir"
                   className="inline-flex items-center text-primary font-semibold hover:underline group/link mt-auto"
+                  aria-label="Temel beceri gelişimi hakkında bilgi"
                 >
                   {t.whyVex.cards[0].link}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover/link:translate-x-1 transition-transform" />
@@ -1330,6 +1331,7 @@ export default function VEXTurkiyeLanding() {
                 <Link
                   href="/kaynaklar/mufredat"
                   className="inline-flex items-center text-primary font-semibold hover:underline group/link mt-auto"
+                  aria-label="Kariyer keşfi - Müfredatlar hakkında bilgi"
                 >
                   {t.whyVex.cards[1].link}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover/link:translate-x-1 transition-transform" />
@@ -1361,6 +1363,7 @@ export default function VEXTurkiyeLanding() {
                 <Link
                   href="/takimlar/nasil-kurulur"
                   className="inline-flex items-center text-primary font-semibold hover:underline group/link mt-auto"
+                  aria-label="Küresel topluluk - Nasıl takım kurulur"
                 >
                   {t.whyVex.cards[2].link}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover/link:translate-x-1 transition-transform" />
