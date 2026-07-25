@@ -6,8 +6,8 @@ export default async function HaberlerPage() {
     // Öne çıkan haber
     const featuredNews = await getSingleFeaturedNews()
 
-    // Son 3 haber (öne çıkan hariç)
-    const allLatestNews = await getLatestNews(3)
+    // Son 10 haber (öne çıkan hariç arasından filtrelenecek)
+    const allLatestNews = await getLatestNews(10)
 
     // Öne çıkan haberi listeden çıkar
     const latestNews = featuredNews

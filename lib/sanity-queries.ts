@@ -232,9 +232,9 @@ export function getImageUrl(image: SanityNews['mainImage'], width?: number, heig
 }
 
 // Tarih formatlama helper
-export function formatNewsDate(dateString: string): string {
+export function formatNewsDate(dateString: string, lang: 'TR' | 'EN' = 'TR'): string {
     const date = new Date(dateString)
-    return date.toLocaleDateString('tr-TR', {
+    return date.toLocaleDateString(lang === 'TR' ? 'tr-TR' : 'en-US', {
         day: 'numeric',
         month: 'long',
         year: 'numeric'
@@ -242,16 +242,26 @@ export function formatNewsDate(dateString: string): string {
 }
 
 // Kategori çevirisi
-export function getCategoryLabel(category: string): string {
-    const labels: Record<string, string> = {
-        'sezon': 'Sezon Haberleri',
-        'turnuva': 'Turnuva',
-        'teknik': 'Teknik',
-        'duyuru': 'Duyuru',
-        'basari': 'Başarılar',
-        'egitim': 'Eğitim'
+export function getCategoryLabel(category: string, lang: 'TR' | 'EN' = 'TR'): string {
+    const labels: Record<string, Record<string, string>> = {
+        TR: {
+            'sezon': 'Sezon Haberleri',
+            'turnuva': 'Turnuva',
+            'teknik': 'Teknik',
+            'duyuru': 'Duyuru',
+            'basari': 'Başarılar',
+            'egitim': 'Eğitim'
+        },
+        EN: {
+            'sezon': 'Season News',
+            'turnuva': 'Tournament',
+            'teknik': 'Technical',
+            'duyuru': 'Announcement',
+            'basari': 'Achievements',
+            'egitim': 'Education'
+        }
     }
-    return labels[category] || category
+    return labels[lang]?.[category] || labels['TR']?.[category] || category
 }
 
 // ============================================

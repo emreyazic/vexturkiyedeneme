@@ -42,12 +42,13 @@ interface NewsCardProps {
     news: SanityNews
     index: number
     featured?: boolean
+    language?: 'TR' | 'EN'
 }
 
-export function SanityNewsCard({ news, index, featured = false }: NewsCardProps) {
+export function SanityNewsCard({ news, index, featured = false, language = 'TR' }: NewsCardProps) {
     const imageUrl = getImageUrl(news.mainImage, 800, 600)
-    const formattedDate = formatNewsDate(news.publishedAt)
-    const categoryLabel = getCategoryLabel(news.category)
+    const formattedDate = formatNewsDate(news.publishedAt, language)
+    const categoryLabel = getCategoryLabel(news.category, language)
 
     // Badge belirleme
     const getBadge = () => {
@@ -151,9 +152,10 @@ export function SanityNewsCard({ news, index, featured = false }: NewsCardProps)
 interface NewsGridProps {
     news: SanityNews[]
     showFeatured?: boolean
+    language?: 'TR' | 'EN'
 }
 
-export function SanityNewsGrid({ news, showFeatured = true }: NewsGridProps) {
+export function SanityNewsGrid({ news, showFeatured = true, language = 'TR' }: NewsGridProps) {
     if (!news || news.length === 0) {
         return (
             <div className="text-center py-12">
@@ -170,6 +172,7 @@ export function SanityNewsGrid({ news, showFeatured = true }: NewsGridProps) {
                     news={item}
                     index={index}
                     featured={showFeatured && index === 0 && item.featured}
+                    language={language}
                 />
             ))}
         </div>
@@ -180,9 +183,10 @@ export function SanityNewsGrid({ news, showFeatured = true }: NewsGridProps) {
 interface CompactNewsListProps {
     news: SanityNews[]
     limit?: number
+    language?: 'TR' | 'EN'
 }
 
-export function CompactNewsList({ news, limit = 5 }: CompactNewsListProps) {
+export function CompactNewsList({ news, limit = 5, language = 'TR' }: CompactNewsListProps) {
     const displayNews = news.slice(0, limit)
 
     return (
@@ -212,7 +216,7 @@ export function CompactNewsList({ news, limit = 5 }: CompactNewsListProps) {
                             </h4>
                         </Link>
                         <p className="text-xs text-gray-500 mt-1">
-                            {formatNewsDate(item.publishedAt)}
+                            {formatNewsDate(item.publishedAt, language)}
                         </p>
                     </div>
                 </motion.div>

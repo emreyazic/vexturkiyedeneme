@@ -30,9 +30,11 @@ import {
   SanityHero,
   getUpcomingEvents,
   getLatestNews,
+  getSingleFeaturedNews,
   getHeroSlides,
   getImageUrl,
   formatNewsDate,
+  getCategoryLabel,
   formatEventDate,
   getEventTypeColor,
   getEventTypeLabel
@@ -50,13 +52,23 @@ export default function VEXTurkiyeLanding() {
   // Fetch Data
   useEffect(() => {
     const fetchData = async () => {
-      const [fetchedEvents, fetchedNews, fetchedHeroSlides] = await Promise.all([
+      const [fetchedEvents, fetchedLatestNews, fetchedFeaturedNews, fetchedHeroSlides] = await Promise.all([
         getUpcomingEvents(),
-        getLatestNews(5),
+        getLatestNews(6),
+        getSingleFeaturedNews(),
         getHeroSlides()
       ])
       setEvents(fetchedEvents.slice(0, 4))
-      setNews(fetchedNews)
+      
+      // Öne çıkan haberi ve son gelişmeleri birleştirip bağla
+      const filteredLatest = fetchedFeaturedNews
+        ? fetchedLatestNews.filter(n => n._id !== fetchedFeaturedNews._id).slice(0, 5)
+        : fetchedLatestNews.slice(0, 6)
+      const combinedNews = fetchedFeaturedNews
+        ? [fetchedFeaturedNews, ...filteredLatest]
+        : filteredLatest
+      setNews(combinedNews)
+      
       setHeroSlides(fetchedHeroSlides)
     }
     fetchData()
@@ -614,7 +626,7 @@ export default function VEXTurkiyeLanding() {
                             {/* Category Badge */}
                             <div className="absolute top-4 left-4">
                               <span className="px-3 py-1 bg-primary text-white text-xs font-semibold rounded-full shadow-sm">
-                                {item.category}
+                                {getCategoryLabel(item.category, language)}
                               </span>
                             </div>
                           </div>
@@ -624,7 +636,7 @@ export default function VEXTurkiyeLanding() {
                             {/* Date */}
                             <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
                               <Calendar className="h-4 w-4" />
-                              <span>{formatNewsDate(item.publishedAt)}</span>
+                              <span>{formatNewsDate(item.publishedAt, language)}</span>
                             </div>
 
                             {/* Title */}
@@ -680,7 +692,7 @@ export default function VEXTurkiyeLanding() {
                             {/* Category Badge */}
                             <div className="absolute top-4 left-4">
                               <span className="px-3 py-1 bg-primary text-white text-xs font-semibold rounded-full shadow-sm">
-                                {item.category}
+                                {getCategoryLabel(item.category, language)}
                               </span>
                             </div>
                           </div>
@@ -690,7 +702,7 @@ export default function VEXTurkiyeLanding() {
                             {/* Date */}
                             <div className="flex items-center gap-2 text-gray-500 text-sm mb-3">
                               <Calendar className="h-4 w-4" />
-                              <span>{formatNewsDate(item.publishedAt)}</span>
+                              <span>{formatNewsDate(item.publishedAt, language)}</span>
                             </div>
 
                             {/* Title */}
