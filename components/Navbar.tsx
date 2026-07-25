@@ -274,7 +274,6 @@ export function Navbar({ language = 'TR', onLanguageToggle }: NavbarProps) {
                                         />
                                         <div>
                                             <div className="font-bold text-gray-900">RECF TÜRKİYE</div>
-                                            <div className="text-xs text-gray-500">Temsilci: Intechne Teknoloji</div>
                                         </div>
                                     </div>
 
