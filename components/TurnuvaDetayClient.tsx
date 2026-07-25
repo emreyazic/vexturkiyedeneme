@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useState } from 'react'
 import Link from 'next/link'
@@ -367,7 +367,7 @@ export function TurnuvaDetayClient({ event }: TurnuvaDetayClientProps) {
                         <div className="md:col-span-1">
                             <div className="flex items-center gap-3 mb-6">
                                 <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">VEX</div>
-                                <div><div className="text-lg font-bold">VEX TÜRKİYE</div><div className="text-xs text-gray-400">Robotics Competition</div></div>
+                                <div><div className="text-lg font-bold">RECF TÜRKİYE</div><div className="text-xs text-gray-400">Temsilci: Intechne Teknoloji</div></div>
                             </div>
                             <p className="text-gray-400 text-sm mb-6">Geleceğin mühendislerini yetiştiriyoruz.</p>
                             <div className="flex gap-4">

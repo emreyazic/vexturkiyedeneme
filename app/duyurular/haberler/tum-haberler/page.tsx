@@ -1,10 +1,10 @@
-import { getAllNews } from '@/lib/sanity-queries'
+﻿import { getAllNews } from '@/lib/sanity-queries'
 import { TumHaberlerClient } from '@/components/TumHaberlerClient'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: 'Haber Arşivi | VEX Türkiye',
-    description: 'VEX Türkiye tüm haberler, duyurular ve gelişmeler arşivi',
+    title: 'Haber Arşivi | RECF TÜRKİYE',
+    description: 'RECF TÜRKİYE tüm haberler, duyurular ve gelişmeler arşivi',
 }
 
 // Tüm Haberler - Arşiv Sayfası

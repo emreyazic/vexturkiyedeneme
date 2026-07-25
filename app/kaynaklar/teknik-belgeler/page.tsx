@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { CorporateHero } from '@/components/CorporateHero'
@@ -69,7 +69,7 @@ export default async function TeknikBelgelerPage() {
                         <div className="md:col-span-1">
                             <div className="flex items-center gap-3 mb-6">
                                 <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">VEX</div>
-                                <div><div className="text-lg font-bold">VEX TÜRKİYE</div><div className="text-xs text-gray-400">Robotics Competition</div></div>
+                                <div><div className="text-lg font-bold">RECF TÜRKİYE</div><div className="text-xs text-gray-400">Temsilci: Intechne Teknoloji</div></div>
                             </div>
                             <div className="flex gap-4">
                                 <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></a>
@@ -104,7 +104,7 @@ export default async function TeknikBelgelerPage() {
                         </div>
                     </div>
                     <div className="pt-8 mt-12 border-t border-gray-800">
-                        <p className="text-sm text-gray-500 text-center">© 2024 VEX Türkiye. Tüm hakları saklıdır.</p>
+                        <p className="text-sm text-gray-500 text-center">© 2024 RECF TÜRKİYE. Tüm hakları saklıdır.</p>
                     </div>
                 </div>
             </footer>

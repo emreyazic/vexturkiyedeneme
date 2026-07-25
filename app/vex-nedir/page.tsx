@@ -208,14 +208,13 @@ export default function RecfProgramsPage() {
                                 RECF Türkiye: Robotics Education & Competition Foundation resmi platformu. Türkiye Temsilcisi ve Yerel Operasyon Yürütücüsü: Intechne Teknoloji.
                             </p>
                             <a
-                                href="https://instagram.com/vexroboticsturkiye"
+                                href="https://instagram.com/recfturkiye"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 text-red-400 hover:text-white transition-colors"
-                                aria-label="Instagram"
                             >
-                                <Instagram className="h-6 w-6" />
-                                <span className="text-sm font-medium">@vexroboticsturkiye</span>
+                                <Instagram className="w-5 h-5" />
+                                <span className="text-sm font-medium">@recfturkiye</span>
                             </a>
                         </div>
 

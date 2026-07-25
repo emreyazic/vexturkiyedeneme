@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
@@ -87,7 +87,7 @@ const recentMessages = [
         name: 'Mehmet Demir',
         email: 'mehmet@firma.com',
         subject: 'Sponsorluk Teklifi',
-        message: 'Şirketimiz VEX Türkiye etkinliklerine sponsor olmak istiyor.',
+        message: 'Şirketimiz RECF TÜRKİYE etkinliklerine sponsor olmak istiyor.',
         date: 'Dün',
         isRead: true,
         priority: 'high' as const

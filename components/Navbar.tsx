@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useState } from 'react'
 import Link from 'next/link'
@@ -26,12 +26,14 @@ const menuItems = {
     kurumsal: {
         title: 'Kurumsal',
         items: [
+            { title: 'RECF Türkiye Hakkında', href: '/kurumsal/hakkimizda' },
+            { title: 'RECF Türkiye Ekibi', href: '/kurumsal/ekibimiz' },
             { title: 'İş Birlikleri ve Destekleyen Kurumlar', href: '/kurumsal/sponsorlar-ve-partnerler' },
             { title: 'RECF Türkiye Gönüllülük', href: '/kurumsal/gonullu-olun' }
         ]
     },
     vexNedir: {
-        title: 'VEX Nedir?',
+        title: 'RECF Programları',
         items: [
             { title: 'Genel Bakış', href: '/vex-nedir' },
             { title: 'RECF Engage', href: '/vex-nedir/vex-iq' },
@@ -265,14 +267,14 @@ export function Navbar({ language = 'TR', onLanguageToggle }: NavbarProps) {
                                     <div className="flex items-center gap-3 mb-6 pb-6 border-b border-gray-200">
                                         <Image
                                             src="/VEX-Robotics_Full-Color-1.png"
-                                            alt="VEX Türkiye"
+                                            alt="RECF TÜRKİYE"
                                             width={100}
                                             height={40}
                                             className="h-10 w-auto object-contain"
                                         />
                                         <div>
-                                            <div className="font-bold text-gray-900">VEX TÜRKİYE</div>
-                                            <div className="text-xs text-gray-500">Robotics Competition</div>
+                                            <div className="font-bold text-gray-900">RECF TÜRKİYE</div>
+                                            <div className="text-xs text-gray-500">Temsilci: Intechne Teknoloji</div>
                                         </div>
                                     </div>
 

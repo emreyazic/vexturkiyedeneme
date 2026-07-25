@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
@@ -220,7 +220,7 @@ export default function AdminLoginPage() {
                     className="text-center mt-8"
                 >
                     <p className="text-xs text-gray-400">
-                        VEX Command Center v1.0 • © 2026 VEX Türkiye
+                        VEX Command Center v1.0 • © 2026 RECF TÜRKİYE
                     </p>
                 </motion.div>
             </div>

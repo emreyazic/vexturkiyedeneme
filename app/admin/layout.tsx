@@ -1,8 +1,8 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: 'VEX Command Center - Admin Panel',
-    description: 'VEX Türkiye Yönetim Paneli',
+    description: 'RECF TÜRKİYE Yönetim Paneli',
     robots: 'noindex, nofollow' // Admin sayfaları indexlenmemeli
 }
 

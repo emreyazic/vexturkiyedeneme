@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import React from 'react'
 import Link from 'next/link'
@@ -37,7 +37,7 @@ export default function GaleriPage() {
                         Çok Yakında
                     </h1>
                     <p className="text-xl text-gray-500 mb-10 leading-relaxed">
-                        VEX Türkiye anıları ve en özel kareler burada sergilenecek.
+                        RECF TÜRKİYE anıları ve en özel kareler burada sergilenecek.
                         Gelişmeler için bizi takipte kalın.
                     </p>
 
@@ -63,7 +63,7 @@ export default function GaleriPage() {
             {/* Simple Footer */}
             <footer className="bg-white border-t border-gray-100 py-6">
                 <div className="container mx-auto px-6 text-center text-sm text-gray-400">
-                    © 2026 VEX Türkiye. Tüm hakları saklıdır.
+                    © 2026 RECF TÜRKİYE. Tüm hakları saklıdır.
                 </div>
             </footer>
         </div>
