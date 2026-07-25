@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
 import { Linkedin, ArrowRight, UserCircle, Briefcase, Mail } from 'lucide-react'
 import Link from 'next/link'
@@ -101,7 +102,7 @@ export default function EkibimizPage() {
                     <p className="text-gray-600 mb-8 leading-relaxed">
                         RECF Türkiye ekosisteminin büyümesinde gönüllülerin, mentorların ve eğitimcilerin payı çok büyük. Siz de etkinliklerimizde görev alarak gençlerin mühendislik vizyonuna yön verebilirsiniz.
                     </p>
-                    <Link href="/kurumsal/gonullu-olun">
+                    <Link href="/kurumsal/gonulluluk">
                         <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8">
                             Gönüllü Başvurusu Yap
                             <ArrowRight className="w-4 h-4 ml-2" />
@@ -110,41 +111,7 @@ export default function EkibimizPage() {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="bg-gray-900 text-white py-16">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid md:grid-cols-4 gap-12">
-                        <div className="md:col-span-1">
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">RECF</div>
-                                <div><div className="text-lg font-bold">RECF TÜRKİYE</div><div className="text-xs text-gray-400">Türkiye Temsilcisi: Intechne Teknoloji</div></div>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">Kurumsal</h3>
-                            <ul className="space-y-3 text-sm">
-                                <li><Link href="/kurumsal/hakkimizda" className="text-gray-400 hover:text-primary transition-colors">RECF Türkiye Hakkında</Link></li>
-                                <li><Link href="/kurumsal/ekibimiz" className="text-gray-400 hover:text-primary transition-colors">RECF Türkiye Ekibi</Link></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">Yarışmalar</h3>
-                            <ul className="space-y-3 text-sm">
-                                <li><Link href="/vex-nedir/vex-iq" className="text-gray-400 hover:text-primary transition-colors">RECF Engage</Link></li>
-                                <li><Link href="/vex-nedir/vex-v5" className="text-gray-400 hover:text-primary transition-colors">RECF Achieve</Link></li>
-                                <li><Link href="/vex-nedir/vex-u" className="text-gray-400 hover:text-primary transition-colors">RECF Inspire</Link></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">İletişim</h3>
-                            <ul className="space-y-3 text-sm text-gray-400">
-                                <li><Mail className="w-4 h-4 inline-block mr-2" />info@vexturkiye.com</li>
-                                <li>İstanbul, Türkiye</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }

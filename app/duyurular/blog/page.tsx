@@ -1,9 +1,10 @@
-﻿'use client'
+'use client'
 
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Button } from '@/components/ui/button'
 import {
@@ -298,52 +299,7 @@ export default function BlogPage() {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="bg-gray-900 text-white py-16">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid md:grid-cols-4 gap-12">
-                        <div className="md:col-span-1">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">VEX</div>
-                                <div><div className="text-lg font-bold">RECF TÜRKİYE</div><div className="text-xs text-gray-400">Temsilci: Intechne Teknoloji</div></div>
-                            </div>
-                            <div className="flex gap-4">
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Instagram className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Youtube className="w-5 h-5" /></a>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">Duyurular</h3>
-                            <ul className="space-y-3">
-                                <li><a href="/duyurular/haberler" className="text-gray-400 hover:text-primary transition-colors">Haberler</a></li>
-                                <li><a href="/duyurular/blog" className="text-gray-400 hover:text-primary transition-colors">Blog</a></li>
-                                <li><a href="/duyurular/basinda-biz" className="text-gray-400 hover:text-primary transition-colors">Basında Biz</a></li>
-                                <li><a href="/duyurular/galeri" className="text-gray-400 hover:text-primary transition-colors">Galeri</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">Kaynaklar</h3>
-                            <ul className="space-y-3">
-                                <li><a href="/kaynaklar/oyun-kilavuzlari" className="text-gray-400 hover:text-primary transition-colors">Oyun Kılavuzları</a></li>
-                                <li><a href="/kaynaklar/yazilim" className="text-gray-400 hover:text-primary transition-colors">VEXcode</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">İletişim</h3>
-                            <ul className="space-y-3 text-gray-400">
-                                <li>info@vexturkiye.com</li>
-                                <li>+90 (212) 000 00 00</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="pt-8 mt-12 border-t border-gray-800">
-                        <p className="text-sm text-gray-500 text-center">© 2024 RECF TÜRKİYE. Tüm hakları saklıdır.</p>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }

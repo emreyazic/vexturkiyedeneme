@@ -122,7 +122,7 @@ export default function HakkimizdaPage() {
                     </p>
                     
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="/vex-nedir">
+                        <Link href="/recf-programlari">
                             <Button size="lg" className="bg-primary text-white font-semibold px-8 h-12">
                                 RECF Programlarını İncele
                                 <ArrowRight className="w-4 h-4 ml-2" />

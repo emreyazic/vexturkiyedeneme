@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
 import {
     Facebook, Twitter, Instagram, Linkedin, Youtube,
@@ -83,13 +84,12 @@ const programsData: Record<string, {
             { name: 'GO Yapı Parçaları', description: '250+ snap-together parça' },
             { name: 'Motorlar', description: '2 adet akıllı motor' },
             { name: 'Sensörler', description: 'Göz sensörü ve LED ışıklar' },
-            { name: 'Şarj İstasyonu', description: 'Kablosuz şarj ünitesi' },
-            { name: 'VEXcode GO', description: 'Blok tabanlı programlama yazılımı' }
+            { name: 'Şarj İstasyonu', description: 'Kablosuz şarj ünitesi' }
         ],
         competitionRules: [] // VEX GO is not a competition program
     },
-    'vex-iq': {
-        id: 'vex-iq',
+    'engage': {
+        id: 'engage',
         name: 'RECF Engage',
         fullName: 'RECF Engage 2026–2027 Oyunu: Tier Takeover',
         tagline: 'İlkokul ve ortaokul öğrencileri için yaratıcılık, takım çalışması ve mühendislik odaklı robotik yarışma programı.',
@@ -130,8 +130,8 @@ const programsData: Record<string, {
             { title: 'Etkinlikler', url: '/yarismalar/etkinlik-takvimi' }
         ]
     },
-    'vex-v5': {
-        id: 'vex-v5',
+    'achieve': {
+        id: 'achieve',
         name: 'RECF Achieve',
         fullName: 'RECF Achieve 2026–2027 Oyunu: Pinnacle',
         tagline: 'Ortaokul ve lise öğrencileri için farklı yapı sistemleri ve özel üretim imkânları sunan ileri robotik programı.',
@@ -201,8 +201,8 @@ const programsData: Record<string, {
         ],
         competitionRules: []
     },
-    'vex-u': {
-        id: 'vex-u',
+    'inspire': {
+        id: 'inspire',
         name: 'RECF Inspire',
         fullName: 'RECF Inspire 2026–2027 Oyunu: Pinnacle',
         tagline: 'Üniversite ve yükseköğretim öğrencileri için açık sistemler, özel tasarım ve iki robotlu takım yapısına sahip ileri mühendislik yarışması.',
@@ -240,6 +240,97 @@ const programsData: Record<string, {
             { title: 'Üniversite Takım Kaydı', url: '/takimlar/kayit' },
             { title: 'Etkinlikler', url: '/yarismalar/etkinlik-takvimi' }
         ]
+    },
+    'adc': {
+        id: 'adc',
+        name: 'Aerial Drone Competition',
+        fullName: 'RECF Aerial Drone Competition (ADC)',
+        tagline: 'Ortaokul ve lise öğrencileri için havacılık ve drone yarışmaları.',
+        ageRange: 'Ortaokul ve Lise',
+        color: '#00AEEF',
+        secondaryColor: '#4FC3F7',
+        icon: Gamepad2,
+        description: 'Drone teknolojisi ve programlamayı birleştiren yenilikçi uçuş yarışmaları. Öğrenciler kendi drone\'larını tasarlar, kodlar ve uçurur.',
+        purpose: 'Aerial Drone Competition, öğrencileri havacılık, uçuş dinamikleri ve otonom kodlama alanlarında geliştirmek için tasarlanmıştır. Gerçek dünya drone teknolojilerine zemin hazırlar.',
+        achievements: [
+            'Havacılık ve uçuş mekaniği temelleri',
+            'Otonom drone programlama',
+            'Pilotaj ve manuel uçuş becerileri',
+            'Problem çözme ve hızlı karar verme',
+            'Mühendislik tasarımı ve dökümantasyon',
+            'Ekip içi uyum ve koordinasyon'
+        ],
+        kitContents: [
+            { name: 'Yarışma Drone Seti', description: 'İzin verilen hafif eğitim drone kiti' },
+            { name: 'Kumanda', description: 'Kablosuz kontrolör ünitesi' },
+            { name: 'Engeller ve Kapılar', description: 'Resmi parkur saha elemanları' },
+            { name: 'Yazılım', description: 'Drone kodlama arayüzü' }
+        ],
+        competitionRules: [
+            { title: 'Piloted Matches', description: 'Pilotlar engelli parkurda drone\'larını manuel olarak kontrol ederek puan toplamaya çalışır.' },
+            { title: 'Autonomous Flight', description: 'Drone\'un otonom kodlama ile parkuru kendi kendine tamamladığı süre sınırı olan mücadeleler.' },
+            { title: 'Team Alliance', description: 'Takımların ittifak halinde ortak uçuş stratejileri geliştirdiği maçlar.' }
+        ]
+    },
+    'adc-pro': {
+        id: 'adc-pro',
+        name: 'ADC Pro',
+        fullName: 'RECF ADC Pro Drone Competition',
+        tagline: 'Üniversite öğrencilerine yönelik yapay zeka ve tamamen otonom drone görevleri.',
+        ageRange: 'Üniversite',
+        color: '#6B21A8',
+        secondaryColor: '#A855F7',
+        icon: Cpu,
+        description: 'Üniversite düzeyinde, tamamen otonom uçuş, yapay zeka entegrasyonu ve gelişmiş bilgisayarlı görü görevlerine odaklanan ileri düzey drone ligi.',
+        purpose: 'ADC Pro, öğrencileri otonom havacılık mühendisliği ve yapay zeka tabanlı uçuş sistemlerine hazırlar. Çevre haritalama ve engel algılama gibi ileri algoritmalar test edilir.',
+        achievements: [
+            'Yapay zeka ve makine öğrenmesi uygulamaları',
+            'Bilgisayarlı görü ve engel algılama',
+            'ROS (Robot Operating System) ile otonom uçuş',
+            'Yörünge planlaması ve kontrol teorisi',
+            'Sistem entegrasyonu ve donanım tasarımı',
+            'Akademik araştırma ve mühendislik sunumları'
+        ],
+        kitContents: [
+            { name: 'Otonom Geliştirme Drone Kit', description: 'Jetson Nano veya Raspberry Pi takılabilir drone donanımı' },
+            { name: 'Stereo Kamera', description: 'Bilgisayarlı görü ve derinlik algılayıcı kamera' },
+            { name: 'Lidar Sensör Paketi', description: 'Otonom SLAM haritalama ünitesi' },
+            { name: 'ROS Uyumlu Kontrol Kartı', description: 'İleri düzey uçuş kontrolörü' }
+        ],
+        competitionRules: [
+            { title: 'Fully Autonomous Flights', description: 'Drone\'ların hiçbir manuel müdahale olmadan sadece kendi yazılımlarıyla uçtuğu maçlar.' },
+            { title: 'Obstacle Avoidance', description: 'Karmaşık engelleri ve dinamik hedefleri yapay zeka yardımıyla algılayıp kaçındığı görevler.' },
+            { title: 'AI Tasks', description: 'Renk, şekil ve işaretleri tanıyarak karar alma ve görev tamamlama testleri.' }
+        ]
+    },
+    'online-challenges': {
+        id: 'online-challenges',
+        name: 'Online Challenges',
+        fullName: 'RECF Online Challenges',
+        tagline: 'Çevrimiçi mühendislik, tasarım, CAD ve medya yarışmaları.',
+        ageRange: 'Tüm Seviyeler',
+        color: '#1E3A8A',
+        secondaryColor: '#3B82F6',
+        icon: Factory,
+        description: 'Öğrencilerin fiziksel robot yapımının ötesinde, tasarım, CAD çizimi, topluluk projeleri, video prodüksiyonu ve yazılım geliştirme gibi alanlarda projeler gönderdiği küresel yarışmalar.',
+        purpose: 'Online Challenges, ekosistemdeki her öğrencinin kendi uzmanlık alanında (tasarım, yazılım, video, CAD vb.) küresel olarak rekabet etmesini ve portföy oluşturmasını amaçlar.',
+        achievements: [
+            'CAD ve 3D modelleme becerileri',
+            'Multimedya, video kurgu ve iletişim',
+            'Bilimsel araştırma ve makale yazımı',
+            'Toplumsal fayda ve STEM yaygınlaştırma projeleri',
+            'Web ve mobil uygulama geliştirme pratikleri',
+            'Uluslararası değerlendirme ve geribildirim alma'
+        ],
+        kitContents: [
+            { name: 'CAD Yazılım Lisansları', description: 'Autodesk Fusion 360, SolidWorks gibi yazılımlara erişim' },
+            { name: 'Çevrimiçi Gönderim Portalı', description: 'Projelerin yüklenip oylandığı resmi RECF platformu' }
+        ],
+        competitionRules: [
+            { title: 'Digital Submissions', description: 'Projeler tamamen dijital formatta hazırlanır ve belirlenen tarihlerde sisteme yüklenir.' },
+            { title: 'Peer & Expert Review', description: 'Hem halk oylaması hem de RECF uzman jürisi tarafından çift aşamalı değerlendirme yapılır.' },
+            { title: 'Global Awards', description: 'Dünya genelinde dereceye giren projelere doğrudan ödüller ve ödül puanları verilir.' }
+        ]
     }
 }
 
@@ -256,10 +347,10 @@ export default function ProgramDetailPage() {
                 <div className="text-center">
                     <h1 className="text-4xl font-bold text-gray-900 mb-4">Program Bulunamadı</h1>
                     <p className="text-gray-600 mb-8">Aradığınız program mevcut değil.</p>
-                    <Link href="/vex-nedir">
+                    <Link href="/recf-programlari">
                         <Button className="bg-primary">
                             <ArrowLeft className="w-4 h-4 mr-2" />
-                            VEX Nedir&apos; sayfasına dön
+                            RECF Programları sayfasına dön
                         </Button>
                     </Link>
                 </div>
@@ -309,11 +400,11 @@ export default function ProgramDetailPage() {
                         className="text-center text-white"
                     >
                         <Link
-                            href="/vex-nedir"
+                            href="/recf-programlari"
                             className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
                         >
                             <ArrowLeft className="w-4 h-4" />
-                            VEX Nedir?
+                            RECF Programları
                         </Link>
 
                         <div className="w-24 h-24 mx-auto mb-6 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
@@ -559,63 +650,7 @@ export default function ProgramDetailPage() {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="bg-gray-900 text-white py-16">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid md:grid-cols-4 gap-12">
-                        <div className="md:col-span-1">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">RECF</div>
-                                <div><div className="text-lg font-bold">RECF TÜRKİYE</div><div className="text-xs text-gray-400">Robotics Education & Competition Foundation</div></div>
-                            </div>
-                            <p className="text-gray-400 text-sm mb-6">Geleceğin mühendislerini yetiştiriyoruz.</p>
-                            <div className="flex gap-4">
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Instagram className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Youtube className="w-5 h-5" /></a>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">Hızlı Bağlantılar</h3>
-                            <ul className="space-y-3">
-                                <li><a href="/" className="text-gray-400 hover:text-primary transition-colors">Ana Sayfa</a></li>
-                                <li><a href="/kurumsal/hakkimizda" className="text-gray-400 hover:text-primary transition-colors">Hakkımızda</a></li>
-                                <li><a href="/vex-nedir" className="text-gray-400 hover:text-primary transition-colors">VEX Nedir?</a></li>
-                                <li><a href="/yarismalar/etkinlik-takvimi" className="text-gray-400 hover:text-primary transition-colors">Etkinlik Takvimi</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">Programlar</h3>
-                            <ul className="space-y-3">
-                                <li><a href="/vex-nedir/vex-123" className="text-gray-400 hover:text-primary transition-colors">VEX 123</a></li>
-                                <li><a href="/vex-nedir/vex-go" className="text-gray-400 hover:text-primary transition-colors">VEX GO</a></li>
-                                <li><a href="/vex-nedir/vex-iq" className="text-gray-400 hover:text-primary transition-colors">RECF Engage</a></li>
-                                <li><a href="/vex-nedir/vex-v5" className="text-gray-400 hover:text-primary transition-colors">RECF Achieve</a></li>
-                                <li><a href="/vex-nedir/vex-u" className="text-gray-400 hover:text-primary transition-colors">RECF Inspire</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">İletişim</h3>
-                            <ul className="space-y-3 text-gray-400">
-                                <li>info@vexturkiye.com</li>
-                                <li>+90 (212) 000 00 00</li>
-                                <li>İstanbul, Türkiye</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="pt-8 mt-12 border-t border-gray-800">
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                            <p className="text-sm text-gray-500">© 2026 RECF Türkiye. Tüm hakları saklıdır.</p>
-                            <div className="flex items-center gap-6">
-                                <a href="#" className="text-sm text-gray-400 hover:text-primary transition-colors">Gizlilik Politikası</a>
-                                <a href="#" className="text-sm text-gray-400 hover:text-primary transition-colors">Kullanım Koşulları</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }

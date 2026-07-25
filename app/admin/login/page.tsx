@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
@@ -115,12 +115,13 @@ export default function AdminLoginPage() {
                                         <Label htmlFor="password" className="text-sm font-medium text-gray-700">
                                             Şifre
                                         </Label>
-                                        <Link
-                                            href="/admin/forgot-password"
-                                            className="text-sm text-primary hover:text-primary/80 transition-colors"
+                                        <button
+                                            type="button"
+                                            onClick={() => alert('Şifre sıfırlama işlemi için lütfen sistem yöneticiniz (admin@vexturkiye.org) ile iletişime geçin.')}
+                                            className="text-sm text-primary hover:text-primary/80 transition-colors font-medium"
                                         >
                                             Şifremi Unuttum
-                                        </Link>
+                                        </button>
                                     </div>
                                     <div className="relative">
                                         <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />

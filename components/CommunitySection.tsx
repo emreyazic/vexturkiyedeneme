@@ -49,7 +49,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Esnek Roller: Her ilgi alanına ve programa uygun görevler'
                     ],
                     cta: 'Gönüllü Başvurusu',
-                    href: '/kurumsal/gonullu-olun'
+                    href: '/kurumsal/gonulluluk'
                 },
                 mentor: {
                     title: 'Mentor',
@@ -63,7 +63,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Profesyonel Ağ: Diğer mentorlar ve sektör profesyonelleriyle bağlantı kurun'
                     ],
                     cta: 'Mentor Kaynakları',
-                    href: '/takimlar/mentor'
+                    href: '/takimlar/koc-ve-mentor-merkezi'
                 },
                 sponsor: {
                     title: 'Sponsor & Bağışçı',
@@ -77,7 +77,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Özelleştirilmiş Paketler: Bütçenize ve hedeflerinize uygun sponsorluk seçenekleri'
                     ],
                     cta: 'Sponsorluk Dosyası',
-                    href: '/kurumsal/sponsorlar-ve-partnerler'
+                    href: '/kurumsal/is-birlikleri'
                 },
                 educator: {
                     title: 'Eğitmen',
@@ -127,7 +127,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Flexible Roles: Tasks suitable for every interest and schedule'
                     ],
                     cta: 'Apply as Volunteer',
-                    href: '/kurumsal/gonullu-olun'
+                    href: '/kurumsal/gonulluluk'
                 },
                 mentor: {
                     title: 'Mentor',
@@ -141,7 +141,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Professional Network: Connect with other mentors and industry professionals'
                     ],
                     cta: 'Mentor Resources',
-                    href: '/takimlar/mentor'
+                    href: '/takimlar/koc-ve-mentor-merkezi'
                 },
                 sponsor: {
                     title: 'Sponsor & Donor',
@@ -155,7 +155,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Customized Packages: Sponsorship options tailored to your budget and goals'
                     ],
                     cta: 'Sponsorship Package',
-                    href: '/kurumsal/sponsorlar-ve-partnerler'
+                    href: '/kurumsal/is-birlikleri'
                 },
                 educator: {
                     title: 'Educator',

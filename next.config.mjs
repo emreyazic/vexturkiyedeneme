@@ -24,6 +24,118 @@ const nextConfig = {
         destination: '/kurumsal/hakkimizda',
         permanent: true,
       },
+      // VEX-nedir redirects
+      {
+        source: '/vex-nedir/vex-v5',
+        destination: '/recf-programlari/achieve',
+        permanent: true,
+      },
+      {
+        source: '/vex-nedir/vex-iq',
+        destination: '/recf-programlari/engage',
+        permanent: true,
+      },
+      {
+        source: '/vex-nedir/vex-u',
+        destination: '/recf-programlari/inspire',
+        permanent: true,
+      },
+      {
+        source: '/vex-nedir/v5rc',
+        destination: '/recf-programlari/adc',
+        permanent: true,
+      },
+      {
+        source: '/vex-nedir/viqrc',
+        destination: '/recf-programlari/adc-pro',
+        permanent: true,
+      },
+      {
+        source: '/vex-nedir',
+        destination: '/recf-programlari',
+        permanent: true,
+      },
+      {
+        source: '/vex-nedir/:slug',
+        destination: '/recf-programlari/:slug',
+        permanent: true,
+      },
+      // Takım Dizini redirects
+      {
+        source: '/takim-haritasi',
+        destination: '/takimlar/takim-dizini',
+        permanent: true,
+      },
+      {
+        source: '/tum-takimlar',
+        destination: '/takimlar/takim-dizini',
+        permanent: true,
+      },
+      {
+        source: '/takimlar/tum-takimlar',
+        destination: '/takimlar/takim-dizini',
+        permanent: true,
+      },
+      {
+        source: '/takimlar/tum-takimlar/:slug',
+        destination: '/takimlar/takim-dizini/:slug',
+        permanent: true,
+      },
+      // Mentor redirects
+      {
+        source: '/mentor-kosesi',
+        destination: '/takimlar/koc-ve-mentor-merkezi',
+        permanent: true,
+      },
+      {
+        source: '/takimlar/mentor',
+        destination: '/takimlar/koc-ve-mentor-merkezi',
+        permanent: true,
+      },
+      // Gönüllülük redirects
+      {
+        source: '/gonullu-olun',
+        destination: '/kurumsal/gonulluluk',
+        permanent: true,
+      },
+      {
+        source: '/kurumsal/gonullu-olun',
+        destination: '/kurumsal/gonulluluk',
+        permanent: true,
+      },
+      // İş Birlikleri redirects
+      {
+        source: '/sponsorlar-ve-partnerler',
+        destination: '/kurumsal/is-birlikleri',
+        permanent: true,
+      },
+      {
+        source: '/kurumsal/sponsorlar-ve-partnerler',
+        destination: '/kurumsal/is-birlikleri',
+        permanent: true,
+      },
+      // Sezon Oyunları redirects
+      {
+        source: '/sezon-temasi',
+        destination: '/yarismalar/sezon-oyunlari',
+        permanent: true,
+      },
+      {
+        source: '/yarismalar/sezon-temasi',
+        destination: '/yarismalar/sezon-oyunlari',
+        permanent: true,
+      },
+      // Solo Sıralamaları redirects
+      {
+        source: '/robot-skills-siralamasi',
+        destination: '/yarismalar/solo-siralamalari',
+        permanent: true,
+      },
+      {
+        source: '/yarismalar/skills',
+        destination: '/yarismalar/solo-siralamalari',
+        permanent: true,
+      },
     ]
   },
 }

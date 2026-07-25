@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Button } from '@/components/ui/button'
 import {
@@ -175,7 +176,7 @@ export default function RecfProgramsPage() {
                                             </div>
                                         </div>
 
-                                        <Link href={`/vex-nedir/${program.id}`} className="mt-auto block">
+                                        <Link href={`/recf-programlari/${program.id}`} className="mt-auto block">
                                             <Button
                                                 variant="outline"
                                                 className="w-full border-gray-300 text-gray-700 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all"
@@ -192,116 +193,7 @@ export default function RecfProgramsPage() {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="relative bg-[#0f172a] border-t border-gray-800 text-gray-300">
-                <div className="container mx-auto px-6 max-w-7xl py-16">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-                        {/* Column 1 - Brand Identity */}
-                        <div className="space-y-8">
-                            <div className="flex items-start">
-                                <div className="text-2xl font-black tracking-tight text-white flex flex-col">
-                                    <span>RECF TÜRKİYE</span>
-                                    <span className="text-xs font-normal text-gray-400">Temsilci: Intechne Teknoloji</span>
-                                </div>
-                            </div>
-                            <p className="text-sm leading-relaxed text-gray-400 max-w-sm">
-                                RECF Türkiye: Robotics Education & Competition Foundation resmi platformu. Türkiye Temsilcisi ve Yerel Operasyon Yürütücüsü: Intechne Teknoloji.
-                            </p>
-                            <a
-                                href="https://instagram.com/recfturkiye"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 text-red-400 hover:text-white transition-colors"
-                            >
-                                <Instagram className="w-5 h-5" />
-                                <span className="text-sm font-medium">@recfturkiye</span>
-                            </a>
-                        </div>
-
-                        {/* Column 2 - VEX Ecosystem */}
-                        <div>
-                            <h3 className="text-red-400 font-bold mb-6 text-lg tracking-wide uppercase">VEX NEDİR?</h3>
-                            <ul className="space-y-3 text-sm">
-
-                                <li>
-                                    <Link href="/vex-nedir/vex-iq" className="hover:text-primary transition-colors">RECF Engage</Link>
-                                </li>
-                                <li>
-                                    <Link href="/vex-nedir/vex-v5" className="hover:text-primary transition-colors">RECF Achieve</Link>
-                                </li>
-                                <li>
-                                    <Link href="/vex-nedir/vex-u" className="hover:text-primary transition-colors">RECF Inspire</Link>
-                                </li>
-                                <li>
-                                    <Link href="/yarismalar/sonuclar" className="hover:text-primary transition-colors">RECF Türkiye Sonuçları</Link>
-                                </li>
-                                <li>
-                                    <Link href="/kaynaklar/yazilim" className="hover:text-primary transition-colors">Programlama ve Yazılım Kaynakları</Link>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* Column 3 - Participation */}
-                        <div>
-                            <h3 className="text-red-400 font-bold mb-6 text-lg tracking-wide uppercase">KATILIM</h3>
-                            <ul className="space-y-3 text-sm">
-                                <li>
-                                    <Link href="/yarismalar/etkinlik-takvimi" className="hover:text-primary transition-colors">RECF Türkiye Etkinlik Takvimi</Link>
-                                </li>
-                                <li>
-                                    <Link href="/yarismalar/sezon-temasi" className="hover:text-primary transition-colors">2026–2027 RECF Sezon Oyunları</Link>
-                                </li>
-                                <li>
-                                    <Link href="/takimlar/nasil-kurulur" className="hover:text-primary transition-colors">RECF Takımı Nasıl Kurulur?</Link>
-                                </li>
-                                <li>
-                                    <Link href="/takimlar/kayit" className="hover:text-primary transition-colors">RECF Takım Kaydı</Link>
-                                </li>
-                                <li>
-                                    <Link href="/takimlar/mentor" className="hover:text-primary transition-colors">Koç ve Mentor Merkezi</Link>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* Column 4 - Contact */}
-                        <div>
-                            <h3 className="text-red-400 font-bold mb-6 text-lg tracking-wide uppercase">BİZE ULAŞIN</h3>
-                            <ul className="space-y-3 text-sm mb-6">
-                                <li>
-                                    <Link href="/kurumsal/hakkimizda" className="hover:text-primary transition-colors">RECF Türkiye Hakkında</Link>
-                                </li>
-                                <li>
-                                    <Link href="/kurumsal/sponsorlar-ve-partnerler" className="hover:text-primary transition-colors">İş Birlikleri ve Destekleyen Kurumlar</Link>
-                                </li>
-                                <li>
-                                    <Link href="/kurumsal/gonullu-olun" className="hover:text-primary transition-colors">RECF Türkiye Gönüllülük</Link>
-                                </li>
-                            </ul>
-                            <div className="space-y-4 text-sm pt-4 border-t border-gray-800">
-                                <div className="flex items-start gap-3">
-                                    <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                                    <span className="text-gray-400">Ünalan, Ünalan Cd., 34500 Üsküdar/İstanbul</span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <Phone className="h-5 w-5 text-primary shrink-0" />
-                                    <a href="tel:+905346349058" className="text-gray-400 hover:text-white transition-colors">
-                                        +90 534 634 90 58
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Copyright Bar */}
-                    <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400">
-                        <p>© 2026 RECF Türkiye. Türkiye Temsilcisi ve Yerel Operasyon Yürütücüsü: Intechne Teknoloji. Tüm Hakları Saklıdır.</p>
-                        <div className="flex items-center gap-6">
-                            <Link href="#" className="hover:text-primary transition-colors">Kullanım Koşulları</Link>
-                            <Link href="#" className="hover:text-primary transition-colors">KVKK</Link>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }

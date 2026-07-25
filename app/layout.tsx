@@ -1,16 +1,7 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Geist } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
-
-const geistSans = Geist({
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-geist-sans",
-  display: "swap",
-  preload: true,
-  adjustFontFallback: true,
-});
 
 export const metadata: Metadata = {
   title: 'RECF Türkiye | Robotics Education & Competition Foundation',
@@ -41,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="tr" className={`${geistSans.className} ${geistSans.variable}`}>
+    <html lang="tr">
       <body className="font-sans antialiased">
         {children}
         <Analytics />

@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -37,6 +38,16 @@ export function TumTakimlarClient({ teams }: TumTakimlarClientProps) {
     // Filtered teams
     const filteredTeams = useMemo(() => {
         return teams.filter(team => {
+            // Filter out dummy/test teams or teams with dummy roles like "Çaycı"
+            const isDummy = 
+                team.name.toLowerCase().includes('test') || 
+                team.name.toLowerCase().includes('deneme') || 
+                team.teamNumber.toLowerCase().includes('test') ||
+                (team.schoolOrOrganization && team.schoolOrOrganization.toLowerCase().includes('test')) ||
+                (team.teamMembers && team.teamMembers.some(m => m.role.toLowerCase().includes('çaycı') || m.role.toLowerCase().includes('cayci')));
+            
+            if (isDummy) return false;
+
             // Search filter (team number or name)
             const searchMatch = searchQuery === '' ||
                 team.teamNumber.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -92,7 +103,7 @@ export function TumTakimlarClient({ teams }: TumTakimlarClientProps) {
                     >
                         {/* Back Button */}
                         <div className="flex justify-start mb-6">
-                            <Link href="/takimlar">
+                            <Link href="/takimlar/takim-dizini">
                                 <Button variant="ghost" className="text-white hover:bg-white/10">
                                     <ArrowLeft className="w-4 h-4 mr-2" />
                                     Haritaya Dön
@@ -274,25 +285,7 @@ export function TumTakimlarClient({ teams }: TumTakimlarClientProps) {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="bg-white border-t border-gray-200 py-8">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center font-bold text-white text-xs">RECF</div>
-                            <span className="text-gray-600">RECF Türkiye Takımlar</span>
-                        </div>
-                        <div className="flex gap-4">
-                            <Link href="/takimlar">
-                                <Button variant="ghost" className="text-primary">
-                                    <MapPin className="w-4 h-4 mr-2" />
-                                    Harita Görünümü
-                                </Button>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }

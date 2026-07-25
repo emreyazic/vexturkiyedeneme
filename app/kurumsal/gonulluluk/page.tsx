@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -228,7 +229,7 @@ export default function GonulluOlunPage() {
                                             htmlFor="kvkk"
                                             className="text-xs text-gray-600 leading-relaxed cursor-pointer"
                                         >
-                                            Kişisel verilerimin Intechne Teknoloji tarafından <a href="#" className="text-primary hover:underline">KVKK Aydınlatma Metni</a> kapsamında işlenmesini ve gönüllülük faaliyetleri doğrultusunda saklanmasını onaylıyorum.
+                                            Kişisel verilerimin Intechne Teknoloji tarafından <Link href="/hukuki/kvkk" className="text-primary hover:underline">KVKK Aydınlatma Metni</Link> kapsamında işlenmesini ve Gönüllülük faaliyetleri doğrultusunda saklanmasını onaylıyorum.
                                         </label>
                                     </div>
 
@@ -242,21 +243,7 @@ export default function GonulluOlunPage() {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="bg-gray-900 text-white py-16">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                        <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">RECF</div>
-                            <div>
-                                <div className="text-lg font-bold">RECF TÜRKİYE</div>
-                                <div className="text-xs text-gray-400">Türkiye Temsilcisi: Intechne Teknoloji</div>
-                            </div>
-                        </div>
-                        <p className="text-sm text-gray-500">© 2026 RECF Türkiye. Tüm hakları saklıdır.</p>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }

@@ -1,9 +1,10 @@
-﻿'use client'
+'use client'
 
 import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
 import { Camera, ArrowLeft, Instagram } from 'lucide-react'
 
@@ -50,7 +51,7 @@ export default function GaleriPage() {
                             </Button>
                         </Link>
 
-                        <a href="https://instagram.com/vexturkiye" target="_blank" rel="noopener noreferrer">
+                        <a href="https://instagram.com/recfturkiye" target="_blank" rel="noopener noreferrer">
                             <Button size="lg" className="min-w-[160px] h-12 bg-primary hover:bg-red-700 text-white shadow-lg shadow-red-600/20">
                                 <Instagram className="w-4 h-4 mr-2" />
                                 Bizi Takip Edin
@@ -60,12 +61,7 @@ export default function GaleriPage() {
                 </motion.div>
             </div>
 
-            {/* Simple Footer */}
-            <footer className="bg-white border-t border-gray-100 py-6">
-                <div className="container mx-auto px-6 text-center text-sm text-gray-400">
-                    © 2026 RECF TÜRKİYE. Tüm hakları saklıdır.
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }

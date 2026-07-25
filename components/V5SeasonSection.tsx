@@ -119,7 +119,7 @@ export function V5SeasonSection({ language }: V5SeasonSectionProps) {
 
                         {/* CTA Button */}
                         <div className="flex justify-center lg:justify-start w-full">
-                            <Link href="/yarismalar/sezon-temasi" className="w-full max-w-[350px] lg:w-auto">
+                            <Link href="/yarismalar/sezon-oyunlari" className="w-full max-w-[350px] lg:w-auto">
                                 <Button
                                     size="lg"
                                     className="w-full lg:w-auto bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all hover:scale-105 group"

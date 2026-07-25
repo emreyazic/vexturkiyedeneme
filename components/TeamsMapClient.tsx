@@ -71,6 +71,16 @@ export function TeamsMapClient({ teams }: TeamsMapClientProps) {
     const teamsByCity = useMemo(() => {
         const grouped: Record<string, SanityTeam[]> = {}
         teams.forEach(team => {
+            // Filter out dummy/test teams or teams with dummy roles like "Çaycı"
+            const isDummy = 
+                team.name.toLowerCase().includes('test') || 
+                team.name.toLowerCase().includes('deneme') || 
+                team.teamNumber.toLowerCase().includes('test') ||
+                (team.schoolOrOrganization && team.schoolOrOrganization.toLowerCase().includes('test')) ||
+                (team.teamMembers && team.teamMembers.some(m => m.role.toLowerCase().includes('çaycı') || m.role.toLowerCase().includes('cayci')));
+            
+            if (isDummy) return;
+
             if (team.city) {
                 if (!grouped[team.city]) {
                     grouped[team.city] = []
@@ -146,7 +156,7 @@ export function TeamsMapClient({ teams }: TeamsMapClientProps) {
                                 Şehirleri seçerek o ildeki VEX takımlarını listeleyebilirsiniz
                             </p>
                         </div>
-                        <Link href="/takimlar/tum-takimlar">
+                        <Link href="/takimlar/takim-dizini">
                             <Button
                                 size="lg"
                                 className="bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all"
@@ -302,7 +312,7 @@ export function TeamsMapClient({ teams }: TeamsMapClientProps) {
                                 Takım Kaydı
                             </Button>
                         </Link>
-                        <Link href="/takimlar/tum-takimlar">
+                        <Link href="/takimlar/takim-dizini">
                             <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
                                 <List className="w-4 h-4 mr-2" />
                                 Tüm Takımlar

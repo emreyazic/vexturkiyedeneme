@@ -32,7 +32,7 @@ export default function TakimDetayPage({ params }: { params: { slug: string } })
                             Aradığınız <strong>{teamId}</strong> numaralı takımın profili şu an RECFevents sistemiyle senkronizasyon ve kişisel veri (KVKK) onay sürecindedir. Sadece açık onay vermiş doğrulanmış takımların detayları (Takım Numarası, Adı, Program, Şehir, Kurum, Sosyal Medya ve Başarılar) bu sayfada görüntülenebilecektir.
                         </p>
                         
-                        <Link href="/takimlar/tum-takimlar">
+                        <Link href="/takimlar/takim-dizini">
                             <Button className="bg-primary hover:bg-primary/90 text-white h-12 px-6 text-lg rounded-xl shadow-lg shadow-primary/20">
                                 <ArrowLeft className="w-5 h-5 mr-2" />
                                 Takım Dizinine Dön

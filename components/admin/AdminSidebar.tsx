@@ -196,6 +196,12 @@ export function AdminSidebar({ collapsed = false, onToggle }: AdminSidebarProps)
                                             >
                                                 <Link
                                                     href={item.url}
+                                                    onClick={(e) => {
+                                                        if (item.url !== '/admin') {
+                                                            e.preventDefault()
+                                                            alert('Bu panel henüz yapım aşamasındadır.')
+                                                        }
+                                                    }}
                                                     className={cn(
                                                         'flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group relative',
                                                         isActive

@@ -93,7 +93,7 @@ export function TeamCard({ team, index }: TeamCardProps) {
 
                         {/* Team Info */}
                         <div className="flex-1 min-w-0">
-                            <Link href={`/takimlar/tum-takimlar/${team.slug?.current || team.teamNumber.toLowerCase()}`} className="hover:text-primary transition-colors block">
+                            <Link href={`/takimlar/takim-dizini/${team.slug?.current || team.teamNumber.toLowerCase()}`} className="hover:text-primary transition-colors block">
                                 <h3 className="font-bold text-gray-900 text-lg truncate hover:underline decoration-2 underline-offset-2 decoration-primary/30">
                                     #{team.teamNumber}
                                 </h3>

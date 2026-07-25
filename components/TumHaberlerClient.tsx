@@ -4,6 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
 import { SanityNewsGrid } from '@/components/SanityNewsComponents'
 import type { SanityNews } from '@/lib/sanity-queries'
@@ -114,23 +115,7 @@ export function TumHaberlerClient({ news }: TumHaberlerClientProps) {
                 </div>
             </section>
 
-            {/* Simple Footer */}
-            <footer className="bg-white border-t border-gray-200 py-8">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center font-bold text-white text-xs">RECF</div>
-                            <span className="text-gray-600">RECF Türkiye Haber Arşivi</span>
-                        </div>
-                        <Link href="/duyurular/haberler">
-                            <Button variant="ghost" className="text-primary">
-                                <ArrowLeft className="w-4 h-4 mr-2" />
-                                Haber Merkezi
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }

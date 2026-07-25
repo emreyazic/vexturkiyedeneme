@@ -235,7 +235,7 @@ export default function MufredatPage() {
                                         <ExternalLink className="w-5 h-5 ml-2" />
                                     </Button>
                                 </a>
-                                <Link href="/takimlar/mentor">
+                                <Link href="/takimlar/koc-ve-mentor-merkezi">
                                     <Button variant="outline" className="w-full sm:w-auto border-white/20 text-white hover:bg-white/10 font-bold h-14 px-8 rounded-2xl text-base">
                                         Koç ve Mentor Merkezine Git
                                         <ArrowRight className="w-5 h-5 ml-2" />

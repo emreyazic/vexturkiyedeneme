@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
@@ -25,7 +25,6 @@ import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { AdminLayout } from '@/components/admin'
 import { cn } from '@/lib/utils'
-import Link from 'next/link'
 
 // Mock Data
 const dashboardStats = [
@@ -294,12 +293,15 @@ function MessagesCard() {
                         <CardTitle className="text-lg font-semibold text-gray-900">Son Mesajlar</CardTitle>
                         <CardDescription>Bize Ulaşın formundan gelen mesajlar</CardDescription>
                     </div>
-                    <Link href="/admin/messages">
-                        <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80">
-                            Tümünü Gör
-                            <ChevronRight className="w-4 h-4 ml-1" />
-                        </Button>
-                    </Link>
+                    <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="text-primary hover:text-primary/80"
+                        onClick={() => alert('Bu bölüm henüz yapım aşamasındadır.')}
+                    >
+                        Tümünü Gör
+                        <ChevronRight className="w-4 h-4 ml-1" />
+                    </Button>
                 </CardHeader>
                 <CardContent className="pt-0">
                     <div className="space-y-3">
@@ -362,12 +364,15 @@ function NewsCard() {
                         <CardTitle className="text-lg font-semibold text-gray-900">Son Haberler</CardTitle>
                         <CardDescription>Yayınlanan haberler ve duyurular</CardDescription>
                     </div>
-                    <Link href="/admin/news">
-                        <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80">
-                            Tümünü Gör
-                            <ChevronRight className="w-4 h-4 ml-1" />
-                        </Button>
-                    </Link>
+                    <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="text-primary hover:text-primary/80"
+                        onClick={() => alert('Bu bölüm henüz yapım aşamasındadır.')}
+                    >
+                        Tümünü Gör
+                        <ChevronRight className="w-4 h-4 ml-1" />
+                    </Button>
                 </CardHeader>
                 <CardContent className="pt-0">
                     <div className="space-y-4">
@@ -441,11 +446,15 @@ function QuickActionsCard() {
                 <CardContent>
                     <div className="grid grid-cols-2 gap-3">
                         {actions.map((action, index) => (
-                            <Link key={action.title} href={action.href}>
+                            <div 
+                                key={action.title} 
+                                onClick={() => alert('Bu işlem paneli henüz yapım aşamasındadır.')}
+                                className="cursor-pointer"
+                            >
                                 <motion.div
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
-                                    className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer group"
+                                    className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors group"
                                 >
                                     <div className={cn('w-10 h-10 rounded-lg flex items-center justify-center', action.color)}>
                                         <action.icon className="w-5 h-5 text-white" />
@@ -455,7 +464,7 @@ function QuickActionsCard() {
                                     </span>
                                     <ArrowUpRight className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity ml-auto" />
                                 </motion.div>
-                            </Link>
+                            </div>
                         ))}
                     </div>
                 </CardContent>

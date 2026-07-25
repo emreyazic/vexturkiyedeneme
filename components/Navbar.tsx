@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import React, { useState } from 'react'
 import Link from 'next/link'
@@ -28,37 +28,37 @@ const menuItems = {
         items: [
             { title: 'RECF Türkiye Hakkında', href: '/kurumsal/hakkimizda' },
             { title: 'RECF Türkiye Ekibi', href: '/kurumsal/ekibimiz' },
-            { title: 'İş Birlikleri ve Destekleyen Kurumlar', href: '/kurumsal/sponsorlar-ve-partnerler' },
-            { title: 'RECF Türkiye Gönüllülük', href: '/kurumsal/gonullu-olun' }
+            { title: 'İş Birlikleri ve Destekleyen Kurumlar', href: '/kurumsal/is-birlikleri' },
+            { title: 'RECF Türkiye Gönüllülük', href: '/kurumsal/gonulluluk' }
         ]
     },
     vexNedir: {
-        title: 'RECF Programları',
+        title: 'Programları',
         items: [
-            { title: 'Genel Bakış', href: '/vex-nedir' },
-            { title: 'RECF Engage', href: '/vex-nedir/vex-iq' },
-            { title: 'RECF Achieve', href: '/vex-nedir/vex-v5' },
-            { title: 'RECF Inspire', href: '/vex-nedir/vex-u' }
+            { title: 'Genel Bakış', href: '/recf-programlari' },
+            { title: 'RECF Engage', href: '/recf-programlari/engage' },
+            { title: 'RECF Achieve', href: '/recf-programlari/achieve' },
+            { title: 'RECF Inspire', href: '/recf-programlari/inspire' }
         ]
     },
     yarismalar: {
         title: 'Yarışmalar',
         items: [
             { title: 'RECF Türkiye Etkinlik Takvimi', href: '/yarismalar/etkinlik-takvimi' },
-            { title: '2026–2027 RECF Sezon Oyunları', href: '/yarismalar/sezon-temasi' },
+            { title: '2026–2027 RECF Sezon Oyunları', href: '/yarismalar/sezon-oyunlari' },
             { title: 'RECF Türkiye Sonuçları', href: '/yarismalar/sonuclar' },
             { title: 'RECF Ödülleri', href: '/yarismalar/oduller' },
-            { title: 'Solo Sıralamaları', href: '/yarismalar/skills' },
+            { title: 'Solo Sıralamaları', href: '/yarismalar/solo-siralamalari' },
             { title: 'Dünya Şampiyonası', href: '/yarismalar/dunya-sampiyonasi' }
         ]
     },
     takimlar: {
         title: 'Takımlar',
         items: [
-            { title: 'RECF Türkiye Takım Dizini', href: '/takimlar/tum-takimlar' },
+            { title: 'RECF Türkiye Takım Dizini', href: '/takimlar/takim-dizini' },
             { title: 'RECF Takımı Nasıl Kurulur?', href: '/takimlar/nasil-kurulur' },
             { title: 'RECF Takım Kaydı', href: '/takimlar/kayit' },
-            { title: 'Koç ve Mentor Merkezi', href: '/takimlar/mentor' }
+            { title: 'Koç ve Mentor Merkezi', href: '/takimlar/koc-ve-mentor-merkezi' }
         ]
     },
     egitim: {
@@ -81,9 +81,9 @@ const menuItems = {
         ]
     },
     iletisim: {
-        title: 'RECF Türkiye İletişim',
+        title: 'İletişim',
         items: [
-            { title: 'RECF Türkiye İletişim Formu', href: '/iletisim/form' },
+            { title: 'İletişim Formu', href: '/iletisim/form' },
             { title: 'Bilgiler & Adres', href: '/iletisim/bilgiler' },
             { title: 'SSS', href: '/iletisim/sss' }
         ]
@@ -103,19 +103,8 @@ export function Navbar({ language = 'TR', onLanguageToggle }: NavbarProps) {
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-3">
-                        <Image
-                            src="/VEX-Robotics_Full-Color-1.png"
-                            alt="RECF Türkiye"
-                            width={120}
-                            height={48}
-                            className="h-12 w-auto object-contain"
-                            priority
-                        />
-                        <div className="hidden md:block">
-                            <div className="text-lg font-bold tracking-tight text-gray-900">RECF TÜRKİYE</div>
-                            <div className="text-xs text-muted-foreground font-medium">Temsilci: Intechne Teknoloji</div>
-                        </div>
+                    <Link href="/">
+                      <img src="/recf-turkiye-logo.png" alt="RECF Türkiye" className="h-10 w-auto object-contain" />
                     </Link>
 
                     {/* Desktop Navigation */}

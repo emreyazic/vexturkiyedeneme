@@ -262,7 +262,7 @@ export const faqItems: FAQ[] = [
     {
         id: '1',
         question: 'VEX Robotics yarışmasına nasıl katılabilirim?',
-        answer: 'VEX Robotics yarışmalarına katılmak için önce bir takım kurmanız ve Robot Events platformuna kayıt olmanız gerekmektedir.',
+        answer: 'VEX Robotics yarışmalarına katılmak için önce bir takım kurmanız ve RECFevents.org platformuna kayıt olmanız gerekmektedir.',
         category: 'Genel',
         order: 1
     },

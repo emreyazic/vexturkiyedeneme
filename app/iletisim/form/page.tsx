@@ -221,7 +221,7 @@ export default function IletisimFormPage() {
                                             />
                                             <span className="text-xs text-gray-600 leading-relaxed">
                                                 6698 sayılı KVKK kapsamında kişisel verilerimin RECF Türkiye yetkili temsilcisi Intechne Teknoloji tarafından iletişim ve bilgilendirme amacıyla işlenmesini ve 
-                                                <Link href="/kurumsal/gonullu-olun" className="text-primary font-bold hover:underline mx-1">
+                                                <Link href="/hukuki/kvkk" className="text-primary font-bold hover:underline mx-1">
                                                     KVKK Aydınlatma Metni
                                                 </Link>
                                                 koşullarını kabul ediyorum. *

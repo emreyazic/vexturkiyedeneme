@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, Clock, Calendar, User, Share2, Facebook, Twitter, Linkedin, Timer } from 'lucide-react'
@@ -130,13 +131,7 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
                 </Link>
             </div>
 
-            {/* Footer */}
-            <footer className="bg-gray-900 text-white py-12 mt-20">
-                <div className="container mx-auto px-6 text-center">
-                    <div className="text-2xl font-bold mb-2">VEX TÜRKİYE</div>
-                    <p className="text-gray-400 text-sm">© 2026 Tüm Hakları Saklıdır.</p>
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }
