@@ -3,8 +3,8 @@ import { TumTakimlarClient } from '@/components/TumTakimlarClient'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: 'Tüm Takımlar | VEX Türkiye',
-    description: 'VEX Türkiye kayıtlı tüm robotik takımları - VEX IQ, V5 ve VEX U platformları',
+    title: 'Tüm Takımlar | RECF Türkiye',
+    description: 'RECF Türkiye kayıtlı tüm robotik ve drone takımları - Intechne Teknoloji temsilciliğinde',
 }
 
 // Tüm Takımlar Sayfası

@@ -13,8 +13,8 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: 'VEX Türkiye',
-  description: 'VEX Robotik Türkiye resmi web sitesi. Robotik yarışmalar, eğitim programları ve STEM ekosistemi.',
+  title: 'RECF Türkiye | Robotics Education & Competition Foundation',
+  description: 'RECF Türkiye resmi web sitesi. Türkiye temsilcisi Intechne Teknoloji rehberliğinde STEM robotik yarışmaları ve eğitim programları.',
   generator: 'v0.app',
   icons: {
     icon: [

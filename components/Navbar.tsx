@@ -26,22 +26,17 @@ const menuItems = {
     kurumsal: {
         title: 'Kurumsal',
         items: [
-            { title: 'Hakkımızda', href: '/kurumsal/hakkimizda' },
-            { title: 'Ekibimiz', href: '/kurumsal/ekibimiz' },
-            { title: 'Sponsorlarımız & Partnerler', href: '/kurumsal/sponsorlar-ve-partnerler' },
-            { title: 'Gönüllü Olun', href: '/kurumsal/gonullu-olun' }
+            { title: 'İş Birlikleri ve Destekleyen Kurumlar', href: '/kurumsal/sponsorlar-ve-partnerler' },
+            { title: 'RECF Türkiye Gönüllülük', href: '/kurumsal/gonullu-olun' }
         ]
     },
     vexNedir: {
         title: 'VEX Nedir?',
         items: [
             { title: 'Genel Bakış', href: '/vex-nedir' },
-            { title: 'VEX 123', href: '/vex-nedir/vex-123' },
-            { title: 'VEX GO', href: '/vex-nedir/vex-go' },
-            { title: 'VEX IQ', href: '/vex-nedir/vex-iq' },
-            { title: 'VEX V5 (VRC)', href: '/vex-nedir/vex-v5' },
-            { title: 'VEX U', href: '/vex-nedir/vex-u' },
-            { title: 'VEX AI', href: '/vex-nedir/vex-ai' }
+            { title: 'RECF Engage', href: '/vex-nedir/vex-iq' },
+            { title: 'RECF Achieve', href: '/vex-nedir/vex-v5' },
+            { title: 'RECF Inspire', href: '/vex-nedir/vex-u' }
         ]
     },
     yarismalar: {
@@ -60,8 +55,8 @@ const menuItems = {
         title: 'Takımlar',
         items: [
             { title: 'Tüm Takımlar', href: '/takimlar/tum-takimlar' },
-            { title: 'Nasıl Takım Kurulur?', href: '/takimlar/nasil-kurulur' },
-            { title: 'Takım Kaydı', href: '/takimlar/kayit' },
+            { title: 'RECF Takımı Nasıl Kurulur?', href: '/takimlar/nasil-kurulur' },
+            { title: 'RECF Takım Kaydı', href: '/takimlar/kayit' },
             { title: 'Takım Haritası / Listesi', href: '/takimlar/harita' },
             { title: 'Mentor Desteği', href: '/takimlar/mentor' }
         ]
@@ -111,15 +106,15 @@ export function Navbar({ language = 'TR', onLanguageToggle }: NavbarProps) {
                     <Link href="/" className="flex items-center gap-3">
                         <Image
                             src="/VEX-Robotics_Full-Color-1.png"
-                            alt="VEX Türkiye"
+                            alt="RECF Türkiye"
                             width={120}
                             height={48}
                             className="h-12 w-auto object-contain"
                             priority
                         />
                         <div className="hidden md:block">
-                            <div className="text-lg font-bold tracking-tight text-gray-900">VEX TÜRKİYE</div>
-                            <div className="text-xs text-muted-foreground">Robotics Competition</div>
+                            <div className="text-lg font-bold tracking-tight text-gray-900">RECF TÜRKİYE</div>
+                            <div className="text-xs text-muted-foreground font-medium">Temsilci: Intechne Teknoloji</div>
                         </div>
                     </Link>
 

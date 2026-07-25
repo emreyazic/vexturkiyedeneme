@@ -497,7 +497,7 @@ export function EtkinlikTakvimiClient({ upcomingEvents, allEvents, countdownSett
             <div className="h-20" />
             <CorporateHero
                 title="Etkinlik Takvimi"
-                subtitle="VEX Türkiye turnuvalarını takip edin ve takımınızı kaydedin"
+                subtitle="RECF Türkiye turnuvalarını takip edin ve RECFevents üzerinden kayıt olun"
             />
 
             {/* Main Content */}
@@ -780,21 +780,14 @@ export function EtkinlikTakvimiClient({ upcomingEvents, allEvents, countdownSett
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold mb-6">İletişim</h3>
-                            <ul className="space-y-3 text-gray-400">
-                                <li>info@vexturkiye.com</li>
-                                <li>+90 (212) 000 00 00</li>
-                                <li>İstanbul, Türkiye</li>
+                            <ul className="space-y-3 text-gray-400 text-sm">
+                                <li><strong>Yerel Operasyon:</strong> Intechne Teknoloji</li>
+                                <li>info@recfturkiye.org</li>
                             </ul>
                         </div>
                     </div>
-                    <div className="pt-8 mt-12 border-t border-gray-800">
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                            <p className="text-sm text-gray-500">© 2024 VEX Türkiye. Tüm hakları saklıdır.</p>
-                            <div className="flex items-center gap-6">
-                                <a href="#" className="text-sm text-gray-400 hover:text-primary transition-colors">Gizlilik Politikası</a>
-                                <a href="#" className="text-sm text-gray-400 hover:text-primary transition-colors">Kullanım Koşulları</a>
-                            </div>
-                        </div>
+                    <div className="pt-8 mt-12 border-t border-gray-800 text-center">
+                        <p className="text-sm text-gray-500">© 2026 RECF Türkiye. Türkiye Temsilcisi ve Yerel Operasyon Yürütücüsü: Intechne Teknoloji. Tüm hakları saklıdır.</p>
                     </div>
                 </div>
             </footer>

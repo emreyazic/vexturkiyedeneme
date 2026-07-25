@@ -3,8 +3,8 @@ import { EtkinlikTakvimiClient } from '@/components/EtkinlikTakvimiClient'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: 'Etkinlik Takvimi | VEX Türkiye',
-    description: 'VEX Türkiye turnuva takvimi - yaklaşan etkinlikler ve kayıt bilgileri',
+    title: 'Etkinlik Takvimi | RECF Türkiye',
+    description: 'RECF Türkiye turnuva ve etkinlik takvimi - yaklaşan turnuvalar ve RECFevents kayıt bilgileri',
 }
 
 // Etkinlik Takvimi - Ana Sayfa

@@ -67,7 +67,7 @@ export default function AdminLoginPage() {
                             <Command className="w-8 h-8 text-white" />
                         </motion.div>
                     </Link>
-                    <h1 className="text-3xl font-bold text-gray-900 mb-2">VEX Command Center</h1>
+                    <h1 className="text-3xl font-bold text-gray-900 mb-2">RECF Command Center</h1>
                     <p className="text-gray-500">Yönetim paneline giriş yapın</p>
                 </motion.div>
 

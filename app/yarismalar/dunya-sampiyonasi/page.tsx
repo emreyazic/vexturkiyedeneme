@@ -21,7 +21,7 @@ const timelineSteps = [
         id: 1,
         title: 'Takım Kaydı',
         date: 'Eylül - Ekim',
-        description: 'robotevents.com üzerinden takımınızı kaydedin ve sezon için hazırlanın.',
+        description: 'recfevents.org üzerinden takımınızı kaydedin ve sezon için hazırlanın.',
         icon: Users,
         color: '#00A651',
         details: ['REC Foundation hesabı oluşturma', 'Takım numarası alma', 'Mentor ve öğrenci kaydı']
@@ -48,28 +48,28 @@ const timelineSteps = [
         id: 4,
         title: 'Türkiye Şampiyonası',
         date: '28 Şubat 2026',
-        description: 'Ulusal şampiyonada En üst düzey ödülleri kazanarak Worlds\'e hak kazanın.',
+        description: 'Ulusal şampiyonada dereceye girerek uluslararası şampiyona sürecinde aday olun.',
         icon: Trophy,
         color: '#E31837',
         details: ['Excellence Award', 'Tournament Champion', 'Skills Champion', 'Design Award']
     },
     {
         id: 5,
-        title: 'Worlds Daveti',
+        title: 'Dünya Şampiyonası Süreci',
         date: 'Mart',
-        description: 'Resmi davet mektubunuzu alın ve vize/seyahat hazırlıklarına başlayın.',
+        description: 'Resmi bilgilendirmeleri takip edin ve vize/seyahat hazırlıklarına başlayın.',
         icon: Star,
         color: '#6B21A8',
-        details: ['Davet mektubunun alınması', 'ABD vizesi başvurusu', 'Konaklama ve uçuş planlaması']
+        details: ['Resmi bilgilendirme süreci', 'Vize ve seyahat koordinasyonu', 'Konaklama ve uçuş planlaması']
     },
     {
         id: 6,
-        title: 'VEX Worlds 2026',
+        title: 'RECF STEM World Championship',
         date: '25-30 Nisan 2026',
-        description: 'Dallas, Texas\'ta dünyanın en büyük robotik yarışmasına katılın!',
+        description: 'Dallas, Texas\'ta düzenlenen uluslararası robotik şampiyonasında yerinizi alın!',
         icon: Globe,
         color: '#1E3A8A',
-        details: ['3000+ takım', '50+ ülke', '6 günlük etkinlik', 'Ömürlük deneyim']
+        details: ['Global takımlar', 'Uluslararası katılım', 'Çok yönlü STEM etkinlikleri', 'Ömürlük deneyim']
     }
 ]
 
@@ -112,7 +112,7 @@ function BoardingPassCard({ qualifier }: { qualifier: SanityWorldQualifier }) {
                         exit={{ opacity: 0, rotate: -20, scale: 0.5 }}
                         className="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg border-2 border-white"
                     >
-                        VEX Worlds 2026 ✓
+                        RECF STEM World Championship 2026 ✓
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -253,7 +253,7 @@ function DallasAmbassadorsSection() {
                         Türkiye'nin Dallas Elçileri
                     </h2>
                     <p className="text-gray-600 max-w-2xl mx-auto">
-                        2025-2026 Sezonunda VEX Worlds'e giden yolculuğumuzda bizi temsil eden yıldız takımlarımız.
+                        2025-2026 Sezonunda RECF STEM World Championship'e giden yolculuğumuzda bizi temsil eden yıldız takımlarımız.
                     </p>
                 </div>
 
@@ -357,11 +357,10 @@ export default function DunyaSampiyonasiPage() {
     return (
         <div className="min-h-screen bg-white text-foreground">
             <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
-
             <div className="h-20" />
             <CorporateHero
-                title="VEX Worlds"
-                subtitle="Türkiye'den Dünya Şampiyonasına uzanan yolculuk"
+                title="RECF STEM World Championship"
+                subtitle="RECF Türkiye ile Dünya Şampiyonasına uzanan süreç ve bilgilendirme rehberi"
             />
 
             {/* Hero Stats */}
@@ -392,10 +391,10 @@ export default function DunyaSampiyonasiPage() {
                             <span className="text-sm font-medium text-primary">Yolculuğunuz</span>
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                            Worlds&apos;e Giden Yol
+                            Dünya Şampiyonasına Giden Yol
                         </h2>
                         <p className="text-gray-600 max-w-2xl mx-auto">
-                            VEX Türkiye takımlarının Dünya Şampiyonasına katılmak için izlemesi gereken adımlar
+                            RECF Türkiye takımlarının uluslararası şampiyona sürecinde takip edebileceği adımlar
                         </p>
                     </div>
 
@@ -463,9 +462,9 @@ export default function DunyaSampiyonasiPage() {
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                            Worlds&apos;e Nasıl Katılınır?
+                            Uluslararası Derecelendirme Kriterleri
                         </h2>
-                        <p className="text-gray-600">Dünya Şampiyonasına katılım hakkı kazanma yolları</p>
+                        <p className="text-gray-600">RECF tarafından tanımlanan resmi değerlendirme kulvarları</p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-6">
@@ -480,10 +479,10 @@ export default function DunyaSampiyonasiPage() {
                             </div>
                             <h3 className="text-lg font-bold text-gray-900 mb-2">Excellence Award</h3>
                             <p className="text-gray-600 text-sm mb-4">
-                                Türkiye Şampiyonasında Excellence Award kazanan takımlar otomatik olarak Worlds&apos;e davet edilir.
+                                Sezon boyunca mühendislik tasarımı, jüri mülakatı ve saha performansını bütünsel olarak sergileyen takımlara verilir.
                             </p>
                             <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full font-medium">
-                                En Prestijli Yol
+                                En Prestijli Ödül
                             </span>
                         </motion.div>
 
@@ -499,10 +498,10 @@ export default function DunyaSampiyonasiPage() {
                             </div>
                             <h3 className="text-lg font-bold text-gray-900 mb-2">Tournament Champion</h3>
                             <p className="text-gray-600 text-sm mb-4">
-                                Ulusal şampiyonada turnuva şampiyonu olan ittifak takımları Worlds daveti alır.
+                                Ulusal ve bölgesel turnuvalarda final eleme turlarını birincilikle tamamlayan ittifak takımlarıdır.
                             </p>
                             <span className="text-xs bg-red-100 text-red-700 px-2 py-1 rounded-full font-medium">
-                                Yarışma Performansı
+                                Saha Başarısı
                             </span>
                         </motion.div>
 
@@ -518,10 +517,10 @@ export default function DunyaSampiyonasiPage() {
                             </div>
                             <h3 className="text-lg font-bold text-gray-900 mb-2">Skills Sıralaması</h3>
                             <p className="text-gray-600 text-sm mb-4">
-                                Dünya Skills sıralamasında üst sıralarda yer alan takımlar bölgelerine göre davet alabilir.
+                                Bireysel sürücü ve otonom yazılım performansına dayalı küresel sıralama skorlarıdır.
                             </p>
                             <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">
-                                Global Sıralama
+                                Bireysel Skor
                             </span>
                         </motion.div>
                     </div>
@@ -531,7 +530,7 @@ export default function DunyaSampiyonasiPage() {
             {/* Dallas Ambassadors Section */}
             <DallasAmbassadorsSection />
 
-            {/* VEX Worlds Info */}
+            {/* RECF STEM World Championship Info */}
             <section className="py-16 md:py-20 bg-white">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -542,16 +541,15 @@ export default function DunyaSampiyonasiPage() {
                         >
                             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 rounded-full mb-6">
                                 <Globe className="w-4 h-4 text-blue-600" />
-                                <span className="text-sm font-medium text-blue-700">VEX Worlds 2026</span>
+                                <span className="text-sm font-medium text-blue-700">RECF STEM World Championship</span>
                             </div>
                             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                                Dünyanın En Büyük Robotik Etkinliği
+                                Dünyanın En Büyük Robotik & STEM Festivali
                             </h2>
                             <p className="text-gray-600 leading-relaxed mb-6">
-                                VEX Worlds, her yıl Dallas, Texas&apos;ta düzenlenen ve dünyanın her yerinden
-                                binlerce takımı bir araya getiren devasa bir robotik festivalidir. Yarışmalar,
-                                sergiler, workshoplar ve networking etkinlikleriyle dolu 6 gün boyunca genç
-                                mühendisler hayatlarının en büyük deneyimini yaşar.
+                                RECF tarafından düzenlenen uluslararası şampiyona, her yıl Dallas, Texas&apos;ta
+                                dünya genelinden başarılı takımları bir araya getiren prestijli bir STEM etkinliğidir. Yarışmalar,
+                                teknik sunumlar ve atölyelerle dolu süreç boyunca öğrenciler küresel ölçekte deneyim kazanır.
                             </p>
 
                             <div className="grid grid-cols-2 gap-4 mb-8">
@@ -585,7 +583,7 @@ export default function DunyaSampiyonasiPage() {
                                 <div className="absolute inset-0 bg-black/20" />
                                 <div className="relative text-center text-white p-8">
                                     <Globe className="w-20 h-20 mx-auto mb-4 opacity-80" />
-                                    <h3 className="text-3xl font-bold mb-2">VEX WORLDS</h3>
+                                    <h3 className="text-2xl font-bold mb-2">RECF STEM WORLD CHAMPIONSHIP</h3>
                                     <p className="text-xl text-blue-200">Dallas, Texas</p>
                                     <p className="text-sm text-blue-300 mt-2">25-30 Nisan 2026</p>
                                 </div>
@@ -603,7 +601,7 @@ export default function DunyaSampiyonasiPage() {
                             >
                                 <div className="flex items-center gap-2">
                                     <Plane className="w-5 h-5 text-primary" />
-                                    <span className="font-medium text-gray-900">Türkiye → ABD</span>
+                                    <span className="font-medium text-gray-900">RECF Türkiye → ABD</span>
                                 </div>
                             </motion.div>
                         </motion.div>
@@ -618,12 +616,12 @@ export default function DunyaSampiyonasiPage() {
                         Dünya Sahnesine Çıkmaya Hazır mısınız?
                     </h2>
                     <p className="text-xl text-white/90 mb-8">
-                        VEX Türkiye ile yolculuğunuza başlayın
+                        RECF Türkiye ile yolculuğunuza başlayın
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link href="/takimlar/kayit">
-                            <Button size="lg" className="bg-white text-primary hover:bg-gray-100">
-                                Takım Kayıt
+                            <Button size="lg" className="bg-white text-primary hover:bg-gray-100 font-bold">
+                                Takım Kaydı
                                 <Users className="w-4 h-4 ml-2" />
                             </Button>
                         </Link>
@@ -641,16 +639,9 @@ export default function DunyaSampiyonasiPage() {
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid md:grid-cols-4 gap-12">
                         <div className="md:col-span-1">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">VEX</div>
-                                <div><div className="text-lg font-bold">VEX TÜRKİYE</div><div className="text-xs text-gray-400">Robotics Competition</div></div>
-                            </div>
-                            <div className="flex gap-4">
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Instagram className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Youtube className="w-5 h-5" /></a>
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">RECF</div>
+                                <div><div className="text-lg font-bold">RECF TÜRKİYE</div><div className="text-xs text-gray-400">Türkiye Temsilcisi: Intechne Teknoloji</div></div>
                             </div>
                         </div>
                         <div>
@@ -672,14 +663,14 @@ export default function DunyaSampiyonasiPage() {
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold mb-6">İletişim</h3>
-                            <ul className="space-y-3 text-gray-400">
-                                <li>info@vexturkiye.com</li>
-                                <li>+90 (212) 000 00 00</li>
+                            <ul className="space-y-3 text-gray-400 text-sm">
+                                <li><strong>Yerel Operasyon:</strong> Intechne Teknoloji</li>
+                                <li>info@recfturkiye.org</li>
                             </ul>
                         </div>
                     </div>
-                    <div className="pt-8 mt-12 border-t border-gray-800">
-                        <p className="text-sm text-gray-500 text-center">© 2024 VEX Türkiye. Tüm hakları saklıdır.</p>
+                    <div className="pt-8 mt-12 border-t border-gray-800 text-center">
+                        <p className="text-sm text-gray-500">© 2026 RECF Türkiye. Türkiye Temsilcisi ve Yerel Operasyon Yürütücüsü: Intechne Teknoloji. Tüm hakları saklıdır.</p>
                     </div>
                 </div>
             </footer>

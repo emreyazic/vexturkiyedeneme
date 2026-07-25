@@ -21,7 +21,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
             label: 'TOPLULUĞUMUZA KATIL',
             title: 'Küresel Bir Ağ,',
             titleHighlight: 'STEM ile Birleşik',
-            subtitle: 'Her öğrenci, veli, gönüllü, eğitimci ve destekçi VEX Türkiye ailesinin bir parçasıdır. Topluluk olarak inovasyonu, iş birliğini ve dönüşümü nasıl güçlendirdiğimizi keşfedin.',
+            subtitle: 'Her öğrenci, veli, gönüllü, eğitimci ve destekçi RECF Türkiye ailesinin bir parçasıdır. Topluluk olarak inovasyonu, iş birliğini ve dönüşümü nasıl güçlendirdiğimizi keşfedin.',
             tabs: {
                 competitor: {
                     title: 'Yarışmacı',
@@ -69,7 +69,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     title: 'Sponsor & Bağışçı',
                     icon: Heart,
                     heading: 'Sponsorlar & Bağışçılar',
-                    description: 'Ekosisteme finansal veya donanım desteği sağlayarak geleceğin mühendislerine yatırım yapın. Kurumsal sosyal sorumluluk hedeflerinizi VEX Türkiye ile buluşturun.',
+                    description: 'Ekosisteme finansal veya donanım desteği sağlayarak geleceğin mühendislerine yatırım yapın. Kurumsal sosyal sorumluluk hedeflerinizi RECF Türkiye ile buluşturun.',
                     benefits: [
                         'Stratejik Ortaklık: Marka görünürlüğünüzü ulusal ve uluslararası yarışmalarda artırın',
                         'Yetenek Havuzu: Geleceğin mühendisleriyle erken dönemde tanışma fırsatı',

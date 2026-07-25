@@ -13,25 +13,25 @@ interface V5SeasonSectionProps {
 export function V5SeasonSection({ language }: V5SeasonSectionProps) {
     const content = {
         TR: {
-            label: '2025-2026 ROBOTİK SEZONU',
-            title: 'VEX ile Geleceği Keşfedin',
+            label: '2026-2027 RECF TÜRKİYE SEZONU',
+            title: 'RECF ile Geleceği Keşfedin',
             description: 'Öğrenciler için hazırlanan bu sezonun temasını, kurallarını ve mühendislik zorluklarını keşfedin. Takımınızı kurun ve küresel rekabete hazırlanın.',
             cta: 'Detayları Gör',
             features: [
                 { icon: Trophy, text: 'Dünya Şampiyonası Yolu' },
-                { icon: Calendar, text: '2025-2026 Sezonu' },
-                { icon: Users, text: 'Her Yaş Grubu' }
+                { icon: Calendar, text: '2026-2027 Sezonu' },
+                { icon: Users, text: 'Tüm Seviyeler' }
             ]
         },
         EN: {
-            label: '2025-2026 ROBOTICS SEASON',
-            title: 'Discover the Future with VEX V5',
+            label: '2026-2027 RECF TURKEY SEASON',
+            title: 'Discover the Future with RECF',
             description: 'Explore this season\'s theme, rules, and engineering challenges designed for high school students. Build your team and prepare for global competition.',
             cta: 'View Details',
             features: [
                 { icon: Trophy, text: 'World Championship Path' },
-                { icon: Calendar, text: '2025-2026 Season' },
-                { icon: Users, text: 'Ages 14-18' }
+                { icon: Calendar, text: '2026-2027 Season' },
+                { icon: Users, text: 'All Levels' }
             ]
         }
     }

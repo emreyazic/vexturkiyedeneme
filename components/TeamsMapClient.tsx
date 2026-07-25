@@ -103,8 +103,8 @@ export function TeamsMapClient({ teams }: TeamsMapClientProps) {
             {/* Hero */}
             <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-white border-b border-gray-200">
                 <div className="container mx-auto px-6 max-w-7xl text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">VEX Türkiye Takımları</h1>
-                    <p className="text-xl text-gray-600">Türkiye genelinde 500+ takımla büyüyen robotik topluluğumuz</p>
+                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">RECF Türkiye Takımları</h1>
+                    <p className="text-xl text-gray-600">Intechne Teknoloji temsilciliğinde gelişen robotik ve drone topluluğumuz</p>
                 </div>
             </section>
 
@@ -288,7 +288,7 @@ export function TeamsMapClient({ teams }: TeamsMapClientProps) {
                         Haritadaki Yerinizi Alın
                     </h2>
                     <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-                        VEX Türkiye ailesine katılın ve şehrinizi haritada parlak bir nokta yapın
+                        RECF Türkiye ailesine katılın ve şehrinizi haritada parlak bir nokta yapın
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link href="/takimlar/nasil-kurulur">

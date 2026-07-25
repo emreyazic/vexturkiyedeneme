@@ -15,7 +15,7 @@ export function TestimonialsSection({ language }: TestimonialsSectionProps) {
         TR: {
             label: 'BAŞARI HİKAYELERİ',
             title: 'Topluluğumuzun Sesine Kulak Verin',
-            subtitle: 'VEX Türkiye ailesinden ilham verici hikayeler',
+            subtitle: 'RECF Türkiye ailesinden ilham verici hikayeler',
             testimonials: [
                 {
                     id: 1,

@@ -24,8 +24,8 @@ const contactInfo = [
     {
         icon: Mail,
         label: 'E-Posta',
-        value: 'info@vexturkiye.com',
-        action: 'mailto:info@vexturkiye.com',
+        value: 'info@recfturkiye.org',
+        action: 'mailto:info@recfturkiye.org',
         copyable: true
     },
     {
@@ -66,12 +66,12 @@ const transportOptions = [
 const downloadVCard = () => {
     const vcard = `BEGIN:VCARD
 VERSION:3.0
-FN:VEX Türkiye
-ORG:VEX Robotics Türkiye
-TEL;TYPE=WORK,VOICE:+90 212 000 00 00
-EMAIL:info@vexturkiye.com
-ADR;TYPE=WORK:;;Büyükdere Cad. No:123;Şişli;İstanbul;34394;Türkiye
-URL:https://vexturkiye.com
+FN:RECF Türkiye
+ORG:Intechne Teknoloji - RECF Türkiye Temsilciliği
+TEL;TYPE=WORK,VOICE:+90 534 634 90 58
+EMAIL:info@recfturkiye.org
+ADR;TYPE=WORK:;;Ünalan Cd.;Üsküdar;İstanbul;34500;Türkiye
+URL:https://recfturkiye.org
 END:VCARD`
 
     const blob = new Blob([vcard], { type: 'text/vcard' })
@@ -376,43 +376,36 @@ export default function BilgilerPage() {
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid md:grid-cols-4 gap-12">
                         <div className="md:col-span-1">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">VEX</div>
-                                <div><div className="text-lg font-bold">VEX TÜRKİYE</div><div className="text-xs text-gray-400">Robotics Competition</div></div>
-                            </div>
-                            <div className="flex gap-4">
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Instagram className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Youtube className="w-5 h-5" /></a>
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">RECF</div>
+                                <div><div className="text-lg font-bold">RECF TÜRKİYE</div><div className="text-xs text-gray-400">Türkiye Temsilcisi: Intechne Teknoloji</div></div>
                             </div>
                         </div>
                         <div>
                             <h3 className="text-lg font-semibold mb-6">İletişim</h3>
-                            <ul className="space-y-3">
+                            <ul className="space-y-3 text-sm">
                                 <li><a href="/iletisim/bilgiler" className="text-gray-400 hover:text-primary transition-colors">Bilgiler & Adres</a></li>
                                 <li><a href="/iletisim/form" className="text-gray-400 hover:text-primary transition-colors">Bize Ulaşın</a></li>
                                 <li><a href="/iletisim/sss" className="text-gray-400 hover:text-primary transition-colors">SSS</a></li>
                             </ul>
                         </div>
                         <div>
-                            <h3 className="text-lg font-semibold mb-6">Kaynaklar</h3>
-                            <ul className="space-y-3">
-                                <li><a href="/kaynaklar/oyun-kilavuzlari" className="text-gray-400 hover:text-primary transition-colors">Oyun Kılavuzları</a></li>
-                                <li><a href="/kaynaklar/yazilim" className="text-gray-400 hover:text-primary transition-colors">VEXcode</a></li>
+                            <h3 className="text-lg font-semibold mb-6">Yarışmalar</h3>
+                            <ul className="space-y-3 text-sm">
+                                <li><a href="/yarismalar/etkinlik-takvimi" className="text-gray-400 hover:text-primary transition-colors">Etkinlik Takvimi</a></li>
+                                <li><a href="/yarismalar/sonuclar" className="text-gray-400 hover:text-primary transition-colors">Sonuçlar</a></li>
                             </ul>
                         </div>
                         <div>
-                            <h3 className="text-lg font-semibold mb-6">Adres</h3>
-                            <ul className="space-y-3 text-gray-400">
-                                <li>info@vexturkiye.com</li>
-                                <li>+90 (212) 000 00 00</li>
+                            <h3 className="text-lg font-semibold mb-6">İletişim Detayları</h3>
+                            <ul className="space-y-3 text-gray-400 text-sm">
+                                <li><strong>Yerel Operasyon:</strong> Intechne Teknoloji</li>
+                                <li>info@recfturkiye.org</li>
                             </ul>
                         </div>
                     </div>
-                    <div className="pt-8 mt-12 border-t border-gray-800">
-                        <p className="text-sm text-gray-500 text-center">© 2024 VEX Türkiye. Tüm hakları saklıdır.</p>
+                    <div className="pt-8 mt-12 border-t border-gray-800 text-center">
+                        <p className="text-sm text-gray-500">© 2026 RECF Türkiye. Türkiye Temsilcisi ve Yerel Operasyon Yürütücüsü: Intechne Teknoloji. Tüm hakları saklıdır.</p>
                     </div>
                 </div>
             </footer>

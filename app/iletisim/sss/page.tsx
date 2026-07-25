@@ -52,50 +52,50 @@ const faqItems = [
         id: 5,
         category: 'registration',
         question: 'Takım kaydı nasıl yapılır?',
-        answer: 'robotevents.com adresine giderek VEX hesabı oluşturun. "Register a Team" seçeneğinden takımınızı kaydedin. Okul veya kurum bilgilerinizi ekleyin. Kayıt ücretini online olarak ödeyin. Takım numaranız otomatik olarak atanacaktır.'
+        answer: 'recfevents.org adresine giderek REC Foundation hesabı oluşturun. "Register a Team" seçeneğinden takımınızı kaydedin. Okul veya kurum bilgilerinizi ekleyin. Kayıt sürecinizi online olarak tamamlayın. Takım numaranız sistem tarafından atanacaktır.'
     },
     {
         id: 6,
         category: 'registration',
         question: 'Kayıt ücreti ne kadar?',
-        answer: 'VEX V5 RC takım kaydı yıllık $150, VEX IQ Challenge kaydı yıllık $100\'dır. Bu ücret tüm sezon boyunca geçerlidir ve sınırsız sayıda etkinliğe kayıt imkanı sağlar. Türkiye\'deki etkinliklerin katılım ücretleri ayrıca belirlenir.'
+        answer: 'Takım kayıt ücretleri RECF tarafından yıllık olarak belirlenir ve tüm sezon boyunca geçerlidir. Türkiye\'deki resmi etkinlik ve turnuva katılım koşulları temsilcimiz Intechne Teknoloji tarafından duyurulur.'
     },
     {
         id: 7,
         category: 'registration',
         question: 'Bir etkinliğe nasıl kayıt olurum?',
-        answer: 'robotevents.com\'da etkinlik sayfasına gidin. "Register" butonuna tıklayın. Takımınızı seçin ve gerekli bilgileri doldurun. Giriş ücreti varsa ödemeyi tamamlayın. Kayıt onayı e-posta ile gelecektir.'
+        answer: 'recfevents.org\'da ilgili etkinlik sayfasına giderek "Register" butonuna tıklayın. Takımınızı seçin ve gerekli kayıt adımlarını tamamlayın.'
     },
     {
         id: 8,
         category: 'registration',
         question: 'Takım numaramı nasıl öğrenebilirim?',
-        answer: 'robotevents.com hesabınıza giriş yaptığınızda Dashboard\'da takımlarınızı görebilirsiniz. Takım numarası genellikle "12345A" formatındadır. Kayıt sonrası gelen onay e-postasında da bu bilgi yer alır.'
+        answer: 'recfevents.org hesabınıza giriş yaptığınızda kullanıcı panelinizden takımlarınızı görebilirsiniz. Takım numarası genellikle "12345A" formatındadır.'
     },
     // Championship
     {
         id: 9,
         category: 'championship',
         question: 'Türkiye Şampiyonası\'na nasıl katılabilirim?',
-        answer: '28 Şubat 2026 Türkiye Şampiyonası\'na katılmak için sezon içinde en az bir bölgesel turnuvaya katılmış olmanız gerekir. Bölgesel turnuvalarda kazanılan ödüller veya skills sıralaması üzerinden davet alabilirsiniz. Açık kayıt döneminde doğrudan başvuru da yapabilirsiniz.'
+        answer: 'Türkiye Şampiyonası\'na katılmak için sezon içinde resmi turnuvalarda derece veya sıralama elde etmiş olmak gerekir. Detaylı katılım kriterleri RECF Türkiye duyurularında yayınlanır.'
     },
     {
         id: 10,
         category: 'championship',
         question: 'Şampiyona mekanı neresi?',
-        answer: '28 Şubat 2026 Türkiye Şampiyonası İstanbul\'da düzenlenecektir. Kesin mekan ve adres bilgisi yakın tarihte duyurulacaktır. Etkinlik öncesi tüm takımlara detaylı bilgi e-posta ile gönderilecektir.'
+        answer: '28 Şubat 2026 Türkiye Şampiyonası adresi ve salon detayları RECF Türkiye ve Intechne Teknoloji kanallarından resmi olarak açıklanacaktır.'
     },
     {
         id: 11,
         category: 'championship',
         question: 'Şampiyonada kaç takım yarışacak?',
-        answer: 'Bu yıl hem VEX V5 RC hem de VEX IQ kategorilerinde toplam 150+ takımın katılması bekleniyor. Her kategori için ayrı sahalar ve programlar hazırlanmaktadır.'
+        answer: 'Tüm yaş grupları ve kategoriler genelinde resmi kayıtlı takımların yer alacağı geniş katılımlı bir ulusal şampiyona organizasyonu planlanmaktadır.'
     },
     {
         id: 12,
         category: 'championship',
         question: 'Dünya Şampiyonası\'na nasıl gidilir?',
-        answer: 'Türkiye Şampiyonası\'nda Excellence Award, Tournament Champion veya diğer ödülleri kazanan takımlar VEX Worlds\'e davet alır. Skills sıralamasında üst sıralarda yer alan takımlar da davet edilebilir. Dünya Şampiyonası Nisan ayında Dallas, Texas\'ta düzenlenir.'
+        answer: 'Türkiye Şampiyonası\'nda dereceye giren veya Skills sıralamasında üst sıralarda yer alan takımlar RECF STEM World Championship uluslararası şampiyona süreçlerine aday olur. Etkinlik Nisan ayında Dallas, Texas\'ta düzenlenir.'
     }
 ]
 
@@ -284,12 +284,12 @@ export default function SSSPage() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link href="/iletisim/form">
-                            <Button className="bg-white text-primary hover:bg-gray-100">
+                            <Button className="bg-white text-primary hover:bg-gray-100 font-bold">
                                 Form ile Ulaşın
                             </Button>
                         </Link>
-                        <a href="mailto:info@vexturkiye.com">
-                            <Button variant="outline" className="border-white text-white hover:bg-white/10">
+                        <a href="mailto:info@recfturkiye.org">
+                            <Button variant="outline" className="border-white text-white hover:bg-white/10 font-bold">
                                 E-posta Gönderin
                             </Button>
                         </a>
@@ -302,16 +302,9 @@ export default function SSSPage() {
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid md:grid-cols-4 gap-12">
                         <div className="md:col-span-1">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">VEX</div>
-                                <div><div className="text-lg font-bold">VEX TÜRKİYE</div><div className="text-xs text-gray-400">Robotics Competition</div></div>
-                            </div>
-                            <div className="flex gap-4">
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Instagram className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Youtube className="w-5 h-5" /></a>
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">RECF</div>
+                                <div><div className="text-lg font-bold">RECF TÜRKİYE</div><div className="text-xs text-gray-400">Türkiye Temsilcisi: Intechne Teknoloji</div></div>
                             </div>
                         </div>
                         <div>
@@ -323,22 +316,22 @@ export default function SSSPage() {
                             </ul>
                         </div>
                         <div>
-                            <h3 className="text-lg font-semibold mb-6">Kaynaklar</h3>
+                            <h3 className="text-lg font-semibold mb-6">Yarışmalar</h3>
                             <ul className="space-y-3">
-                                <li><a href="/kaynaklar/oyun-kilavuzlari" className="text-gray-400 hover:text-primary transition-colors">Oyun Kılavuzları</a></li>
-                                <li><a href="/kaynaklar/yazilim" className="text-gray-400 hover:text-primary transition-colors">VEXcode</a></li>
+                                <li><a href="/yarismalar/etkinlik-takvimi" className="text-gray-400 hover:text-primary transition-colors">Etkinlik Takvimi</a></li>
+                                <li><a href="/yarismalar/sonuclar" className="text-gray-400 hover:text-primary transition-colors">Sonuçlar</a></li>
                             </ul>
                         </div>
                         <div>
-                            <h3 className="text-lg font-semibold mb-6">Adres</h3>
-                            <ul className="space-y-3 text-gray-400">
-                                <li>info@vexturkiye.com</li>
-                                <li>+90 (212) 000 00 00</li>
+                            <h3 className="text-lg font-semibold mb-6">İletişim Detayları</h3>
+                            <ul className="space-y-3 text-gray-400 text-sm">
+                                <li><strong>Yerel Operasyon:</strong> Intechne Teknoloji</li>
+                                <li>info@recfturkiye.org</li>
                             </ul>
                         </div>
                     </div>
-                    <div className="pt-8 mt-12 border-t border-gray-800">
-                        <p className="text-sm text-gray-500 text-center">© 2024 VEX Türkiye. Tüm hakları saklıdır.</p>
+                    <div className="pt-8 mt-12 border-t border-gray-800 text-center">
+                        <p className="text-sm text-gray-500">© 2026 RECF Türkiye. Türkiye Temsilcisi ve Yerel Operasyon Yürütücüsü: Intechne Teknoloji. Tüm hakları saklıdır.</p>
                     </div>
                 </div>
             </footer>

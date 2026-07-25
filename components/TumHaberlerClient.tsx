@@ -48,7 +48,7 @@ export function TumHaberlerClient({ news }: TumHaberlerClientProps) {
                             Haber Arşivi
                         </h1>
                         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                            VEX Türkiye'nin tüm haberleri, duyuruları ve gelişmeleri
+                            RECF Türkiye ve Intechne Teknoloji'nin tüm haberleri, duyuruları ve gelişmeleri
                         </p>
 
                         {/* Stats */}
@@ -119,8 +119,8 @@ export function TumHaberlerClient({ news }: TumHaberlerClientProps) {
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center font-bold text-white">VEX</div>
-                            <span className="text-gray-600">VEX Türkiye Haber Arşivi</span>
+                            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center font-bold text-white text-xs">RECF</div>
+                            <span className="text-gray-600">RECF Türkiye Haber Arşivi</span>
                         </div>
                         <Link href="/duyurular/haberler">
                             <Button variant="ghost" className="text-primary">

@@ -28,11 +28,13 @@ const programsData: Record<string, {
     achievements: string[]
     kitContents: { name: string; description: string }[]
     competitionRules: { title: string; description: string }[]
+    gameSummary?: { title: string; description: string }
+    extraLinks?: { title: string; url: string }[]
 }> = {
     'vex-123': {
         id: 'vex-123',
         name: 'VEX 123',
-        fullName: 'VEX 123 Robotics',
+        fullName: 'Eğitime Hazırlık Araçları: VEX 123',
         tagline: 'Kodlamaya ilk adım',
         ageRange: '4-7 yaş',
         color: '#00A651',
@@ -55,16 +57,12 @@ const programsData: Record<string, {
             { name: 'Aktivite Alanı', description: 'Oyun ve görev haritaları' },
             { name: 'Öğretmen Kılavuzu', description: 'Ders planları ve aktiviteler' }
         ],
-        competitionRules: [
-            { title: 'Yarışma Formatı', description: 'VEX 123 yarışmaları, görev tabanlı aktiviteler ve takım çalışması etkinlikleri şeklinde düzenlenir.' },
-            { title: 'Takım Yapısı', description: 'Her takım 2-4 öğrenci ve 1 mentor/öğretmenden oluşur.' },
-            { title: 'Değerlendirme', description: 'Problem çözme, takım çalışması ve yaratıcılık kriterleri üzerinden puanlama yapılır.' }
-        ]
+        competitionRules: [] // VEX 123 is not a competition program
     },
     'vex-go': {
         id: 'vex-go',
         name: 'VEX GO',
-        fullName: 'VEX GO Robotics',
+        fullName: 'Uyumlu Eğitim Araçları: VEX GO',
         tagline: 'STEM keşfinin başlangıcı',
         ageRange: '6-11 yaş',
         color: '#00AEEF',
@@ -88,23 +86,19 @@ const programsData: Record<string, {
             { name: 'Şarj İstasyonu', description: 'Kablosuz şarj ünitesi' },
             { name: 'VEXcode GO', description: 'Blok tabanlı programlama yazılımı' }
         ],
-        competitionRules: [
-            { title: 'Yarışma Formatı', description: 'STEM laboratuvarı formatında tasarım meydan okumaları ve robot görevleri.' },
-            { title: 'Takım Yapısı', description: '2-6 öğrenci ve en az 1 mentor.' },
-            { title: 'Değerlendirme', description: 'Mühendislik defteri, takım sunumu ve robot performansı değerlendirilir.' }
-        ]
+        competitionRules: [] // VEX GO is not a competition program
     },
     'vex-iq': {
         id: 'vex-iq',
-        name: 'VEX IQ',
-        fullName: 'VEX IQ Competition',
-        tagline: 'Ortaokul robotik ligi',
-        ageRange: '8-14 yaş',
+        name: 'RECF Engage',
+        fullName: 'RECF Engage 2026–2027 Oyunu: Tier Takeover',
+        tagline: 'İlkokul ve ortaokul öğrencileri için yaratıcılık, takım çalışması ve mühendislik odaklı robotik yarışma programı.',
+        ageRange: 'U12 ve U15',
         color: '#F7941D',
         secondaryColor: '#2196F3',
         icon: Puzzle,
-        description: 'VEX IQ, ortaokul seviyesindeki öğrenciler için tasarlanmış, plastik yapı sistemine sahip yarışma robotik platformudur. Her yıl değişen oyun teması ile takım çalışması ve stratejik düşünmeyi teşvik eder.',
-        purpose: 'VEX IQ, öğrencileri resmi yarışma ortamına hazırlar. Robotik mühendislik, programlama ve takım dinamikleri konularında derinlemesine deneyim sunar. Ulusal ve uluslararası yarışmalara katılım imkanı sağlar.',
+        description: 'RECF Engage, ilkokul ve ortaokul seviyesindeki öğrenciler için tasarlanmış, plastik yapı sistemine sahip yarışma robotik platformudur. Her yıl değişen oyun teması ile takım çalışması ve stratejik düşünmeyi teşvik eder.',
+        purpose: 'RECF Engage, öğrencileri resmi yarışma ortamına hazırlar. Robotik mühendislik, programlama ve takım dinamikleri konularında derinlemesine deneyim sunar. Ulusal ve uluslararası yarışmalara katılım imkanı sağlar.',
         achievements: [
             'Kapsamlı robotik mühendislik bilgisi',
             'Python ve blok tabanlı kodlama',
@@ -114,58 +108,75 @@ const programsData: Record<string, {
             'Jüri önünde sunum yapabilme'
         ],
         kitContents: [
-            { name: 'IQ Robot Brain', description: 'Gelişmiş kontrol ünitesi' },
-            { name: 'IQ Yapı Seti', description: '800+ plastik yapı parçası' },
+            { name: 'Engage Robot Brain', description: 'Gelişmiş kontrol ünitesi' },
+            { name: 'Yapı Seti', description: '800+ plastik yapı parçası' },
             { name: 'Akıllı Motorlar', description: '4 adet feedback motorları' },
             { name: 'Sensör Paketi', description: 'Mesafe, dokunma, renk sensörleri' },
             { name: 'Kontroller', description: 'Kablosuz kumanda sistemi' },
             { name: 'Yarışma Alanı', description: 'Resmi yarışma sahası elemanları' }
         ],
         competitionRules: [
-            { title: 'Teamwork Challenge', description: 'İki takım birlikte, 60 saniyede maksimum puan toplamaya çalışır.' },
-            { title: 'Robot Skills', description: 'Sürücü ve otonom beceri turnuvaları ile dünya sıralaması.' },
-            { title: 'Design Award', description: 'Mühendislik defteri ve robot tasarımı jüri tarafından değerlendirilir.' }
+            { title: 'Alliance Matches', description: 'İki takım ittifak kurarak ortak hedeflere ulaşmaya ve maksimum puanı toplamaya çalışır.' },
+            { title: 'Solo Driving', description: 'Bireysel sürücü becerilerinin değerlendirildiği 60 saniyelik beceri maçları.' },
+            { title: 'Solo Coding', description: 'Otonom kodlama becerilerinin test edildiği bireysel görevler ve sıralamalar.' }
+        ],
+        gameSummary: {
+            title: 'RECF Engage 2026–2027 Oyunu: Tier Takeover',
+            description: 'Tier Takeover oyununda, takımlar robotlarını stratejik olarak yönlendirerek halkaları direklere yerleştirmeye ve bölge kontrolü sağlamaya çalışırlar. Maksimum puan için ittifak ortaklarıyla koordineli çalışmak esastır.'
+        },
+        extraLinks: [
+            { title: 'Mühendislik Defteri', url: '/kaynaklar/teknik-belgeler' },
+            { title: 'Takım Kaydı', url: '/takimlar/kayit' },
+            { title: 'Etkinlikler', url: '/yarismalar/etkinlik-takvimi' }
         ]
     },
     'vex-v5': {
         id: 'vex-v5',
-        name: 'VEX V5 (VRC)',
-        fullName: 'VEX Robotics Competition',
-        tagline: 'Profesyonel metal robotik',
-        ageRange: '11-18 yaş',
+        name: 'RECF Achieve',
+        fullName: 'RECF Achieve 2026–2027 Oyunu: Pinnacle',
+        tagline: 'Ortaokul ve lise öğrencileri için farklı yapı sistemleri ve özel üretim imkânları sunan ileri robotik programı.',
+        ageRange: 'U15 ve U19',
         color: '#E31837',
         secondaryColor: '#1A1A1A',
         icon: Bot,
-        description: 'VEX V5, lise seviyesinde profesyonel metal robot yapımı ve ileri düzey programlama sunan, dünyanın en büyük robotik yarışma platformudur. VEX Worlds şampiyonasına giden resmi yoldur.',
-        purpose: 'VEX V5 (VRC), öğrencileri gerçek mühendislik kariyerlerine hazırlar. Endüstriyel standartlarda metal işleme, ileri programlama dilleri ve profesyonel yarışma deneyimi sunar. Üniversite başvurularında güçlü bir portföy oluşturur.',
+        description: 'RECF Achieve, lise ve ortaokul seviyesinde profesyonel metal robot yapımı ve ileri düzey programlama sunan robotik yarışma platformudur. Başarılı takımlar, RECF’nin güncel yeterlilik kurallarına göre RECF etkinlik yolunda ilerler.',
+        purpose: 'RECF Achieve, öğrencileri gerçek mühendislik kariyerlerine hazırlar. Endüstriyel standartlarda metal işleme, ileri programlama dilleri ve profesyonel yarışma deneyimi sunar. Üniversite başvurularında güçlü bir portföy oluşturur.',
         achievements: [
             'Metal işleme ve endüstriyel tasarım',
             'C++ ve Python ile ileri programlama',
             'Otonom robot sistemleri geliştirme',
             'PID kontrol ve sensör füzyonu',
             'Proje yönetimi ve liderlik',
-            'Uluslararası yarışma deneyimi'
+            'Kapsamlı yarışma deneyimi'
         ],
         kitContents: [
             { name: 'V5 Robot Brain', description: 'ARM Cortex işlemcili ana ünite' },
             { name: 'V5 Smart Motors', description: '11W akıllı motorlar' },
             { name: 'Metal Yapı Seti', description: 'Alüminyum C-channel ve plakalar' },
-            { name: 'V5 Sensörler', description: 'Vision, GPS, IMU sensörleri' },
-            { name: 'V5 Controller', description: 'Ergonomik kablosuz kumanda' },
-            { name: 'Şarj Sistemi', description: 'V5 batarya ve şarj ünitesi' }
+            { name: 'Elektronik Sistemler', description: 'İzin verilen tüm V5 elektronik donanımları' },
+            { name: 'Özel Üretim (Custom Parça)', description: 'Belirli kurallar çerçevesinde 3D baskı ve CNC özel plastik parça kullanımı' },
+            { name: 'V5 Sensörler', description: 'Vision, GPS, IMU sensörleri' }
         ],
         competitionRules: [
-            { title: 'Qualification Matches', description: 'Rastgele eşleşmelerle sıralama maçları.' },
-            { title: 'Alliance Selection', description: 'Üst sıradaki takımlar ittifak seçer.' },
-            { title: 'Elimination Rounds', description: 'Bo3 eleme maçlarıyla şampiyonluk.' },
-            { title: 'Judged Awards', description: 'Excellence, Design, Innovate ve diğer ödüller.' }
+            { title: 'Alliance Matches', description: 'İkişer takımdan oluşan ittifakların karşılıklı veya işbirliği içinde mücadele ettiği karşılaşmalar.' },
+            { title: 'Solo Driving', description: 'Takımların bireysel sürücü yeteneklerini sergilediği beceri maçları.' },
+            { title: 'Solo Coding', description: 'Otonom programlama yetkinliğinin ölçüldüğü bağımsız beceri mücadeleleri.' }
+        ],
+        gameSummary: {
+            title: 'RECF Achieve 2026–2027 Oyunu: Pinnacle',
+            description: 'Pinnacle oyunu, takımların çok katmanlı alanlarda hedef yapıları tamamlamasını, kritik noktalara tırmanmasını ve oyun süresi bitmeden maksimum zirve kontrolünü sağlamasını hedefler.'
+        },
+        extraLinks: [
+            { title: 'Mühendislik Defteri', url: '/kaynaklar/teknik-belgeler' },
+            { title: 'Takım Kaydı', url: '/takimlar/kayit' },
+            { title: 'Etkinlikler', url: '/yarismalar/etkinlik-takvimi' }
         ]
     },
     'vex-ai': {
         id: 'vex-ai',
         name: 'VEX AI / Workcell',
-        fullName: 'VEX AI & V5 Workcell',
-        tagline: 'Yapay zeka ve endüstriyel otomasyon',
+        fullName: 'Yapay Zekâ ve Endüstriyel Robotik Eğitim Çözümleri',
+        tagline: 'Teknoloji Eğitimleri ve Laboratuvar Çözümleri',
         ageRange: '14-18 yaş',
         color: '#6B21A8',
         secondaryColor: '#A855F7',
@@ -188,43 +199,46 @@ const programsData: Record<string, {
             { name: 'Konveyör Sistemi', description: 'Malzeme taşıma bandı' },
             { name: 'AI Yazılım Paketi', description: 'Python AI kütüphaneleri' }
         ],
-        competitionRules: [
-            { title: 'VAIC Format', description: 'İki otonom robot, koordineli çalışarak görevleri tamamlar.' },
-            { title: 'Workcell Challenge', description: 'Endüstriyel otomasyon görevleri ve optimizasyon.' },
-            { title: 'AI Innovation', description: 'Yenilikçi AI çözümleri jüri tarafından değerlendirilir.' }
-        ]
+        competitionRules: []
     },
     'vex-u': {
         id: 'vex-u',
-        name: 'VEX U',
-        fullName: 'VEX University',
-        tagline: 'Üniversite robotik ligi',
-        ageRange: '18+ yaş',
+        name: 'RECF Inspire',
+        fullName: 'RECF Inspire 2026–2027 Oyunu: Pinnacle',
+        tagline: 'Üniversite ve yükseköğretim öğrencileri için açık sistemler, özel tasarım ve iki robotlu takım yapısına sahip ileri mühendislik yarışması.',
+        ageRange: '18+ yaş / Üniversite',
         color: '#1E3A8A',
         secondaryColor: '#3B82F6',
         icon: GraduationCap,
-        description: 'VEX U, üniversite öğrencileri için tasarlanmış, sınırsız tasarım özgürlüğü sunan elit robotik yarışma platformudur. Akademik araştırma ve endüstri iş birlikleri için ideal bir ortam sağlar.',
-        purpose: 'VEX U, üniversite öğrencilerine gerçek mühendislik projelerinde çalışma fırsatı sunar. Custom parça üretimi, ileri robot kinematiği ve profesyonel takım yönetimi deneyimi ile kariyere hazırlar.',
+        description: 'RECF Inspire, üniversite öğrencileri için tasarlanmış, sınırsız tasarım özgürlüğü sunan elit robotik yarışma platformudur. Açık donanım (open hardware) ve özel üretim (custom manufacturing) seçenekleriyle ileri düzey mühendislik becerilerini test eder.',
+        purpose: 'RECF Inspire, üniversite öğrencilerine gerçek mühendislik projelerinde çalışma fırsatı sunar. 3D baskı, CNC işleme ve endüstriyel sensör entegrasyonu gibi serbest üretim imkanlarıyla takımları profesyonel hayata hazırlar.',
         achievements: [
-            'Sınırsız tasarım ve custom parça üretimi',
+            'Sınırsız tasarım ve özel parça üretimi',
             'İleri robot kinematiği ve dinamiği',
             'Profesyonel yazılım geliştirme pratikleri',
-            'Akademik araştırma ve yayın deneyimi',
+            'Akademik araştırma ve takım yönetimi',
             'Endüstri bağlantıları ve staj fırsatları',
             'Uluslararası networking'
         ],
         kitContents: [
-            { name: 'VEX V5 Sistem', description: 'Temel V5 elektronik ve motor seti' },
-            { name: 'Sınırsız Parça', description: 'Kendi tasarımlarınızı üretebilirsiniz' },
-            { name: '3D Yazıcı Parçalar', description: 'Custom plastik bileşenler' },
-            { name: 'CNC Parçalar', description: 'Özel metal işleme' },
-            { name: 'Gelişmiş Sensörler', description: 'Endüstriyel sensör entegrasyonu' }
+            { name: 'Açık Sistemler', description: 'Genişletilebilir elektronik ve sensör ekosistemi' },
+            { name: 'Özel Üretim (Custom)', description: 'Sınırsız 3D baskı ve işlenmiş parça özgürlüğü' },
+            { name: 'Endüstriyel Sensörler', description: 'LiDAR, Intel RealSense ve özel sensör entegrasyonu' },
+            { name: 'Gelişmiş İşlemciler', description: 'Raspberry Pi, Jetson Nano gibi yardımcı işlemci desteği' }
         ],
         competitionRules: [
-            { title: 'İki Robot Sistemi', description: 'Her takım büyük ve küçük olmak üzere 2 robot yapar.' },
-            { title: 'Design Freedom', description: 'VEX dışı parçalar ve 3D baskı serbesttir.' },
-            { title: 'Alliance Matches', description: 'İki üniversite takımı ittifak olarak yarışır.' },
-            { title: 'Graduate Division', description: 'Yüksek lisans ve doktora öğrencileri için ayrı kategori.' }
+            { title: 'İki Robotlu Sistem', description: 'Her takım, maçlara koordineli çalışan biri büyük diğeri küçük olmak üzere 2 farklı robotla katılır.' },
+            { title: 'Design Freedom', description: 'Sınırsız tasarım özgürlüğü, açık donanım ve özel parça kullanımı serbesttir.' },
+            { title: 'Head-to-Head Matches', description: 'İki üniversite takımı karşılıklı olarak yarışır (1v1 takım formatı).' }
+        ],
+        gameSummary: {
+            title: 'RECF Inspire 2026–2027 Oyunu: Pinnacle',
+            description: 'Pinnacle oyunu, takımların çok katmanlı alanlarda hedef yapıları tamamlamasını, kritik noktalara tırmanmasını ve oyun süresi bitmeden maksimum zirve kontrolünü sağlamasını hedefler.'
+        },
+        extraLinks: [
+            { title: 'Mühendislik Defteri', url: '/kaynaklar/teknik-belgeler' },
+            { title: 'Üniversite Takım Kaydı', url: '/takimlar/kayit' },
+            { title: 'Etkinlikler', url: '/yarismalar/etkinlik-takvimi' }
         ]
     }
 }
@@ -260,6 +274,24 @@ export default function ProgramDetailPage() {
             <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
 
             <div className="h-20" />
+
+            {program.id === 'vex-123' && (
+                <div className="bg-red-600 text-white text-center py-3 px-6 text-sm font-semibold">
+                    VEX 123, RECF Türkiye yarışma programları arasında yer almaz.
+                </div>
+            )}
+            
+            {program.id === 'vex-go' && (
+                <div className="bg-red-600 text-white text-center py-3 px-6 text-sm font-semibold">
+                    VEX GO, eğitim amaçlı kullanılabilen bir ürün grubudur; RECF Türkiye ana yarışma programı değildir.
+                </div>
+            )}
+            
+            {program.id === 'vex-ai' && (
+                <div className="bg-red-600 text-white text-center py-3 px-6 text-sm font-semibold">
+                    VEX AI ve Workcell platformları, RECF yarışma programlarından ayrı, bağımsız eğitim ve laboratuvar çözümleridir.
+                </div>
+            )}
 
             {/* Hero Section with Program Color */}
             <section
@@ -428,40 +460,63 @@ export default function ProgramDetailPage() {
                 </div>
             </section>
 
-            {/* 4. Yarışma Kuralları Özeti */}
-            <section className="py-16 md:py-20 bg-white">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="text-center mb-12">
+            {/* Game Summary */}
+            {program.gameSummary && (
+                <section className="py-16 md:py-20 bg-gray-50 border-y border-gray-200">
+                    <div className="container mx-auto px-6 max-w-4xl text-center">
                         <div
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
                             style={{ backgroundColor: `${program.color}15`, color: program.color }}
                         >
                             <Trophy className="w-4 h-4" />
-                            <span className="text-sm font-medium">Yarışma Kuralları</span>
+                            <span className="text-sm font-medium">Sezon Oyunu</span>
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                            Yarışma Formatı
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                            {program.gameSummary.title}
                         </h2>
+                        <p className="text-lg text-gray-700 leading-relaxed">
+                            {program.gameSummary.description}
+                        </p>
                     </div>
+                </section>
+            )}
 
-                    <div className="max-w-4xl mx-auto space-y-4">
-                        {program.competitionRules.map((rule, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow"
-                                style={{ borderLeftWidth: 4, borderLeftColor: program.color }}
+            {/* 4. Yarışma Kuralları Özeti */}
+            {program.competitionRules.length > 0 && (
+                <section className="py-16 md:py-20 bg-white">
+                    <div className="container mx-auto px-6 max-w-7xl">
+                        <div className="text-center mb-12">
+                            <div
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4"
+                                style={{ backgroundColor: `${program.color}15`, color: program.color }}
                             >
-                                <h3 className="font-semibold text-gray-900 mb-2">{rule.title}</h3>
-                                <p className="text-gray-600">{rule.description}</p>
-                            </motion.div>
-                        ))}
+                                <Target className="w-4 h-4" />
+                                <span className="text-sm font-medium">Yarışma Kuralları</span>
+                            </div>
+                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                Yarışma Formatı
+                            </h2>
+                        </div>
+
+                        <div className="max-w-4xl mx-auto space-y-4">
+                            {program.competitionRules.map((rule, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow"
+                                    style={{ borderLeftWidth: 4, borderLeftColor: program.color }}
+                                >
+                                    <h3 className="font-semibold text-gray-900 mb-2">{rule.title}</h3>
+                                    <p className="text-gray-600">{rule.description}</p>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            )}
 
             {/* CTA */}
             <section
@@ -475,18 +530,31 @@ export default function ProgramDetailPage() {
                     <p className="text-xl text-white/90 mb-8">
                         Takım kurma, kayıt ve eğitim programları hakkında bilgi alın.
                     </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Link href="/takimlar/nasil-kurulur">
-                            <Button size="lg" className="bg-white hover:bg-gray-100 font-semibold px-8" style={{ color: program.color }}>
-                                Takım Nasıl Kurulur?
-                                <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
-                        </Link>
-                        <Link href="/iletisim/form">
-                            <Button size="lg" variant="outline" className="border-2 border-white text-white bg-white/5 hover:bg-white/20 backdrop-blur-sm font-semibold px-8">
-                                İletişime Geç
-                            </Button>
-                        </Link>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap">
+                        {program.extraLinks ? (
+                            program.extraLinks.map((link, idx) => (
+                                <Link key={idx} href={link.url}>
+                                    <Button size="lg" className="bg-white hover:bg-gray-100 font-semibold px-8" style={{ color: program.color }}>
+                                        {link.title}
+                                        <ArrowRight className="w-4 h-4 ml-2" />
+                                    </Button>
+                                </Link>
+                            ))
+                        ) : (
+                            <>
+                                <Link href="/takimlar/nasil-kurulur">
+                                    <Button size="lg" className="bg-white hover:bg-gray-100 font-semibold px-8" style={{ color: program.color }}>
+                                        Takım Nasıl Kurulur?
+                                        <ArrowRight className="w-4 h-4 ml-2" />
+                                    </Button>
+                                </Link>
+                                <Link href="/iletisim/form">
+                                    <Button size="lg" variant="outline" className="border-2 border-white text-white bg-white/5 hover:bg-white/20 backdrop-blur-sm font-semibold px-8">
+                                        İletişime Geç
+                                    </Button>
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
             </section>
@@ -497,8 +565,8 @@ export default function ProgramDetailPage() {
                     <div className="grid md:grid-cols-4 gap-12">
                         <div className="md:col-span-1">
                             <div className="flex items-center gap-3 mb-6">
-                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">VEX</div>
-                                <div><div className="text-lg font-bold">VEX TÜRKİYE</div><div className="text-xs text-gray-400">Robotics Competition</div></div>
+                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">RECF</div>
+                                <div><div className="text-lg font-bold">RECF TÜRKİYE</div><div className="text-xs text-gray-400">Robotics Education & Competition Foundation</div></div>
                             </div>
                             <p className="text-gray-400 text-sm mb-6">Geleceğin mühendislerini yetiştiriyoruz.</p>
                             <div className="flex gap-4">
@@ -523,8 +591,9 @@ export default function ProgramDetailPage() {
                             <ul className="space-y-3">
                                 <li><a href="/vex-nedir/vex-123" className="text-gray-400 hover:text-primary transition-colors">VEX 123</a></li>
                                 <li><a href="/vex-nedir/vex-go" className="text-gray-400 hover:text-primary transition-colors">VEX GO</a></li>
-                                <li><a href="/vex-nedir/vex-iq" className="text-gray-400 hover:text-primary transition-colors">VEX IQ</a></li>
-                                <li><a href="/vex-nedir/vex-v5" className="text-gray-400 hover:text-primary transition-colors">VEX V5</a></li>
+                                <li><a href="/vex-nedir/vex-iq" className="text-gray-400 hover:text-primary transition-colors">RECF Engage</a></li>
+                                <li><a href="/vex-nedir/vex-v5" className="text-gray-400 hover:text-primary transition-colors">RECF Achieve</a></li>
+                                <li><a href="/vex-nedir/vex-u" className="text-gray-400 hover:text-primary transition-colors">RECF Inspire</a></li>
                             </ul>
                         </div>
                         <div>
@@ -538,7 +607,7 @@ export default function ProgramDetailPage() {
                     </div>
                     <div className="pt-8 mt-12 border-t border-gray-800">
                         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                            <p className="text-sm text-gray-500">© 2024 VEX Türkiye. Tüm hakları saklıdır.</p>
+                            <p className="text-sm text-gray-500">© 2026 RECF Türkiye. Tüm hakları saklıdır.</p>
                             <div className="flex items-center gap-6">
                                 <a href="#" className="text-sm text-gray-400 hover:text-primary transition-colors">Gizlilik Politikası</a>
                                 <a href="#" className="text-sm text-gray-400 hover:text-primary transition-colors">Kullanım Koşulları</a>
