@@ -33,7 +33,7 @@ const getPostData = (slug: string) => {
 
             <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">VEX ile Geleceğe Hazırlık</h3>
             <p class="mb-6 text-gray-600 leading-relaxed">
-                VEX yarışmalarına katılan öğrenciler, sadece teknik beceriler kazanmakla kalmaz, aynı zamanda 21. yüzyıl yetkinliklerini de geliştirirler. İletişim, liderlik ve analitik düşünme becerileri, onları geleceğin teknoloji liderleri olmaya hazırlar. VEX Türkiye olarak, bu yolculukta gençlerimizin yanında olmaktan gurur duyuyoruz.
+                RECF yarışmalarına katılan öğrenciler, sadece teknik beceriler kazanmakla kalmaz, aynı zamanda 21. yüzyıl yetkinliklerini de geliştirirler. İletişim, liderlik ve analitik düşünme becerileri, onları geleceğin teknoloji liderleri olmaya hazırlar. VEX Türkiye olarak, bu yolculukta gençlerimizin yanında olmaktan gurur duyuyoruz.
             </p>
         `
     }

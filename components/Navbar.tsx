@@ -104,7 +104,7 @@ export function Navbar({ language = 'TR', onLanguageToggle }: NavbarProps) {
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
                     <Link href="/">
-                      <img src="/recf-turkiye-logo.png" alt="RECF Türkiye" className="h-10 w-auto object-contain" />
+                        <img src="/recf-turkiye-logo.png" alt="RECF Türkiye" className="h-12 md:h-16 w-auto object-contain py-1" />
                     </Link>
 
                     {/* Desktop Navigation */}
