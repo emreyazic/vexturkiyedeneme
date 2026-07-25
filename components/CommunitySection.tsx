@@ -27,7 +27,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     title: 'Yarışmacı',
                     icon: Trophy,
                     heading: 'Yarışmacılar',
-                    description: 'VEX yarışmacıları, liderlik, takım çalışması ve problem çözme becerilerini geliştirdikleri heyecan dolu bir STEM yolculuğuna çıkıyor. Bir takımın parçası ol ve geleceğini şekillendir!',
+                    description: 'RECF yarışmacıları, liderlik, takım çalışması ve problem çözme becerilerini geliştirdikleri heyecan dolu bir STEM yolculuğuna çıkıyor. Bir takımın parçası ol ve geleceğini şekillendir!',
                     benefits: [
                         'Takım Deneyimi: Akranlarınla birlikte robotlar tasarla, inşa et ve programla',
                         'Liderlik Becerileri: Proje yönetimi ve takım koordinasyonu deneyimi kazan',
@@ -41,7 +41,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     title: 'Gönüllü',
                     icon: Users,
                     heading: 'Gönüllüler',
-                    description: 'VEX gönüllüleri, STEM\'i hayata geçirir — etkinlik kurulumundan takımları desteklemeye kadar. Deneyim gerekmez, sadece öğrencilerin başarılı olmasına yardım etme tutkusu yeterlidir.',
+                    description: 'RECF gönüllüleri, STEM\'i hayata geçirir — etkinlik kurulumundan takımları desteklemeye kadar. Deneyim gerekmez, sadece öğrencilerin başarılı olmasına yardım etme tutkusu yeterlidir.',
                     benefits: [
                         'Turnuva Deneyimi: Operasyonlar, hakemlik ve saha kurulumu rollerinde aktif görev alın',
                         'Gönüllülük Sertifikası: Resmi sertifika ile deneyiminizi belgelendirin',
@@ -49,7 +49,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Esnek Roller: Her ilgi alanına ve programa uygun görevler'
                     ],
                     cta: 'Gönüllü Başvurusu',
-                    href: '/kurumsal/gonulluluk'
+                    href: '/kurumsal/gonullu-olun'
                 },
                 mentor: {
                     title: 'Mentor',
@@ -63,7 +63,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Profesyonel Ağ: Diğer mentorlar ve sektör profesyonelleriyle bağlantı kurun'
                     ],
                     cta: 'Mentor Kaynakları',
-                    href: '/takimlar/koc-ve-mentor-merkezi'
+                    href: '/takimlar/mentor'
                 },
                 sponsor: {
                     title: 'Sponsor & Bağışçı',
@@ -77,21 +77,21 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Özelleştirilmiş Paketler: Bütçenize ve hedeflerinize uygun sponsorluk seçenekleri'
                     ],
                     cta: 'Sponsorluk Dosyası',
-                    href: '/kurumsal/is-birlikleri'
+                    href: '/kurumsal/sponsorlar-ve-partnerler'
                 },
                 educator: {
                     title: 'Eğitmen',
                     icon: BookOpen,
                     heading: 'Eğitmenler',
-                    description: 'VEX\'i okul müfredatınıza entegre edin, sertifikalı eğitmen eğitimlerine katılın ve sınıf içi uygulamalar için kapsamlı kaynaklara erişin.',
+                    description: 'RECF\'i okul müfredatınıza entegre edin, sertifikalı eğitmen eğitimlerine katılın ve sınıf içi uygulamalar için kapsamlı kaynaklara erişin.',
                     benefits: [
-                        'Müfredat Entegrasyonu: VEX platformlarını mevcut STEM derslerinize entegre edin',
-                        'Sertifikalı Eğitimler: Resmi VEX eğitmen sertifikası alın',
+                        'Müfredat Entegrasyonu: RECF platformlarını mevcut STEM derslerinize entegre edin',
+                        'Sertifikalı Eğitimler: Resmi RECF eğitmen sertifikası alın',
                         'Ders Kaynakları: Hazır ders planları ve aktivite rehberleri',
                         'Teknik Destek: Sınıf içi uygulamalar için sürekli teknik destek'
                     ],
                     cta: 'Eğitmen Eğitimleri',
-                    href: 'https://educathub.com/mufredatlarimiz/'
+                    href: 'https://training.recf.org'
                 }
             }
         },
@@ -99,13 +99,13 @@ export function CommunitySection({ language }: CommunitySectionProps) {
             label: 'JOIN OUR COMMUNITY',
             title: 'A Global Network,',
             titleHighlight: 'United by STEM',
-            subtitle: 'Every student, parent, volunteer, educator, and supporter is part of the VEX Turkey family. Discover how we fuel innovation, collaboration, and transformation as a community.',
+            subtitle: 'Every student, parent, volunteer, educator, and supporter is part of the RECF Turkey family. Discover how we fuel innovation, collaboration, and transformation as a community.',
             tabs: {
                 competitor: {
                     title: 'Competitor',
                     icon: Trophy,
                     heading: 'Competitors',
-                    description: 'VEX competitors embark on an exciting STEM journey where they develop leadership, teamwork, and problem-solving skills. Be part of a team and shape your future!',
+                    description: 'RECF competitors embark on an exciting STEM journey where they develop leadership, teamwork, and problem-solving skills. Be part of a team and shape your future!',
                     benefits: [
                         'Team Experience: Design, build, and program robots with your peers',
                         'Leadership Skills: Gain project management and team coordination experience',
@@ -119,7 +119,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     title: 'Volunteer',
                     icon: Users,
                     heading: 'Volunteers',
-                    description: 'VEX volunteers make STEM come to life — from setting up events to cheering on teams. No experience is required, just a passion for helping students succeed.',
+                    description: 'RECF volunteers make STEM come to life — from setting up events to cheering on teams. No experience is required, just a passion for helping students succeed.',
                     benefits: [
                         'Tournament Experience: Take active roles in operations, refereeing, and field setup',
                         'Volunteer Certificate: Document your experience with an official certificate',
@@ -127,7 +127,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Flexible Roles: Tasks suitable for every interest and schedule'
                     ],
                     cta: 'Apply as Volunteer',
-                    href: '/kurumsal/gonulluluk'
+                    href: '/kurumsal/gonullu-olun'
                 },
                 mentor: {
                     title: 'Mentor',
@@ -141,13 +141,13 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Professional Network: Connect with other mentors and industry professionals'
                     ],
                     cta: 'Mentor Resources',
-                    href: '/takimlar/koc-ve-mentor-merkezi'
+                    href: '/takimlar/mentor'
                 },
                 sponsor: {
                     title: 'Sponsor & Donor',
                     icon: Heart,
                     heading: 'Sponsors & Donors',
-                    description: 'Invest in future engineers by providing financial or equipment support to the ecosystem. Align your corporate social responsibility goals with VEX Turkey.',
+                    description: 'Invest in future engineers by providing financial or equipment support to the ecosystem. Align your corporate social responsibility goals with RECF Turkey.',
                     benefits: [
                         'Strategic Partnership: Increase your brand visibility at national and international competitions',
                         'Talent Pool: Early access to future engineers',
@@ -155,16 +155,16 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Customized Packages: Sponsorship options tailored to your budget and goals'
                     ],
                     cta: 'Sponsorship Package',
-                    href: '/kurumsal/is-birlikleri'
+                    href: '/kurumsal/sponsorlar-ve-partnerler'
                 },
                 educator: {
                     title: 'Educator',
                     icon: BookOpen,
                     heading: 'Educators',
-                    description: 'Integrate VEX into your school curriculum, participate in certified educator training, and access comprehensive resources for classroom applications.',
+                    description: 'Integrate RECF into your school curriculum, participate in certified educator training, and access comprehensive resources for classroom applications.',
                     benefits: [
-                        'Curriculum Integration: Integrate VEX platforms into your existing STEM courses',
-                        'Certified Training: Obtain official VEX educator certification',
+                        'Curriculum Integration: Integrate RECF platforms into your existing STEM courses',
+                        'Certified Training: Obtain official RECF educator certification',
                         'Lesson Resources: Ready-made lesson plans and activity guides',
                         'Technical Support: Ongoing technical support for classroom applications'
                     ],
