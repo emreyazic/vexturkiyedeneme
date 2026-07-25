@@ -1,276 +1,260 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Button } from '@/components/ui/button'
 import {
-    Facebook, Twitter, Instagram, Linkedin, Youtube,
-    BookOpen, Award, ChevronRight, CheckCircle2
+    Award, BookOpen, Users, ShieldCheck, HeartHandshake,
+    ExternalLink, CheckCircle2, AlertCircle, FileText,
+    Sparkles, HelpCircle, MessageSquare, Lightbulb, Scale
 } from 'lucide-react'
-import { QuestionSimulator, AllQuestionsGrid } from '@/components/JuryQuestionSimulator'
-import { getAllJuryQuestions } from '@/lib/sanity-queries'
-import { JuriClientWrapper } from './JuriClientWrapper'
 
-// Notebook standards (statik içerik)
-const notebookStandards = [
+// Engineering Notebook Rubric Criteria
+const notebookRubric = [
     {
-        title: 'Kapak ve İçindekiler',
-        description: 'Takım logosu, numara ve üye listesi ile başlayın. Sayfa numaraları ekleyin.',
-        color: '#E31837'
+        title: 'Tasarım Süreci Dokümantasyonu (EDP)',
+        desc: 'Problemin tanımlanması, saha analizi, beyin fırtınası, prototipleme ve test adımlarının eksiksiz kaydı.',
+        score: 'Rubric: 5 Puan'
     },
     {
-        title: 'Tarihli Kayıtlar',
-        description: 'Her toplantı tarihi, katılımcılar ve süre bilgisiyle başlamalı.',
-        color: '#00AEEF'
+        title: 'Kronolojik ve Tarihli Kayıtlar',
+        desc: 'Her toplantının tarihi, katılan üyeler, alınan kararlar ve harcanan süre bilgilerinin düzenli işlenmesi.',
+        score: 'Rubric: 5 Puan'
     },
     {
-        title: 'Tasarım Süreci',
-        description: 'Sorunu tanımlayın, alternatifler listeleyin, seçim gerekçenizi açıklayın.',
-        color: '#00A651'
+        title: 'Mekanik & Yazılım Şemaları',
+        desc: 'El çizimleri, CAD çıktıları, kod blokları/akış şemaları ve matematiksel hesaplama detayları.',
+        score: 'Rubric: 5 Puan'
     },
     {
-        title: 'Eskizler & Görseller',
-        description: 'El çizimleri, CAD görüntüleri ve fotoğraflarla destekleyin.',
-        color: '#F7941D'
-    },
-    {
-        title: 'Test & Veriler',
-        description: 'Ölçümler, zamanlama verileri ve karşılaştırma tabloları ekleyin.',
-        color: '#6B21A8'
-    },
-    {
-        title: 'Yansıma & Öğrenmeler',
-        description: 'Her oturumun sonunda neler öğrenildiğini ve sonraki adımları yazın.',
-        color: '#1E3A8A'
+        title: 'Test Verileri & Geliştirme Yinelemeleri (Iteration)',
+        desc: 'Başarısız denemelerden çıkarılan dersler, veri grafiklerindeki iyileştirmeler ve tasarım revizyonları.',
+        score: 'Rubric: 5 Puan'
     }
 ]
 
-export default async function JuriPage() {
-    // Sanity'den jüri sorularını çek
-    const juryQuestions = await getAllJuryQuestions()
+// Team Interview Expectations
+const interviewExpectations = [
+    {
+        title: 'Öğrenci Liderliğinde Sunum',
+        desc: 'Mülakatın ilk 3-5 dakikasında takımların robotlarını, tasarım süreçlerini ve sezondaki yolculuklarını kendi cümleleriyle aktarmaları beklenir.'
+    },
+    {
+        title: 'Tüm Üyelerin Dengeli Katılımı',
+        desc: 'Jüriler sadece takım kaptanını değil; mekanik, yazılım, sürücü ve defter sorumlusu tüm öğrencilerin sürece katılımını gözlemler.'
+    },
+    {
+        title: 'Teknik Bilgi ve Özgüven',
+        desc: 'Robot üzerindeki mekanizmaların neden seçildiği ve yazılımdaki algoritmaların mantığı sorulara verilen açık yanıtlarla değerlendirilir.'
+    },
+    {
+        title: 'Sportmenlik ve İletişim',
+        desc: 'Diğer takımlarla yardımlaşma, sahada sergilenen nezaket (Code of Conduct) ve dürüstlük mülakat puanını doğrudan etkiler.'
+    }
+]
+
+// Sample Interview Questions for Simulation
+const sampleQuestions = [
+    {
+        category: 'Tasarım & Mekanik',
+        q: 'Robotunuzun mevcut şasi ve mekanizma tasarımına nasıl karar verdiniz? Denediğiniz alternatif tasarımlar nelerdi?'
+    },
+    {
+        category: 'Yazılım & Otonom',
+        q: 'Solo Coding (Otonom) maçlarında hangi sensörleri kullandınız ve kodlamadaki en büyük zorluğu nasıl aştınız?'
+    },
+    {
+        category: 'Takım Çalışması & İletişim',
+        q: 'Sezon boyunca takım içinde fikir ayrılığı yaşadığınızda bu durumu nasıl çözüme kavuşturdunuz?'
+    },
+    {
+        category: 'Öğrenci Merkezli Süreç',
+        q: 'Bu robotta tamamen öğrencilere ait olan en gurur duyduğunuz yenilikçi fikir veya parça hangisidir?'
+    }
+]
+
+export default function JuriPage() {
+    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const [activeQuestionIdx, setActiveQuestionIdx] = useState(0)
 
     return (
-        <JuriClientWrapper>
+        <div className="min-h-screen bg-gray-50 text-foreground">
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
+            <div className="h-20" />
+
             <CorporateHero
-                title="Jüri & Değerlendirme"
-                subtitle="Mülakat hazırlığı ve mühendislik defteri standartları"
+                title="RECF Jüri ve Değerlendirme Süreci"
+                subtitle="RECF jüri süreci, mühendislik defteri kriterleri, mülakat standartları ve etik ilkeler"
             />
 
-            {/* Question Simulator */}
-            <section className="py-16 md:py-20 bg-white">
-                <div className="container mx-auto px-6 max-w-5xl">
-                    <QuestionSimulator questions={juryQuestions} />
-                </div>
-            </section>
-
-            {/* Notebook Standards */}
-            <section className="py-16 md:py-20 bg-white border-t border-gray-200">
+            <section className="py-16 bg-white min-h-[50vh]">
                 <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="text-center mb-12">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
-                            <BookOpen className="w-4 h-4 text-primary" />
-                            <span className="text-sm font-medium text-primary">Mühendislik Defteri</span>
+                    
+                    {/* Student-Centered Policy Highlight Banner */}
+                    <div className="bg-red-50 border border-red-200 rounded-3xl p-8 mb-16 shadow-sm flex flex-col md:flex-row gap-6 items-start">
+                        <div className="w-14 h-14 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center shrink-0 border border-red-200">
+                            <HeartHandshake className="w-8 h-8" />
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                            Defter Standartları
-                        </h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">
-                            Excellence Award kazanmak için mühendislik defterinizin bu standartlara uyması önemlidir
-                        </p>
-                    </div>
-
-                    {/* Desktop Grid */}
-                    <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {notebookStandards.map((standard, index) => (
-                            <div
-                                key={index}
-                                className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg transition-shadow"
-                            >
-                                <div
-                                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                                    style={{ backgroundColor: `${standard.color}15` }}
-                                >
-                                    <CheckCircle2 className="w-6 h-6" style={{ color: standard.color }} />
-                                </div>
-                                <h3 className="font-bold text-gray-900 mb-2">{standard.title}</h3>
-                                <p className="text-gray-600 text-sm">{standard.description}</p>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Mobile Slider (1 item per slide) */}
-                    <div className="sm:hidden -mx-6 px-6">
-                        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 no-scrollbar">
-                            {notebookStandards.map((standard, index) => (
-                                <div
-                                    key={index}
-                                    className="min-w-full snap-center bg-white rounded-2xl border border-gray-200 p-6 shadow-sm"
-                                >
-                                    <div
-                                        className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                                        style={{ backgroundColor: `${standard.color}15` }}
-                                    >
-                                        <CheckCircle2 className="w-6 h-6" style={{ color: standard.color }} />
-                                    </div>
-                                    <h3 className="font-bold text-gray-900 mb-2">{standard.title}</h3>
-                                    <p className="text-gray-600 text-sm">{standard.description}</p>
-                                </div>
-                            ))}
+                        <div>
+                            <h3 className="text-2xl font-bold text-red-900 mb-3">Öğrenci Merkezli Politika (Student-Centered Policy)</h3>
+                            <p className="text-red-800 text-base leading-relaxed mb-4">
+                                RECF etkinliklerinde değerlendirmenin en temel kuralı öğrenci merkezliliktir. Robotun tasarımı, inşası, kodlanması, sürücülüğü ve mülakat sunumları tamamen öğrenciler tarafından gerçekleştirilmelidir. Mentorlar ve öğretmenler doğrudan müdahalede bulunmaz; yol gösterici ve emniyet sağlayıcı rol üstlenirler.
+                            </p>
+                            <a href="https://recf.org/documents" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-red-700 font-bold hover:text-red-900 text-sm">
+                                Resmi Student-Centered Politika Dokümanı
+                                <ExternalLink className="w-4 h-4 ml-1" />
+                            </a>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            {/* All Questions Grid */}
-            <section className="py-16 md:py-20 bg-gray-50 border-t border-gray-200">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Sık Sorulan Jüri Soruları</h2>
-                        <p className="text-gray-600">Tüm soruları inceleyerek hazırlanın</p>
-                    </div>
-
-                    <AllQuestionsGrid questions={juryQuestions} />
-                </div>
-            </section>
-
-            {/* Award Rubrics */}
-            <section className="py-16 md:py-20 bg-gradient-to-r from-yellow-50 to-amber-50 border-t border-yellow-200">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="text-center mb-12">
-                        <Award className="w-12 h-12 text-yellow-600 mx-auto mb-4" />
-                        <h2 className="text-3xl font-bold text-gray-900 mb-4">Ödül Değerlendirme Kriterleri</h2>
-                        <p className="text-gray-600">Her ödül kategorisinin değerlendirme kriterleri</p>
-                    </div>
-
-                    {/* Desktop Grid */}
-                    <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {[
-                            { title: 'Design Award', subtitle: 'Takımın mühendislik tasarım sürecini düzenli, tutarlı ve ayrıntılı bir mühendislik defteri ve mülakatla göstermesi.' },
-                            { title: 'Excellence Award', subtitle: 'Hem jüri değerlendirmelerinde hem de yarışma performansında genel olarak en üst düzey başarıyı göstermesi.' },
-                            { title: 'Innovation Award', subtitle: 'Robotta veya stratejide özgün ve yenilikçi bir fikrin iyi belgelenmiş bir tasarım süreciyle sunulması.' },
-                            { title: 'Think Award', subtitle: 'Oyun zorluklarını çözmek için etkili, anlaşılır ve iyi yönetilmiş programlama kullanılması.' },
-                            { title: 'Amaze Award', subtitle: 'Robotun yarışma boyunca yüksek, tutarlı ve rekabetçi bir performans sergilemesi.' },
-                            { title: 'Build Award', subtitle: 'Robotun sağlam, güvenli, dayanıklı ve özenli bir şekilde inşa edilmiş olması.' },
-                            { title: 'Create Award', subtitle: 'Yarışma problemlerine yaratıcı ve cesur mühendislik çözümleri geliştirilmesi.' },
-                            { title: 'Jury Award', subtitle: 'Jürinin özel olarak takdir ettiği olağanüstü çaba, karakter veya başarı gösterilmesi.' },
-                            { title: 'Inspiration Award', subtitle: 'Etkinlik boyunca motivasyon, pozitif tutum ve ilham verici bir duruş sergilenmesi.' },
-                            { title: 'Sportsmanship Award', subtitle: 'Herkese karşı saygılı, yardımsever ve dürüst bir spor ruhu gösterilmesi.' },
-                            { title: 'Energy Award', subtitle: 'Etkinlik boyunca olağanüstü coşku, enerji ve heyecan yayılması.' }
-                        ].map((item, index) => (
-                            <div
-                                key={index}
-                                className="bg-white rounded-xl border border-yellow-200 p-5 hover:shadow-lg transition-all cursor-pointer group"
-                            >
-                                <div>
-                                    <h3 className="font-semibold text-gray-900 group-hover:text-primary transition-colors">{item.title}</h3>
-                                    <p className="text-sm text-gray-500 mt-0.5">{item.subtitle}</p>
-                                </div>
+                    {/* Section 1: Engineering Notebook Rubric */}
+                    <div className="mb-20">
+                        <div className="flex items-center gap-3 mb-8">
+                            <BookOpen className="w-7 h-7 text-primary" />
+                            <div>
+                                <h2 className="text-3xl font-bold text-gray-900">Mühendislik Defteri Değerlendirme Kriterleri</h2>
+                                <p className="text-gray-500 text-sm">Excellence ve Design Ödülleri için temel değerlendirme standartları</p>
                             </div>
-                        ))}
-                    </div>
+                        </div>
 
-                    {/* Mobile Slider (Groups of 3) */}
-                    <div className="sm:hidden -mx-6 px-6">
-                        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 no-scrollbar">
-                            {Array.from({ length: Math.ceil(11 / 3) }).map((_, groupIndex) => (
-                                <div key={groupIndex} className="min-w-full snap-center grid gap-4">
-                                    {[
-                                        { title: 'Design Award', subtitle: 'Takımın mühendislik tasarım sürecini düzenli, tutarlı ve ayrıntılı bir mühendislik defteri ve mülakatla göstermesi.' },
-                                        { title: 'Excellence Award', subtitle: 'Hem jüri değerlendirmelerinde hem de yarışma performansında genel olarak en üst düzey başarıyı göstermesi.' },
-                                        { title: 'Innovation Award', subtitle: 'Robotta veya stratejide özgün ve yenilikçi bir fikrin iyi belgelenmiş bir tasarım süreciyle sunulması.' },
-                                        { title: 'Think Award', subtitle: 'Oyun zorluklarını çözmek için etkili, anlaşılır ve iyi yönetilmiş programlama kullanılması.' },
-                                        { title: 'Amaze Award', subtitle: 'Robotun yarışma boyunca yüksek, tutarlı ve rekabetçi bir performans sergilemesi.' },
-                                        { title: 'Build Award', subtitle: 'Robotun sağlam, güvenli, dayanıklı ve özenli bir şekilde inşa edilmiş olması.' },
-                                        { title: 'Create Award', subtitle: 'Yarışma problemlerine yaratıcı ve cesur mühendislik çözümleri geliştirilmesi.' },
-                                        { title: 'Jury Award', subtitle: 'Jürinin özel olarak takdir ettiği olağanüstü çaba, karakter veya başarı gösterilmesi.' },
-                                        { title: 'Inspiration Award', subtitle: 'Etkinlik boyunca motivasyon, pozitif tutum ve ilham verici bir duruş sergilenmesi.' },
-                                        { title: 'Sportsmanship Award', subtitle: 'Herkese karşı saygılı, yardımsever ve dürüst bir spor ruhu gösterilmesi.' },
-                                        { title: 'Energy Award', subtitle: 'Etkinlik boyunca olağanüstü coşku, enerji ve heyecan yayılması.' }
-                                    ].slice(groupIndex * 3, (groupIndex + 1) * 3).map((item, index) => (
-                                        <div
-                                            key={index}
-                                            className="bg-white rounded-xl border border-yellow-200 p-5 shadow-sm"
-                                        >
-                                            <div>
-                                                <h3 className="font-semibold text-gray-900">{item.title}</h3>
-                                                <p className="text-sm text-gray-500 mt-0.5">{item.subtitle}</p>
-                                            </div>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            {notebookRubric.map((item, idx) => (
+                                <div key={idx} className="bg-gray-50 border border-gray-200 rounded-3xl p-6 hover:shadow-sm transition-shadow flex flex-col justify-between">
+                                    <div>
+                                        <div className="flex justify-between items-center mb-3">
+                                            <h3 className="font-bold text-gray-900 text-lg">{item.title}</h3>
+                                            <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">
+                                                {item.score}
+                                            </span>
                                         </div>
-                                    ))}
+                                        <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
                     </div>
-                </div>
-            </section>
 
-            {/* CTA */}
-            <section className="py-16 md:py-20 bg-gray-900 text-white">
-                <div className="container mx-auto px-6 max-w-4xl text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Jüri Mülakatına Hazır mısınız?</h2>
-                    <p className="text-xl text-gray-300 mb-8">Takımınızla birlikte pratik yapın</p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/yarismalar/oduller">
-                            <Button size="lg" className="bg-primary hover:bg-primary/90">
-                                Ödül Kategorileri
-                                <Award className="w-4 h-4 ml-2" />
-                            </Button>
-                        </Link>
-                        <Link href="/takimlar/mentor">
-                            <Button size="lg" variant="outline" className="border-white text-white bg-white/10 hover:bg-white/20">
-                                Mentor Kaynakları
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-            </section>
-
-            {/* Footer */}
-            <footer className="bg-gray-900 text-white py-16 border-t border-gray-800">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid md:grid-cols-4 gap-12">
-                        <div className="md:col-span-1">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">VEX</div>
-                                <div><div className="text-lg font-bold">VEX TÜRKİYE</div><div className="text-xs text-gray-400">Robotics Competition</div></div>
-                            </div>
-                            <div className="flex gap-4">
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Instagram className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Youtube className="w-5 h-5" /></a>
+                    {/* Section 2: Team Interview Expectations */}
+                    <div className="mb-20">
+                        <div className="flex items-center gap-3 mb-8">
+                            <Users className="w-7 h-7 text-indigo-600" />
+                            <div>
+                                <h2 className="text-3xl font-bold text-gray-900">Takım Mülakatı Süreci ve Beklentiler</h2>
+                                <p className="text-gray-500 text-sm">Jüri odasında veya pit alanında gerçekleşen mülakatların yapısı</p>
                             </div>
                         </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">Kaynaklar</h3>
-                            <ul className="space-y-3">
-                                <li><a href="/kaynaklar/oyun-kilavuzlari" className="text-gray-400 hover:text-primary transition-colors">Oyun Kılavuzları</a></li>
-                                <li><a href="/kaynaklar/yazilim" className="text-gray-400 hover:text-primary transition-colors">VEXcode</a></li>
-                                <li><a href="/kaynaklar/mufredat" className="text-gray-400 hover:text-primary transition-colors">Müfredatlar</a></li>
-                                <li><a href="/kaynaklar/juri" className="text-gray-400 hover:text-primary transition-colors">Jüri & Değerlendirme</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">Yarışmalar</h3>
-                            <ul className="space-y-3">
-                                <li><a href="/yarismalar/oduller" className="text-gray-400 hover:text-primary transition-colors">Ödüller</a></li>
-                                <li><a href="/yarismalar/sonuclar" className="text-gray-400 hover:text-primary transition-colors">Sonuçlar</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">İletişim</h3>
-                            <ul className="space-y-3 text-gray-400">
-                                <li>info@vexturkiye.com</li>
-                                <li>+90 (212) 000 00 00</li>
-                            </ul>
+
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {interviewExpectations.map((exp, idx) => (
+                                <div key={idx} className="bg-white border border-gray-200 rounded-3xl p-6 shadow-sm hover:border-indigo-300 transition-colors">
+                                    <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold mb-4">
+                                        0{idx + 1}
+                                    </div>
+                                    <h3 className="font-bold text-gray-900 text-lg mb-2">{exp.title}</h3>
+                                    <p className="text-gray-600 text-sm leading-relaxed">{exp.desc}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
-                    <div className="pt-8 mt-12 border-t border-gray-800">
-                        <p className="text-sm text-gray-500 text-center">© 2024 VEX Türkiye. Tüm hakları saklıdır.</p>
+
+                    {/* Section 3: Interactive Interview Prep / Question Simulator */}
+                    <div className="bg-slate-900 text-white rounded-3xl p-10 mb-20 shadow-xl">
+                        <div className="flex items-center gap-3 mb-6">
+                            <Sparkles className="w-6 h-6 text-amber-400" />
+                            <h2 className="text-2xl font-bold text-white">Takımlar için Mülakat Örnek Soru Simülatörü</h2>
+                        </div>
+                        <p className="text-slate-300 text-sm mb-8 max-w-2xl">
+                            Mülakata hazırlanırken takımınızla birlikte aşağıdaki tipik jüri sorularını yanıtlayarak pratik yapabilirsiniz.
+                        </p>
+
+                        <div className="bg-slate-800 border border-slate-700 rounded-2xl p-6 mb-6">
+                            <span className="inline-block bg-amber-400/20 text-amber-300 font-bold px-3 py-1 rounded-full text-xs mb-3">
+                                Kategori: {sampleQuestions[activeQuestionIdx].category}
+                            </span>
+                            <h4 className="text-xl font-bold text-white mb-4">
+                                "{sampleQuestions[activeQuestionIdx].q}"
+                            </h4>
+                        </div>
+
+                        <div className="flex flex-wrap gap-4 items-center justify-between">
+                            <div className="flex gap-2">
+                                {sampleQuestions.map((_, i) => (
+                                    <button
+                                        key={i}
+                                        onClick={() => setActiveQuestionIdx(i)}
+                                        className={`w-3 h-3 rounded-full transition-all ${activeQuestionIdx === i ? 'bg-amber-400 w-8' : 'bg-slate-700'}`}
+                                        aria-label={`Soru ${i + 1}`}
+                                    />
+                                ))}
+                            </div>
+                            <Button 
+                                onClick={() => setActiveQuestionIdx((prev) => (prev + 1) % sampleQuestions.length)} 
+                                className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl h-11 px-6"
+                            >
+                                Sonraki Soruyu Getir
+                            </Button>
+                        </div>
                     </div>
+
+                    {/* Section 4: Ethics & Conflict of Interest & Certification */}
+                    <div className="grid lg:grid-cols-2 gap-8 mb-16">
+                        
+                        {/* Ethics & Conflict of Interest */}
+                        <div className="bg-blue-50/70 border border-blue-200 rounded-3xl p-8 flex flex-col justify-between">
+                            <div>
+                                <div className="flex items-center gap-3 mb-4">
+                                    <Scale className="w-7 h-7 text-blue-700" />
+                                    <h3 className="text-2xl font-bold text-gray-900">Jüri Etik Kuralları ve Çıkar Çatışması</h3>
+                                </div>
+                                <p className="text-gray-700 text-sm leading-relaxed mb-4">
+                                    RECF jürileri tamamen tarafsızlık ve gizlilik ilkesiyle hareket eder. Jüri üyeleri, kendi okullarından veya yakın akrabalık bağı bulunan takımların mülakatlarında ve puanlamalarında çekimser kalır (Conflict of Interest Disclosure).
+                                </p>
+                                <ul className="space-y-2 text-sm text-gray-700 font-medium">
+                                    <li className="flex items-center gap-2">
+                                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                                        Gizlilik ilkesi (Mülakat detayları dışarıya aktarılamaz)
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                                        Tüm takımlara eşit zaman ve önyargısız yaklaşım
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Certification & Official Guides Link */}
+                        <div className="bg-emerald-50/70 border border-emerald-200 rounded-3xl p-8 flex flex-col justify-between">
+                            <div>
+                                <div className="flex items-center gap-3 mb-4">
+                                    <ShieldCheck className="w-7 h-7 text-emerald-700" />
+                                    <h3 className="text-2xl font-bold text-gray-900">Jüri Eğitimi ve Sertifikasyon</h3>
+                                </div>
+                                <p className="text-gray-700 text-sm leading-relaxed mb-6">
+                                    Etkinliklerde jüri veya Judge Advisor olarak görev alacak tüm gönüllüler, RECF'nin çevrim içi Jüri Eğitimi ve Sertifikasyon portalını tamamlayarak resmi sertifika alırlar.
+                                </p>
+                            </div>
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <a href="https://certifications.vex.com" target="_blank" rel="noopener noreferrer">
+                                    <Button className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold h-12 px-6 rounded-xl text-sm">
+                                        Jüri Sertifikasyon Portalı
+                                        <ExternalLink className="w-4 h-4 ml-2" />
+                                    </Button>
+                                </a>
+                                <a href="https://recf.org/documents" target="_blank" rel="noopener noreferrer">
+                                    <Button variant="outline" className="w-full sm:w-auto border-emerald-300 text-emerald-800 hover:bg-emerald-100 font-bold h-12 px-6 rounded-xl text-sm">
+                                        Official Judges Guide (PDF)
+                                        <ExternalLink className="w-4 h-4 ml-2" />
+                                    </Button>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
-            </footer>
-        </JuriClientWrapper>
+            </section>
+        </div>
     )
 }

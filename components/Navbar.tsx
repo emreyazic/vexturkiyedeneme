@@ -42,33 +42,31 @@ const menuItems = {
     yarismalar: {
         title: 'Yarışmalar',
         items: [
-            { title: 'Tüm Etkinlikler', href: '/yarismalar/etkinlik-takvimi/tum-etkinlikler' },
-            { title: 'Etkinlik Takvimi', href: '/yarismalar/etkinlik-takvimi' },
-            { title: 'Sezon Teması', href: '/yarismalar/sezon-temasi' },
-            { title: 'Turnuva Sonuçları', href: '/yarismalar/sonuclar' },
-            { title: 'Ödüller', href: '/yarismalar/oduller' },
-            { title: 'Robot Skills', href: '/yarismalar/skills' },
+            { title: 'RECF Türkiye Etkinlik Takvimi', href: '/yarismalar/etkinlik-takvimi' },
+            { title: '2026–2027 RECF Sezon Oyunları', href: '/yarismalar/sezon-temasi' },
+            { title: 'RECF Türkiye Sonuçları', href: '/yarismalar/sonuclar' },
+            { title: 'RECF Ödülleri', href: '/yarismalar/oduller' },
+            { title: 'Solo Sıralamaları', href: '/yarismalar/skills' },
             { title: 'Dünya Şampiyonası', href: '/yarismalar/dunya-sampiyonasi' }
         ]
     },
     takimlar: {
         title: 'Takımlar',
         items: [
-            { title: 'Tüm Takımlar', href: '/takimlar/tum-takimlar' },
+            { title: 'RECF Türkiye Takım Dizini', href: '/takimlar/tum-takimlar' },
             { title: 'RECF Takımı Nasıl Kurulur?', href: '/takimlar/nasil-kurulur' },
             { title: 'RECF Takım Kaydı', href: '/takimlar/kayit' },
-            { title: 'Takım Haritası / Listesi', href: '/takimlar/harita' },
-            { title: 'Mentor Desteği', href: '/takimlar/mentor' }
+            { title: 'Koç ve Mentor Merkezi', href: '/takimlar/mentor' }
         ]
     },
     egitim: {
         title: 'Eğitim & Kaynaklar',
         items: [
-            { title: 'Oyun Kılavuzları', href: '/kaynaklar/oyun-kilavuzlari' },
-            { title: 'VEXcode (Yazılım)', href: '/kaynaklar/yazilim' },
-            { title: 'Müfredatlar', href: '/kaynaklar/mufredat' },
+            { title: 'RECF Oyun Kılavuzları', href: '/kaynaklar/oyun-kilavuzlari' },
+            { title: 'Programlama ve Yazılım Kaynakları', href: '/kaynaklar/yazilim' },
+            { title: 'Eğitim ve Öğrenme Kaynakları', href: '/kaynaklar/mufredat' },
             { title: 'Teknik Belgeler', href: '/kaynaklar/teknik-belgeler' },
-            { title: 'Jüri ve Değerlendirme', href: '/kaynaklar/juri' }
+            { title: 'RECF Jüri ve Değerlendirme Süreci', href: '/kaynaklar/juri' }
         ]
     },
     duyurular: {
@@ -81,10 +79,10 @@ const menuItems = {
         ]
     },
     iletisim: {
-        title: 'İletişim',
+        title: 'RECF Türkiye İletişim',
         items: [
+            { title: 'RECF Türkiye İletişim Formu', href: '/iletisim/form' },
             { title: 'Bilgiler & Adres', href: '/iletisim/bilgiler' },
-            { title: 'Bize Ulaşın', href: '/iletisim/form' },
             { title: 'SSS', href: '/iletisim/sss' }
         ]
     }

@@ -1,94 +1,145 @@
-import { Metadata } from 'next'
-import { Navbar } from '@/components/Navbar'
+'use client'
+
+import React, { useState } from 'react'
 import { CorporateHero } from '@/components/CorporateHero'
-import { getAllGameRules, getAllManualDownloads } from '@/lib/sanity-queries'
-import OyunKilavuzlariClient from '@/components/OyunKilavuzlariClient'
-import { ManualDownloadsSection } from '@/components/ManualDownloadsSection'
-import {
-    Facebook, Twitter, Instagram, Linkedin, Youtube
-} from 'lucide-react'
+import { Navbar } from '@/components/Navbar'
+import { Button } from '@/components/ui/button'
+import { Book, MessageCircleQuestion, ClipboardCheck, Wrench, ExternalLink, Download, FileText, AlertCircle, FileStack } from 'lucide-react'
 
-export const metadata: Metadata = {
-    title: 'Oyun Kılavuzları | VEX Türkiye',
-    description: 'VEX yarışma kurallarını Türkçe ve İngilizce olarak keşfedin. VEX 123, GO, IQ, V5, U ve AI platformlarına özel kurallar.',
-}
+const manualSections = [
+    {
+        id: 'engage',
+        program: 'RECF Engage (Tier Takeover)',
+        version: 'Versiyon 1.0',
+        date: '1 Mayıs 2026',
+        theme: 'red',
+        bg: 'bg-red-50',
+        border: 'border-red-200',
+        iconColor: 'text-red-600',
+        links: [
+            { title: 'Oyun Kılavuzu (Game Manual)', url: 'https://recf.org/documents', icon: <Book className="w-5 h-5" />, primary: true },
+            { title: 'Resmi Soru-Cevap (Q&A)', url: 'https://www.robotevents.com/', icon: <MessageCircleQuestion className="w-5 h-5" />, primary: false },
+            { title: 'Saha Muayene Formu (Inspection Checklist)', url: 'https://recf.org/documents', icon: <ClipboardCheck className="w-5 h-5" />, primary: false },
+            { title: 'İzin Verilen Parçalar (Legal Parts)', url: 'https://recf.org/documents', icon: <Wrench className="w-5 h-5" />, primary: false }
+        ]
+    },
+    {
+        id: 'achieve',
+        program: 'RECF Achieve & Inspire (Pinnacle)',
+        version: 'Versiyon 1.0',
+        date: '5 Mayıs 2026',
+        theme: 'blue',
+        bg: 'bg-blue-50',
+        border: 'border-blue-200',
+        iconColor: 'text-blue-600',
+        links: [
+            { title: 'Oyun Kılavuzu (Game Manual)', url: 'https://recf.org/documents', icon: <Book className="w-5 h-5" />, primary: true },
+            { title: 'Resmi Soru-Cevap (Q&A)', url: 'https://www.robotevents.com/', icon: <MessageCircleQuestion className="w-5 h-5" />, primary: false },
+            { title: 'Saha Muayene Formu (Inspection Checklist)', url: 'https://recf.org/documents', icon: <ClipboardCheck className="w-5 h-5" />, primary: false },
+            { title: 'İzin Verilen Parçalar (Legal Parts)', url: 'https://recf.org/documents', icon: <Wrench className="w-5 h-5" />, primary: false }
+        ]
+    },
+    {
+        id: 'adc',
+        program: 'Aerial Drone Competition (ADC / ADC Pro)',
+        version: 'Versiyon 1.0',
+        date: '15 Mayıs 2026',
+        theme: 'emerald',
+        bg: 'bg-emerald-50',
+        border: 'border-emerald-200',
+        iconColor: 'text-emerald-600',
+        links: [
+            { title: 'Oyun Kılavuzu (Game Manual)', url: 'https://recf.org/documents', icon: <Book className="w-5 h-5" />, primary: true },
+            { title: 'Resmi Soru-Cevap (Q&A)', url: 'https://www.robotevents.com/', icon: <MessageCircleQuestion className="w-5 h-5" />, primary: false },
+            { title: 'Saha Muayene Formu (Inspection Checklist)', url: 'https://recf.org/documents', icon: <ClipboardCheck className="w-5 h-5" />, primary: false },
+            { title: 'Drone ve Parça Standartları', url: 'https://recf.org/documents', icon: <Wrench className="w-5 h-5" />, primary: false }
+        ]
+    }
+]
 
-export default async function OyunKilavuzlariPage() {
-    // Fetch data from Sanity on the server
-    const [rules, manualDownloads] = await Promise.all([
-        getAllGameRules(),
-        getAllManualDownloads()
-    ])
+export default function OyunKilavuzlariPage() {
+    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
 
     return (
-        <div className="min-h-screen bg-white text-foreground">
-            <Navbar />
-
+        <div className="min-h-screen bg-gray-50 text-foreground">
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
             <div className="h-20" />
+
             <CorporateHero
-                title="Oyun Kılavuzları"
-                subtitle="VEX yarışma kurallarını Türkçe ve İngilizce olarak keşfedin"
+                title="RECF Oyun Kılavuzları"
+                subtitle="RECF Engage, Achieve, Inspire, ADC ve ADC Pro resmi oyun dokümanları ve kuralları"
             />
 
-            {/* Client Component with all interactive features */}
-            <OyunKilavuzlariClient initialRules={rules} />
-
-            {/* Disclaimer */}
-            <div className="container mx-auto px-6 max-w-7xl py-6">
-                <p className="text-xs text-gray-500 text-center">
-                    Burada yazılan kural açıklamaları özet niteliğindedir. Kaynak olarak kullanılamaz. Kaynak olarak resmi dokümanları inceleyiniz.
-                </p>
-            </div>
-
-            {/* Dynamic Download Section */}
-            <ManualDownloadsSection downloads={manualDownloads} />
-
-            {/* Footer */}
-            <footer className="bg-gray-900 text-white py-16">
+            <section className="py-16 bg-white min-h-[50vh]">
                 <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid md:grid-cols-4 gap-12">
-                        <div className="md:col-span-1">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">VEX</div>
-                                <div><div className="text-lg font-bold">VEX TÜRKİYE</div><div className="text-xs text-gray-400">Robotics Competition</div></div>
-                            </div>
-                            <div className="flex gap-4">
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Instagram className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Youtube className="w-5 h-5" /></a>
-                            </div>
-                        </div>
+                    
+                    {/* Disclaimer Panel */}
+                    <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 mb-16 flex gap-4 items-start shadow-sm max-w-4xl mx-auto">
+                        <AlertCircle className="w-8 h-8 text-amber-600 shrink-0 mt-1" />
                         <div>
-                            <h3 className="text-lg font-semibold mb-6">Kaynaklar</h3>
-                            <ul className="space-y-3">
-                                <li><a href="/kaynaklar/oyun-kilavuzlari" className="text-gray-400 hover:text-primary transition-colors">Oyun Kılavuzları</a></li>
-                                <li><a href="/kaynaklar/yazilim" className="text-gray-400 hover:text-primary transition-colors">VEXcode</a></li>
-                                <li><a href="/kaynaklar/mufredat" className="text-gray-400 hover:text-primary transition-colors">Müfredatlar</a></li>
-                                <li><a href="/kaynaklar/juri" className="text-gray-400 hover:text-primary transition-colors">Jüri & Değerlendirme</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">Yarışmalar</h3>
-                            <ul className="space-y-3">
-                                <li><a href="/yarismalar/etkinlik-takvimi" className="text-gray-400 hover:text-primary transition-colors">Etkinlik Takvimi</a></li>
-                                <li><a href="/yarismalar/sonuclar" className="text-gray-400 hover:text-primary transition-colors">Sonuçlar</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">İletişim</h3>
-                            <ul className="space-y-3 text-gray-400">
-                                <li>info@vexturkiye.com</li>
-                                <li>+90 (212) 000 00 00</li>
-                            </ul>
+                            <h4 className="font-bold text-amber-900 mb-2 text-lg">Önemli Uyarı: Resmi Kaynaklar</h4>
+                            <p className="text-amber-800 leading-relaxed text-sm md:text-base">
+                                Aşağıda sunulan kılavuzlar, 2026-2027 sezonu yarışmaları için resmi kuralları içerir. Bu kurallar sezon içerisinde "Version" güncellemeleri alabilir. 
+                                <strong className="block mt-2 font-bold text-amber-900 underline decoration-amber-300 decoration-2 underline-offset-2">
+                                    Yerel çeviriler veya kurallar arasında uyuşmazlık çıkması durumunda her zaman İngilizce Orijinal (Global) Oyun Kılavuzu (Game Manual) geçerlidir.
+                                </strong>
+                            </p>
                         </div>
                     </div>
-                    <div className="pt-8 mt-12 border-t border-gray-800">
-                        <p className="text-sm text-gray-500 text-center">© 2024 VEX Türkiye. Tüm hakları saklıdır.</p>
+
+                    <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mb-16">
+                        {manualSections.map((section) => (
+                            <div key={section.id} className={`rounded-3xl border flex flex-col overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-white ${section.border}`}>
+                                
+                                {/* Header */}
+                                <div className={`p-8 pb-6 border-b ${section.bg} ${section.border}`}>
+                                    <div className={`w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm ${section.iconColor}`}>
+                                        <FileStack className="w-8 h-8" />
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">{section.program}</h3>
+                                    <div className="flex items-center gap-4 text-sm font-medium text-gray-700 bg-white/60 p-3 rounded-xl inline-flex">
+                                        <div className="flex items-center gap-2">
+                                            <FileText className="w-4 h-4" />
+                                            {section.version}
+                                        </div>
+                                        <div className="w-1 h-1 rounded-full bg-gray-400" />
+                                        <div className="flex items-center gap-2">
+                                            Son Güncelleme: {section.date}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Links */}
+                                <div className="p-8 flex-grow flex flex-col gap-4">
+                                    {section.links.map((link, i) => (
+                                        <a 
+                                            key={i} 
+                                            href={link.url} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer" 
+                                            className={`flex items-center justify-between p-4 rounded-xl transition-all ${
+                                                link.primary 
+                                                    ? `bg-${section.theme}-600 text-white hover:bg-${section.theme}-700 shadow-md` 
+                                                    : 'bg-gray-50 text-gray-800 hover:bg-gray-100 border border-gray-200'
+                                            }`}
+                                        >
+                                            <div className="flex items-center gap-3 font-semibold">
+                                                <div className={`${link.primary ? 'text-white/90' : 'text-gray-500'}`}>
+                                                    {link.icon}
+                                                </div>
+                                                {link.title}
+                                            </div>
+                                            <ExternalLink className={`w-4 h-4 ${link.primary ? 'text-white/70' : 'text-gray-400'}`} />
+                                        </a>
+                                    ))}
+                                </div>
+
+                            </div>
+                        ))}
                     </div>
+
                 </div>
-            </footer>
+            </section>
         </div>
     )
 }

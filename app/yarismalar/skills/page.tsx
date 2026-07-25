@@ -1,333 +1,111 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
-import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Navbar } from '@/components/Navbar'
+import React, { useState } from 'react'
 import { CorporateHero } from '@/components/CorporateHero'
+import { Navbar } from '@/components/Navbar'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import {
-    Facebook, Twitter, Instagram, Linkedin, Youtube,
-    Search, Medal, MapPin, X, ArrowUpDown, Trophy,
-    Gamepad2, Bot, TrendingUp
-} from 'lucide-react'
+import { Filter, Trophy, ExternalLink, ShieldCheck, Calculator, AlertCircle, Gamepad2, Code2 } from 'lucide-react'
 
-// Robot Skills data
-const skillsData = [
-    { id: 1, rank: 1, team: '1234A', teamName: 'Phoenix Robotics', city: 'Ankara', program: 'VRC', driverSkills: 85, progSkills: 92, combined: 177 },
-    { id: 2, rank: 2, team: '5678B', teamName: 'Robo Eagles', city: 'İstanbul', program: 'VRC', driverSkills: 78, progSkills: 95, combined: 173 },
-    { id: 3, rank: 3, team: '9012C', teamName: 'Tech Titans', city: 'Ankara', program: 'VRC', driverSkills: 88, progSkills: 82, combined: 170 },
-    { id: 4, rank: 4, team: '3456D', teamName: 'Iron Giants', city: 'İzmir', program: 'VRC', driverSkills: 82, progSkills: 85, combined: 167 },
-    { id: 5, rank: 5, team: '7890E', teamName: 'Cyber Wolves', city: 'İstanbul', program: 'VRC', driverSkills: 79, progSkills: 86, combined: 165 },
-    { id: 6, rank: 6, team: '2345F', teamName: 'Storm Breakers', city: 'İstanbul', program: 'VRC', driverSkills: 75, progSkills: 88, combined: 163 },
-    { id: 7, rank: 7, team: '6789G', teamName: 'Quantum Leap', city: 'Ankara', program: 'VRC', driverSkills: 80, progSkills: 78, combined: 158 },
-    { id: 8, rank: 8, team: '1357H', teamName: 'Binary Builders', city: 'Bursa', program: 'VRC', driverSkills: 76, progSkills: 80, combined: 156 },
-    { id: 9, rank: 1, team: '2468A', teamName: 'Mini Makers', city: 'İstanbul', program: 'IQ', driverSkills: 65, progSkills: 72, combined: 137 },
-    { id: 10, rank: 2, team: '1359B', teamName: 'Young Engineers', city: 'İstanbul', program: 'IQ', driverSkills: 62, progSkills: 70, combined: 132 },
-    { id: 11, rank: 3, team: '2460C', teamName: 'Future Stars', city: 'Ankara', program: 'IQ', driverSkills: 58, progSkills: 68, combined: 126 },
-    { id: 12, rank: 4, team: '3571D', teamName: 'Bright Minds', city: 'İzmir', program: 'IQ', driverSkills: 55, progSkills: 65, combined: 120 },
-]
+// Veri gelene kadar liste boş kalacak
+const soloRankings: any[] = []
 
-const cities = ['Tümü', 'Ankara', 'İstanbul', 'İzmir', 'Bursa']
-const programs = ['Tümü', 'VRC', 'IQ']
-
-export default function SkillsPage() {
+export default function SoloSiralamalariPage() {
     const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
-    const [searchQuery, setSearchQuery] = useState('')
-    const [selectedCity, setSelectedCity] = useState('Tümü')
-    const [selectedProgram, setSelectedProgram] = useState('Tümü')
-    const [sortField, setSortField] = useState<'combined' | 'driverSkills' | 'progSkills'>('combined')
-    const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc')
-
-    const filteredResults = useMemo(() => {
-        let results = [...skillsData]
-
-        if (searchQuery) {
-            const query = searchQuery.toLowerCase()
-            results = results.filter(r =>
-                r.team.toLowerCase().includes(query) ||
-                r.teamName.toLowerCase().includes(query)
-            )
-        }
-
-        if (selectedCity !== 'Tümü') {
-            results = results.filter(r => r.city === selectedCity)
-        }
-
-        if (selectedProgram !== 'Tümü') {
-            results = results.filter(r => r.program === selectedProgram)
-        }
-
-        results.sort((a, b) => {
-            const comparison = a[sortField] - b[sortField]
-            return sortOrder === 'asc' ? comparison : -comparison
-        })
-
-        return results.map((r, i) => ({ ...r, displayRank: i + 1 }))
-    }, [searchQuery, selectedCity, selectedProgram, sortField, sortOrder])
-
-    const toggleSort = (field: 'combined' | 'driverSkills' | 'progSkills') => {
-        if (sortField === field) {
-            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
-        } else {
-            setSortField(field)
-            setSortOrder('desc')
-        }
-    }
-
-    const hasActiveFilters = searchQuery || selectedCity !== 'Tümü' || selectedProgram !== 'Tümü'
 
     return (
-        <div className="min-h-screen bg-white text-foreground">
+        <div className="min-h-screen bg-gray-50 text-foreground">
             <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
-
             <div className="h-20" />
+
             <CorporateHero
-                title="Robot Skills Sıralaması"
-                subtitle="Türkiye geneli Driver ve Programming Skills sıralaması"
+                title="Solo Sıralamaları"
+                subtitle="RECF Türkiye Solo Driving ve Solo Coding performans sıralamaları"
             />
 
-            {/* Hero Stats */}
-            <section className="py-8 bg-gradient-to-r from-primary to-red-700">
+            <section className="py-12 bg-white min-h-[50vh]">
                 <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid grid-cols-3 gap-6 text-center text-white">
-                        <div>
-                            <Gamepad2 className="w-8 h-8 mx-auto mb-2 opacity-80" />
-                            <div className="text-2xl md:text-3xl font-bold">Driver Skills</div>
-                            <p className="text-sm text-white/70">60 saniye sürücü kontrolü</p>
+                    
+                    {/* Filters */}
+                    <div className="flex flex-col md:flex-row gap-4 mb-12 border-b border-gray-100 pb-8">
+                        <div className="w-full md:w-64 relative">
+                            <Filter className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                            <select disabled className="w-full pl-12 pr-4 h-14 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium appearance-none outline-none cursor-not-allowed text-gray-500">
+                                <option>Program Seçin (Engage, Achieve...)</option>
+                            </select>
                         </div>
-                        <div>
-                            <Bot className="w-8 h-8 mx-auto mb-2 opacity-80" />
-                            <div className="text-2xl md:text-3xl font-bold">Programming</div>
-                            <p className="text-sm text-white/70">60 saniye tam otonom</p>
-                        </div>
-                        <div>
-                            <TrendingUp className="w-8 h-8 mx-auto mb-2 opacity-80" />
-                            <div className="text-2xl md:text-3xl font-bold">Combined</div>
-                            <p className="text-sm text-white/70">Toplam dünya sıralaması</p>
+                        <div className="w-full md:w-64 relative">
+                            <select disabled className="w-full px-4 h-14 bg-gray-50 border border-gray-200 rounded-xl text-sm font-medium outline-none cursor-not-allowed text-gray-500">
+                                <option>Yaş Kategorisi (U12, U15...)</option>
+                            </select>
                         </div>
                     </div>
+
+                    {/* Explanation */}
+                    <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6 mb-12 flex flex-col sm:flex-row gap-4 items-start">
+                        <Calculator className="w-6 h-6 text-blue-600 shrink-0 mt-1" />
+                        <div>
+                            <h4 className="font-bold text-blue-900 mb-2">Combined Solo Ranking (Birleşik Solo Sıralaması) Mantığı</h4>
+                            <p className="text-blue-800 text-sm leading-relaxed">
+                                RECF etkinliklerinde takımlar, "Solo Driving Matches" (Sürücü Kontrollü) ve "Solo Coding Matches" (Otonom/Kodlama) olmak üzere iki farklı solo beceri mücadelesine katılır. 
+                                Bir takımın genel sıralama puanı (Combined Score), etkinlikteki en yüksek Solo Driving skoru ile en yüksek Solo Coding skorunun toplamıdır. Eşitlik durumunda, en yüksek ikinci kodlama skoru gibi tie-breaker (eşitlik bozucu) kuralları uygulanır.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Empty State / Not Published Yet */}
+                    {soloRankings.length === 0 ? (
+                        <div className="bg-orange-50 border border-orange-100 rounded-3xl p-12 text-center max-w-4xl mx-auto mb-20 relative overflow-hidden">
+                            <div className="absolute top-0 left-0 w-64 h-64 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 transform -translate-x-1/2 -translate-y-1/2" />
+                            <div className="relative z-10">
+                                <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 text-orange-600 shadow-inner">
+                                    <AlertCircle className="w-10 h-10" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-gray-900 mb-4">Solo Sıralamaları Henüz Oluşmadı</h3>
+                                <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                                    2026-2027 sezonuna ait bölgesel turnuvalar henüz tamamlanmadığı için güncel RECF Türkiye solo sıralama listesi boş durumdadır. Takımların resmi skorları, etkinlikler tamamlandıkça doğrudan RECFevents veritabanından çekilerek burada yayımlanacaktır.
+                                </p>
+                                <a href="https://www.recfevents.org/" target="_blank" rel="noopener noreferrer">
+                                    <Button className="bg-orange-600 hover:bg-orange-700 text-white h-12 px-6 rounded-xl shadow-lg shadow-orange-600/20 font-bold">
+                                        RECFevents'teki Sonuçları İncele
+                                        <ExternalLink className="w-5 h-5 ml-2" />
+                                    </Button>
+                                </a>
+                            </div>
+                        </div>
+                    ) : (
+                        <div>
+                            {/* Content will be mapped here */}
+                        </div>
+                    )}
+                    
+                    {/* Structure UI Placeholders (Faded) */}
+                    <div className="opacity-40 pointer-events-none select-none">
+                        <div className="flex items-center gap-2 mb-6 mt-16">
+                            <ShieldCheck className="w-6 h-6 text-gray-400" />
+                            <h2 className="text-2xl font-bold text-gray-400">Combined Solo Ranking (Genel Sıralama Tablosu)</h2>
+                        </div>
+                        <div className="h-48 bg-gray-50 rounded-xl border border-gray-200 mb-10 border-dashed flex items-center justify-center text-gray-400">Birleşik Sıralama Tablosu Bekleniyor</div>
+
+                        <div className="grid md:grid-cols-2 gap-8 mb-10">
+                            <div>
+                                <div className="flex items-center gap-2 mb-6">
+                                    <Gamepad2 className="w-6 h-6 text-gray-400" />
+                                    <h2 className="text-2xl font-bold text-gray-400">Solo Driving Scores</h2>
+                                </div>
+                                <div className="h-32 bg-gray-50 rounded-xl border border-gray-200 border-dashed flex items-center justify-center text-gray-400">Sürüş Skorları Tablosu</div>
+                            </div>
+                            <div>
+                                <div className="flex items-center gap-2 mb-6">
+                                    <Code2 className="w-6 h-6 text-gray-400" />
+                                    <h2 className="text-2xl font-bold text-gray-400">Solo Coding Scores</h2>
+                                </div>
+                                <div className="h-32 bg-gray-50 rounded-xl border border-gray-200 border-dashed flex items-center justify-center text-gray-400">Kodlama Skorları Tablosu</div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
-
-            {/* Results Section */}
-            <section className="py-12 md:py-16 bg-white">
-                <div className="container mx-auto px-6 max-w-7xl">
-
-                    {/* Search and Filters */}
-                    <div className="mb-8">
-                        <div className="flex flex-col md:flex-row gap-4">
-                            <div className="relative flex-1">
-                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                                <Input
-                                    placeholder="Takım numarası veya ismi ara..."
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="pl-10 h-12 border-gray-300"
-                                />
-                            </div>
-                            <div className="flex gap-2">
-                                {programs.map(program => (
-                                    <button
-                                        key={program}
-                                        onClick={() => setSelectedProgram(program)}
-                                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${selectedProgram === program
-                                                ? 'bg-primary text-white'
-                                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                                            }`}
-                                    >
-                                        {program}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* City filter */}
-                        <div className="flex flex-wrap gap-2 mt-4">
-                            {cities.map(city => (
-                                <button
-                                    key={city}
-                                    onClick={() => setSelectedCity(city)}
-                                    className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${selectedCity === city
-                                            ? 'bg-gray-900 text-white'
-                                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                                        }`}
-                                >
-                                    {city}
-                                </button>
-                            ))}
-                            {hasActiveFilters && (
-                                <button
-                                    onClick={() => { setSearchQuery(''); setSelectedCity('Tümü'); setSelectedProgram('Tümü'); }}
-                                    className="text-sm text-primary hover:underline ml-2"
-                                >
-                                    Filtreleri Temizle
-                                </button>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* Skills Table */}
-                    <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
-                        <div className="overflow-x-auto">
-                            <table className="w-full">
-                                <thead className="bg-gray-50 border-b border-gray-200">
-                                    <tr>
-                                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Sıra</th>
-                                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Takım</th>
-                                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Şehir</th>
-                                        <th className="px-6 py-4 text-left">
-                                            <button onClick={() => toggleSort('driverSkills')} className="flex items-center gap-1 text-sm font-semibold text-gray-900 hover:text-primary">
-                                                <Gamepad2 className="w-4 h-4" />
-                                                Driver
-                                                <ArrowUpDown className="w-3 h-3" />
-                                            </button>
-                                        </th>
-                                        <th className="px-6 py-4 text-left">
-                                            <button onClick={() => toggleSort('progSkills')} className="flex items-center gap-1 text-sm font-semibold text-gray-900 hover:text-primary">
-                                                <Bot className="w-4 h-4" />
-                                                Programming
-                                                <ArrowUpDown className="w-3 h-3" />
-                                            </button>
-                                        </th>
-                                        <th className="px-6 py-4 text-left">
-                                            <button onClick={() => toggleSort('combined')} className="flex items-center gap-1 text-sm font-semibold text-gray-900 hover:text-primary">
-                                                <Medal className="w-4 h-4" />
-                                                Toplam
-                                                <ArrowUpDown className="w-3 h-3" />
-                                            </button>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <AnimatePresence>
-                                        {filteredResults.map((result, index) => (
-                                            <motion.tr
-                                                key={result.id}
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                transition={{ delay: index * 0.03 }}
-                                                className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
-                                            >
-                                                <td className="px-6 py-4">
-                                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${result.displayRank === 1 ? 'bg-yellow-100 text-yellow-700' :
-                                                            result.displayRank === 2 ? 'bg-gray-200 text-gray-600' :
-                                                                result.displayRank === 3 ? 'bg-orange-100 text-orange-700' :
-                                                                    'bg-gray-100 text-gray-500'
-                                                        }`}>
-                                                        {result.displayRank}
-                                                    </div>
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    <div className="flex items-center gap-3">
-                                                        <div>
-                                                            <span className="font-mono font-bold text-primary">{result.team}</span>
-                                                            <span className="text-gray-600 ml-2">{result.teamName}</span>
-                                                        </div>
-                                                        <span className={`px-2 py-0.5 rounded text-xs font-medium ${result.program === 'VRC' ? 'bg-red-100 text-red-700' : 'bg-orange-100 text-orange-700'
-                                                            }`}>
-                                                            {result.program}
-                                                        </span>
-                                                    </div>
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    <span className="flex items-center gap-1 text-gray-600 text-sm">
-                                                        <MapPin className="w-3 h-3" />
-                                                        {result.city}
-                                                    </span>
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    <div className="flex items-center gap-2">
-                                                        <div className="w-16 bg-gray-200 rounded-full h-2 overflow-hidden">
-                                                            <div
-                                                                className="h-full bg-blue-500 rounded-full"
-                                                                style={{ width: `${(result.driverSkills / 100) * 100}%` }}
-                                                            />
-                                                        </div>
-                                                        <span className="font-mono text-sm font-medium text-gray-900">{result.driverSkills}</span>
-                                                    </div>
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    <div className="flex items-center gap-2">
-                                                        <div className="w-16 bg-gray-200 rounded-full h-2 overflow-hidden">
-                                                            <div
-                                                                className="h-full bg-green-500 rounded-full"
-                                                                style={{ width: `${(result.progSkills / 100) * 100}%` }}
-                                                            />
-                                                        </div>
-                                                        <span className="font-mono text-sm font-medium text-gray-900">{result.progSkills}</span>
-                                                    </div>
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    <span className="px-3 py-1 bg-primary/10 text-primary font-mono font-bold rounded-lg">
-                                                        {result.combined}
-                                                    </span>
-                                                </td>
-                                            </motion.tr>
-                                        ))}
-                                    </AnimatePresence>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        {filteredResults.length === 0 && (
-                            <div className="text-center py-12">
-                                <p className="text-gray-500">Sonuç bulunamadı.</p>
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="mt-4 flex justify-between items-center">
-                        <span className="text-sm text-gray-500">{filteredResults.length} takım listelendi</span>
-                        <Link href="/yarismalar/sonuclar">
-                            <Button variant="outline" className="border-gray-300">
-                                Turnuva Sonuçları
-                                <Trophy className="w-4 h-4 ml-2" />
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-            </section>
-
-            {/* Footer */}
-            <footer className="bg-gray-900 text-white py-16">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid md:grid-cols-4 gap-12">
-                        <div className="md:col-span-1">
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">RECF</div>
-                                <div><div className="text-lg font-bold">RECF TÜRKİYE</div><div className="text-xs text-gray-400">Türkiye Temsilcisi: Intechne Teknoloji</div></div>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">Yarışmalar</h3>
-                            <ul className="space-y-3 text-sm">
-                                <li><a href="/yarismalar/etkinlik-takvimi" className="text-gray-400 hover:text-primary transition-colors">Etkinlik Takvimi</a></li>
-                                <li><a href="/yarismalar/sonuclar" className="text-gray-400 hover:text-primary transition-colors">Turnuva Sonuçları</a></li>
-                                <li><a href="/yarismalar/skills" className="text-gray-400 hover:text-primary transition-colors">Robot Skills</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">Kurumsal</h3>
-                            <ul className="space-y-3 text-sm">
-                                <li><a href="/kurumsal/hakkimizda" className="text-gray-400 hover:text-primary transition-colors">Hakkımızda</a></li>
-                                <li><a href="/kurumsal/biz-kimiz" className="text-gray-400 hover:text-primary transition-colors">Biz Kimiz?</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">İletişim</h3>
-                            <ul className="space-y-3 text-gray-400 text-sm">
-                                <li><strong>Yerel Operasyon:</strong> Intechne Teknoloji</li>
-                                <li>info@recfturkiye.org</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="pt-8 mt-12 border-t border-gray-800 text-center">
-                        <p className="text-sm text-gray-500">© 2026 RECF Türkiye. Türkiye Temsilcisi ve Yerel Operasyon Yürütücüsü: Intechne Teknoloji. Tüm hakları saklıdır.</p>
-                    </div>
-                </div>
-            </footer>
         </div>
     )
 }

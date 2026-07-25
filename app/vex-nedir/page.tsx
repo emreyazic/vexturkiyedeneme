@@ -234,10 +234,10 @@ export default function RecfProgramsPage() {
                                     <Link href="/vex-nedir/vex-u" className="hover:text-primary transition-colors">RECF Inspire</Link>
                                 </li>
                                 <li>
-                                    <Link href="/kaynaklar/mufredat" className="hover:text-primary transition-colors">Müfredatlar</Link>
+                                    <Link href="/yarismalar/sonuclar" className="hover:text-primary transition-colors">RECF Türkiye Sonuçları</Link>
                                 </li>
                                 <li>
-                                    <Link href="/kaynaklar/yazilim" className="hover:text-primary transition-colors">Yazılım (VEXcode)</Link>
+                                    <Link href="/kaynaklar/yazilim" className="hover:text-primary transition-colors">Programlama ve Yazılım Kaynakları</Link>
                                 </li>
                             </ul>
                         </div>
@@ -247,10 +247,10 @@ export default function RecfProgramsPage() {
                             <h3 className="text-red-400 font-bold mb-6 text-lg tracking-wide uppercase">KATILIM</h3>
                             <ul className="space-y-3 text-sm">
                                 <li>
-                                    <Link href="/yarismalar/etkinlik-takvimi/tum-etkinlikler" className="hover:text-primary transition-colors">Tüm Etkinlikler</Link>
+                                    <Link href="/yarismalar/etkinlik-takvimi" className="hover:text-primary transition-colors">RECF Türkiye Etkinlik Takvimi</Link>
                                 </li>
                                 <li>
-                                    <Link href="/yarismalar/sezon-temasi" className="hover:text-primary transition-colors">Sezon Teması</Link>
+                                    <Link href="/yarismalar/sezon-temasi" className="hover:text-primary transition-colors">2026–2027 RECF Sezon Oyunları</Link>
                                 </li>
                                 <li>
                                     <Link href="/takimlar/nasil-kurulur" className="hover:text-primary transition-colors">RECF Takımı Nasıl Kurulur?</Link>
@@ -259,7 +259,7 @@ export default function RecfProgramsPage() {
                                     <Link href="/takimlar/kayit" className="hover:text-primary transition-colors">RECF Takım Kaydı</Link>
                                 </li>
                                 <li>
-                                    <Link href="/takimlar/mentor" className="hover:text-primary transition-colors">Mentor Desteği</Link>
+                                    <Link href="/takimlar/mentor" className="hover:text-primary transition-colors">Koç ve Mentor Merkezi</Link>
                                 </li>
                             </ul>
                         </div>

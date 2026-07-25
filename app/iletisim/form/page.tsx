@@ -7,405 +7,302 @@ import { Navbar } from '@/components/Navbar'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Button } from '@/components/ui/button'
 import {
-    Facebook, Twitter, Instagram, Linkedin, Youtube,
-    Send, User, Mail, MessageSquare, ChevronDown,
-    CheckCircle2, Bot, Sparkles, GraduationCap, Briefcase,
-    Heart, HelpCircle, Wrench, FileText
+    Send, User, Mail, Phone, Building, MessageSquare, ChevronDown,
+    CheckCircle2, Bot, Sparkles, HelpCircle, MapPin, ExternalLink,
+    ShieldCheck, AlertCircle
 } from 'lucide-react'
 
-// Subject options with routing info
+// Subject options specified in requirement
 const subjectOptions = [
-    {
-        id: 'student',
-        label: 'Öğrenci / Takım Üyesi',
-        icon: GraduationCap,
-        department: 'Eğitim Birimi',
-        color: '#00A651'
-    },
-    {
-        id: 'sponsor',
-        label: 'Sponsor Adayı',
-        icon: Briefcase,
-        department: 'Sponsorluk Birimi',
-        color: '#1E3A8A'
-    },
-    {
-        id: 'volunteer',
-        label: 'Gönüllü Olmak İstiyorum',
-        icon: Heart,
-        department: 'Gönüllü Koordinasyonu',
-        color: '#E31837'
-    },
-    {
-        id: 'technical',
-        label: 'Teknik Destek',
-        icon: Wrench,
-        department: 'Teknik Ekip',
-        color: '#F7941D'
-    },
-    {
-        id: 'press',
-        label: 'Basın / Medya',
-        icon: FileText,
-        department: 'İletişim Birimi',
-        color: '#7C3AED'
-    },
-    {
-        id: 'other',
-        label: 'Diğer',
-        icon: HelpCircle,
-        department: 'Genel Destek',
-        color: '#6B7280'
-    }
+    'Takım Kurma',
+    'Takım Kaydı',
+    'Etkinlik',
+    'Event Partner',
+    'Gönüllülük',
+    'Sponsorluk',
+    'Basın',
+    'Teknik Destek'
 ]
 
-// Success Animation Component
-function SuccessAnimation({ onComplete }: { onComplete: () => void }) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center"
-        >
-            <motion.div
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="bg-white rounded-3xl p-8 max-w-md mx-6 text-center shadow-2xl"
-            >
-                {/* Robot Animation */}
-                <motion.div
-                    initial={{ y: 20 }}
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 1, repeat: Infinity, repeatType: 'reverse' }}
-                    className="w-24 h-24 bg-gradient-to-br from-primary to-red-600 rounded-2xl mx-auto mb-6 flex items-center justify-center"
-                >
-                    <Bot className="w-12 h-12 text-white" />
-                </motion.div>
-
-                {/* Sparkles */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.4 }}
-                    className="flex justify-center gap-2 mb-4"
-                >
-                    <Sparkles className="w-6 h-6 text-yellow-500" />
-                    <Sparkles className="w-6 h-6 text-primary" />
-                    <Sparkles className="w-6 h-6 text-yellow-500" />
-                </motion.div>
-
-                <motion.h2
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                    className="text-2xl font-bold text-gray-900 mb-2"
-                >
-                    Robotumuz Mesajınızı Ulaştırdı!
-                </motion.h2>
-
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                    className="text-gray-600 mb-6"
-                >
-                    En kısa sürede size dönüş yapacağız. Teşekkürler!
-                </motion.p>
-
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                >
-                    <Button onClick={onComplete} className="bg-primary hover:bg-primary/90">
-                        <CheckCircle2 className="w-4 h-4 mr-2" />
-                        Tamam
-                    </Button>
-                </motion.div>
-            </motion.div>
-        </motion.div>
-    )
-}
-
-// Form Component
-function ContactForm() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-    })
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [showSuccess, setShowSuccess] = useState(false)
-    const [isSubjectOpen, setIsSubjectOpen] = useState(false)
-
-    const selectedSubject = subjectOptions.find(s => s.id === formData.subject)
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        setIsSubmitting(true)
-
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500))
-
-        setIsSubmitting(false)
-        setShowSuccess(true)
-    }
-
-    const resetForm = () => {
-        setFormData({ name: '', email: '', subject: '', message: '' })
-        setShowSuccess(false)
-    }
-
-    return (
-        <>
-            <AnimatePresence>
-                {showSuccess && <SuccessAnimation onComplete={resetForm} />}
-            </AnimatePresence>
-
-            <motion.form
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                onSubmit={handleSubmit}
-                className="bg-white rounded-3xl border border-gray-200 p-8 shadow-sm"
-            >
-                {/* Name */}
-                <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Adınız Soyadınız
-                    </label>
-                    <div className="relative">
-                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                        <input
-                            type="text"
-                            required
-                            value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
-                            placeholder="Ahmet Yılmaz"
-                        />
-                    </div>
-                </div>
-
-                {/* Email */}
-                <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                        E-posta Adresiniz
-                    </label>
-                    <div className="relative">
-                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                        <input
-                            type="email"
-                            required
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
-                            placeholder="ornek@email.com"
-                        />
-                    </div>
-                </div>
-
-                {/* Subject Selector */}
-                <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Konu
-                    </label>
-                    <div className="relative">
-                        <button
-                            type="button"
-                            onClick={() => setIsSubjectOpen(!isSubjectOpen)}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-xl text-left flex items-center justify-between focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
-                        >
-                            {selectedSubject ? (
-                                <span className="flex items-center gap-3">
-                                    <selectedSubject.icon className="w-5 h-5" style={{ color: selectedSubject.color }} />
-                                    {selectedSubject.label}
-                                </span>
-                            ) : (
-                                <span className="text-gray-400">Konu Seçiniz</span>
-                            )}
-                            <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform ${isSubjectOpen ? 'rotate-180' : ''}`} />
-                        </button>
-
-                        <AnimatePresence>
-                            {isSubjectOpen && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: -10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden z-20"
-                                >
-                                    {subjectOptions.map((option) => (
-                                        <button
-                                            key={option.id}
-                                            type="button"
-                                            onClick={() => {
-                                                setFormData({ ...formData, subject: option.id })
-                                                setIsSubjectOpen(false)
-                                            }}
-                                            className="w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-50 transition-colors text-left"
-                                        >
-                                            <option.icon className="w-5 h-5" style={{ color: option.color }} />
-                                            <div>
-                                                <div className="font-medium text-gray-900">{option.label}</div>
-                                                <div className="text-xs text-gray-500">→ {option.department}</div>
-                                            </div>
-                                        </button>
-                                    ))}
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </div>
-
-                    {/* Department routing info */}
-                    {selectedSubject && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            className="mt-2 px-3 py-2 bg-gray-50 rounded-lg text-sm"
-                        >
-                            <span className="text-gray-500">Mesajınız </span>
-                            <span className="font-medium" style={{ color: selectedSubject.color }}>
-                                {selectedSubject.department}
-                            </span>
-                            <span className="text-gray-500">&apos;ne iletilecektir.</span>
-                        </motion.div>
-                    )}
-                </div>
-
-                {/* Message */}
-                <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Mesajınız
-                    </label>
-                    <div className="relative">
-                        <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-gray-400" />
-                        <textarea
-                            required
-                            value={formData.message}
-                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                            rows={5}
-                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all resize-none"
-                            placeholder="Mesajınızı buraya yazın..."
-                        />
-                    </div>
-                </div>
-
-                {/* Submit Button */}
-                <Button
-                    type="submit"
-                    disabled={isSubmitting || !formData.subject}
-                    className="w-full bg-primary hover:bg-primary/90 py-6 text-lg"
-                >
-                    {isSubmitting ? (
-                        <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                            className="w-6 h-6 border-2 border-white border-t-transparent rounded-full"
-                        />
-                    ) : (
-                        <>
-                            <Send className="w-5 h-5 mr-2" />
-                            Mesajı Gönder
-                        </>
-                    )}
-                </Button>
-            </motion.form>
-        </>
-    )
-}
-
-export default function FormPage() {
+export default function IletisimFormPage() {
     const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        phone: '',
+        organization: '',
+        subject: 'Takım Kurma',
+        message: '',
+        kvkkConsent: false
+    })
+    const [isSubmitted, setIsSubmitted] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault()
+        setErrorMessage('')
+
+        if (!formData.fullName || !formData.email || !formData.message) {
+            setErrorMessage('Lütfen zorunlu alanları (Ad Soyad, E-Posta, Mesaj) doldurunuz.')
+            return
+        }
+
+        if (!formData.kvkkConsent) {
+            setErrorMessage('Devam etmek için KVKK Aydınlatma Metni onayını kabul etmeniz gerekmektedir.')
+            return
+        }
+
+        setIsSubmitted(true)
+    }
 
     return (
-        <div className="min-h-screen bg-white text-foreground">
+        <div className="min-h-screen bg-gray-50 text-foreground">
             <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
-
             <div className="h-20" />
+
             <CorporateHero
-                title="Bize Ulaşın"
-                subtitle="Sorularınız için doğru birime yönlendirelim"
+                title="RECF Türkiye İletişim"
+                subtitle="Takım, etkinlik, gönüllülük, sponsorluk ve teknik destek talepleriniz için bize ulaşın."
             />
 
-            {/* Form Section */}
-            <section className="py-16 md:py-20 bg-gray-50">
-                <div className="container mx-auto px-6 max-w-2xl">
-                    <ContactForm />
-                </div>
-            </section>
-
-            {/* Alternative Contact */}
-            <section className="py-12 bg-white border-t border-gray-200">
-                <div className="container mx-auto px-6 max-w-4xl">
-                    <div className="text-center mb-8">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-2">Acil mi?</h2>
-                        <p className="text-gray-600">Aşağıdaki kanallardan da bize ulaşabilirsiniz</p>
-                    </div>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {[
-                            { icon: Mail, label: 'E-posta', value: 'info@recfturkiye.org' },
-                            { icon: MessageSquare, label: 'Temsilci', value: 'Intechne Teknoloji' },
-                            { icon: Instagram, label: 'Instagram', value: '@recfturkiye' },
-                            { icon: Linkedin, label: 'LinkedIn', value: 'RECF Türkiye' }
-                        ].map((item, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="bg-gray-50 rounded-xl p-4 text-center hover:bg-gray-100 transition-colors"
-                            >
-                                <item.icon className="w-6 h-6 text-primary mx-auto mb-2" />
-                                <div className="text-sm text-gray-500">{item.label}</div>
-                                <div className="font-medium text-gray-900">{item.value}</div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Footer */}
-            <footer className="bg-gray-900 text-white py-16">
+            <section className="py-16 bg-white min-h-[50vh]">
                 <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid md:grid-cols-4 gap-12">
-                        <div className="md:col-span-1">
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">RECF</div>
-                                <div><div className="text-lg font-bold">RECF TÜRKİYE</div><div className="text-xs text-gray-400">Türkiye Temsilcisi: Intechne Teknoloji</div></div>
+                    <div className="grid lg:grid-cols-12 gap-12">
+                        
+                        {/* Form Section (7 cols) */}
+                        <div className="lg:col-span-7 bg-gray-50 border border-gray-200 rounded-3xl p-8 md:p-10 shadow-sm">
+                            <h2 className="text-2xl font-bold text-gray-900 mb-2">İletişim Formu</h2>
+                            <p className="text-gray-600 text-sm mb-8">
+                                Aşağıdaki formu doldurarak talebinizi RECF Türkiye ekibine doğrudan iletebilirsiniz.
+                            </p>
+
+                            {isSubmitted ? (
+                                <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 text-center">
+                                    <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <CheckCircle2 className="w-8 h-8" />
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Mesajınız Alındı!</h3>
+                                    <p className="text-gray-600 mb-6">
+                                        Talebiniz ilgili birimimize iletilmiştir. En kısa sürede belirttiğiniz e-posta veya telefon üzerinden dönüş yapılacaktır.
+                                    </p>
+                                    <Button 
+                                        onClick={() => {
+                                            setIsSubmitted(false)
+                                            setFormData({ fullName: '', email: '', phone: '', organization: '', subject: 'Takım Kurma', message: '', kvkkConsent: false })
+                                        }}
+                                        className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl"
+                                    >
+                                        Yeni Mesaj Gönder
+                                    </Button>
+                                </div>
+                            ) : (
+                                <form onSubmit={handleSubmit} className="space-y-6">
+                                    {errorMessage && (
+                                        <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-xl text-sm flex items-center gap-3">
+                                            <AlertCircle className="w-5 h-5 shrink-0 text-red-600" />
+                                            {errorMessage}
+                                        </div>
+                                    )}
+
+                                    <div className="grid md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">
+                                                Ad Soyad *
+                                            </label>
+                                            <div className="relative">
+                                                <User className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                                                <input
+                                                    type="text"
+                                                    required
+                                                    value={formData.fullName}
+                                                    onChange={e => setFormData({ ...formData, fullName: e.target.value })}
+                                                    placeholder="Adınız ve Soyadınız"
+                                                    className="w-full pl-12 pr-4 h-13 bg-white border border-gray-200 rounded-xl text-sm outline-none focus:border-primary transition-colors"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">
+                                                E-Posta Adresi *
+                                            </label>
+                                            <div className="relative">
+                                                <Mail className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                                                <input
+                                                    type="email"
+                                                    required
+                                                    value={formData.email}
+                                                    onChange={e => setFormData({ ...formData, email: e.target.value })}
+                                                    placeholder="ornek@domain.com"
+                                                    className="w-full pl-12 pr-4 h-13 bg-white border border-gray-200 rounded-xl text-sm outline-none focus:border-primary transition-colors"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="grid md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">
+                                                Telefon Numarası
+                                            </label>
+                                            <div className="relative">
+                                                <Phone className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                                                <input
+                                                    type="tel"
+                                                    value={formData.phone}
+                                                    onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                                                    placeholder="+90 (5XX) XXX XX XX"
+                                                    className="w-full pl-12 pr-4 h-13 bg-white border border-gray-200 rounded-xl text-sm outline-none focus:border-primary transition-colors"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">
+                                                Kurum / Okul / Takım Adı
+                                            </label>
+                                            <div className="relative">
+                                                <Building className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                                                <input
+                                                    type="text"
+                                                    value={formData.organization}
+                                                    onChange={e => setFormData({ ...formData, organization: e.target.value })}
+                                                    placeholder="Okul veya Takım İsmi"
+                                                    className="w-full pl-12 pr-4 h-13 bg-white border border-gray-200 rounded-xl text-sm outline-none focus:border-primary transition-colors"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Subject Select Dropdown */}
+                                    <div>
+                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">
+                                            İletişim Konusu *
+                                        </label>
+                                        <div className="relative">
+                                            <select
+                                                value={formData.subject}
+                                                onChange={e => setFormData({ ...formData, subject: e.target.value })}
+                                                className="w-full px-4 h-13 bg-white border border-gray-200 rounded-xl text-sm font-medium outline-none focus:border-primary appearance-none transition-colors"
+                                            >
+                                                {subjectOptions.map(opt => (
+                                                    <option key={opt} value={opt}>
+                                                        {opt}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                            <ChevronDown className="w-5 h-5 absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                                        </div>
+                                    </div>
+
+                                    {/* Message Box */}
+                                    <div>
+                                        <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">
+                                            Mesajınız *
+                                        </label>
+                                        <textarea
+                                            required
+                                            rows={5}
+                                            value={formData.message}
+                                            onChange={e => setFormData({ ...formData, message: e.target.value })}
+                                            placeholder="Talebinizi detaylı olarak buraya yazabilirsiniz..."
+                                            className="w-full p-4 bg-white border border-gray-200 rounded-xl text-sm outline-none focus:border-primary transition-colors resize-none"
+                                        />
+                                    </div>
+
+                                    {/* KVKK Consent Checkbox */}
+                                    <div className="pt-2">
+                                        <label className="flex items-start gap-3 cursor-pointer">
+                                            <input
+                                                type="checkbox"
+                                                checked={formData.kvkkConsent}
+                                                onChange={e => setFormData({ ...formData, kvkkConsent: e.target.checked })}
+                                                className="mt-1 w-4 h-4 rounded text-primary focus:ring-primary border-gray-300"
+                                            />
+                                            <span className="text-xs text-gray-600 leading-relaxed">
+                                                6698 sayılı KVKK kapsamında kişisel verilerimin RECF Türkiye yetkili temsilcisi Intechne Teknoloji tarafından iletişim ve bilgilendirme amacıyla işlenmesini ve 
+                                                <Link href="/kurumsal/gonullu-olun" className="text-primary font-bold hover:underline mx-1">
+                                                    KVKK Aydınlatma Metni
+                                                </Link>
+                                                koşullarını kabul ediyorum. *
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <Button type="submit" className="w-full h-14 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl text-base shadow-lg shadow-primary/20">
+                                        <Send className="w-5 h-5 mr-2" />
+                                        Mesajı Gönder
+                                    </Button>
+                                </form>
+                            )}
+                        </div>
+
+                        {/* Official Contact Info Sidebar (5 cols) */}
+                        <div className="lg:col-span-5 flex flex-col justify-between">
+                            <div>
+                                <h2 className="text-2xl font-bold text-gray-900 mb-6">Resmi İletişim Kanalları</h2>
+
+                                <div className="space-y-6 mb-10">
+                                    <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex items-start gap-4">
+                                        <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                                            <Mail className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-gray-900 text-sm mb-1">Resmi E-Posta</h4>
+                                            <a href="mailto:info@recfturkiye.org" className="text-gray-600 text-sm hover:text-primary font-medium block">
+                                                info@recfturkiye.org
+                                            </a>
+                                            <a href="mailto:turkiye@recf.org" className="text-gray-600 text-sm hover:text-primary font-medium block">
+                                                turkiye@recf.org
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex items-start gap-4">
+                                        <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                                            <Phone className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-gray-900 text-sm mb-1">Telefon Destek Hattı</h4>
+                                            <a href="tel:+902129092310" className="text-gray-600 text-sm hover:text-primary font-medium">
+                                                +90 (212) 909 23 10
+                                            </a>
+                                            <p className="text-xs text-gray-500 mt-1">Hafta içi: 09:00 - 18:00 (Intechne Teknoloji)</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex items-start gap-4">
+                                        <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                                            <MapPin className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-gray-900 text-sm mb-1">RECF Türkiye Temsilciliği Adresi</h4>
+                                            <p className="text-gray-600 text-sm leading-relaxed">
+                                                Intechne Teknoloji - RECF Türkiye Temsilciliği<br />
+                                                Maslak Mah. Büyükdere Cad. No:237, Sarıyer / İstanbul
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-slate-900 text-white rounded-3xl p-8 shadow-md">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <ShieldCheck className="w-6 h-6 text-emerald-400" />
+                                        <h4 className="font-bold text-lg">Resmi İş Ortaklığı Bilgisi</h4>
+                                    </div>
+                                    <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                                        RECF Türkiye organizasyonları, küresel Robotics Education & Competition Foundation (RECF) yetkilendirmesiyle Intechne Teknoloji tarafından yürütülmektedir.
+                                    </p>
+                                    <div className="text-xs text-slate-400 border-t border-slate-800 pt-4">
+                                        Sosyal Medya: @recfturkiye | @intechnenet
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">İletişim</h3>
-                            <ul className="space-y-3">
-                                <li><a href="/iletisim/bilgiler" className="text-gray-400 hover:text-primary transition-colors">Bilgiler & Adres</a></li>
-                                <li><a href="/iletisim/form" className="text-gray-400 hover:text-primary transition-colors">Bize Ulaşın</a></li>
-                                <li><a href="/iletisim/sss" className="text-gray-400 hover:text-primary transition-colors">SSS</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">Yarışmalar</h3>
-                            <ul className="space-y-3">
-                                <li><a href="/yarismalar/etkinlik-takvimi" className="text-gray-400 hover:text-primary transition-colors">Etkinlik Takvimi</a></li>
-                                <li><a href="/yarismalar/sonuclar" className="text-gray-400 hover:text-primary transition-colors">Sonuçlar</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">İletişim Detayları</h3>
-                            <ul className="space-y-3 text-gray-400 text-sm">
-                                <li><strong>Yerel Operasyon:</strong> Intechne Teknoloji</li>
-                                <li>info@recfturkiye.org</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="pt-8 mt-12 border-t border-gray-800 text-center">
-                        <p className="text-sm text-gray-500">© 2026 RECF Türkiye. Türkiye Temsilcisi ve Yerel Operasyon Yürütücüsü: Intechne Teknoloji. Tüm hakları saklıdır.</p>
+
                     </div>
                 </div>
-            </footer>
+            </section>
         </div>
     )
 }

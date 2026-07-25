@@ -1,344 +1,252 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Button } from '@/components/ui/button'
 import {
-    Facebook, Twitter, Instagram, Linkedin, Youtube,
-    Filter, Clock, BookOpen, GraduationCap, Download,
-    ChevronRight, Blocks, Cog, Cpu, Star, CheckCircle2
+    BookOpen, Cpu, Code2, Compass, Navigation, GraduationCap,
+    ExternalLink, CheckCircle2, ChevronRight, Award, Shield,
+    FileText, Lightbulb, Users, ArrowRight
 } from 'lucide-react'
 
-// Lesson plans database
-const lessonPlans = [
+// Resource Categories Data
+const resourceCategories = [
     {
-        id: 1,
-        title: 'VEX GO ile Robotik Giriş',
-        description: 'Küçük mühendisler için robotik temelleri',
-        platform: 'GO',
-        duration: 45,
-        grade: '1-3. Sınıf',
-        topics: ['Basit Makineler', 'Dişliler', 'Hareket'],
-        stemLab: 'GO STEM Lab',
-        featured: true
+        id: 'robotics',
+        title: 'Robotik Temelleri',
+        subtitle: 'Mekanik, dişliler, şasi tasarımları ve donanım seçim ilkeleri',
+        icon: <Cpu className="w-8 h-8 text-blue-600" />,
+        color: 'bg-blue-50 border-blue-200 text-blue-900',
+        items: [
+            {
+                title: 'Basit Makineler & Dişli Oranları',
+                desc: 'Tork ve hız dengesi, dişli aktarım sistemleri ve tork hesaplama temelleri.',
+                tag: 'Mekanik'
+            },
+            {
+                title: 'Şasi ve Sürüş Sistemleri (Drivetrain)',
+                desc: 'Tank sürüşü, omni tekerlek konfigürasyonları ve holonomik hareket mekanizmaları.',
+                tag: 'Tasarım'
+            },
+            {
+                title: 'Kaldıraç ve Asansör Mekanizmaları',
+                desc: '4-bar, 6-bar ve kaskad doğrusal asansör sistemlerinin geometrik analizleri.',
+                tag: 'İleri Seviye'
+            }
+        ]
     },
     {
-        id: 2,
-        title: 'Dişli Oranları Keşfi',
-        description: 'Dişli mekaniklerini uygulamalı öğrenin',
-        platform: 'IQ',
-        duration: 45,
-        grade: '4-6. Sınıf',
-        topics: ['Dişli Oranları', 'Hız vs Tork', 'Hesaplamalar'],
-        stemLab: 'IQ STEM Lab'
+        id: 'programming',
+        title: 'Programlama Kaynakları',
+        subtitle: 'Blok tabanlı kodlamadan Python, C++ ve otonom algoritmalara geçiş',
+        icon: <Code2 className="w-8 h-8 text-indigo-600" />,
+        color: 'bg-indigo-50 border-indigo-200 text-indigo-900',
+        items: [
+            {
+                title: 'Blok Tabanlı Algoritma Mantığı',
+                desc: 'Döngüler, karar mekanizmaları ve sensör girdileriyle kontrol mantığı.',
+                tag: 'Başlangıç'
+            },
+            {
+                title: 'Python ve C++ ile Robot Kontrolü',
+                desc: 'Nesne yönelimli kodlama, kütüphane kullanımı ve gerçek zamanlı veri işleme.',
+                tag: 'Metin Tabanlı'
+            },
+            {
+                title: 'PID ve Otonom Kontrol Algoritmaları',
+                desc: 'Hassas konumlandırma, çizgi takip ve jiroskop destekli otonom rotalar.',
+                tag: 'Otonom Sistemler'
+            }
+        ]
     },
     {
-        id: 3,
-        title: 'Sensörler ve Otomasyon',
-        description: 'Robotunuzu akıllı hale getirin',
-        platform: 'IQ',
-        duration: 90,
-        grade: '5-7. Sınıf',
-        topics: ['Mesafe Sensörü', 'Renk Sensörü', 'Koşullu Mantık'],
-        stemLab: 'IQ STEM Lab'
+        id: 'design-process',
+        title: 'Mühendislik Tasarım Süreci & Defter Rehberi',
+        subtitle: 'Problem tanımlamadan prototiplemeye, Mühendislik Defteri standartları',
+        icon: <Compass className="w-8 h-8 text-emerald-600" />,
+        color: 'bg-emerald-50 border-emerald-200 text-emerald-900',
+        items: [
+            {
+                title: 'Mühendislik Tasarım Döngüsü (EDP)',
+                desc: 'Problem analizi, araştırma, beyin fırtınası, prototip ve test aşamaları.',
+                tag: 'Metodoloji'
+            },
+            {
+                title: 'Resmi Mühendislik Defteri Rehberi',
+                desc: 'Jüri değerlendirme kriterlerine (Rubric) uygun kronolojik belgeleme ve tarihli kayıtlar.',
+                tag: 'Belgeleme'
+            },
+            {
+                title: 'CAD ve 3D Modelleme Giriş',
+                desc: 'Özel parça tasarımı, simülasyon ve 3D baskı imalat standartları.',
+                tag: 'Dijital Tasarım'
+            }
+        ]
     },
     {
-        id: 4,
-        title: 'Otonom Programlama Temelleri',
-        description: 'İlk otonom rutininizi yazın',
-        platform: 'V5',
-        duration: 90,
-        grade: '7-10. Sınıf',
-        topics: ['VEXcode', 'Motor Kontrol', 'Timing'],
-        stemLab: 'V5 STEM Lab',
-        featured: true
+        id: 'drones',
+        title: 'Drone Pilotluğu ve Otonom Sistemler',
+        subtitle: 'Hava robotiği, emniyet protokolleri, manuel uçuş ve otonom görevler',
+        icon: <Navigation className="w-8 h-8 text-amber-600" />,
+        color: 'bg-amber-50 border-amber-200 text-amber-900',
+        items: [
+            {
+                title: 'Uçuş Güvenliği & Muayene Protokolleri',
+                desc: 'Pervane emniyeti, batarya yönetimi ve saha güvenlik standartları.',
+                tag: 'Güvenlik'
+            },
+            {
+                title: 'Hassas Pilotaj ve Engel Parkurları',
+                desc: 'Manuel uçuş teknikleri, 3D uzamsal algılama ve parkur tamamlama stratejileri.',
+                tag: 'Pilotluk'
+            },
+            {
+                title: 'Otonom Görsel Kodlama ve Uçuş',
+                desc: 'Optik akış sensörleri, görsel matrisler ve otonom rota planlaması.',
+                tag: 'Otonom Uçuş'
+            }
+        ]
     },
     {
-        id: 5,
-        title: 'PID Kontrol Sistemleri',
-        description: 'Hassas robot hareketi için PID öğrenin',
-        platform: 'V5',
-        duration: 90,
-        grade: '9-12. Sınıf',
-        topics: ['PID Teorisi', 'Tuning', 'İmplementasyon'],
-        stemLab: 'V5 STEM Lab'
-    },
-    {
-        id: 6,
-        title: 'Mühendislik Tasarım Süreci',
-        description: 'EDP ile problem çözme',
-        platform: 'V5',
-        duration: 45,
-        grade: '6-10. Sınıf',
-        topics: ['Tanımlama', 'Prototipleme', 'Test'],
-        stemLab: 'V5 STEM Lab'
-    },
-    {
-        id: 7,
-        title: 'Basit Taşıma Robotu',
-        description: 'İlk çalışan robotunuzu yapın',
-        platform: 'GO',
-        duration: 45,
-        grade: '2-4. Sınıf',
-        topics: ['Montaj', 'Motorlar', 'Test'],
-        stemLab: 'GO STEM Lab'
-    },
-    {
-        id: 8,
-        title: 'Kol Mekanizması Tasarımı',
-        description: 'Esnek kol sistemleri geliştirin',
-        platform: 'IQ',
-        duration: 90,
-        grade: '5-8. Sınıf',
-        topics: ['Kaldıraç', 'Kol Oranları', 'Kavrama'],
-        stemLab: 'IQ STEM Lab'
-    },
-    {
-        id: 9,
-        title: 'Veri Analizi ve Deneyler',
-        description: 'Bilimsel yöntemle robot test',
-        platform: 'V5',
-        duration: 90,
-        grade: '8-12. Sınıf',
-        topics: ['Hipotez', 'Veri Toplama', 'Analiz'],
-        stemLab: 'V5 STEM Lab'
+        id: 'coaching',
+        title: 'Koç Eğitimleri ve Takım Yönetimi',
+        subtitle: 'Öğrenci merkezli yaklaşım, mentorluk ilkeleri ve kulüp yönetimi',
+        icon: <GraduationCap className="w-8 h-8 text-purple-600" />,
+        color: 'bg-purple-50 border-purple-200 text-purple-900',
+        items: [
+            {
+                title: 'Student-Centered (Öğrenci Merkezli) Politika',
+                desc: 'Öğrencilerin tasarladığı, kodladığı ve sürdürdüğü etik takım yapısı rehberi.',
+                tag: 'Etik & Politika'
+            },
+            {
+                title: 'RECF Coach Academy Sertifikasyon',
+                desc: 'Sezon hazırlığı, turnuva prosedürleri ve resmi koç eğitim modülleri.',
+                tag: 'Sertifika'
+            },
+            {
+                title: 'Takım Bütçesi ve Kulüp Organizasyonu',
+                desc: 'Sponsorluk dosyası hazırlığı, görev dağılımı ve sezonsal takvim planlaması.',
+                tag: 'Yönetim'
+            }
+        ]
     }
 ]
 
-// Platform info
-const platformInfo = {
-    GO: { color: '#00A651', icon: Blocks, label: 'VEX GO' },
-    IQ: { color: '#F7941D', icon: Cog, label: 'VEX IQ' },
-    V5: { color: '#E31837', icon: Cpu, label: 'VEX V5' }
-}
-
-// Filter options
-const platforms = ['Tümü', 'GO', 'IQ', 'V5']
-const durations = ['Tümü', '45 dk', '90 dk']
-
-// Lesson Card Component
-function LessonCard({ lesson }: { lesson: typeof lessonPlans[0] }) {
-    const platform = platformInfo[lesson.platform as keyof typeof platformInfo]
-    const Icon = platform.icon
-
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all group"
-        >
-            {/* Header */}
-            <div
-                className="p-4 flex items-center justify-between"
-                style={{ backgroundColor: `${platform.color}10` }}
-            >
-                <div className="flex items-center gap-2">
-                    <div
-                        className="w-8 h-8 rounded-lg flex items-center justify-center"
-                        style={{ backgroundColor: platform.color }}
-                    >
-                        <Icon className="w-4 h-4 text-white" />
-                    </div>
-                    <span className="text-sm font-medium" style={{ color: platform.color }}>{platform.label}</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-500 text-sm">
-                    <Clock className="w-4 h-4" />
-                    {lesson.duration} dk
-                </div>
-            </div>
-
-            {/* Content */}
-            <div className="p-6">
-                {lesson.featured && (
-                    <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-yellow-100 text-yellow-700 text-xs font-medium rounded mb-2">
-                        <Star className="w-3 h-3" />
-                        Öne Çıkan
-                    </div>
-                )}
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-                    {lesson.title}
-                </h3>
-                <p className="text-gray-600 text-sm mb-4">{lesson.description}</p>
-
-                <div className="flex flex-wrap gap-1 mb-4">
-                    {lesson.topics.map((topic, index) => (
-                        <span
-                            key={index}
-                            className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded"
-                        >
-                            {topic}
-                        </span>
-                    ))}
-                </div>
-
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                    <span className="text-xs text-gray-500">{lesson.grade}</span>
-                    <Button size="sm" variant="ghost" className="text-primary hover:text-primary">
-                        Detaylar
-                        <ChevronRight className="w-4 h-4 ml-1" />
-                    </Button>
-                </div>
-            </div>
-        </motion.div>
-    )
-}
-
 export default function MufredatPage() {
     const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
-    const [selectedPlatform, setSelectedPlatform] = useState('Tümü')
-    const [selectedDuration, setSelectedDuration] = useState('Tümü')
-
-    // Filtered lessons
-    const filteredLessons = useMemo(() => {
-        let results = [...lessonPlans]
-
-        if (selectedPlatform !== 'Tümü') {
-            results = results.filter(l => l.platform === selectedPlatform)
-        }
-
-        if (selectedDuration !== 'Tümü') {
-            const duration = parseInt(selectedDuration)
-            results = results.filter(l => l.duration === duration)
-        }
-
-        return results
-    }, [selectedPlatform, selectedDuration])
 
     return (
-        <div className="min-h-screen bg-white text-foreground">
+        <div className="min-h-screen bg-gray-50 text-foreground">
             <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
-
             <div className="h-20" />
+
             <CorporateHero
-                title="STEM Labs Müfredatları"
-                subtitle="Öğretmenler için hazır ders planları ve aktiviteler"
+                title="Eğitim ve Öğrenme Kaynakları"
+                subtitle="Robotik, programlama, mühendislik tasarımı, drone ve koç eğitimleri için kaynaklar"
             />
 
-            {/* STEM Labs Info */}
-            <section className="py-16 md:py-20 bg-white">
+            <section className="py-16 bg-white min-h-[50vh]">
                 <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
-                                <BookOpen className="w-4 h-4 text-primary" />
-                                <span className="text-sm font-medium text-primary">VEX STEM Labs</span>
-                            </div>
-                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                                Ücretsiz Eğitim Platformu
-                            </h2>
-                            <p className="text-gray-600 mb-6">
-                                VEX Education STEM Labs, öğretmenler için tamamen ücretsiz ders planları,
-                                aktiviteler ve değerlendirme materyalleri sunar.
-                            </p>
-                            <ul className="space-y-3 mb-6">
-                                {[
-                                    'Her seviyeye uygun içerikler',
-                                    'NGSS standartlarına uyumlu',
-                                    'Hazır sunum ve çalışma kağıtları',
-                                    'Video destekli anlatımlar'
-                                ].map((item, index) => (
-                                    <li key={index} className="flex items-center gap-3 text-gray-600">
-                                        <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                            <div className="flex gap-3">
-                                <a href="https://education.vex.com/stemlabs" target="_blank" rel="noopener noreferrer">
-                                    <Button className="bg-primary hover:bg-primary/90">
-                                        STEM Labs&apos;e Git
-                                        <ChevronRight className="w-4 h-4 ml-2" />
-                                    </Button>
-                                </a>
-                                <a href="https://educathub.com/mufredatlarimiz/" target="_blank" rel="noopener noreferrer">
-                                    <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-red-800">
-                                        Müfredatlar
-                                        <ChevronRight className="w-4 h-4 ml-2" />
-                                    </Button>
-                                </a>
-                            </div>
+                    
+                    {/* Intro Note */}
+                    <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 mb-16 flex flex-col md:flex-row gap-6 items-start shadow-sm">
+                        <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-1">
+                            <BookOpen className="w-6 h-6" />
                         </div>
-
-                        <div className="grid grid-cols-2 gap-4">
-                            {[
-                                { title: 'VEX GO', count: '50+', desc: 'Ders Planı', color: '#00A651' },
-                                { title: 'VEX IQ', count: '80+', desc: 'Ders Planı', color: '#F7941D' },
-                                { title: 'VEX V5', count: '100+', desc: 'Ders Planı', color: '#E31837' },
-                                { title: 'Video', count: '200+', desc: 'Eğitim Videosu', color: '#1E3A8A' }
-                            ].map((item, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="bg-gray-50 rounded-2xl p-6 text-center border border-gray-200"
-                                >
-                                    <div
-                                        className="text-3xl font-bold mb-1"
-                                        style={{ color: item.color }}
-                                    >
-                                        {item.count}
-                                    </div>
-                                    <div className="text-sm text-gray-600">{item.desc}</div>
-                                    <div className="text-xs text-gray-400 mt-1">{item.title}</div>
-                                </motion.div>
-                            ))}
+                        <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">Esnek ve Kapsayıcı Öğrenme Yaklaşımı</h3>
+                            <p className="text-gray-600 leading-relaxed">
+                                RECF Türkiye ekosisteminde eğitim kaynakları tek bir markaya veya hazır ders paketine bağımlı değildir. Okullar, öğretmenler ve koçlar kendi müfredat disiplinlerine uygun açık kaynaklı materyalleri, modüler ders içeriklerini ve uygulama rehberlerini serbestçe entegre edebilirler.
+                            </p>
                         </div>
                     </div>
+
+                    {/* Main Categories Grid */}
+                    <div className="space-y-12 mb-20">
+                        {resourceCategories.map((cat) => (
+                            <div key={cat.id} className="rounded-3xl border border-gray-200 p-8 bg-white shadow-sm hover:shadow-md transition-shadow">
+                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-gray-100">
+                                    <div className="flex items-center gap-4">
+                                        <div className={`p-4 rounded-2xl border ${cat.color}`}>
+                                            {cat.icon}
+                                        </div>
+                                        <div>
+                                            <h3 className="text-2xl font-bold text-gray-900">{cat.title}</h3>
+                                            <p className="text-gray-500 text-sm md:text-base">{cat.subtitle}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="grid md:grid-cols-3 gap-6">
+                                    {cat.items.map((item, idx) => (
+                                        <div key={idx} className="bg-gray-50 rounded-2xl p-6 border border-gray-100 flex flex-col justify-between hover:bg-gray-100/70 transition-colors">
+                                            <div>
+                                                <span className="inline-block bg-white px-3 py-1 rounded-full text-xs font-bold text-gray-600 mb-3 border border-gray-200">
+                                                    {item.tag}
+                                                </span>
+                                                <h4 className="font-bold text-gray-900 text-lg mb-2">{item.title}</h4>
+                                                <p className="text-gray-600 text-sm leading-relaxed mb-4">{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Intechne Akademi Section */}
+                    <div className="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-10 text-white relative overflow-hidden shadow-xl mb-16">
+                        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+                        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+                            <div className="max-w-3xl">
+                                <div className="inline-flex items-center gap-2 bg-indigo-500/20 border border-indigo-400/30 px-4 py-1.5 rounded-full text-indigo-300 text-sm font-semibold mb-6">
+                                    <GraduationCap className="w-4 h-4" />
+                                    Intechne Akademi Öğretmen ve Koç Programları
+                                </div>
+                                <h3 className="text-3xl font-extrabold mb-4 text-white">Intechne Akademi Eğitim Kaynakları</h3>
+                                <p className="text-slate-300 text-lg leading-relaxed mb-6">
+                                    RECF Türkiye temsilcisi Intechne Teknoloji bünyesinde düzenlenen Intechne Akademi; öğretmen eğitimi atölyeleri, koçluk uzmanlık modülleri ve okullara özel STEM laboratuvarı kurulum rehberleri sunar.
+                                </p>
+                                <div className="grid sm:grid-cols-3 gap-4 mb-8">
+                                    <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
+                                        <CheckCircle2 className="w-5 h-5 text-indigo-400 mb-2" />
+                                        <h5 className="font-bold text-sm">Yüz Yüze Atölyeler</h5>
+                                        <p className="text-xs text-slate-300 mt-1">Uygulamalı robotik ve otonom kodlama eğitimleri.</p>
+                                    </div>
+                                    <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
+                                        <Shield className="w-5 h-5 text-indigo-400 mb-2" />
+                                        <h5 className="font-bold text-sm">Akademi Sertifikası</h5>
+                                        <p className="text-xs text-slate-300 mt-1">Katılım sağlayan eğitmenlere onaylı sertifika.</p>
+                                    </div>
+                                    <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
+                                        <Lightbulb className="w-5 h-5 text-indigo-400 mb-2" />
+                                        <h5 className="font-bold text-sm">Okul & Kulüp Desteği</h5>
+                                        <p className="text-xs text-slate-300 mt-1">Robotik kulübü kurulum ve müfredat desteği.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="shrink-0 flex flex-col gap-4 w-full sm:w-auto">
+                                <a href="https://www.intechne.com.tr" target="_blank" rel="noopener noreferrer">
+                                    <Button className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-bold h-14 px-8 rounded-2xl shadow-lg shadow-indigo-600/30 text-base">
+                                        Intechne Akademi Portalı
+                                        <ExternalLink className="w-5 h-5 ml-2" />
+                                    </Button>
+                                </a>
+                                <Link href="/takimlar/mentor">
+                                    <Button variant="outline" className="w-full sm:w-auto border-white/20 text-white hover:bg-white/10 font-bold h-14 px-8 rounded-2xl text-base">
+                                        Koç ve Mentor Merkezine Git
+                                        <ArrowRight className="w-5 h-5 ml-2" />
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
-
-            {/* Footer */}
-            <footer className="bg-gray-900 text-white py-16">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="grid md:grid-cols-4 gap-12">
-                        <div className="md:col-span-1">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center font-bold text-xl text-white">VEX</div>
-                                <div><div className="text-lg font-bold">VEX TÜRKİYE</div><div className="text-xs text-gray-400">Robotics Competition</div></div>
-                            </div>
-                            <div className="flex gap-4">
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Instagram className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></a>
-                                <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Youtube className="w-5 h-5" /></a>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">Kaynaklar</h3>
-                            <ul className="space-y-3">
-                                <li><a href="/kaynaklar/oyun-kilavuzlari" className="text-gray-400 hover:text-primary transition-colors">Oyun Kılavuzları</a></li>
-                                <li><a href="/kaynaklar/yazilim" className="text-gray-400 hover:text-primary transition-colors">VEXcode</a></li>
-                                <li><a href="/kaynaklar/mufredat" className="text-gray-400 hover:text-primary transition-colors">Müfredatlar</a></li>
-                                <li><a href="/kaynaklar/juri" className="text-gray-400 hover:text-primary transition-colors">Jüri & Değerlendirme</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">Takımlar</h3>
-                            <ul className="space-y-3">
-                                <li><a href="/takimlar/harita" className="text-gray-400 hover:text-primary transition-colors">Takım Haritası</a></li>
-                                <li><a href="/takimlar/nasil-kurulur" className="text-gray-400 hover:text-primary transition-colors">Nasıl Kurulur?</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-semibold mb-6">İletişim</h3>
-                            <ul className="space-y-3 text-gray-400">
-                                <li>info@vexturkiye.com</li>
-                                <li>+90 (212) 000 00 00</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="pt-8 mt-12 border-t border-gray-800">
-                        <p className="text-sm text-gray-500 text-center">© 2024 VEX Türkiye. Tüm hakları saklıdır.</p>
-                    </div>
-                </div>
-            </footer>
         </div>
     )
 }
