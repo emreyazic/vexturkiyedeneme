@@ -33,7 +33,7 @@ const menuItems = {
         ]
     },
     vexNedir: {
-        title: 'Programları',
+        title: 'Programlar',
         items: [
             { title: 'Genel Bakış', href: '/recf-programlari' },
             { title: 'RECF Engage', href: '/recf-programlari/engage' },

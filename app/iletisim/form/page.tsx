@@ -68,7 +68,7 @@ export default function IletisimFormPage() {
             <section className="py-16 bg-white min-h-[50vh]">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid lg:grid-cols-12 gap-12">
-                        
+
                         {/* Form Section (7 cols) */}
                         <div className="lg:col-span-7 bg-gray-50 border border-gray-200 rounded-3xl p-8 md:p-10 shadow-sm">
                             <h2 className="text-2xl font-bold text-gray-900 mb-2">İletişim Formu</h2>
@@ -85,7 +85,7 @@ export default function IletisimFormPage() {
                                     <p className="text-gray-600 mb-6">
                                         Talebiniz ilgili birimimize iletilmiştir. En kısa sürede belirttiğiniz e-posta veya telefon üzerinden dönüş yapılacaktır.
                                     </p>
-                                    <Button 
+                                    <Button
                                         onClick={() => {
                                             setIsSubmitted(false)
                                             setFormData({ fullName: '', email: '', phone: '', organization: '', subject: 'Takım Kurma', message: '', kvkkConsent: false })
@@ -220,7 +220,7 @@ export default function IletisimFormPage() {
                                                 className="mt-1 w-4 h-4 rounded text-primary focus:ring-primary border-gray-300"
                                             />
                                             <span className="text-xs text-gray-600 leading-relaxed">
-                                                6698 sayılı KVKK kapsamında kişisel verilerimin RECF Türkiye yetkili temsilcisi Intechne Teknoloji tarafından iletişim ve bilgilendirme amacıyla işlenmesini ve 
+                                                6698 sayılı KVKK kapsamında kişisel verilerimin RECF Türkiye yetkili temsilcisi Intechne Teknoloji tarafından iletişim ve bilgilendirme amacıyla işlenmesini ve
                                                 <Link href="/hukuki/kvkk" className="text-primary font-bold hover:underline mx-1">
                                                     KVKK Aydınlatma Metni
                                                 </Link>
@@ -294,7 +294,7 @@ export default function IletisimFormPage() {
                                         RECF Türkiye organizasyonları, küresel Robotics Education & Competition Foundation (RECF) yetkilendirmesiyle Intechne Teknoloji tarafından yürütülmektedir.
                                     </p>
                                     <div className="text-xs text-slate-400 border-t border-slate-800 pt-4">
-                                        Sosyal Medya: @recfturkiye | @intechnenet
+                                        Sosyal Medya: @recfturkiye | @intechne
                                     </div>
                                 </div>
                             </div>

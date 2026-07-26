@@ -27,11 +27,11 @@ export function Footer() {
                             <a href="https://linkedin.com/company/intechne" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-primary/80 transition-colors" aria-label="LinkedIn">
                                 <Linkedin className="h-5 w-5" />
                             </a>
-                            <a href="https://youtube.com/@recfturkiye" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-primary/80 transition-colors" aria-label="YouTube">
+                            <a href="https://youtube.com/@intechetech" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-primary/80 transition-colors" aria-label="YouTube">
                                 <Youtube className="h-5 w-5" />
                             </a>
                         </div>
-                        <p className="text-xs text-gray-500">@recfturkiye · @intechnenet</p>
+                        <p className="text-xs text-gray-500">@recfturkiye · @intechne</p>
                     </div>
 
                     {/* Column 2 - RECF Programs */}

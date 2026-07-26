@@ -63,6 +63,8 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Profesyonel Ağ: Diğer mentorlar ve sektör profesyonelleriyle bağlantı kurun'
                     ],
                     cta: 'Mentor Kaynakları',
+
+
                     href: '/takimlar/mentor'
                 },
                 sponsor: {
@@ -86,11 +88,15 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     description: 'RECF\'i okul müfredatınıza entegre edin, sertifikalı eğitmen eğitimlerine katılın ve sınıf içi uygulamalar için kapsamlı kaynaklara erişin.',
                     benefits: [
                         'Müfredat Entegrasyonu: RECF platformlarını mevcut STEM derslerinize entegre edin',
+
+
                         'Sertifikalı Eğitimler: Resmi RECF eğitmen sertifikası alın',
                         'Ders Kaynakları: Hazır ders planları ve aktivite rehberleri',
                         'Teknik Destek: Sınıf içi uygulamalar için sürekli teknik destek'
                     ],
                     cta: 'Eğitmen Eğitimleri',
+
+
                     href: 'https://training.recf.org'
                 }
             }
@@ -105,6 +111,9 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     title: 'Competitor',
                     icon: Trophy,
                     heading: 'Competitors',
+
+
+
                     description: 'RECF competitors embark on an exciting STEM journey where they develop leadership, teamwork, and problem-solving skills. Be part of a team and shape your future!',
                     benefits: [
                         'Team Experience: Design, build, and program robots with your peers',
@@ -141,6 +150,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Professional Network: Connect with other mentors and industry professionals'
                     ],
                     cta: 'Mentor Resources',
+
                     href: '/takimlar/mentor'
                 },
                 sponsor: {
@@ -155,12 +165,17 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Customized Packages: Sponsorship options tailored to your budget and goals'
                     ],
                     cta: 'Sponsorship Package',
+
+
                     href: '/kurumsal/sponsorlar-ve-partnerler'
                 },
                 educator: {
                     title: 'Educator',
                     icon: BookOpen,
                     heading: 'Educators',
+
+
+
                     description: 'Integrate RECF into your school curriculum, participate in certified educator training, and access comprehensive resources for classroom applications.',
                     benefits: [
                         'Curriculum Integration: Integrate RECF platforms into your existing STEM courses',
