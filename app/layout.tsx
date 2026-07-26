@@ -10,19 +10,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/VEX-Robotics_Full-Color-1.png',
+        url: '/RECF_LargerFiles.svg',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/VEX-Robotics_Full-Color-1.png',
+        url: '/RECF_LargerFiles.svg',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/VEX-Robotics_Full-Color-1.png',
+        url: '/RECF_LargerFiles.svg',
         type: 'image/png',
       },
     ],
-    apple: '/VEX-Robotics_Full-Color-1.png',
+    apple: 'RECF_LargerFiles.svg',
   },
 }
 

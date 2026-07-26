@@ -35,7 +35,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Küresel Yarışmalar: Dünya Şampiyonası\'na kadar uzanan bir yolculuğa çık'
                     ],
                     cta: 'Takımını Kur / Kaydol',
-                    href: '/takimlar/nasil-kurulur'
+                    href: 'https://recfevents.org/'
                 },
                 volunteer: {
                     title: 'Gönüllü',
