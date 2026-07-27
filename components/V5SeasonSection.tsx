@@ -14,9 +14,9 @@ export function V5SeasonSection({ language }: V5SeasonSectionProps) {
     const content = {
         TR: {
             label: '2026-2027 RECF TÜRKİYE SEZONU',
-            title: 'RECF ile Geleceği Keşfedin',
-            description: 'Öğrenciler için hazırlanan bu sezonun temasını, kurallarını ve mühendislik zorluklarını keşfedin. Takımınızı kurun ve küresel rekabete hazırlanın.',
-            cta: 'Detayları Gör',
+            title: 'Yeni Sezon. Yeni Görevler.',
+            description: 'RECF Engage, Achieve, Inspire, Aerial Drone Competition ve ADC Pro programlarının 2026–2027 oyunlarını, görevlerini ve güncel kurallarını keşfedin. Takımınızı oluşturun, robotunuzu geliştirin ve sezon boyunca RECF Türkiye etkinliklerinde yerinizi alın.',
+            cta: 'Sezon Oyunları İncele',
             features: [
                 { icon: Trophy, text: 'Dünya Şampiyonası Yolu' },
                 { icon: Calendar, text: '2026-2027 Sezonu' },

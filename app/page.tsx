@@ -127,10 +127,10 @@ export default function VEXTurkiyeLanding() {
         contact: 'İletişim'
       },
       hero: {
-        headline: 'Geleceği Tasarla. Takımını Kur. Arenaya Çık.',
-        subheadline: 'RECF Türkiye; robotik, drone, mühendislik ve teknoloji yarışmalarını Türkiye’de öğrenciler, eğitimciler ve kurumlarla buluşturuyor.',
-        cta: 'Takımını Kaydet',
-        learn: 'Programını Seç',
+        headline: 'Takımını Kur. Teknolojini Yarıştır. Geleceğe Yön Ver.',
+        subheadline: 'RECF Türkiye ilkokuldan üniversiteye kadar farklı yaş gruplarını robotik programlarla, uygulamalı mühendislikle, kodlama ve takım çalışmasıyla buluşturur. Sektörün ve geleceğin iş gücünün ihtiyaçlarına cevap veren bu programlar, katılımcıların lise sonrasında bilim, teknoloji, mühendislik ve matematik alanlarında eğitim ve kariyer seçeneklerini değerlendirmelerini teşvik eder.',
+        cta: 'Takımını Kur',
+        learn: 'Program Seç',
         eventsBtn: 'Etkinlikleri Gör'
       },
       programs: {
@@ -511,7 +511,7 @@ export default function VEXTurkiyeLanding() {
                       {t.hero.headline}
                     </h1>
 
-                    <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto text-pretty leading-relaxed">
+                    <p className="text-sm md:text-base text-gray-600 mb-12 max-w-3xl mx-auto text-pretty leading-relaxed">
                       {t.hero.subheadline}
                     </p>
                   </>
