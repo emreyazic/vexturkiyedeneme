@@ -59,7 +59,7 @@ export default function VEXTurkiyeLanding() {
         getHeroSlides()
       ])
       setEvents(fetchedEvents.slice(0, 4))
-      
+
       // Öne çıkan haberi ve son gelişmeleri birleştirip bağla
       const filteredLatest = fetchedFeaturedNews
         ? fetchedLatestNews.filter(n => n._id !== fetchedFeaturedNews._id).slice(0, 5)
@@ -68,7 +68,7 @@ export default function VEXTurkiyeLanding() {
         ? [fetchedFeaturedNews, ...filteredLatest]
         : filteredLatest
       setNews(combinedNews)
-      
+
       setHeroSlides(fetchedHeroSlides)
     }
     fetchData()
@@ -184,8 +184,8 @@ export default function VEXTurkiyeLanding() {
       },
       whyVex: {
         label: 'NEDEN RECF?',
-        title: 'Geleceği Şekillendiren Robotik Deneyimi',
-        subtitle: 'REC Foundation, öğrencilere gerçek dünya mühendislik becerileri kazandırarak, onları geleceğin liderleri, yenilikçileri ve problem çözücüleri olarak yetiştiriyor.',
+        title: 'Yarışmanın Ötesinde Bir Mühendislik Deneyimi',
+        subtitle: 'RECF programları; öğrencilerin tasarım, üretim, programlama, iletişim ve takım çalışması becerilerini gerçek görevler ve rekabetçi etkinlikler aracılığıyla geliştirmesini sağlar.',
         cta: 'RECF Etkisini Keşfedin',
         cards: [
           {
@@ -845,7 +845,7 @@ export default function VEXTurkiyeLanding() {
                   {t.competitions.subtitle}
                 </p>
               </div>
-              <Link href="/yarismalar/etkinlik-takvimi/tum-etkinlikler">
+              <Link href="/yarismalar/etkinlik-takvimi">
                 <Button
                   className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all"
                 >
@@ -896,7 +896,7 @@ export default function VEXTurkiyeLanding() {
                       </div>
 
                       {/* Action */}
-                      <Link href={`/yarismalar/etkinlik-takvimi/tum-etkinlikler/${event.slug.current}`} className="w-full">
+                      <Link href={`/yarismalar/etkinlik-takvimi/${event.slug.current}`} className="w-full">
                         <Button
                           variant="ghost"
                           className="w-full justify-center text-gray-700 hover:text-primary hover:bg-gray-50 group/btn"
@@ -1057,12 +1057,12 @@ export default function VEXTurkiyeLanding() {
                 {language === 'TR' ? 'Takım Kurma Adımları' : 'Team Building Steps'}
               </h2>
               <p className="text-lg text-gray-600">
-                {language === 'TR' 
-                  ? 'RECF Türkiye ekosistemine katılmak ve kendi takımınızı kurmak için izlemeniz gereken temel adımlar.' 
+                {language === 'TR'
+                  ? 'RECF Türkiye ekosistemine katılmak ve kendi takımınızı kurmak için izlemeniz gereken temel adımlar.'
                   : 'Basic steps to follow to join the RECF Turkey ecosystem and build your own team.'}
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {[
                 {
@@ -1108,14 +1108,14 @@ export default function VEXTurkiyeLanding() {
         {/* RECF-VEX Ayrım Bildirimi Section */}
         <section className="py-16 bg-gray-50 border-t border-b border-gray-200">
           <div className="container mx-auto px-6 max-w-5xl text-center">
-             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                {language === 'TR' ? 'RECF ve VEX Robotics Hakkında Önemli Bilgilendirme' : 'Important Notice About RECF and VEX Robotics'}
-             </h3>
-             <p className="text-gray-600 leading-relaxed">
-                {language === 'TR' 
-                  ? 'Robotics Education & Competition Foundation (RECF), yarışmaları ve eğitim programlarını yöneten bağımsız bir kâr amacı gütmeyen kuruluştur. VEX Robotics ise bu yarışmalarda kullanılan donanım ve eğitim setlerinin üreticisidir. Türkiye\'deki tüm yarışma ve etkinlik operasyonları Intechne Teknoloji tarafından yürütülmektedir.'
-                  : 'The Robotics Education & Competition Foundation (RECF) is an independent non-profit organization that manages competitions and educational programs. VEX Robotics is the manufacturer of the hardware and educational kits used in these competitions. All competition and event operations in Turkey are managed by Intechne Teknoloji.'}
-             </p>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              {language === 'TR' ? 'RECF ve VEX Robotics Hakkında Önemli Bilgilendirme' : 'Important Notice About RECF and VEX Robotics'}
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              {language === 'TR'
+                ? 'Robotics Education & Competition Foundation (RECF), yarışmaları ve eğitim programlarını yöneten bağımsız bir kâr amacı gütmeyen kuruluştur. VEX Robotics ise bu yarışmalarda kullanılan donanım ve eğitim setlerinin üreticisidir. Türkiye\'deki tüm yarışma ve etkinlik operasyonları Intechne Teknoloji tarafından yürütülmektedir.'
+                : 'The Robotics Education & Competition Foundation (RECF) is an independent non-profit organization that manages competitions and educational programs. VEX Robotics is the manufacturer of the hardware and educational kits used in these competitions. All competition and event operations in Turkey are managed by Intechne Teknoloji.'}
+            </p>
           </div>
         </section>
 
