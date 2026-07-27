@@ -91,7 +91,7 @@ export default function JuriPage() {
 
             <section className="py-16 bg-white min-h-[50vh]">
                 <div className="container mx-auto px-6 max-w-7xl">
-                    
+
                     {/* Student-Centered Policy Highlight Banner */}
                     <div className="bg-red-50 border border-red-200 rounded-3xl p-8 mb-16 shadow-sm flex flex-col md:flex-row gap-6 items-start">
                         <div className="w-14 h-14 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center shrink-0 border border-red-200">
@@ -189,8 +189,8 @@ export default function JuriPage() {
                                     />
                                 ))}
                             </div>
-                            <Button 
-                                onClick={() => setActiveQuestionIdx((prev) => (prev + 1) % sampleQuestions.length)} 
+                            <Button
+                                onClick={() => setActiveQuestionIdx((prev) => (prev + 1) % sampleQuestions.length)}
                                 className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl h-11 px-6"
                             >
                                 Sonraki Soruyu Getir
@@ -200,7 +200,7 @@ export default function JuriPage() {
 
                     {/* Section 4: Ethics & Conflict of Interest & Certification */}
                     <div className="grid lg:grid-cols-2 gap-8 mb-16">
-                        
+
                         {/* Ethics & Conflict of Interest */}
                         <div className="bg-blue-50/70 border border-blue-200 rounded-3xl p-8 flex flex-col justify-between">
                             <div>
@@ -236,9 +236,9 @@ export default function JuriPage() {
                                 </p>
                             </div>
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <a href="https://certifications.vex.com" target="_blank" rel="noopener noreferrer">
+                                <a href="https://kb.roboticseducation.org/hc/en-us/categories/4421404969111" target="_blank" rel="noopener noreferrer">
                                     <Button className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold h-12 px-6 rounded-xl text-sm">
-                                        Jüri Sertifikasyon Portalı
+                                        Jüri Eğitim Portalı
                                         <ExternalLink className="w-4 h-4 ml-2" />
                                     </Button>
                                 </a>

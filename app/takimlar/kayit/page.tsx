@@ -79,7 +79,7 @@ export default function TakimKayitPage() {
                         Tüm resmi kayıt işlemleri, RECF'nin küresel yönetim platformu olan <strong>RECFevents.org</strong> sistemi üzerinden yapılmaktadır. Türkiye'deki turnuvalara katılmak için takımınızın bu sistemde aktif bir kaydının bulunması zorunludur.
                     </p>
                     <a
-                        href="https://www.recfevents.org/auth/register"
+                        href="https://recfevents.org"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary/90 text-white text-lg font-bold rounded-xl transition-all shadow-xl shadow-primary/20 hover:-translate-y-1"
@@ -94,7 +94,7 @@ export default function TakimKayitPage() {
             <section className="py-20 bg-gray-50">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
-                        
+
                         {/* Sidebar Programs */}
                         <div className="lg:col-span-4 space-y-8">
                             <div className="bg-white rounded-3xl p-8 border border-gray-200 shadow-sm">

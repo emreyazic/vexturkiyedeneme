@@ -1,10 +1,11 @@
 'use client'
 
 import React, { useState } from 'react'
+import Link from 'next/link'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
 import { Button } from '@/components/ui/button'
-import { ExternalLink, BookOpen, Clock, MessageSquareQuote, FileText, Target } from 'lucide-react'
+import { ExternalLink, BookOpen, Clock, UserPlus, FileText, Target } from 'lucide-react'
 
 const seasonGames = [
     {
@@ -14,26 +15,46 @@ const seasonGames = [
         description: '2026-2027 sezonu RECF Engage ligi oyunu "Tier Takeover", ilk ve ortaokul öğrencilerini takım çalışması ve stratejik hedefleme üzerine odaklıyor. Oyun, 6x8 ft boyutlarında standart Engage sahasında oynanır. Amaç, takım çalışması (Teamwork) maçlarında ortaklaşa en yüksek puanı almak veya bireysel sürüş/kodlama (Skills) yarışmalarında görevleri tamamlamaktır.',
         version: 'Versiyon 1.0',
         lastUpdate: '1 Mayıs 2026',
-        manualUrl: 'https://recf.org/documents',
-        qaUrl: 'https://www.robotevents.com/',
-        themeColor: 'red',
+        manualUrl: 'https://recf.org/documents/2026/06/game-manual-recf-engage-tier-takeover.pdf/',
         bgTheme: 'bg-red-50 border-red-100',
         iconTheme: 'text-red-600 bg-red-100',
-        btnTheme: 'bg-red-600 hover:bg-red-700 text-white shadow-red-600/20'
+        btnTheme: 'bg-red-600 hover:bg-red-700 text-white shadow-red-600/20',
+        dotColor: 'bg-red-600',
+        textColor: 'text-red-700',
+        blob1Color: 'bg-red-200',
+        blob2Color: 'bg-red-300'
     },
     {
-        id: 'achieve_inspire',
-        program: 'RECF Achieve & Inspire',
+        id: 'achieve',
+        program: 'RECF Achieve',
         gameName: 'Pinnacle',
-        description: '2026-2027 sezonu RECF Achieve (Ortaokul/Lise) ve Inspire (Üniversite) ligi oyunu "Pinnacle", ileri düzey mühendislik ve otonom sistemler gerektiren heyecan verici bir mücadeledir. 12x12 ft boyutlarındaki sahada oynanan oyunda, ittifak maçları, otonom periyot, nesnelerin (halkaların) çeşitli seviyelerdeki direklere (stakes) istiflenmesi ve maç sonunda robotların tırmanması gibi dinamik görevler yer alır.',
+        description: '2026-2027 sezonu RECF Achieve (Ortaokul ve Lise) ligi oyunu "Pinnacle", ortaokul ve lise öğrencileri için profesyonel metal robot yapımı ve ileri düzey programlama sunan robotik yarışma platformudur. 12x12 ft boyutlarındaki sahada oynanan oyunda, ittifak maçları, otonom periyot, nesnelerin (halkaların) çeşitli seviyelerdeki direklere (stakes) istiflenmesi ve maç sonunda robotların tırmanması gibi dinamik görevler yer alır.',
         version: 'Versiyon 1.0',
         lastUpdate: '5 Mayıs 2026',
-        manualUrl: 'https://recf.org/documents',
-        qaUrl: 'https://www.robotevents.com/',
-        themeColor: 'blue',
+        manualUrl: 'https://recf.org/documents/2026/06/game-manual-recf-achieve-pinnacle.pdf/',
         bgTheme: 'bg-blue-50 border-blue-100',
         iconTheme: 'text-blue-600 bg-blue-100',
-        btnTheme: 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-600/20'
+        btnTheme: 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-600/20',
+        dotColor: 'bg-blue-600',
+        textColor: 'text-blue-700',
+        blob1Color: 'bg-blue-200',
+        blob2Color: 'bg-blue-300'
+    },
+    {
+        id: 'inspire',
+        program: 'RECF Inspire',
+        gameName: 'Pinnacle',
+        description: '2026-2027 sezonu RECF Inspire (Üniversite) ligi oyunu "Pinnacle", üniversite öğrencileri için tasarlanmış, sınırsız tasarım özgürlüğü sunan elit robotik yarışma platformudur. 12x12 ft boyutlarındaki sahada oynanan oyunda takımlar, otonom periyot, nesnelerin direklere istiflenmesi ve tırmanma görevlerini gerçekleştirmek için iki adet koordineli çalışan robot tasarlar.',
+        version: 'Versiyon 1.0',
+        lastUpdate: '5 Mayıs 2026',
+        manualUrl: 'https://recf.org/documents/2026/06/game-manual-recf-inspire-pinnacle.pdf/',
+        bgTheme: 'bg-purple-50 border-purple-100',
+        iconTheme: 'text-purple-600 bg-purple-100',
+        btnTheme: 'bg-purple-600 hover:bg-purple-700 text-white shadow-purple-600/20',
+        dotColor: 'bg-purple-600',
+        textColor: 'text-purple-700',
+        blob1Color: 'bg-purple-200',
+        blob2Color: 'bg-purple-300'
     }
 ]
 
@@ -47,7 +68,7 @@ export default function SezonOyunlariPage() {
 
             <CorporateHero
                 title="2026–2027 RECF Sezon Oyunları"
-                subtitle="RECF Engage: Tier Takeover; RECF Achieve ve Inspire: Pinnacle"
+                subtitle="RECF Engage: Tier Takeover; RECF Achieve: Pinnacle; RECF Inspire: Pinnacle"
             />
 
             <section className="py-16 bg-white">
@@ -63,18 +84,18 @@ export default function SezonOyunlariPage() {
                         {seasonGames.map((game) => (
                             <div key={game.id} className={`rounded-3xl border p-8 md:p-12 overflow-hidden relative ${game.bgTheme}`}>
                                 <div className="grid lg:grid-cols-2 gap-12 items-center">
-                                    
+
                                     {/* Content */}
                                     <div className="z-10 relative">
                                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full text-sm font-bold shadow-sm mb-6">
-                                            <div className={`w-2 h-2 rounded-full bg-${game.themeColor}-600`} />
-                                            <span className={`text-${game.themeColor}-700`}>{game.program}</span>
+                                            <div className={`w-2 h-2 rounded-full ${game.dotColor}`} />
+                                            <span className={game.textColor}>{game.program}</span>
                                         </div>
-                                        
+
                                         <h3 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
                                             {game.gameName}
                                         </h3>
-                                        
+
                                         <p className="text-lg text-gray-700 leading-relaxed mb-8">
                                             {game.description}
                                         </p>
@@ -84,10 +105,10 @@ export default function SezonOyunlariPage() {
                                                 <BookOpen className="w-5 h-5" />
                                                 Oyun Kılavuzu (Manual)
                                             </a>
-                                            <a href={game.qaUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold bg-white text-gray-800 border border-gray-200 hover:bg-gray-50 transition-all">
-                                                <MessageSquareQuote className="w-5 h-5 text-gray-500" />
-                                                Resmi Soru-Cevap (Q&A)
-                                            </a>
+                                            <Link href="/takimlar/kayit" className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold bg-white text-gray-800 border border-gray-200 hover:bg-gray-50 transition-all shadow-sm">
+                                                <UserPlus className="w-5 h-5 text-gray-500" />
+                                                Kayıt Ol
+                                            </Link>
                                         </div>
 
                                         <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600 bg-white/60 p-4 rounded-xl inline-flex backdrop-blur-sm">
@@ -113,10 +134,10 @@ export default function SezonOyunlariPage() {
                                             <p className="text-gray-500 text-sm relative z-10">Resmi saha render görseli etkinlik duyuruları ile güncellenecektir.</p>
                                         </div>
                                         {/* Decorative blobs */}
-                                        <div className={`absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 rounded-full blur-3xl opacity-50 bg-${game.themeColor}-200`} />
-                                        <div className={`absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-48 h-48 rounded-full blur-3xl opacity-50 bg-${game.themeColor}-300`} />
+                                        <div className={`absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 rounded-full blur-3xl opacity-50 ${game.blob1Color}`} />
+                                        <div className={`absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-48 h-48 rounded-full blur-3xl opacity-50 ${game.blob2Color}`} />
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         ))}

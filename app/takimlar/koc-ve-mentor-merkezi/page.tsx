@@ -110,7 +110,7 @@ export default function MentorPage() {
                                 </p>
                                 <div className="space-y-4">
                                     <a
-                                        href="https://certifications.vex.com"
+                                        href="https://kb.roboticseducation.org/hc/en-us/articles/41299901846167-Coach-Academy-for-RECF-Drone-Robotics-Programs"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center gap-3 w-full bg-white text-gray-900 hover:bg-gray-100 font-bold px-6 py-4 rounded-xl transition-colors"
