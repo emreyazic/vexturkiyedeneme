@@ -1149,7 +1149,7 @@ export default function VEXTurkiyeLanding() {
             <div className="mt-12 text-center">
               <Link href="/takimlar/nasil-kurulur">
                 <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-lg shadow-md">
-                  {language === 'TR' ? 'Detaylı Rehberi İncele' : 'View Detailed Guide'}
+                  {language === 'TR' ? 'Takım Kurma Rehberini İncele' : 'View Team Building Guide'}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>

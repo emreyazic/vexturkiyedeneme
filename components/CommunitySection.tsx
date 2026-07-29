@@ -19,20 +19,20 @@ export function CommunitySection({ language }: CommunitySectionProps) {
     const content = {
         TR: {
             label: 'TOPLULUĞUMUZA KATIL',
-            title: 'Küresel Bir Ağ,',
+            title: 'Birlikte Üreten, Birlikte Gelişen Bir Ekosistem',
             titleHighlight: 'STEM ile Birleşik',
-            subtitle: 'Her öğrenci, veli, gönüllü, eğitimci ve destekçi RECF Türkiye ailesinin bir parçasıdır. Topluluk olarak inovasyonu, iş birliğini ve dönüşümü nasıl güçlendirdiğimizi keşfedin.',
+            subtitle: 'Öğrenciler, mentorlar, veliler, gönüllüler ve destekçiler aynı amaç etrafında buluşur: öğrenmek, üretmek ve geleceği birlikte şekillendirmek.',
             tabs: {
                 competitor: {
                     title: 'Yarışmacı',
                     icon: Trophy,
                     heading: 'Yarışmacılar',
-                    description: 'RECF yarışmacıları, liderlik, takım çalışması ve problem çözme becerilerini geliştirdikleri heyecan dolu bir STEM yolculuğuna çıkıyor. Bir takımın parçası ol ve geleceğini şekillendir!',
+                    description: 'RECF yarışmacıları; tasarım, üretim, programlama ve takım çalışmasını gerçek görevler üzerinden deneyimler.',
                     benefits: [
-                        'Takım Deneyimi: Akranlarınla birlikte robotlar tasarla, inşa et ve programla',
-                        'Liderlik Becerileri: Proje yönetimi ve takım koordinasyonu deneyimi kazan',
-                        'Problem Çözme: Gerçek mühendislik zorluklarıyla yüzleş ve çözümler üret',
-                        'Küresel Yarışmalar: Dünya Şampiyonası\'na kadar uzanan bir yolculuğa çık'
+                        'Takım Deneyimi: Takımınla birlikte robot veya drone sistemleri geliştir.',
+                        'Liderlik: Görev paylaşımı, zaman yönetimi ve takım koordinasyonu deneyimi kazan.',
+                        'Problem Çözme: Mühendislik zorluklarını analiz et, test et ve iyileştir.',
+                        'Küresel Yolculuk: Yerel etkinliklerden uluslararası yarışma fırsatlarına uzanan bir deneyimin parçası ol.'
                     ],
                     cta: 'Takımını Kur / Kaydol',
                     href: 'https://recfevents.org/'
@@ -41,12 +41,12 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     title: 'Gönüllü',
                     icon: Users,
                     heading: 'Gönüllüler',
-                    description: 'RECF gönüllüleri, STEM\'i hayata geçirir — etkinlik kurulumundan takımları desteklemeye kadar. Deneyim gerekmez, sadece öğrencilerin başarılı olmasına yardım etme tutkusu yeterlidir.',
+                    description: 'RECF etkinliklerinin güvenli, adil ve profesyonel biçimde gerçekleşmesine katkı sağlayın. Deneyiminize ve ilgi alanınıza uygun bir görev üstlenin.',
                     benefits: [
-                        'Turnuva Deneyimi: Operasyonlar, hakemlik ve saha kurulumu rollerinde aktif görev alın',
-                        'Gönüllülük Sertifikası: Resmi sertifika ile deneyiminizi belgelendirin',
-                        'İlham Verin: Öğrencilere uygulamalı destek sunarak onlara ilham olun',
-                        'Esnek Roller: Her ilgi alanına ve programa uygun görevler'
+                        'Etkinlik Deneyimi: Saha kurulumu, operasyon, hakemlik, jüri ve takım desteği rollerinde görev alın.',
+                        'Rol Bazlı Eğitim: Görevinize uygun güncel eğitim ve bilgilendirme içeriklerine erişin.',
+                        'İlham Verin: Öğrencilerin unutamayacakları bir yarışma deneyimi yaşamasına destek olun.',
+                        'Esnek Katılım: Yerel, bölgesel veya ulusal etkinliklerde uygunluğunuza göre görev alın.'
                     ],
                     cta: 'Gönüllü Başvurusu',
                     href: '/kurumsal/gonullu-olun'
@@ -55,12 +55,13 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     title: 'Mentor',
                     icon: GraduationCap,
                     heading: 'Mentorlar',
-                    description: 'Mentorlar, takımlara teknik rehberlik eder, mühendislik sürecini yönetir ve öğrencilere alan bilgisi ve deneyimleriyle ilham verir. Geleceğin mühendislerini şekillendirin.',
+                    description: 'Mentorlar, öğrencilerin yerine çözüm üretmez; doğru soruları sorarak takımın kendi çözümünü geliştirmesine rehberlik eder.',
                     benefits: [
-                        'Teknik Rehberlik: Takımlara robot tasarımı ve kodlama konularında destek olun',
-                        'Mühendislik Süreci: Öğrencilere sistematik problem çözme yaklaşımını öğretin',
-                        'Kariyer Mentorluğu: STEM alanındaki deneyimlerinizi paylaşın',
-                        'Profesyonel Ağ: Diğer mentorlar ve sektör profesyonelleriyle bağlantı kurun'
+                        'Teknik Rehberlik: Tasarım, programlama ve test süreçlerinde öğrencilere yol gösterin.',
+                        'Mühendislik Süreci: Problem tanımlama, prototipleme, test ve iyileştirme kültürünü destekleyin.',
+                        'Takım Yönetimi: Sezon planı, güvenlik, görev dağılımı ve etkinlik hazırlığını koordine edin.',
+                        'Kariyer İlhamı: Deneyimlerinizi paylaşarak öğrencilerin STEM alanlarını keşfetmesine katkı sağlayın.'
+
                     ],
                     cta: 'Mentor Kaynakları',
 
