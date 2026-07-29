@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react"
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { ChevronRight, ChevronLeft, Facebook, Twitter, Instagram, Linkedin, Youtube, MapPin, Calendar, ArrowRight, Users, GraduationCap, School, Building2, Mail, Phone, User, MessageSquare } from 'lucide-react'
+import { ChevronRight, ChevronLeft, Facebook, Twitter, Instagram, Linkedin, Youtube, MapPin, Calendar, ArrowRight, Users, GraduationCap, School, Building2, Mail, Phone, User, MessageSquare, Bot, Gamepad2 } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
@@ -48,6 +48,7 @@ export default function VEXTurkiyeLanding() {
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0)
   const [currentNewsSlide, setCurrentNewsSlide] = useState(0)
   const [currentMobileNewsSlide, setCurrentMobileNewsSlide] = useState(0) // New State for Mobile
+  const [activeCategory, setActiveCategory] = useState<'robotics' | 'drone'>('robotics')
 
   // Fetch Data
   useEffect(() => {
@@ -184,9 +185,9 @@ export default function VEXTurkiyeLanding() {
       },
       whyVex: {
         label: 'NEDEN RECF?',
-        title: 'Yarışmanın Ötesinde Bir Mühendislik Deneyimi',
-        subtitle: 'RECF programları; öğrencilerin tasarım, üretim, programlama, iletişim ve takım çalışması becerilerini gerçek görevler ve rekabetçi etkinlikler aracılığıyla geliştirmesini sağlar.',
-        cta: 'RECF Etkisini Keşfedin',
+        title: 'Yarışmadan Daha Fazlası',
+        subtitle: 'Her görev, öğrencileri geleceğin becerileriyle buluşturan gerçek bir öğrenme deneyimidir.',
+        cta: 'RECF Deneyimini İnceleyin',
         cards: [
           {
             title: 'Temel Beceri Gelişimi',
@@ -324,7 +325,8 @@ export default function VEXTurkiyeLanding() {
 
     {
       id: 'engage',
-      name: 'Engage',
+      name: 'RECF Engage Competition',
+      category: 'robotics',
       description: language === 'TR'
         ? 'İlkokul öğrencileri için tasarlanmış, eğlenceli ve eğitici robotik başlangıç programı.'
         : 'Fun and educational robotics starter program designed for elementary students.',
@@ -334,7 +336,8 @@ export default function VEXTurkiyeLanding() {
     },
     {
       id: 'achieve',
-      name: 'Achieve',
+      name: 'RECF Achieve Competition',
+      category: 'robotics',
       description: language === 'TR'
         ? 'Ortaokul ve lise seviyesi için takım çalışması ve problem çözme odaklı program.'
         : 'Teamwork and problem-solving focused program for middle and high school levels.',
@@ -344,7 +347,8 @@ export default function VEXTurkiyeLanding() {
     },
     {
       id: 'inspire',
-      name: 'Inspire',
+      name: 'RECF Inspire Competition',
+      category: 'robotics',
       description: language === 'TR'
         ? 'Gelişmiş robotik projeleriyle öğrencilere mühendislik becerileri kazandıran program.'
         : 'Program providing engineering skills to students through advanced robotics projects.',
@@ -355,6 +359,7 @@ export default function VEXTurkiyeLanding() {
     {
       id: 'adc',
       name: 'Aerial Drone Competition (ADC)',
+      category: 'drone',
       description: language === 'TR'
         ? 'Öğrencileri drone teknolojisi ve programlama ile buluşturan heyecan verici yarışma.'
         : 'Exciting competition bringing students together with drone technology and programming.',
@@ -365,6 +370,7 @@ export default function VEXTurkiyeLanding() {
     {
       id: 'adc-pro',
       name: 'ADC Pro',
+      category: 'drone',
       description: language === 'TR'
         ? 'Üniversite öğrencileri için profesyonel seviye otonom drone yarışması.'
         : 'Professional level autonomous drone competition for university students.',
@@ -773,61 +779,107 @@ export default function VEXTurkiyeLanding() {
               </p>
             </div>
 
-            {/* Programs Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {programs.map((program) => (
-                <div
-                  key={program.id}
-                  className="group relative bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col h-full"
+            {/* Category Tabs */}
+            <div className="flex justify-center mb-12">
+              <div className="inline-flex p-1.5 bg-gray-100/80 backdrop-blur-md border border-gray-200/50 rounded-2xl shadow-inner">
+                <button
+                  onClick={() => setActiveCategory('robotics')}
+                  className={`flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${activeCategory === 'robotics'
+                    ? 'bg-white text-primary shadow-md scale-[1.02]'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50/50'
+                    }`}
                 >
-                  {/* Image */}
-                  <div className="relative h-56 overflow-hidden bg-gray-100 shrink-0">
-                    <Image
-                      src={program.image || "/placeholder.svg"}
-                      alt={program.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  </div>
+                  <Bot className={`h-4 w-4 transition-transform duration-300 ${activeCategory === 'robotics' ? 'scale-110' : ''}`} />
+                  {language === 'TR' ? 'Robotik Yarışmaları' : 'Robotics Competitions'}
+                </button>
+                <button
+                  onClick={() => setActiveCategory('drone')}
+                  className={`flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${activeCategory === 'drone'
+                    ? 'bg-white text-primary shadow-md scale-[1.02]'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50/50'
+                    }`}
+                >
+                  <Gamepad2 className={`h-4 w-4 transition-transform duration-300 ${activeCategory === 'drone' ? 'scale-110' : ''}`} />
+                  {language === 'TR' ? 'Drone Yarışmaları' : 'Drone Competitions'}
+                </button>
+              </div>
+            </div>
 
-                  <div className="p-6 flex flex-col flex-1">
-                    {/* Program Name */}
-                    <h3 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-primary transition-colors">
-                      {program.name}
-                    </h3>
+            {/* Programs Grid */}
+            <div className="relative">
+              <LazyMotion features={domAnimation}>
+                <m.div
+                  key={activeCategory}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className={
+                    programs.filter((p) => p.category === activeCategory).length === 2
+                      ? "grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto"
+                      : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
+                  }
+                >
+                  {programs
+                    .filter((program) => program.category === activeCategory)
+                    .map((program) => (
+                      <div
+                        key={program.id}
+                        className="group relative bg-white rounded-3xl overflow-hidden border border-gray-200/60 hover:border-primary/40 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 flex flex-col h-full shadow-sm"
+                      >
+                        {/* Image */}
+                        <div className="relative h-60 overflow-hidden bg-gray-100 shrink-0">
+                          <Image
+                            src={program.image || "/placeholder.svg"}
+                            alt={program.name}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
 
-                    {/* Tags */}
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="px-3 py-1 bg-red-100 text-red-800 text-xs font-medium rounded-full border border-red-200">
-                        {program.ageGroup}
-                      </span>
-                      <span className="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full border border-gray-200">
-                        {program.level}
-                      </span>
-                    </div>
+                          {/* Age Group floating badge */}
+                          <div className="absolute top-4 left-4">
+                            <span className="px-3.5 py-1.5 bg-white/95 backdrop-blur-md text-gray-900 text-xs font-semibold rounded-xl shadow-sm border border-gray-100/50">
+                              {program.ageGroup}
+                            </span>
+                          </div>
+                        </div>
 
-                    {/* Description */}
-                    <p className="text-gray-600 leading-relaxed mb-6 text-sm">
-                      {program.description}
-                    </p>
+                        <div className="p-8 flex flex-col flex-1">
+                          {/* Level badge and name */}
+                          <div className="flex items-center gap-2.5 mb-3">
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                              {program.level}
+                            </span>
+                          </div>
 
-                    {/* CTA Button */}
-                    <div className="mt-auto">
-                      <Link href={`/recf-programlari/${program.id}`}>
-                        <Button
-                          variant="outline"
-                          className="w-full border-gray-300 text-gray-700 hover:bg-primary hover:text-white hover:border-primary bg-transparent transition-all"
-                        >
-                          {t.programs.detailButton}
-                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                          <h3 className="text-2xl font-bold mb-3.5 text-gray-900 group-hover:text-primary transition-colors duration-300 leading-tight">
+                            {program.name}
+                          </h3>
+
+                          {/* Description */}
+                          <p className="text-gray-600 leading-relaxed mb-8 text-sm flex-grow">
+                            {program.description}
+                          </p>
+
+                          {/* CTA Button */}
+                          <div className="mt-auto">
+                            <Link href={`/recf-programlari/${program.id}`}>
+                              <Button
+                                variant="outline"
+                                className="w-full border-gray-200/80 text-gray-700 hover:bg-primary hover:text-white hover:border-primary bg-white shadow-sm hover:shadow transition-all duration-300 py-6 rounded-xl font-semibold flex items-center justify-center gap-2 group/btn"
+                              >
+                                {t.programs.detailButton}
+                                <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300 text-gray-400 group-hover:text-white" />
+                              </Button>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                </m.div>
+              </LazyMotion>
             </div>
           </div>
         </section>
@@ -1054,12 +1106,12 @@ export default function VEXTurkiyeLanding() {
           <div className="container mx-auto px-6 max-w-7xl">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-                {language === 'TR' ? 'Takım Kurma Adımları' : 'Team Building Steps'}
+                {language === 'TR' ? 'Takımını Kur, Yarışmaya Katıl' : 'Build Your Team, Join the Comptetion'}
               </h2>
               <p className="text-lg text-gray-600">
                 {language === 'TR'
-                  ? 'RECF Türkiye ekosistemine katılmak ve kendi takımınızı kurmak için izlemeniz gereken temel adımlar.'
-                  : 'Basic steps to follow to join the RECF Turkey ecosystem and build your own team.'}
+                  ? 'RECF Türkiye ekosistemine katılmak için programınızı seçin, takımınızı oluşturun ve yarışma yolculuğunuza başlayın.'
+                  : 'Choose your program, build your team, and start your competition journey to join the RECF Türkiye ecosystem.'}
               </p>
             </div>
 
@@ -1067,23 +1119,23 @@ export default function VEXTurkiyeLanding() {
               {[
                 {
                   step: '01',
-                  title: language === 'TR' ? 'Program Seçimi' : 'Program Selection',
-                  desc: language === 'TR' ? 'Öğrencilerinizin yaş grubuna uygun (Engage, Achieve, vb.) programı belirleyin.' : 'Determine the appropriate program (Engage, Achieve, etc.) for your students age group.'
+                  title: language === 'TR' ? 'Programını Seç' : 'Select Your Program',
+                  desc: language === 'TR' ? 'Öğrencilerin yaş aralığına ve ilgi alanına uygun RECF programını belirleyin.' : 'Determine the RECF program that best suits the students age range and interests.'
                 },
                 {
                   step: '02',
-                  title: language === 'TR' ? 'Ekipman Temini' : 'Equipment Procurement',
-                  desc: language === 'TR' ? 'Seçtiğiniz programa uygun eğitim ve yarışma setlerini edinin.' : 'Acquire the education and competition kits suitable for your chosen program.'
+                  title: language === 'TR' ? 'Takımını ve Kaynaklarını Planla' : 'Plan Your Team and Resources',
+                  desc: language === 'TR' ? 'Öğrencileri, mentoru, çalışma alanını ve program kurallarına uygun ekipmanları belirleyin.' : 'Choose your students, mentor, workspace, and equipment according to program rules.'
                 },
                 {
                   step: '03',
-                  title: language === 'TR' ? 'Resmi Kayıt' : 'Official Registration',
-                  desc: language === 'TR' ? 'RECFevents üzerinden takımınızı resmi olarak kaydedin.' : 'Officially register your team via RECFevents.'
+                  title: language === 'TR' ? 'Takım Kaydını Tamamla' : 'Complete Team Registration',
+                  desc: language === 'TR' ? 'Takımınızı ve kurum bilgilerinizi RECFevents.org üzerinden kaydederek takım numaranızı alın.' : 'Complete your team and institution information on RECFevents.org to get your team number.'
                 },
                 {
                   step: '04',
-                  title: language === 'TR' ? 'Hazırlık & Yarışma' : 'Preparation & Competition',
-                  desc: language === 'TR' ? 'Robotunuzu inşa edin, kodlayın ve etkinliklerde yerinizi alın.' : 'Build your robot, code it, and take your place in events.'
+                  title: language === 'TR' ? 'Tasarla, Geliştir ve Yarış' : 'Design, Build, and Compete',
+                  desc: language === 'TR' ? 'Robotunuzu tasarlayın, üretin, kodlayın ve test ederek RECF Türkiye etkinliklerine hazırlanın.' : 'Design, build, code, and test your robot to prepare for RECF Türkiye events.'
                 }
               ].map((item, i) => (
                 <div key={i} className="relative p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-primary/30 transition-all group">
