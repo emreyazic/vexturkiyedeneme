@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
 import {
     Target, Eye, Globe2,
@@ -136,6 +137,8 @@ export default function HakkimizdaPage() {
                     </div>
                 </div>
             </section>
+
+            <Footer />
         </div>
     )
 }

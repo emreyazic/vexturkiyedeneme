@@ -72,12 +72,13 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     title: 'Sponsor & Bağışçı',
                     icon: Heart,
                     heading: 'Sponsorlar & Bağışçılar',
-                    description: 'Ekosisteme finansal veya donanım desteği sağlayarak geleceğin mühendislerine yatırım yapın. Kurumsal sosyal sorumluluk hedeflerinizi RECF Türkiye ile buluşturun.',
+                    description: 'RECF Türkiye ekosistemine kaynak, uzmanlık veya etkinlik desteği sağlayarak geleceğin teknoloji üreticilerine yatırım yapın.',
                     benefits: [
-                        'Stratejik Ortaklık: Marka görünürlüğünüzü ulusal ve uluslararası yarışmalarda artırın',
-                        'Yetenek Havuzu: Geleceğin mühendisleriyle erken dönemde tanışma fırsatı',
-                        'KSS Etkinliği: Ölçülebilir sosyal etki raporlarıyla projenizi belgeleyin',
-                        'Özelleştirilmiş Paketler: Bütçenize ve hedeflerinize uygun sponsorluk seçenekleri'
+                        'Stratejik İş Birliği: Eğitim, teknoloji ve gençlik odaklı projelerde uzun vadeli ortaklık geliştirin.',
+                        'Yeteneklerle Buluşma: Geleceğin mühendisleri ve teknoloji profesyonelleriyle erken dönemde tanışın.',
+                        'Ölçülebilir Sosyal Etki: Desteklenen öğrenci, takım ve etkinlikleri somut çıktılarla takip edin.',
+                        'Esnek Destek Modelleri: Finansal destek, ekipman, mekân, eğitim veya uzmanlık katkısı sunun.'
+
                     ],
                     cta: 'Sponsorluk Dosyası',
                     href: '/kurumsal/sponsorlar-ve-partnerler'
@@ -86,14 +87,12 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     title: 'Eğitmen',
                     icon: BookOpen,
                     heading: 'Eğitmenler',
-                    description: 'RECF\'i okul müfredatınıza entegre edin, sertifikalı eğitmen eğitimlerine katılın ve sınıf içi uygulamalar için kapsamlı kaynaklara erişin.',
+                    description: 'RECF programlarını sınıf, kulüp ve laboratuvar çalışmalarınıza entegre ederek öğrencilerin uygulamalı STEM deneyimini güçlendirin.',
                     benefits: [
-                        'Müfredat Entegrasyonu: RECF platformlarını mevcut STEM derslerinize entegre edin',
-
-
-                        'Sertifikalı Eğitimler: Resmi RECF eğitmen sertifikası alın',
-                        'Ders Kaynakları: Hazır ders planları ve aktivite rehberleri',
-                        'Teknik Destek: Sınıf içi uygulamalar için sürekli teknik destek'
+                        'Program Entegrasyonu: Robotik ve drone çalışmalarını mevcut ders ve kulüp yapılarına uyarlayın.',
+                        'Eğitim Kaynakları: Güncel eğitim içeriklerine training.recf.org üzerinden erişin.',
+                        'Uygulamalı Öğrenme: Dersleri gerçek görevler, tasarım süreçleri ve takım projeleriyle destekleyin.',
+                        'Mentor Desteği: Takım yönetimi, sezon planlama ve etkinlik hazırlığı kaynaklarından yararlanın.'
                     ],
                     cta: 'Eğitmen Eğitimleri',
 

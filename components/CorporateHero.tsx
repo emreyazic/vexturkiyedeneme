@@ -1,9 +1,6 @@
 'use client'
 
 import React from 'react'
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 
 interface CorporateHeroProps {
     title: string
@@ -40,12 +37,6 @@ export function CorporateHero({ title, subtitle, backgroundImage }: CorporateHer
 
             {/* Content */}
             <div className="relative z-10 container mx-auto px-6 max-w-7xl text-center">
-                {/* Back Button */}
-                <Link href="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-8 group">
-                    <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                    <span className="text-sm font-medium">Ana Sayfa</span>
-                </Link>
-
                 {/* Title */}
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
                     {title}

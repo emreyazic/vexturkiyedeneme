@@ -26,10 +26,9 @@ const menuItems = {
     kurumsal: {
         title: 'Kurumsal',
         items: [
-            { title: 'RECF Türkiye Hakkında', href: '/kurumsal/hakkimizda' },
-            { title: 'RECF Türkiye Ekibi', href: '/kurumsal/ekibimiz' },
-            { title: 'İş Birlikleri ve Destekleyen Kurumlar', href: '/kurumsal/is-birlikleri' },
-            { title: 'RECF Türkiye Gönüllülük', href: '/kurumsal/gonulluluk' }
+            { title: 'RECF Türkiye', href: '/kurumsal/hakkimizda' },
+            { title: 'Partnerler ve Sponsorlar', href: '/kurumsal/is-birlikleri' },
+            { title: 'Basın Odası', href: '/duyurular/basinda-biz' }
         ]
     },
     vexNedir: {
