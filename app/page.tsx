@@ -535,7 +535,7 @@ export default function VEXTurkiyeLanding() {
                     <ChevronRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <Link href="/recf-programlari" aria-label="RECF Programları - Daha fazla bilgi">
+                <Link href="/programlar" aria-label="RECF Programları - Daha fazla bilgi">
                   <Button
                     size="lg"
                     variant="outline"
@@ -865,7 +865,7 @@ export default function VEXTurkiyeLanding() {
 
                           {/* CTA Button */}
                           <div className="mt-auto">
-                            <Link href={`/recf-programlari/${program.id}`}>
+                            <Link href={`/programlar/${program.id === 'adc' ? 'aerial-drone-competition' : (program.id === 'engage' ? 'recf-engage' : (program.id === 'achieve' ? 'recf-achieve' : (program.id === 'inspire' ? 'recf-inspire' : program.id)))}`}>
                               <Button
                                 variant="outline"
                                 className="w-full border-gray-200/80 text-gray-700 hover:bg-primary hover:text-white hover:border-primary bg-white shadow-sm hover:shadow transition-all duration-300 py-6 rounded-xl font-semibold flex items-center justify-center gap-2 group/btn"
@@ -988,7 +988,7 @@ export default function VEXTurkiyeLanding() {
               </p>
 
               {/* CTA Button */}
-              <Link href="/recf-programlari">
+              <Link href="/programlar">
                 <Button
                   size="lg"
                   className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-6 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105"
@@ -1024,7 +1024,7 @@ export default function VEXTurkiyeLanding() {
 
                 {/* Link */}
                 <Link
-                  href="/recf-programlari"
+                  href="/programlar"
                   className="inline-flex items-center text-primary font-semibold hover:underline group/link mt-auto"
                   aria-label="Temel beceri gelişimi hakkında bilgi"
                 >

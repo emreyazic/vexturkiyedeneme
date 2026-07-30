@@ -39,13 +39,13 @@ export function Footer() {
                         <h3 className="text-red-400 font-bold mb-6 text-lg tracking-wide uppercase">RECF Programları</h3>
                         <ul className="space-y-3 text-sm">
                             <li>
-                                <Link href="/recf-programlari/engage" className="hover:text-primary transition-colors">RECF Engage</Link>
+                                <Link href="/programlar/recf-engage" className="hover:text-primary transition-colors">RECF Engage</Link>
                             </li>
                             <li>
-                                <Link href="/recf-programlari/achieve" className="hover:text-primary transition-colors">RECF Achieve</Link>
+                                <Link href="/programlar/recf-achieve" className="hover:text-primary transition-colors">RECF Achieve</Link>
                             </li>
                             <li>
-                                <Link href="/recf-programlari/inspire" className="hover:text-primary transition-colors">RECF Inspire</Link>
+                                <Link href="/programlar/recf-inspire" className="hover:text-primary transition-colors">RECF Inspire</Link>
                             </li>
                             <li>
                                 <Link href="/kaynaklar/mufredat" className="hover:text-primary transition-colors">Eğitim ve Öğrenme Kaynakları</Link>
