@@ -22,7 +22,7 @@ export default async function TeknikBelgelerPage() {
             <div className="h-20" />
             <CorporateHero
                 title="Teknik Belgeler"
-                subtitle="VEX Robotics resmi dökümanları ve kaynakları"
+                subtitle="RECF resmi dökümanları ve kaynakları"
             />
 
             {/* Stats Bar */}

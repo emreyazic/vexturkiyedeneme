@@ -4,42 +4,21 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { CorporateHero } from '@/components/CorporateHero'
+import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
 import {
-    Phone, Mail, MapPin, Clock, Copy, Check, ExternalLink, ShieldCheck
+    Phone, Mail, MapPin, Clock, Copy, Check, ExternalLink, ShieldCheck, Globe
 } from 'lucide-react'
 
-const contactInfo = [
-    {
-        icon: Phone,
-        label: 'Telefon Destek Hattı',
-        value: '+90 (212) 909 23 10',
-        action: 'tel:+902129092310',
-        copyable: true
-    },
-    {
-        icon: Mail,
-        label: 'E-Posta Adresi',
-        value: 'info@recfturkiye.org',
-        action: 'mailto:info@recfturkiye.org',
-        copyable: true
-    },
-    {
-        icon: MapPin,
-        label: 'Temsilcilik Adresi',
-        value: 'Maslak Mah. Büyükdere Cad. No:237, Sarıyer / İstanbul',
-        action: 'https://maps.google.com/?q=Maslak+Mahallesi+Büyükdere+Caddesi+Sarıyer+İstanbul',
-        copyable: true
-    },
-    {
-        icon: Clock,
-        label: 'Çalışma Saatleri',
-        value: 'Pazartesi - Cuma: 09:00 - 18:00',
-        copyable: false
-    }
-]
+interface ContactItem {
+    icon: React.ElementType
+    label: string
+    value: string
+    action?: string
+    copyable: boolean
+}
 
-function ContactCard({ item }: { item: typeof contactInfo[0] }) {
+function ContactCard({ item, language }: { item: ContactItem; language: 'TR' | 'EN' }) {
     const [copied, setCopied] = useState(false)
     const Icon = item.icon
 
@@ -62,7 +41,7 @@ function ContactCard({ item }: { item: typeof contactInfo[0] }) {
                 <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
                     {item.action && (
                         <a href={item.action} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-primary hover:underline inline-flex items-center gap-1">
-                            Bağlantıyı Aç
+                            {language === 'TR' ? 'Bağlantıyı Aç' : 'Open Link'}
                             <ExternalLink className="w-3 h-3" />
                         </a>
                     )}
@@ -75,12 +54,12 @@ function ContactCard({ item }: { item: typeof contactInfo[0] }) {
                         {copied ? (
                             <>
                                 <Check className="w-3.5 h-3.5 text-emerald-600 mr-1" />
-                                Kopyalandı
+                                {language === 'TR' ? 'Kopyalandı' : 'Copied'}
                             </>
                         ) : (
                             <>
                                 <Copy className="w-3.5 h-3.5 mr-1" />
-                                Kopyala
+                                {language === 'TR' ? 'Kopyala' : 'Copy'}
                             </>
                         )}
                     </Button>
@@ -93,45 +72,184 @@ function ContactCard({ item }: { item: typeof contactInfo[0] }) {
 export default function BilgilerPage() {
     const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
 
+    const content = {
+        TR: {
+            hero: {
+                title: "RECF Türkiye İletişim Bilgileri",
+                subtitle:
+                    "Resmi iletişim kanalları, temsilcilik adresi ve destek saatleri",
+            },
+
+            contactInfo: [
+                {
+                    icon: Phone,
+                    label: "Telefon Destek Hattı",
+                    value: "+90 (212) 909 23 10",
+                    action: "tel:+902129092310",
+                    copyable: true,
+                },
+                {
+                    icon: Mail,
+                    label: "E-Posta Adresi",
+                    value: "info@recfturkiye.org",
+                    action: "mailto:info@recfturkiye.org",
+                    copyable: true,
+                },
+                {
+                    icon: MapPin,
+                    label: "Temsilcilik Adresi",
+                    value: "Maslak Mah. Büyükdere Cad. No:237, Sarıyer / İstanbul",
+                    action:
+                        "https://maps.google.com/?q=Maslak+Mahallesi+Büyükdere+Caddesi+Sarıyer+İstanbul",
+                    copyable: true,
+                },
+                {
+                    icon: Clock,
+                    label: "Çalışma Saatleri",
+                    value: "Pazartesi - Cuma: 09:00 - 18:00",
+                    copyable: false,
+                },
+            ],
+
+            switch: {
+                button: "English Sürüme Geç",
+                short: "EN",
+            },
+
+            representative: {
+                badge: "Resmi Temsilcilik",
+                title: "Intechne Teknoloji - RECF Türkiye Temsilciliği",
+                text:
+                    "RECF programları, takım kayıtları ve turnuva organizasyonları Türkiye resmi temsilcisi Intechne Teknoloji tarafından yürütülmektedir.",
+            },
+
+            buttons: {
+                openLink: "Bağlantıyı Aç",
+                copy: "Kopyala",
+                copied: "Kopyalandı",
+                contact: "İletişim Formuna Git",
+            },
+        },
+
+        EN: {
+            hero: {
+                title: "RECF Turkey Contact Information",
+                subtitle: "Official communication channels, representative office address, and support hours",
+            },
+
+            contactInfo: [
+                {
+                    icon: Phone,
+                    label: "Phone Support Line",
+                    value: "+90 (212) 909 23 10",
+                    action: "tel:+902129092310",
+                    copyable: true,
+                },
+                {
+                    icon: Mail,
+                    label: "Email Address",
+                    value: "info@recfturkiye.org",
+                    action: "mailto:info@recfturkiye.org",
+                    copyable: true,
+                },
+                {
+                    icon: MapPin,
+                    label: "Representative Office Address",
+                    value: "Maslak Mah. Büyükdere Cad. No:237, Sarıyer / İstanbul",
+                    action:
+                        "https://maps.google.com/?q=Maslak+Mahallesi+Büyükdere+Caddesi+Sarıyer+İstanbul",
+                    copyable: true,
+                },
+                {
+                    icon: Clock,
+                    label: "Working Hours",
+                    value: "Monday - Friday: 09:00 - 18:00",
+                    copyable: false,
+                },
+            ],
+
+            switch: {
+                button: "Switch to Turkish",
+                short: "TR",
+            },
+
+            representative: {
+                badge: "Official Representative",
+                title: "Intechne Technology - RECF Turkey Representative",
+                text: "RECF programs, team registrations, and tournament organizations are carried out by the official representative of Turkey, Intechne Technology.",
+            },
+
+            buttons: {
+                openLink: "Open Link",
+                copy: "Copy",
+                copied: "Copied",
+                contact: "Go to Contact Form",
+            },
+        },
+    } as const
+
+    const t = content[language]
+
     return (
-        <div className="min-h-screen bg-gray-50 text-foreground">
-            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
-            <div className="h-20" />
+        <div className="min-h-screen bg-gray-50 text-foreground flex flex-col justify-between">
+            <div>
+                <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
+                <div className="h-20" />
 
-            <CorporateHero
-                title="RECF Türkiye İletişim Bilgileri"
-                subtitle="Resmi iletişim kanalları, temsilcilik adresi ve destek saatleri"
-            />
+                <CorporateHero
+                    title={t.hero.title}
+                    subtitle={t.hero.subtitle}
+                />
 
-            <section className="py-16 bg-white min-h-[50vh]">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                        {contactInfo.map((item, idx) => (
-                            <ContactCard key={idx} item={item} />
-                        ))}
-                    </div>
+                <section className="py-16 bg-white min-h-[50vh]">
+                    <div className="container mx-auto px-6 max-w-7xl">
 
-                    <div className="bg-slate-900 text-white rounded-3xl p-10 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xl">
-                        <div>
-                            <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-4 py-1.5 rounded-full text-xs font-semibold mb-4">
-                                <ShieldCheck className="w-4 h-4" />
-                                Resmi Temsilcilik
-                            </div>
-                            <h3 className="text-2xl font-bold text-white mb-2">Intechne Teknoloji - RECF Türkiye Temsilciliği</h3>
-                            <p className="text-slate-300 text-sm max-w-2xl">
-                                RECF programları, takım kayıtları ve turnuva organizasyonları Türkiye resmi temsilcisi Intechne Teknoloji tarafından yürütülmektedir.
-                            </p>
+                        {/* Top Language Toggle Switch */}
+                        <div className="flex justify-end mb-8">
+                            <button
+                                onClick={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                                className="inline-flex items-center gap-2.5 px-5 py-2.5 bg-gray-50 hover:bg-gray-100 border border-gray-200 hover:border-primary/50 rounded-full text-xs font-bold text-gray-700 transition-all shadow-sm cursor-pointer group"
+                            >
+                                <Globe className="w-4 h-4 text-primary group-hover:rotate-12 transition-transform" />
+                                <span>{t.switch.button}</span>
+                                <span className="bg-primary text-white text-[10px] px-2 py-0.5 rounded-full font-extrabold tracking-wider uppercase">
+                                    {t.switch.short}
+                                </span>
+                            </button>
                         </div>
-                        <Link href="/iletisim/form">
-                            <Button className="bg-primary hover:bg-primary/90 text-white font-bold h-14 px-8 rounded-2xl shadow-lg shadow-primary/20 text-base">
-                                İletişim Formuna Git
-                            </Button>
-                        </Link>
-                    </div>
 
-                </div>
-            </section>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                            {t.contactInfo.map((item, idx) => (
+                                <ContactCard key={idx} item={item} language={language} />
+                            ))}
+                        </div>
+
+                        <div className="bg-slate-900 text-white rounded-3xl p-10 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xl">
+                            <div>
+                                <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-4 py-1.5 rounded-full text-xs font-semibold mb-4">
+                                    <ShieldCheck className="w-4 h-4" />
+                                    {t.representative.badge}
+                                </div>
+                                <h3 className="text-2xl font-bold text-white mb-2">
+                                    {t.representative.title}
+                                </h3>
+                                <p className="text-slate-300 text-sm max-w-2xl">
+                                    {t.representative.text}
+                                </p>
+                            </div>
+                            <Link href="/iletisim/form">
+                                <Button className="bg-primary hover:bg-primary/90 text-white font-bold h-14 px-8 rounded-2xl shadow-lg shadow-primary/20 text-base">
+                                    {t.buttons.contact}
+                                </Button>
+                            </Link>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+            <Footer />
         </div>
     )
 }
+
+

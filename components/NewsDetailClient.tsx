@@ -15,7 +15,7 @@ import { SanityNews, getImageUrl, formatNewsDate, getCategoryLabel } from '@/lib
 import { urlFor } from '@/lib/sanity'
 
 // Portable Text Components
-const portableTextComponents: PortableTextReactComponents = {
+const portableTextComponents: Partial<PortableTextReactComponents> = {
     types: {
         image: ({ value }: { value: any }) => {
             if (!value?.asset?._ref) {
