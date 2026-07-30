@@ -34,10 +34,12 @@ const menuItems = {
     vexNedir: {
         title: 'Programlar',
         items: [
-            { title: 'Genel Bakış', href: '/recf-programlari' },
-            { title: 'RECF Engage', href: '/recf-programlari/engage' },
-            { title: 'RECF Achieve', href: '/recf-programlari/achieve' },
-            { title: 'RECF Inspire', href: '/recf-programlari/inspire' }
+            { title: 'Genel Bakış', href: '/programlar' },
+            { title: 'RECF Engage Robotics Competition', href: '/programlar/recf-engage' },
+            { title: 'RECF Achieve Robotics Competition', href: '/programlar/recf-achieve' },
+            { title: 'RECF Inspire Robotics Competition', href: '/programlar/recf-inspire' },
+            { title: 'Aerial Drone Competition (ADC)', href: '/programlar/aerial-drone-competition' },
+            { title: 'ADC Pro', href: '/programlar/adc-pro' }
         ]
     },
     yarismalar: {

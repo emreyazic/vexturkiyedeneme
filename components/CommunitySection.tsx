@@ -3,13 +3,13 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Users, GraduationCap, Heart, BookOpen, CheckCircle2, Trophy, Award } from 'lucide-react'
+import { ArrowRight, Users, GraduationCap, Heart, BookOpen, CheckCircle2, Trophy, Award, Home } from 'lucide-react'
 
 interface CommunitySectionProps {
     language: 'TR' | 'EN'
 }
 
-type TabKey = 'competitor' | 'volunteer' | 'mentor' | 'sponsor' | 'educator'
+type TabKey = 'competitor' | 'parent' | 'volunteer' | 'mentor' | 'sponsor' | 'educator'
 
 import Link from 'next/link'
 
@@ -34,8 +34,22 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Problem Çözme: Mühendislik zorluklarını analiz et, test et ve iyileştir.',
                         'Küresel Yolculuk: Yerel etkinliklerden uluslararası yarışma fırsatlarına uzanan bir deneyimin parçası ol.'
                     ],
-                    cta: 'Takımını Kur / Kaydol',
+                    cta: 'Takımını Kur',
                     href: 'https://recfevents.org/'
+                },
+                parent: {
+                    title: 'Veli',
+                    icon: Home,
+                    heading: 'Veliler',
+                    description: 'Çocuğunuzun teknolojiye olan ilgisini destekleyin; özgüven, sorumluluk ve takım çalışması becerilerinin gelişimine katkı sağlayın.',
+                    benefits: [
+                        'Gelişimi Destekleyin: Çocuğunuzun teknik ve sosyal becerilerini birlikte geliştirmesine yardımcı olun.',
+                        'Süreci Takip Edin: Takım çalışmaları, etkinlikler ve sezon takvimi hakkında bilgi sahibi olun.',
+                        'Güvenli Ortam: Öğrenci merkezli ve güvenli çalışma kültürünü destekleyin.',
+                        'Geleceğe Hazırlık: STEM eğitimi ve kariyer alanlarını erken yaşta keşfetmesine katkı sağlayın.'
+                    ],
+                    cta: 'Aile Birliğine Katılın',
+                    href: '/iletisim/form'
                 },
                 volunteer: {
                     title: 'Gönüllü',
@@ -48,7 +62,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'İlham Verin: Öğrencilerin unutamayacakları bir yarışma deneyimi yaşamasına destek olun.',
                         'Esnek Katılım: Yerel, bölgesel veya ulusal etkinliklerde uygunluğunuza göre görev alın.'
                     ],
-                    cta: 'Gönüllü Başvurusu',
+                    cta: 'Gönüllü Olun',
                     href: '/kurumsal/gonullu-olun'
                 },
                 mentor: {
@@ -61,11 +75,8 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Mühendislik Süreci: Problem tanımlama, prototipleme, test ve iyileştirme kültürünü destekleyin.',
                         'Takım Yönetimi: Sezon planı, güvenlik, görev dağılımı ve etkinlik hazırlığını koordine edin.',
                         'Kariyer İlhamı: Deneyimlerinizi paylaşarak öğrencilerin STEM alanlarını keşfetmesine katkı sağlayın.'
-
                     ],
-                    cta: 'Mentor Kaynakları',
-
-
+                    cta: 'Mentor Olun',
                     href: '/takimlar/mentor'
                 },
                 sponsor: {
@@ -77,10 +88,9 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Stratejik İş Birliği: Eğitim, teknoloji ve gençlik odaklı projelerde uzun vadeli ortaklık geliştirin.',
                         'Yeteneklerle Buluşma: Geleceğin mühendisleri ve teknoloji profesyonelleriyle erken dönemde tanışın.',
                         'Ölçülebilir Sosyal Etki: Desteklenen öğrenci, takım ve etkinlikleri somut çıktılarla takip edin.',
-                        'Esnek Destek Modelleri: Finansal destek, ekipman, mekân, eğitim veya uzmanlık katkısı sunun.'
-
+                        'Esnek Destek Modelleri: Finansal destek, ekipman, mekân, eğitim veya uzmanlık katkısı sunun.',
                     ],
-                    cta: 'Sponsorluk Dosyası',
+                    cta: 'Sponsorumuz Olun',
                     href: '/kurumsal/sponsorlar-ve-partnerler'
                 },
                 educator: {
@@ -94,9 +104,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Uygulamalı Öğrenme: Dersleri gerçek görevler, tasarım süreçleri ve takım projeleriyle destekleyin.',
                         'Mentor Desteği: Takım yönetimi, sezon planlama ve etkinlik hazırlığı kaynaklarından yararlanın.'
                     ],
-                    cta: 'Eğitmen Eğitimleri',
-
-
+                    cta: 'Eğitmen Kaynakları',
                     href: 'https://training.recf.org'
                 }
             }
@@ -121,8 +129,22 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Problem Solving: Face real engineering challenges and create solutions',
                         'Global Competitions: Embark on a journey that leads to the World Championship'
                     ],
-                    cta: 'Build Your Team / Register',
+                    cta: 'Build Your Team',
                     href: '/takimlar/nasil-kurulur'
+                },
+                parent: {
+                    title: 'Parent',
+                    icon: Home,
+                    heading: 'Parents',
+                    description: "Support your child's interest in technology; contribute to the development of self-confidence, responsibility, and teamwork skills.",
+                    benefits: [
+                        'Support Development: Help your child develop technical and social skills together.',
+                        'Follow the Process: Be informed about team activities, events, and the season calendar.',
+                        'Safe Environment: Support a student-centered and safe working culture.',
+                        'Prepare for Future: Contribute to their early discovery of STEM education and career paths.'
+                    ],
+                    cta: 'Join the Parent Union',
+                    href: '/iletisim/form'
                 },
                 volunteer: {
                     title: 'Volunteer',
@@ -135,7 +157,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Inspire Students: Be an inspiration through hands-on support',
                         'Flexible Roles: Tasks suitable for every interest and schedule'
                     ],
-                    cta: 'Apply as Volunteer',
+                    cta: 'Volunteer',
                     href: '/kurumsal/gonullu-olun'
                 },
                 mentor: {
@@ -149,8 +171,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Career Mentorship: Share your STEM field experiences',
                         'Professional Network: Connect with other mentors and industry professionals'
                     ],
-                    cta: 'Mentor Resources',
-
+                    cta: 'Become a Mentor',
                     href: '/takimlar/mentor'
                 },
                 sponsor: {
@@ -164,18 +185,13 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'CSR Impact: Document your project with measurable social impact reports',
                         'Customized Packages: Sponsorship options tailored to your budget and goals'
                     ],
-                    cta: 'Sponsorship Package',
-
-
+                    cta: 'Become a Sponsor',
                     href: '/kurumsal/sponsorlar-ve-partnerler'
                 },
                 educator: {
                     title: 'Educator',
                     icon: BookOpen,
                     heading: 'Educators',
-
-
-
                     description: 'Integrate RECF into your school curriculum, participate in certified educator training, and access comprehensive resources for classroom applications.',
                     benefits: [
                         'Curriculum Integration: Integrate RECF platforms into your existing STEM courses',
@@ -183,7 +199,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                         'Lesson Resources: Ready-made lesson plans and activity guides',
                         'Technical Support: Ongoing technical support for classroom applications'
                     ],
-                    cta: 'Educator Training',
+                    cta: 'Educator Resources',
                     href: 'https://educathub.com/mufredatlarimiz/'
                 }
             }
@@ -191,7 +207,7 @@ export function CommunitySection({ language }: CommunitySectionProps) {
     }
 
     const t = content[language]
-    const tabs: TabKey[] = ['competitor', 'volunteer', 'mentor', 'sponsor', 'educator']
+    const tabs: TabKey[] = ['competitor', 'parent', 'volunteer', 'mentor', 'sponsor', 'educator']
 
     return (
         <section className="relative py-24 bg-gray-50">

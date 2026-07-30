@@ -27,37 +27,73 @@ const nextConfig = {
       // VEX-nedir redirects
       {
         source: '/vex-nedir/vex-v5',
-        destination: '/recf-programlari/achieve',
+        destination: '/programlar/recf-achieve',
         permanent: true,
       },
       {
         source: '/vex-nedir/vex-iq',
-        destination: '/recf-programlari/engage',
+        destination: '/programlar/recf-engage',
         permanent: true,
       },
       {
         source: '/vex-nedir/vex-u',
-        destination: '/recf-programlari/inspire',
+        destination: '/programlar/recf-inspire',
         permanent: true,
       },
       {
         source: '/vex-nedir/v5rc',
-        destination: '/recf-programlari/adc',
+        destination: '/programlar/aerial-drone-competition',
         permanent: true,
       },
       {
         source: '/vex-nedir/viqrc',
-        destination: '/recf-programlari/adc-pro',
+        destination: '/programlar/adc-pro',
         permanent: true,
       },
       {
         source: '/vex-nedir',
-        destination: '/recf-programlari',
+        destination: '/programlar',
         permanent: true,
       },
       {
         source: '/vex-nedir/:slug',
-        destination: '/recf-programlari/:slug',
+        destination: '/programlar/:slug',
+        permanent: true,
+      },
+      // recf-programlari redirects
+      {
+        source: '/recf-programlari',
+        destination: '/programlar',
+        permanent: true,
+      },
+      {
+        source: '/recf-programlari/engage',
+        destination: '/programlar/recf-engage',
+        permanent: true,
+      },
+      {
+        source: '/recf-programlari/achieve',
+        destination: '/programlar/recf-achieve',
+        permanent: true,
+      },
+      {
+        source: '/recf-programlari/inspire',
+        destination: '/programlar/recf-inspire',
+        permanent: true,
+      },
+      {
+        source: '/recf-programlari/adc',
+        destination: '/programlar/aerial-drone-competition',
+        permanent: true,
+      },
+      {
+        source: '/recf-programlari/adc-pro',
+        destination: '/programlar/adc-pro',
+        permanent: true,
+      },
+      {
+        source: '/recf-programlari/:slug',
+        destination: '/programlar/:slug',
         permanent: true,
       },
       // Takım Dizini redirects
