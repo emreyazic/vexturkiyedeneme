@@ -299,7 +299,7 @@ export default function BlogPage() {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

@@ -500,7 +500,7 @@ export default function BasindaBizClient({ tvNews }: BasindaBizClientProps) {
                 </div>
             </main>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

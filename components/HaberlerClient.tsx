@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -45,9 +45,10 @@ interface HaberlerClientProps {
 }
 
 export function HaberlerClient({ news }: HaberlerClientProps) {
+    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
     return (
         <div className="min-h-screen bg-white text-foreground">
-            <Navbar language="TR" onLanguageToggle={() => { }} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
 
             <div className="h-20" />
             <CorporateHero
@@ -188,7 +189,7 @@ export function HaberlerClient({ news }: HaberlerClientProps) {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

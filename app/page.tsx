@@ -1362,7 +1362,7 @@ export default function VEXTurkiyeLanding() {
           </div>
         </section >
 
-        <Footer />
+        <Footer language={language} />
       </div >
     </LazyMotion>
   )

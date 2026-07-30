@@ -138,7 +138,7 @@ export default function HakkimizdaPage() {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

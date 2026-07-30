@@ -243,7 +243,7 @@ export default function GonulluOlunPage() {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

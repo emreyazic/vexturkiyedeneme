@@ -635,7 +635,7 @@ export default function DunyaSampiyonasiPage() {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

@@ -479,7 +479,7 @@ export function SezonTemasiClient({ vrcRules, iqRules, vrcResources, iqResources
             </section>
 
             {/* Footer */}
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

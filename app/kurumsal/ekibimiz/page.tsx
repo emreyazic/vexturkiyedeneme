@@ -111,7 +111,7 @@ export default function EkibimizPage() {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

@@ -650,7 +650,7 @@ export default function ProgramDetailPage() {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

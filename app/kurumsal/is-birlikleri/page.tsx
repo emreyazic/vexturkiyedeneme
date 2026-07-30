@@ -166,7 +166,7 @@ export default function IsBirlikleriPage() {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

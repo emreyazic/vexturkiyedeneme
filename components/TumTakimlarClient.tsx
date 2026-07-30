@@ -30,6 +30,7 @@ interface TumTakimlarClientProps {
 }
 
 export function TumTakimlarClient({ teams }: TumTakimlarClientProps) {
+    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
     // Filter states
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedCity, setSelectedCity] = useState<string>('all')
@@ -90,7 +91,7 @@ export function TumTakimlarClient({ teams }: TumTakimlarClientProps) {
 
     return (
         <div className="min-h-screen bg-gray-50 text-foreground">
-            <Navbar language="TR" onLanguageToggle={() => { }} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
 
             <div className="h-20" />
 
@@ -285,7 +286,7 @@ export function TumTakimlarClient({ teams }: TumTakimlarClientProps) {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

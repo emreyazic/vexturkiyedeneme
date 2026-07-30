@@ -296,7 +296,7 @@ export default function RecfProgramsPage() {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

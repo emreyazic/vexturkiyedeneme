@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
@@ -40,11 +40,12 @@ const getPostData = (slug: string) => {
 }
 
 export default function BlogDetailPage({ params }: { params: { slug: string } }) {
+    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
     const post = getPostData(params.slug)
 
     return (
         <div className="min-h-screen bg-white text-foreground">
-            <Navbar language="TR" onLanguageToggle={() => { }} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
 
             <div className="h-20" />
 
@@ -131,7 +132,7 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
                 </Link>
             </div>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

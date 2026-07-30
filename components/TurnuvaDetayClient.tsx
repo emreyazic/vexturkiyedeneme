@@ -362,7 +362,7 @@ export function TurnuvaDetayClient({ event }: TurnuvaDetayClientProps) {
             </section>
 
             {/* Footer */}
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

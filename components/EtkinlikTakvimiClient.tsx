@@ -743,7 +743,7 @@ export function EtkinlikTakvimiClient({ upcomingEvents, allEvents, countdownSett
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

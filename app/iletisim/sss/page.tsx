@@ -298,7 +298,7 @@ export default function SSSPage() {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }
