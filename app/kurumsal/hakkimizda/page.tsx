@@ -10,7 +10,8 @@ import {
     Target, Eye, Globe2,
     Users,
     MapPin, ArrowRight, CheckCircle2, ExternalLink,
-    Heart, ShieldCheck, Award, UserCheck
+    Heart, ShieldCheck, Award, UserCheck,
+    BookOpen, AlertCircle
 } from 'lucide-react'
 
 export default function HakkimizdaPage() {
@@ -284,9 +285,6 @@ export default function HakkimizdaPage() {
                 </div>
             </section>
 
-<<<<<<< HEAD
-            <Footer language={language} />
-=======
             {/* 4. Intechne Teknoloji Hakkında */}
             <section className="py-16 md:py-20 bg-slate-50 border-t border-gray-200">
                 <div className="container mx-auto px-6 max-w-4xl text-center">
@@ -313,8 +311,7 @@ export default function HakkimizdaPage() {
                 </div>
             </section>
 
-            <Footer />
->>>>>>> 9d3edb08a083366f8bb081baec3b79faad1cb69d
+            <Footer language={language} />
         </div>
     )
 }
