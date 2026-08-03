@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useMemo } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -256,7 +257,7 @@ function ResourcesSection({
 
 // Main Client Component
 export function SezonTemasiClient({ vrcRules, iqRules, vrcResources, iqResources }: SezonTemasiClientProps) {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const [selectedPlatform, setSelectedPlatform] = useState<'vrc' | 'iq'>('vrc')
 
     const theme = getPlatformTheme(selectedPlatform)

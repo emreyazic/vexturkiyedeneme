@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
@@ -16,7 +17,7 @@ import {
 import Link from 'next/link'
 
 export default function IsBirlikleriPage() {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
 
     const categories = [
         {

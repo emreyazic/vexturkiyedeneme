@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
@@ -15,116 +16,116 @@ import Link from 'next/link'
 import { getTranslation } from '@/lib/utils'
 
 const content = {
-  TR: {
-    hero: {
-      title: "RECF Türkiye Gönüllülük",
-      subtitle: "RECF Türkiye etkinliklerinde gönüllü olun; öğrencilerin yarışma deneyimine katkı sağlayın."
+    TR: {
+        hero: {
+            title: "RECF Türkiye Gönüllülük",
+            subtitle: "RECF Türkiye etkinliklerinde gönüllü olun; öğrencilerin yarışma deneyimine katkı sağlayın."
+        },
+        rolesBadge: "Resmi RECF Roller",
+        title: "Öğrencilerin Mühendislik Yolculuğunda Rehber Olun",
+        desc1: "RECF (Robotics Education & Competition Foundation) Türkiye etkinliklerinde görev almak, yarışan öğrencilere ilham vermek ve onlara adil, profesyonel bir ortam sunmak anlamına gelir.",
+        desc2: "İster teknoloji ve robotik uzmanı olun, ister bu alana ilgi duyan bir eğitimci; RECF ekosisteminde yeteneklerinize uygun bir görev her zaman vardır. Etkinlik Partneri, Baş Hakem, Jüri Danışmanı veya Saha Yöneticisi gibi rolleri üstlenerek uluslararası standartlarda bir turnuva ortamı oluşturabilirsiniz.",
+        eduTitle: "Gönüllü Eğitimi ve Sertifikasyon",
+        eduDesc: "Birçok RECF gönüllü rolü için ücretsiz ve online sertifikasyon programları mevcuttur. Head Referee veya Judge Advisor rollerini üstlenebilmek için resmi sertifikasyon sistemini tamamlamanız gerekmektedir.",
+        eduBtn: "Eğitim Portalına Git",
+        whyVolunteer: [
+            { "title": "Fark Yaratın", "description": "Gençlerin STEM kariyerlerine ilk adımlarını atmalarına yardımcı olun." },
+            { "title": "Topluluk Olun", "description": "Aynı vizyonu paylaşan eğitimciler ve mentorlarla tanışın." },
+            { "title": "Deneyim Kazanın", "description": "Uluslararası standartlarda etkinlik organizasyonu tecrübesi edinin." },
+            { "title": "Esnek Katılım", "description": "Müsaitliğinize göre yerel veya ulusal etkinliklere katılın." }
+        ],
+        form: {
+            title: "Gönüllü Başvuru Formu",
+            subtitle: "Aşağıdaki formu doldurarak ekibimize katılabilirsiniz. Bilgileriniz Intechne Teknoloji tarafından değerlendirilecektir.",
+            name: "Ad Soyad",
+            namePlaceholder: "Adınız Soyadınız",
+            email: "E-posta",
+            emailPlaceholder: "ornek@email.com",
+            phone: "Telefon",
+            phonePlaceholder: "05XX XXX XX XX",
+            city: "Şehir",
+            cityPlaceholder: "Yaşadığınız Şehir",
+            profession: "Meslek / Kurum",
+            professionPlaceholder: "Örn: Bilişim Öğretmeni, Mühendis vb.",
+            roleLabel: "İlgilendiğiniz Rol",
+            rolePlaceholder: "Bir rol seçin",
+            messageLabel: "Kendinizden ve Deneyimlerinizden Bahsedin",
+            messagePlaceholder: "Varsa daha önceki gönüllülük deneyimleriniz, yetkinlikleriniz...",
+            kvkkConfirm: "Kişisel verilerimin Intechne Teknoloji tarafından kapsamında işlenmesini ve Gönüllülük faaliyetleri doğrultusunda saklanmasını onaylıyorum.",
+            kvkkLink: "KVKK Aydınlatma Metni",
+            submit: "Başvuruyu Gönder",
+            kvkkAlert: "Lütfen KVKK Aydınlatma Metni'ni onaylayın.",
+            successAlert: "Gönüllülük başvurunuz başarıyla alındı! İlgili birimimiz en kısa sürede sizinle iletişime geçecektir."
+        },
+        volunteerRoles: [
+            { "value": "event-partner", "label": "Event Partner (Etkinlik Partneri)" },
+            { "value": "head-referee", "label": "Head Referee (Baş Hakem)" },
+            { "value": "scorekeeper-referee", "label": "Scorekeeper Referee (Skor Hakemi)" },
+            { "value": "judge-advisor", "label": "Judge Advisor (Jüri Danışmanı)" },
+            { "value": "judge", "label": "Judge (Jüri Üyesi)" },
+            { "value": "robot-inspector", "label": "Robot Inspector (Robot Denetmeni)" },
+            { "value": "field-manager", "label": "Field Manager (Saha Yöneticisi)" },
+            { "value": "emcee", "label": "Emcee (Sunucu)" },
+            { "value": "media", "label": "Medya ve İletişim" }
+        ]
     },
-    rolesBadge: "Resmi RECF Roller",
-    title: "Öğrencilerin Mühendislik Yolculuğunda Rehber Olun",
-    desc1: "RECF (Robotics Education & Competition Foundation) Türkiye etkinliklerinde görev almak, yarışan öğrencilere ilham vermek ve onlara adil, profesyonel bir ortam sunmak anlamına gelir.",
-    desc2: "İster teknoloji ve robotik uzmanı olun, ister bu alana ilgi duyan bir eğitimci; RECF ekosisteminde yeteneklerinize uygun bir görev her zaman vardır. Etkinlik Partneri, Baş Hakem, Jüri Danışmanı veya Saha Yöneticisi gibi rolleri üstlenerek uluslararası standartlarda bir turnuva ortamı oluşturabilirsiniz.",
-    eduTitle: "Gönüllü Eğitimi ve Sertifikasyon",
-    eduDesc: "Birçok RECF gönüllü rolü için ücretsiz ve online sertifikasyon programları mevcuttur. Head Referee veya Judge Advisor rollerini üstlenebilmek için resmi sertifikasyon sistemini tamamlamanız gerekmektedir.",
-    eduBtn: "Eğitim Portalına Git",
-    whyVolunteer: [
-      { "title": "Fark Yaratın", "description": "Gençlerin STEM kariyerlerine ilk adımlarını atmalarına yardımcı olun." },
-      { "title": "Topluluk Olun", "description": "Aynı vizyonu paylaşan eğitimciler ve mentorlarla tanışın." },
-      { "title": "Deneyim Kazanın", "description": "Uluslararası standartlarda etkinlik organizasyonu tecrübesi edinin." },
-      { "title": "Esnek Katılım", "description": "Müsaitliğinize göre yerel veya ulusal etkinliklere katılın." }
-    ],
-    form: {
-      title: "Gönüllü Başvuru Formu",
-      subtitle: "Aşağıdaki formu doldurarak ekibimize katılabilirsiniz. Bilgileriniz Intechne Teknoloji tarafından değerlendirilecektir.",
-      name: "Ad Soyad",
-      namePlaceholder: "Adınız Soyadınız",
-      email: "E-posta",
-      emailPlaceholder: "ornek@email.com",
-      phone: "Telefon",
-      phonePlaceholder: "05XX XXX XX XX",
-      city: "Şehir",
-      cityPlaceholder: "Yaşadığınız Şehir",
-      profession: "Meslek / Kurum",
-      professionPlaceholder: "Örn: Bilişim Öğretmeni, Mühendis vb.",
-      roleLabel: "İlgilendiğiniz Rol",
-      rolePlaceholder: "Bir rol seçin",
-      messageLabel: "Kendinizden ve Deneyimlerinizden Bahsedin",
-      messagePlaceholder: "Varsa daha önceki gönüllülük deneyimleriniz, yetkinlikleriniz...",
-      kvkkConfirm: "Kişisel verilerimin Intechne Teknoloji tarafından kapsamında işlenmesini ve Gönüllülük faaliyetleri doğrultusunda saklanmasını onaylıyorum.",
-      kvkkLink: "KVKK Aydınlatma Metni",
-      submit: "Başvuruyu Gönder",
-      kvkkAlert: "Lütfen KVKK Aydınlatma Metni'ni onaylayın.",
-      successAlert: "Gönüllülük başvurunuz başarıyla alındı! İlgili birimimiz en kısa sürede sizinle iletişime geçecektir."
-    },
-    volunteerRoles: [
-      { "value": "event-partner", "label": "Event Partner (Etkinlik Partneri)" },
-      { "value": "head-referee", "label": "Head Referee (Baş Hakem)" },
-      { "value": "scorekeeper-referee", "label": "Scorekeeper Referee (Skor Hakemi)" },
-      { "value": "judge-advisor", "label": "Judge Advisor (Jüri Danışmanı)" },
-      { "value": "judge", "label": "Judge (Jüri Üyesi)" },
-      { "value": "robot-inspector", "label": "Robot Inspector (Robot Denetmeni)" },
-      { "value": "field-manager", "label": "Field Manager (Saha Yöneticisi)" },
-      { "value": "emcee", "label": "Emcee (Sunucu)" },
-      { "value": "media", "label": "Medya ve İletişim" }
-    ]
-  },
-  EN: {
-    hero: {
-      title: "",
-      subtitle: ""
-    },
-    rolesBadge: "",
-    title: "",
-    desc1: "",
-    desc2: "",
-    eduTitle: "",
-    eduDesc: "",
-    eduBtn: "",
-    whyVolunteer: [
-      { "title": "", "description": "" },
-      { "title": "", "description": "" },
-      { "title": "", "description": "" },
-      { "title": "", "description": "" }
-    ],
-    form: {
-      title: "",
-      subtitle: "",
-      name: "",
-      namePlaceholder: "",
-      email: "",
-      emailPlaceholder: "",
-      phone: "",
-      phonePlaceholder: "",
-      city: "",
-      cityPlaceholder: "",
-      profession: "",
-      professionPlaceholder: "",
-      roleLabel: "",
-      rolePlaceholder: "",
-      messageLabel: "",
-      messagePlaceholder: "",
-      kvkkConfirm: "",
-      kvkkLink: "",
-      submit: "",
-      kvkkAlert: "",
-      successAlert: ""
-    },
-    volunteerRoles: [
-      { "value": "event-partner", "label": "" },
-      { "value": "head-referee", "label": "" },
-      { "value": "scorekeeper-referee", "label": "" },
-      { "value": "judge-advisor", "label": "" },
-      { "value": "judge", "label": "" },
-      { "value": "robot-inspector", "label": "" },
-      { "value": "field-manager", "label": "" },
-      { "value": "emcee", "label": "" },
-      { "value": "media", "label": "" }
-    ]
-  }
+    EN: {
+        hero: {
+            title: "RECF Turkey Volunteering",
+            subtitle: "Volunteer at RECF Turkey events; contribute to students' competition experience."
+        },
+        rolesBadge: "Official RECF Roles",
+        title: "Be a Guide on Students' Engineering Journey",
+        desc1: "Volunteering at RECF (Robotics Education & Competition Foundation) Turkey events means inspiring student competitors and providing them with a fair, professional environment.",
+        desc2: "Whether you are a technology and robotics expert or an educator interested in this field, there is always a role in the RECF ecosystem that matches your skills. You can create an international standard tournament atmosphere by taking on roles such as Event Partner, Head Referee, Judge Advisor, or Field Manager.",
+        eduTitle: "Volunteer Training and Certification",
+        eduDesc: "Free online certification programs are available for many RECF volunteer roles. To assume Head Referee or Judge Advisor roles, you must complete the official certification system.",
+        eduBtn: "To the Training Portal",
+        whyVolunteer: [
+            { "title": "Make a Difference", "description": "Help young people take their first steps into STEM careers." },
+            { "title": "Become a Community", "description": "Meet educators and mentors who share the same vision." },
+            { "title": "Gain Experience", "description": "Acquire experience in organizing international standard events." },
+            { "title": "Flexible Participation", "description": "Join local or national events according to your availability." }
+        ],
+        form: {
+            title: "Volunteer Application Form",
+            subtitle: "You can join our team by filling out the form below. Your information will be evaluated by Intechne Teknoloji.",
+            name: "Name Surname",
+            namePlaceholder: "Your Name Surname",
+            email: "Email",
+            emailPlaceholder: "E-mail Address",
+            phone: "Phone",
+            phonePlaceholder: "05XX XXX XX XX",
+            city: "City",
+            cityPlaceholder: "Your City",
+            profession: "Profession / Institution",
+            professionPlaceholder: "e.g., IT Teacher, Engineer, etc.",
+            roleLabel: "Interested Role",
+            rolePlaceholder: "Select a role",
+            messageLabel: "Tell us about yourself and your experience",
+            messagePlaceholder: "If you have previous volunteer experience, your qualifications...",
+            kvkkConfirm: "I consent to the processing and storage of my personal data by Intechne Teknoloji within the scope of Volunteer activities.",
+            kvkkLink: "KVKK Clarification Text",
+            submit: "Submit Application",
+            kvkkAlert: "Please confirm the KVKK Clarification Text.",
+            successAlert: "Your volunteer application has been successfully received! Our relevant department will contact you as soon as possible."
+        },
+        volunteerRoles: [
+            { "value": "event-partner", "label": "Event Partner" },
+            { "value": "head-referee", "label": "Head Referee" },
+            { "value": "scorekeeper-referee", "label": "Scorekeeper Referee" },
+            { "value": "judge-advisor", "label": "Judge Advisor" },
+            { "value": "judge", "label": "Judge" },
+            { "value": "robot-inspector", "label": "Robot Inspector" },
+            { "value": "field-manager", "label": "Field Manager" },
+            { "value": "emcee", "label": "Emcee" },
+            { "value": "media", "label": "Media and Communication" }
+        ]
+    }
 }
 
 export default function GonulluOlunPage() {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const { t, isFallback } = getTranslation(content, language)
 
     const [formData, setFormData] = useState({
@@ -156,8 +157,8 @@ export default function GonulluOlunPage() {
 
     return (
         <div className="min-h-screen bg-white text-foreground">
-            <Navbar 
-                language={language} 
+            <Navbar
+                language={language}
                 onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
                 showTranslationWarning={isFallback}
             />
@@ -318,8 +319,8 @@ export default function GonulluOlunPage() {
                                     </div>
 
                                     <div className="flex items-start space-x-3 bg-gray-50 p-4 rounded-xl border border-gray-200">
-                                        <Checkbox 
-                                            id="kvkk" 
+                                        <Checkbox
+                                            id="kvkk"
                                             checked={kvkkApproved}
                                             onCheckedChange={(checked) => setKvkkApproved(checked as boolean)}
                                         />

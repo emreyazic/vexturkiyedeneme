@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
@@ -80,15 +81,15 @@ const content = {
     },
     EN: {
         hero: {
-            title: "About RECF Türkiye",
-            subtitle: "Robotics Education & Competition Foundation (RECF) Türkiye is a student-centered technology ecosystem that brings together students, educators, mentors, volunteers, and institutions around robotics, drone, and engineering competitions."
+            title: "Together We Are Building the Engineering Ecosystem of the Future",
+            subtitle: "RECF Turkiye is a student-centered technology ecosystem that brings together students, educators, mentors, volunteers, and institutions around robotics, drone, and engineering competitions."
         },
         sec1: {
             recfTitle: "About RECF",
             recfDesc1: "Robotics Education & Competition Foundation (RECF) is an international non-profit organization aimed at increasing students' interest in science, technology, engineering, and mathematics (STEM).",
             recfDesc2: "RECF programs enable students to apply their theoretical knowledge through real tasks, engineering projects, and team-based competition experiences. Participants develop not only their technical skills but also their leadership, communication, problem-solving, and project management competencies.",
             recfTrTitle: "About RECF Turkey",
-            recfTrDesc1: "RECF Türkiye works to expand RECF programs in Turkey, support teams, and create a sustainable competition ecosystem.",
+            recfTrDesc1: "RECF Turkiye works to expand RECF programs in Turkey, support teams, and create a sustainable competition ecosystem.",
             recfTrDesc2: "It brings together all stakeholders, from students to educators, volunteers to institutions, around the same goal. Its aim is to contribute to the development of young people as individuals who produce technology, develop solutions, and take responsibility."
         },
         sec2: {
@@ -144,7 +145,7 @@ const content = {
 }
 
 export default function HakkimizdaPage() {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const { t, isFallback } = getTranslation(content, language)
 
     return (

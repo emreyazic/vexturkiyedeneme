@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
@@ -22,7 +23,7 @@ const teamMembers = [
 ]
 
 export default function EkibimizPage() {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
 
     return (
         <div className="min-h-screen bg-white text-foreground">

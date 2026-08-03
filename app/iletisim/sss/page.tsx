@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useMemo } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -146,7 +147,7 @@ function AccordionItem({ item, isOpen, onToggle }: {
 }
 
 export default function SSSPage() {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedCategory, setSelectedCategory] = useState('all')
     const [openItems, setOpenItems] = useState<number[]>([])

@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -87,7 +88,7 @@ function AddToCalendarButton({ event }: { event: SanityEvent }) {
 }
 
 export function TurnuvaDetayClient({ event }: TurnuvaDetayClientProps) {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const typeColors = getEventTypeColor(event.eventType)
     const platformColors = getPlatformColor(event.platform)
 

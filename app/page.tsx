@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from "react"
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
@@ -41,7 +42,7 @@ import {
 } from '@/lib/sanity-queries'
 
 export default function VEXTurkiyeLanding() {
-  const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+  const { language, setLanguage } = useLanguage()
   const [events, setEvents] = useState<SanityEvent[]>([])
   const [news, setNews] = useState<SanityNews[]>([])
   const [heroSlides, setHeroSlides] = useState<SanityHero[]>([])

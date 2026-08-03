@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -229,7 +230,7 @@ function BlogCard({ post, index }: { post: typeof blogPosts[0]; index: number })
 }
 
 export default function BlogPage() {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const [selectedCategory, setSelectedCategory] = useState('Tümü')
 
     const featuredPost = blogPosts.find(p => p.featured)

@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { motion } from 'framer-motion'
@@ -337,7 +338,7 @@ const programsData: Record<string, {
 export default function ProgramDetailPage() {
     const params = useParams()
     const programSlug = params['program-adi'] as string
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
 
     const program = programsData[programSlug]
 

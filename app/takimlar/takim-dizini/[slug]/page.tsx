@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
@@ -8,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import { ShieldCheck, ArrowLeft, Database, UserX } from 'lucide-react'
 
 export default function TakimDetayPage({ params }: { params: { slug: string } }) {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const teamId = params.slug.toUpperCase()
 
     return (

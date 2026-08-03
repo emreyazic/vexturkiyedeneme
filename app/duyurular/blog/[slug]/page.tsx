@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
@@ -40,7 +41,7 @@ const getPostData = (slug: string) => {
 }
 
 export default function BlogDetailPage({ params }: { params: { slug: string } }) {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const post = getPostData(params.slug)
 
     return (

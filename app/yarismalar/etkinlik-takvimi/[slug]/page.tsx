@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
@@ -8,7 +9,7 @@ import { Button } from '@/components/ui/button'
 import { CalendarDays, ArrowLeft, ExternalLink, MapPin } from 'lucide-react'
 
 export default function EtkinlikDetayPage({ params }: { params: { slug: string } }) {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     
     // Convert slug to a somewhat readable string if needed, or just use as ID
     const eventId = params.slug.replace(/-/g, ' ').toUpperCase()

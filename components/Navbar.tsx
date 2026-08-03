@@ -21,73 +21,147 @@ import {
 } from '@/components/ui/accordion'
 import { Search, Menu, Globe, ChevronRight } from 'lucide-react'
 
-// Menu structure data
-const menuItems = {
-    kurumsal: {
-        title: 'Kurumsal',
-        items: [
-            { title: 'RECF Türkiye', href: '/kurumsal/hakkimizda' },
-            { title: 'Partnerler ve Sponsorlar', href: '/kurumsal/is-birlikleri' },
-            { title: 'Basın Odası', href: '/duyurular/basinda-biz' }
-        ]
+// Menu structure data localized
+const content = {
+    TR: {
+        kurumsal: {
+            title: 'Kurumsal',
+            items: [
+                { title: 'RECF Türkiye', href: '/kurumsal/hakkimizda' },
+                { title: 'Partnerler ve Sponsorlar', href: '/kurumsal/is-birlikleri' },
+                { title: 'Basın Odası', href: '/duyurular/basinda-biz' }
+            ]
+        },
+        vexNedir: {
+            title: 'Programlar',
+            items: [
+                { title: 'Genel Bakış', href: '/programlar' },
+                { title: 'RECF Engage Robotics Competition', href: '/programlar/recf-engage' },
+                { title: 'RECF Achieve Robotics Competition', href: '/programlar/recf-achieve' },
+                { title: 'RECF Inspire Robotics Competition', href: '/programlar/recf-inspire' },
+                { title: 'Aerial Drone Competition (ADC)', href: '/programlar/aerial-drone-competition' },
+                { title: 'ADC Pro', href: '/programlar/adc-pro' }
+            ]
+        },
+        yarismalar: {
+            title: 'Yarışmalar',
+            items: [
+                { title: 'RECF Türkiye Etkinlik Takvimi', href: '/yarismalar/etkinlik-takvimi' },
+                { title: '2026–2027 RECF Sezon Oyunları', href: '/yarismalar/sezon-oyunlari' },
+                { title: 'RECF Türkiye Sonuçları', href: '/yarismalar/sonuclar' },
+                { title: 'RECF Ödülleri', href: '/yarismalar/oduller' },
+                { title: 'Solo Sıralamaları', href: '/yarismalar/solo-siralamalari' },
+                { title: 'Dünya Şampiyonası', href: '/yarismalar/dunya-sampiyonasi' }
+            ]
+        },
+        takimlar: {
+            title: 'Takımlar',
+            items: [
+                { title: 'RECF Türkiye Takım Dizini', href: '/takimlar/takim-dizini' },
+                { title: 'RECF Takımı Nasıl Kurulur?', href: '/takimlar/nasil-kurulur' },
+                { title: 'RECF Takım Kaydı', href: '/takimlar/kayit' },
+                { title: 'Koç ve Mentor Merkezi', href: '/takimlar/koc-ve-mentor-merkezi' }
+            ]
+        },
+        egitim: {
+            title: 'Eğitim & Kaynaklar',
+            items: [
+                { title: 'RECF Oyun Kılavuzları', href: '/kaynaklar/oyun-kilavuzlari' },
+                { title: 'Programlama ve Yazılım Kaynakları', href: '/kaynaklar/yazilim' },
+                { title: 'Eğitim ve Öğrenme Kaynakları', href: '/kaynaklar/mufredat' },
+                { title: 'Teknik Belgeler', href: '/kaynaklar/teknik-belgeler' },
+                { title: 'RECF Jüri ve Değerlendirme Süreci', href: '/kaynaklar/juri' }
+            ]
+        },
+        duyurular: {
+            title: 'Duyurular',
+            items: [
+                { title: 'Haberler', href: '/duyurular/haberler' },
+                { title: 'Blog', href: '/duyurular/blog' },
+                { title: 'Basında Biz', href: '/duyurular/basinda-biz' },
+                { title: 'Galeri', href: '/duyurular/galeri' }
+            ]
+        },
+        iletisim: {
+            title: 'İletişim',
+            items: [
+                { title: 'İletişim Formu', href: '/iletisim/form' },
+                { title: 'Bilgiler & Adres', href: '/iletisim/bilgiler' },
+                { title: 'SSS', href: '/iletisim/sss' }
+            ]
+        },
+        home: 'Ana Sayfa',
+        mobileToggle: 'English'
     },
-    vexNedir: {
-        title: 'Programlar',
-        items: [
-            { title: 'Genel Bakış', href: '/programlar' },
-            { title: 'RECF Engage Robotics Competition', href: '/programlar/recf-engage' },
-            { title: 'RECF Achieve Robotics Competition', href: '/programlar/recf-achieve' },
-            { title: 'RECF Inspire Robotics Competition', href: '/programlar/recf-inspire' },
-            { title: 'Aerial Drone Competition (ADC)', href: '/programlar/aerial-drone-competition' },
-            { title: 'ADC Pro', href: '/programlar/adc-pro' }
-        ]
-    },
-    yarismalar: {
-        title: 'Yarışmalar',
-        items: [
-            { title: 'RECF Türkiye Etkinlik Takvimi', href: '/yarismalar/etkinlik-takvimi' },
-            { title: '2026–2027 RECF Sezon Oyunları', href: '/yarismalar/sezon-oyunlari' },
-            { title: 'RECF Türkiye Sonuçları', href: '/yarismalar/sonuclar' },
-            { title: 'RECF Ödülleri', href: '/yarismalar/oduller' },
-            { title: 'Solo Sıralamaları', href: '/yarismalar/solo-siralamalari' },
-            { title: 'Dünya Şampiyonası', href: '/yarismalar/dunya-sampiyonasi' }
-        ]
-    },
-    takimlar: {
-        title: 'Takımlar',
-        items: [
-            { title: 'RECF Türkiye Takım Dizini', href: '/takimlar/takim-dizini' },
-            { title: 'RECF Takımı Nasıl Kurulur?', href: '/takimlar/nasil-kurulur' },
-            { title: 'RECF Takım Kaydı', href: '/takimlar/kayit' },
-            { title: 'Koç ve Mentor Merkezi', href: '/takimlar/koc-ve-mentor-merkezi' }
-        ]
-    },
-    egitim: {
-        title: 'Eğitim & Kaynaklar',
-        items: [
-            { title: 'RECF Oyun Kılavuzları', href: '/kaynaklar/oyun-kilavuzlari' },
-            { title: 'Programlama ve Yazılım Kaynakları', href: '/kaynaklar/yazilim' },
-            { title: 'Eğitim ve Öğrenme Kaynakları', href: '/kaynaklar/mufredat' },
-            { title: 'Teknik Belgeler', href: '/kaynaklar/teknik-belgeler' },
-            { title: 'RECF Jüri ve Değerlendirme Süreci', href: '/kaynaklar/juri' }
-        ]
-    },
-    duyurular: {
-        title: 'Duyurular',
-        items: [
-            { title: 'Haberler', href: '/duyurular/haberler' },
-            { title: 'Blog', href: '/duyurular/blog' },
-            { title: 'Basında Biz', href: '/duyurular/basinda-biz' },
-            { title: 'Galeri', href: '/duyurular/galeri' }
-        ]
-    },
-    iletisim: {
-        title: 'İletişim',
-        items: [
-            { title: 'İletişim Formu', href: '/iletisim/form' },
-            { title: 'Bilgiler & Adres', href: '/iletisim/bilgiler' },
-            { title: 'SSS', href: '/iletisim/sss' }
-        ]
+    EN: {
+        kurumsal: {
+            title: 'Corporate',
+            items: [
+                { title: 'About RECF Turkey', href: '/kurumsal/hakkimizda' },
+                { title: 'Partners & Sponsors', href: '/kurumsal/is-birlikleri' },
+                { title: 'Press Room', href: '/duyurular/basinda-biz' }
+            ]
+        },
+        vexNedir: {
+            title: 'Programs',
+            items: [
+                { title: 'Overview', href: '/programlar' },
+                { title: 'RECF Engage Robotics Competition', href: '/programlar/recf-engage' },
+                { title: 'RECF Achieve Robotics Competition', href: '/programlar/recf-achieve' },
+                { title: 'RECF Inspire Robotics Competition', href: '/programlar/recf-inspire' },
+                { title: 'Aerial Drone Competition (ADC)', href: '/programlar/aerial-drone-competition' },
+                { title: 'ADC Pro', href: '/programlar/adc-pro' }
+            ]
+        },
+        yarismalar: {
+            title: 'Competitions',
+            items: [
+                { title: 'RECF Turkey Events Calendar', href: '/yarismalar/etkinlik-takvimi' },
+                { title: '2026–2027 RECF Season Games', href: '/yarismalar/sezon-oyunlari' },
+                { title: 'RECF Turkey Results', href: '/yarismalar/sonuclar' },
+                { title: 'RECF Awards', href: '/yarismalar/oduller' },
+                { title: 'Solo Standings', href: '/yarismalar/solo-siralamalari' },
+                { title: 'World Championship', href: '/yarismalar/dunya-sampiyonasi' }
+            ]
+        },
+        takimlar: {
+            title: 'Teams',
+            items: [
+                { title: 'RECF Turkey Team Directory', href: '/takimlar/takim-dizini' },
+                { title: 'How to Start a RECF Team?', href: '/takimlar/nasil-kurulur' },
+                { title: 'RECF Team Registration', href: '/takimlar/kayit' },
+                { title: 'Coach & Mentor Center', href: '/takimlar/koc-ve-mentor-merkezi' }
+            ]
+        },
+        egitim: {
+            title: 'Education & Resources',
+            items: [
+                { title: 'RECF Game Manuals', href: '/kaynaklar/oyun-kilavuzlari' },
+                { title: 'Programming & Software Resources', href: '/kaynaklar/yazilim' },
+                { title: 'Education & Learning Resources', href: '/kaynaklar/mufredat' },
+                { title: 'Technical Documents', href: '/kaynaklar/teknik-belgeler' },
+                { title: 'RECF Judging Process', href: '/kaynaklar/juri' }
+            ]
+        },
+        duyurular: {
+            title: 'Announcements',
+            items: [
+                { title: 'News', href: '/duyurular/haberler' },
+                { title: 'Blog', href: '/duyurular/blog' },
+                { title: 'Press Room', href: '/duyurular/basinda-biz' },
+                { title: 'Gallery', href: '/duyurular/galeri' }
+            ]
+        },
+        iletisim: {
+            title: 'Contact',
+            items: [
+                { title: 'Contact Form', href: '/iletisim/form' },
+                { title: 'Info & Address', href: '/iletisim/bilgiler' },
+                { title: 'FAQ', href: '/iletisim/sss' }
+            ]
+        },
+        home: 'Home',
+        mobileToggle: 'Türkçe'
     }
 }
 
@@ -99,6 +173,17 @@ interface NavbarProps {
 
 export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarning = false }: NavbarProps) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const tMenu = content[language]
+
+    const menuEntries = {
+        kurumsal: tMenu.kurumsal,
+        vexNedir: tMenu.vexNedir,
+        yarismalar: tMenu.yarismalar,
+        takimlar: tMenu.takimlar,
+        egitim: tMenu.egitim,
+        duyurular: tMenu.duyurular,
+        iletisim: tMenu.iletisim
+    }
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-gray-200 shadow-sm">
@@ -126,18 +211,18 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
                                         href="/"
                                         className="inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-3 py-2 text-sm font-medium text-gray-700 hover:bg-primary hover:text-white transition-colors cursor-pointer"
                                     >
-                                        Ana Sayfa
+                                        {tMenu.home}
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
 
                                 {/* Kurumsal */}
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-transparent text-gray-700 hover:text-primary text-sm px-3">
-                                        {menuItems.kurumsal.title}
+                                        {tMenu.kurumsal.title}
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
                                         <ul className="grid w-[280px] gap-1 p-3 bg-white border border-gray-200 shadow-lg rounded-lg">
-                                            {menuItems.kurumsal.items.map((item) => (
+                                            {tMenu.kurumsal.items.map((item) => (
                                                 <NavItem key={item.href} href={item.href} title={item.title} />
                                             ))}
                                         </ul>
@@ -147,11 +232,11 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
                                 {/* VEX Nedir? */}
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-transparent text-gray-700 hover:text-primary text-sm px-3">
-                                        {menuItems.vexNedir.title}
+                                        {tMenu.vexNedir.title}
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
                                         <ul className="grid w-[320px] gap-1 p-3 bg-white border border-gray-200 shadow-lg rounded-lg">
-                                            {menuItems.vexNedir.items.map((item) => (
+                                            {tMenu.vexNedir.items.map((item) => (
                                                 <NavItem key={item.href} href={item.href} title={item.title} />
                                             ))}
                                         </ul>
@@ -161,11 +246,11 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
                                 {/* Yarışmalar */}
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-transparent text-gray-700 hover:text-primary text-sm px-3">
-                                        {menuItems.yarismalar.title}
+                                        {tMenu.yarismalar.title}
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
                                         <ul className="grid w-[280px] gap-1 p-3 bg-white border border-gray-200 shadow-lg rounded-lg">
-                                            {menuItems.yarismalar.items.map((item) => (
+                                            {tMenu.yarismalar.items.map((item) => (
                                                 <NavItem key={item.href} href={item.href} title={item.title} />
                                             ))}
                                         </ul>
@@ -175,11 +260,11 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
                                 {/* Takımlar */}
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-transparent text-gray-700 hover:text-primary text-sm px-3">
-                                        {menuItems.takimlar.title}
+                                        {tMenu.takimlar.title}
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
                                         <ul className="grid w-[260px] gap-1 p-3 bg-white border border-gray-200 shadow-lg rounded-lg">
-                                            {menuItems.takimlar.items.map((item) => (
+                                            {tMenu.takimlar.items.map((item) => (
                                                 <NavItem key={item.href} href={item.href} title={item.title} />
                                             ))}
                                         </ul>
@@ -189,11 +274,11 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
                                 {/* Eğitim & Kaynaklar */}
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-transparent text-gray-700 hover:text-primary text-sm px-3">
-                                        {menuItems.egitim.title}
+                                        {tMenu.egitim.title}
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
                                         <ul className="grid w-[280px] gap-1 p-3 bg-white border border-gray-200 shadow-lg rounded-lg">
-                                            {menuItems.egitim.items.map((item) => (
+                                            {tMenu.egitim.items.map((item) => (
                                                 <NavItem key={item.href} href={item.href} title={item.title} />
                                             ))}
                                         </ul>
@@ -203,11 +288,11 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
                                 {/* Duyurular */}
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-transparent text-gray-700 hover:text-primary text-sm px-3">
-                                        {menuItems.duyurular.title}
+                                        {tMenu.duyurular.title}
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
                                         <ul className="grid w-[220px] gap-1 p-3 bg-white border border-gray-200 shadow-lg rounded-lg">
-                                            {menuItems.duyurular.items.map((item) => (
+                                            {tMenu.duyurular.items.map((item) => (
                                                 <NavItem key={item.href} href={item.href} title={item.title} />
                                             ))}
                                         </ul>
@@ -217,11 +302,11 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
                                 {/* İletişim */}
                                 <NavigationMenuItem>
                                     <NavigationMenuTrigger className="bg-transparent text-gray-700 hover:text-primary text-sm px-3">
-                                        {menuItems.iletisim.title}
+                                        {tMenu.iletisim.title}
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
                                         <ul className="grid w-[220px] gap-1 p-3 bg-white border border-gray-200 shadow-lg rounded-lg">
-                                            {menuItems.iletisim.items.map((item) => (
+                                            {tMenu.iletisim.items.map((item) => (
                                                 <NavItem key={item.href} href={item.href} title={item.title} />
                                             ))}
                                         </ul>
@@ -281,12 +366,12 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
                                         onClick={() => setMobileMenuOpen(false)}
                                         className="py-3 text-lg font-medium text-gray-900 hover:text-primary transition-colors border-b border-gray-100"
                                     >
-                                        Ana Sayfa
+                                        {tMenu.home}
                                     </Link>
 
                                     {/* Accordion Menu */}
                                     <Accordion type="single" collapsible className="w-full">
-                                        {Object.entries(menuItems).map(([key, menu]) => (
+                                        {Object.entries(menuEntries).map(([key, menu]) => (
                                             <AccordionItem key={key} value={key} className="border-b border-gray-100">
                                                 <AccordionTrigger className="py-3 text-lg font-medium text-gray-900 hover:text-primary hover:no-underline">
                                                     {menu.title}
@@ -319,7 +404,7 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
                                             className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-primary bg-transparent"
                                         >
                                             <Globe className="h-4 w-4 mr-2" />
-                                            {language === 'TR' ? 'English' : 'Türkçe'}
+                                            {tMenu.mobileToggle}
                                         </Button>
                                     </div>
                                 </div>

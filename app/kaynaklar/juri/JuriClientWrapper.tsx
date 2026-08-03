@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import { Navbar } from '@/components/Navbar'
 
 interface JuriClientWrapperProps {
@@ -8,7 +9,7 @@ interface JuriClientWrapperProps {
 }
 
 export function JuriClientWrapper({ children }: JuriClientWrapperProps) {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
 
     return (
         <div className="min-h-screen bg-white text-foreground">

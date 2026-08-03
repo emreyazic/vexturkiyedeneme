@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -144,7 +145,7 @@ interface BasindaBizClientProps {
 type TabType = 'news' | 'releases' | 'mediakit'
 
 export default function BasindaBizClient({ tvNews }: BasindaBizClientProps) {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const [activeTab, setActiveTab] = useState<TabType>('news')
     const [copiedColor, setCopiedColor] = useState<string | null>(null)
 

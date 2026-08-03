@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import { LanguageProvider } from '@/components/LanguageProvider'
 
 export const metadata: Metadata = {
   title: 'RECF Türkiye | Robotics Education & Competition Foundation',
@@ -34,7 +35,9 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body className="font-sans antialiased">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
         <Analytics />
       </body>
     </html>

@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { CorporateHero } from '@/components/CorporateHero'
@@ -76,7 +77,7 @@ const sampleQuestions = [
 ]
 
 export default function JuriPage() {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const [activeQuestionIdx, setActiveQuestionIdx] = useState(0)
 
     return (

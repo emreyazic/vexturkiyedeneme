@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -84,7 +85,7 @@ const recfPrograms = [
 ]
 
 export default function RecfProgramsPage() {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const [selectedFilter, setSelectedFilter] = useState<string>('Tümü')
 
     const filters = ['Tümü', 'İlkokul (4-7 Yaş)', 'Ortaokul (8-14 Yaş)', 'Lise (14-18 Yaş)', 'Ortaokul ve Lise', 'Üniversite', 'Tüm Seviyeler']

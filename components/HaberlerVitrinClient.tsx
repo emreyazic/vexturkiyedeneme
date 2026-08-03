@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -23,7 +24,7 @@ interface HaberlerVitrinClientProps {
 }
 
 export function HaberlerVitrinClient({ featuredNews, latestNews }: HaberlerVitrinClientProps) {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     return (
         <div className="min-h-screen bg-white text-foreground">
             <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}

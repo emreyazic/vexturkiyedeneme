@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
 import { Button } from '@/components/ui/button'
@@ -70,7 +71,7 @@ const recfAwards = [
 ]
 
 export default function OdullerPage() {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
 
     return (
         <div className="min-h-screen bg-gray-50 text-foreground">

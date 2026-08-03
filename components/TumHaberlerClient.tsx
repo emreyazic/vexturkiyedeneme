@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -15,7 +16,7 @@ interface TumHaberlerClientProps {
 }
 
 export function TumHaberlerClient({ news }: TumHaberlerClientProps) {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     return (
         <div className="min-h-screen bg-gray-50 text-foreground">
             <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}

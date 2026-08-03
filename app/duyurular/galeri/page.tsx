@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -9,7 +10,7 @@ import { Button } from '@/components/ui/button'
 import { Camera, ArrowLeft, Instagram } from 'lucide-react'
 
 export default function GaleriPage() {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     return (
         <div className="min-h-screen bg-white text-foreground flex flex-col">
             <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
