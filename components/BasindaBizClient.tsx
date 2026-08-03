@@ -229,7 +229,8 @@ export default function BasindaBizClient({ tvNews }: BasindaBizClientProps) {
 
     return (
         <div className="min-h-screen bg-white text-foreground font-sans">
-            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={language === 'EN'} />
 
             <div className="h-20" />
             <CorporateHero

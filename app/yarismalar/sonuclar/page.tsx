@@ -14,7 +14,8 @@ export default function SonuclarPage() {
 
     return (
         <div className="min-h-screen bg-gray-50 text-foreground">
-            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={language === 'EN'} />
             <div className="h-20" />
 
             <CorporateHero

@@ -12,7 +12,8 @@ export default function GaleriPage() {
     const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
     return (
         <div className="min-h-screen bg-white text-foreground flex flex-col">
-            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={language === 'EN'} />
 
             <div className="h-20" />
 

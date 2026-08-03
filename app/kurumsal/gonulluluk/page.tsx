@@ -10,30 +10,123 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Heart, Users, Award, Clock, ArrowRight, BookOpen, ShieldCheck, CheckCircle2 } from 'lucide-react'
+import { Heart, Users, Award, Clock, ArrowRight, BookOpen, ShieldCheck } from 'lucide-react'
 import Link from 'next/link'
+import { getTranslation } from '@/lib/utils'
 
-const volunteerRoles = [
-    { value: 'event-partner', label: 'Event Partner (Etkinlik Partneri)' },
-    { value: 'head-referee', label: 'Head Referee (Baş Hakem)' },
-    { value: 'scorekeeper-referee', label: 'Scorekeeper Referee (Skor Hakemi)' },
-    { value: 'judge-advisor', label: 'Judge Advisor (Jüri Danışmanı)' },
-    { value: 'judge', label: 'Judge (Jüri Üyesi)' },
-    { value: 'robot-inspector', label: 'Robot Inspector (Robot Denetmeni)' },
-    { value: 'field-manager', label: 'Field Manager (Saha Yöneticisi)' },
-    { value: 'emcee', label: 'Emcee (Sunucu)' },
-    { value: 'media', label: 'Medya ve İletişim' },
-]
-
-const whyVolunteer = [
-    { icon: Heart, title: 'Fark Yaratın', description: 'Gençlerin STEM kariyerlerine ilk adımlarını atmalarına yardımcı olun.' },
-    { icon: Users, title: 'Topluluk Olun', description: 'Aynı vizyonu paylaşan eğitimciler ve mentorlarla tanışın.' },
-    { icon: Award, title: 'Deneyim Kazanın', description: 'Uluslararası standartlarda etkinlik organizasyonu tecrübesi edinin.' },
-    { icon: Clock, title: 'Esnek Katılım', description: 'Müsaitliğinize göre yerel veya ulusal etkinliklere katılın.' },
-]
+const content = {
+  TR: {
+    hero: {
+      title: "RECF Türkiye Gönüllülük",
+      subtitle: "RECF Türkiye etkinliklerinde gönüllü olun; öğrencilerin yarışma deneyimine katkı sağlayın."
+    },
+    rolesBadge: "Resmi RECF Roller",
+    title: "Öğrencilerin Mühendislik Yolculuğunda Rehber Olun",
+    desc1: "RECF (Robotics Education & Competition Foundation) Türkiye etkinliklerinde görev almak, yarışan öğrencilere ilham vermek ve onlara adil, profesyonel bir ortam sunmak anlamına gelir.",
+    desc2: "İster teknoloji ve robotik uzmanı olun, ister bu alana ilgi duyan bir eğitimci; RECF ekosisteminde yeteneklerinize uygun bir görev her zaman vardır. Etkinlik Partneri, Baş Hakem, Jüri Danışmanı veya Saha Yöneticisi gibi rolleri üstlenerek uluslararası standartlarda bir turnuva ortamı oluşturabilirsiniz.",
+    eduTitle: "Gönüllü Eğitimi ve Sertifikasyon",
+    eduDesc: "Birçok RECF gönüllü rolü için ücretsiz ve online sertifikasyon programları mevcuttur. Head Referee veya Judge Advisor rollerini üstlenebilmek için resmi sertifikasyon sistemini tamamlamanız gerekmektedir.",
+    eduBtn: "Eğitim Portalına Git",
+    whyVolunteer: [
+      { "title": "Fark Yaratın", "description": "Gençlerin STEM kariyerlerine ilk adımlarını atmalarına yardımcı olun." },
+      { "title": "Topluluk Olun", "description": "Aynı vizyonu paylaşan eğitimciler ve mentorlarla tanışın." },
+      { "title": "Deneyim Kazanın", "description": "Uluslararası standartlarda etkinlik organizasyonu tecrübesi edinin." },
+      { "title": "Esnek Katılım", "description": "Müsaitliğinize göre yerel veya ulusal etkinliklere katılın." }
+    ],
+    form: {
+      title: "Gönüllü Başvuru Formu",
+      subtitle: "Aşağıdaki formu doldurarak ekibimize katılabilirsiniz. Bilgileriniz Intechne Teknoloji tarafından değerlendirilecektir.",
+      name: "Ad Soyad",
+      namePlaceholder: "Adınız Soyadınız",
+      email: "E-posta",
+      emailPlaceholder: "ornek@email.com",
+      phone: "Telefon",
+      phonePlaceholder: "05XX XXX XX XX",
+      city: "Şehir",
+      cityPlaceholder: "Yaşadığınız Şehir",
+      profession: "Meslek / Kurum",
+      professionPlaceholder: "Örn: Bilişim Öğretmeni, Mühendis vb.",
+      roleLabel: "İlgilendiğiniz Rol",
+      rolePlaceholder: "Bir rol seçin",
+      messageLabel: "Kendinizden ve Deneyimlerinizden Bahsedin",
+      messagePlaceholder: "Varsa daha önceki gönüllülük deneyimleriniz, yetkinlikleriniz...",
+      kvkkConfirm: "Kişisel verilerimin Intechne Teknoloji tarafından kapsamında işlenmesini ve Gönüllülük faaliyetleri doğrultusunda saklanmasını onaylıyorum.",
+      kvkkLink: "KVKK Aydınlatma Metni",
+      submit: "Başvuruyu Gönder",
+      kvkkAlert: "Lütfen KVKK Aydınlatma Metni'ni onaylayın.",
+      successAlert: "Gönüllülük başvurunuz başarıyla alındı! İlgili birimimiz en kısa sürede sizinle iletişime geçecektir."
+    },
+    volunteerRoles: [
+      { "value": "event-partner", "label": "Event Partner (Etkinlik Partneri)" },
+      { "value": "head-referee", "label": "Head Referee (Baş Hakem)" },
+      { "value": "scorekeeper-referee", "label": "Scorekeeper Referee (Skor Hakemi)" },
+      { "value": "judge-advisor", "label": "Judge Advisor (Jüri Danışmanı)" },
+      { "value": "judge", "label": "Judge (Jüri Üyesi)" },
+      { "value": "robot-inspector", "label": "Robot Inspector (Robot Denetmeni)" },
+      { "value": "field-manager", "label": "Field Manager (Saha Yöneticisi)" },
+      { "value": "emcee", "label": "Emcee (Sunucu)" },
+      { "value": "media", "label": "Medya ve İletişim" }
+    ]
+  },
+  EN: {
+    hero: {
+      title: "",
+      subtitle: ""
+    },
+    rolesBadge: "",
+    title: "",
+    desc1: "",
+    desc2: "",
+    eduTitle: "",
+    eduDesc: "",
+    eduBtn: "",
+    whyVolunteer: [
+      { "title": "", "description": "" },
+      { "title": "", "description": "" },
+      { "title": "", "description": "" },
+      { "title": "", "description": "" }
+    ],
+    form: {
+      title: "",
+      subtitle: "",
+      name: "",
+      namePlaceholder: "",
+      email: "",
+      emailPlaceholder: "",
+      phone: "",
+      phonePlaceholder: "",
+      city: "",
+      cityPlaceholder: "",
+      profession: "",
+      professionPlaceholder: "",
+      roleLabel: "",
+      rolePlaceholder: "",
+      messageLabel: "",
+      messagePlaceholder: "",
+      kvkkConfirm: "",
+      kvkkLink: "",
+      submit: "",
+      kvkkAlert: "",
+      successAlert: ""
+    },
+    volunteerRoles: [
+      { "value": "event-partner", "label": "" },
+      { "value": "head-referee", "label": "" },
+      { "value": "scorekeeper-referee", "label": "" },
+      { "value": "judge-advisor", "label": "" },
+      { "value": "judge", "label": "" },
+      { "value": "robot-inspector", "label": "" },
+      { "value": "field-manager", "label": "" },
+      { "value": "emcee", "label": "" },
+      { "value": "media", "label": "" }
+    ]
+  }
+}
 
 export default function GonulluOlunPage() {
     const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { t, isFallback } = getTranslation(content, language)
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -48,26 +141,32 @@ export default function GonulluOlunPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         if (!kvkkApproved) {
-            alert('Lütfen KVKK Aydınlatma Metni\'ni onaylayın.')
+            alert(t.form.kvkkAlert)
             return
         }
-        // Form submission logic would go here
         console.log('Form submitted:', formData)
-        alert('Gönüllülük başvurunuz başarıyla alındı! İlgili birimimiz en kısa sürede sizinle iletişime geçecektir.')
+        alert(t.form.successAlert)
     }
 
     const handleChange = (field: string, value: string) => {
         setFormData(prev => ({ ...prev, [field]: value }))
     }
 
+    const icons = [Heart, Users, Award, Clock]
+
     return (
         <div className="min-h-screen bg-white text-foreground">
-            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
+            <Navbar 
+                language={language} 
+                onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={isFallback}
+            />
 
             <div className="h-20" />
+
             <CorporateHero
-                title="RECF Türkiye Gönüllülük"
-                subtitle="RECF Türkiye etkinliklerinde gönüllü olun; öğrencilerin yarışma deneyimine katkı sağlayın."
+                title={t.hero.title}
+                subtitle={t.hero.subtitle}
             />
 
             {/* Main Content */}
@@ -78,20 +177,16 @@ export default function GonulluOlunPage() {
                         <div>
                             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
                                 <ShieldCheck className="w-4 h-4 text-primary" />
-                                <span className="text-sm font-medium text-primary">Resmi RECF Roller</span>
+                                <span className="text-sm font-medium text-primary">{t.rolesBadge}</span>
                             </div>
 
                             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                                Öğrencilerin Mühendislik Yolculuğunda Rehber Olun
+                                {t.title}
                             </h2>
 
                             <div className="space-y-4 text-gray-600 leading-relaxed mb-8">
-                                <p>
-                                    RECF (Robotics Education & Competition Foundation) Türkiye etkinliklerinde görev almak, yarışan öğrencilere ilham vermek ve onlara adil, profesyonel bir ortam sunmak anlamına gelir.
-                                </p>
-                                <p>
-                                    İster teknoloji ve robotik uzmanı olun, ister bu alana ilgi duyan bir eğitimci; RECF ekosisteminde yeteneklerinize uygun bir görev her zaman vardır. Etkinlik Partneri, Baş Hakem, Jüri Danışmanı veya Saha Yöneticisi gibi rolleri üstlenerek uluslararası standartlarda bir turnuva ortamı oluşturabilirsiniz.
-                                </p>
+                                <p>{t.desc1}</p>
+                                <p>{t.desc2}</p>
                             </div>
 
                             {/* Sertifikasyon */}
@@ -99,12 +194,12 @@ export default function GonulluOlunPage() {
                                 <div className="flex items-start gap-4">
                                     <BookOpen className="w-8 h-8 text-blue-600 shrink-0" />
                                     <div>
-                                        <h3 className="text-lg font-semibold text-gray-900 mb-2">Gönüllü Eğitimi ve Sertifikasyon</h3>
+                                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{t.eduTitle}</h3>
                                         <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                                            Birçok RECF gönüllü rolü için ücretsiz ve online sertifikasyon programları mevcuttur. Head Referee veya Judge Advisor rollerini üstlenebilmek için resmi sertifikasyon sistemini tamamlamanız gerekmektedir.
+                                            {t.eduDesc}
                                         </p>
                                         <a href="https://certifications.vex.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors">
-                                            Eğitim Portalına Git
+                                            {t.eduBtn}
                                             <ArrowRight className="w-4 h-4 ml-1" />
                                         </a>
                                     </div>
@@ -113,92 +208,95 @@ export default function GonulluOlunPage() {
 
                             {/* Why Volunteer */}
                             <div className="grid sm:grid-cols-2 gap-6">
-                                {whyVolunteer.map((item, index) => (
-                                    <div key={index} className="flex flex-col">
-                                        <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center mb-4">
-                                            <item.icon className="w-6 h-6 text-primary" />
+                                {t.whyVolunteer.map((item: any, index: number) => {
+                                    const IconComponent = icons[index] || Heart
+                                    return (
+                                        <div key={index} className="flex flex-col">
+                                            <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center mb-4">
+                                                <IconComponent className="w-6 h-6 text-primary" />
+                                            </div>
+                                            <h4 className="text-md font-bold text-gray-900 mb-2">{item.title}</h4>
+                                            <p className="text-sm text-gray-500 leading-relaxed">{item.description}</p>
                                         </div>
-                                        <h4 className="text-md font-bold text-gray-900 mb-2">{item.title}</h4>
-                                        <p className="text-sm text-gray-500 leading-relaxed">{item.description}</p>
-                                    </div>
-                                ))}
+                                    )
+                                })}
                             </div>
                         </div>
 
                         {/* Right Side - Form */}
                         <div>
                             <div className="bg-white rounded-3xl border border-gray-200 p-8 shadow-xl shadow-gray-200/40">
-                                <h3 className="text-2xl font-bold text-gray-900 mb-2">Gönüllü Başvuru Formu</h3>
-                                <p className="text-gray-500 mb-8 text-sm">Aşağıdaki formu doldurarak ekibimize katılabilirsiniz. Bilgileriniz Intechne Teknoloji tarafından değerlendirilecektir.</p>
+                                <h3 className="text-2xl font-bold text-gray-900 mb-2">{t.form.title}</h3>
+                                <p className="text-gray-500 mb-8 text-sm">{t.form.subtitle}</p>
 
                                 <form onSubmit={handleSubmit} className="space-y-6">
                                     <div className="grid sm:grid-cols-2 gap-6">
                                         <div className="space-y-2">
-                                            <Label htmlFor="name">Ad Soyad</Label>
+                                            <Label htmlFor="name">{t.form.name}</Label>
                                             <Input
                                                 id="name"
                                                 required
                                                 value={formData.name}
                                                 onChange={(e) => handleChange('name', e.target.value)}
-                                                placeholder="Adınız Soyadınız"
+                                                placeholder={t.form.namePlaceholder}
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <Label htmlFor="email">E-posta</Label>
+                                            <Label htmlFor="email">{t.form.email}</Label>
                                             <Input
                                                 id="email"
                                                 type="email"
                                                 required
                                                 value={formData.email}
                                                 onChange={(e) => handleChange('email', e.target.value)}
-                                                placeholder="ornek@email.com"
+                                                placeholder={t.form.emailPlaceholder}
                                             />
                                         </div>
                                     </div>
 
                                     <div className="grid sm:grid-cols-2 gap-6">
                                         <div className="space-y-2">
-                                            <Label htmlFor="phone">Telefon</Label>
+                                            <Label htmlFor="phone">{t.form.phone}</Label>
                                             <Input
                                                 id="phone"
                                                 type="tel"
                                                 required
                                                 value={formData.phone}
                                                 onChange={(e) => handleChange('phone', e.target.value)}
-                                                placeholder="05XX XXX XX XX"
+                                                placeholder={t.form.phonePlaceholder}
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <Label htmlFor="city">Şehir</Label>
+                                            <Label htmlFor="city">{t.form.city}</Label>
                                             <Input
                                                 id="city"
                                                 required
                                                 value={formData.city}
                                                 onChange={(e) => handleChange('city', e.target.value)}
-                                                placeholder="Yaşadığınız Şehir"
+                                                placeholder={t.form.cityPlaceholder}
                                             />
                                         </div>
                                     </div>
 
                                     <div className="space-y-2">
-                                        <Label htmlFor="profession">Meslek / Kurum</Label>
+                                        <Label htmlFor="profession">{t.form.profession}</Label>
                                         <Input
                                             id="profession"
                                             required
                                             value={formData.profession}
                                             onChange={(e) => handleChange('profession', e.target.value)}
-                                            placeholder="Örn: Bilişim Öğretmeni, Mühendis vb."
+                                            placeholder={t.form.professionPlaceholder}
                                         />
                                     </div>
 
                                     <div className="space-y-2">
-                                        <Label>İlgilendiğiniz Rol</Label>
+                                        <Label>{t.form.roleLabel}</Label>
                                         <Select required value={formData.role} onValueChange={(val) => handleChange('role', val)}>
                                             <SelectTrigger>
-                                                <SelectValue placeholder="Bir rol seçin" />
+                                                <SelectValue placeholder={t.form.rolePlaceholder} />
                                             </SelectTrigger>
                                             <SelectContent>
-                                                {volunteerRoles.map(role => (
+                                                {t.volunteerRoles.map((role: any) => (
                                                     <SelectItem key={role.value} value={role.value}>
                                                         {role.label}
                                                     </SelectItem>
@@ -208,13 +306,13 @@ export default function GonulluOlunPage() {
                                     </div>
 
                                     <div className="space-y-2">
-                                        <Label htmlFor="message">Kendinizden ve Deneyimlerinizden Bahsedin</Label>
+                                        <Label htmlFor="message">{t.form.messageLabel}</Label>
                                         <Textarea
                                             id="message"
                                             required
                                             value={formData.message}
                                             onChange={(e) => handleChange('message', e.target.value)}
-                                            placeholder="Varsa daha önceki gönüllülük deneyimleriniz, yetkinlikleriniz..."
+                                            placeholder={t.form.messagePlaceholder}
                                             className="min-h-[120px]"
                                         />
                                     </div>
@@ -227,14 +325,16 @@ export default function GonulluOlunPage() {
                                         />
                                         <label
                                             htmlFor="kvkk"
-                                            className="text-xs text-gray-600 leading-relaxed cursor-pointer"
+                                            className="text-xs text-gray-600 leading-relaxed cursor-pointer select-none"
                                         >
-                                            Kişisel verilerimin Intechne Teknoloji tarafından <Link href="/hukuki/kvkk" className="text-primary hover:underline">KVKK Aydınlatma Metni</Link> kapsamında işlenmesini ve Gönüllülük faaliyetleri doğrultusunda saklanmasını onaylıyorum.
+                                            {t.form.kvkkConfirm.split('KVKK Aydınlatma Metni')[0]}
+                                            <Link href="/hukuki/kvkk" className="text-primary hover:underline">{t.form.kvkkLink}</Link>
+                                            {t.form.kvkkConfirm.split('KVKK Aydınlatma Metni')[1]}
                                         </label>
                                     </div>
 
                                     <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white h-12 text-lg">
-                                        Başvuruyu Gönder
+                                        {t.form.submit}
                                     </Button>
                                 </form>
                             </div>
