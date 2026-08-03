@@ -532,8 +532,8 @@ export default function VEXTurkiyeLanding() {
                 <Link href="/programlar" aria-label="RECF Programları - Daha fazla bilgi">
                   <Button
                     size="lg"
-                    variant="outline"
-                    className="border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-gray-900 px-8 py-6 text-lg font-semibold rounded-lg bg-transparent backdrop-blur-sm"
+                    variant="ghost"
+                    className="border border-gray-300 !bg-white/80 hover:!bg-gray-900 hover:!border-gray-900 !text-gray-800 hover:!text-white px-8 py-6 text-lg font-semibold rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-sm"
                   >
                     {t.hero.learn}
                   </Button>
@@ -541,13 +541,6 @@ export default function VEXTurkiyeLanding() {
               </div>
 
 
-            </div>
-          </div>
-
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-30">
-            <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex items-start justify-center p-2">
-              <div className="w-1 h-2 bg-gray-600 rounded-full" />
             </div>
           </div>
         </section>
