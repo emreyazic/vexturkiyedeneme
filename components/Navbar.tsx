@@ -134,7 +134,7 @@ const content = {
             ]
         },
         egitim: {
-            title: 'Education & Resources',
+            title: 'Resources',
             items: [
                 { title: 'RECF Game Manuals', href: '/kaynaklar/oyun-kilavuzlari' },
                 { title: 'Programming & Software Resources', href: '/kaynaklar/yazilim' },
@@ -209,7 +209,7 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
                                 <NavigationMenuItem>
                                     <NavigationMenuLink
                                         href="/"
-                                        className="inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-3 py-2 text-sm font-medium text-gray-700 hover:bg-primary hover:text-white transition-colors cursor-pointer"
+                                        className="inline-flex h-9 w-max items-center justify-center rounded-md bg-primary/0 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-primary hover:text-white transition-all duration-300 ease-in-out cursor-pointer"
                                     >
                                         {tMenu.home}
                                     </NavigationMenuLink>
@@ -321,7 +321,7 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
                         <Button
                             variant="ghost"
                             size="icon"
-                            className="text-gray-700 hover:text-primary hover:bg-gray-100"
+                            className="text-gray-700 hover:text-primary bg-white hover:bg-gray-100 transition-all duration-300 ease-in-out"
                             aria-label="Search"
                         >
                             <Search className="h-5 w-5" />
@@ -331,7 +331,7 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
                             variant="outline"
                             size="sm"
                             onClick={onLanguageToggle}
-                            className="hidden md:flex items-center gap-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-primary bg-transparent"
+                            className="hidden md:flex items-center gap-2 border-gray-300 text-gray-700 bg-white hover:bg-gray-50 hover:text-primary transition-all duration-300 ease-in-out"
                         >
                             <Globe className="h-4 w-4" />
                             {language}
@@ -401,7 +401,7 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
                                             variant="outline"
                                             size="sm"
                                             onClick={onLanguageToggle}
-                                            className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-primary bg-transparent"
+                                            className="w-full border-gray-300 text-gray-700 bg-white hover:bg-gray-50 hover:text-primary transition-all duration-300 ease-in-out"
                                         >
                                             <Globe className="h-4 w-4 mr-2" />
                                             {tMenu.mobileToggle}
@@ -424,7 +424,7 @@ function NavItem({ href, title }: { href: string; title: string }) {
             <NavigationMenuLink asChild>
                 <a
                     href={href}
-                    className="block select-none rounded-md px-3 py-2.5 text-sm leading-none no-underline outline-none transition-colors hover:bg-gray-50 hover:text-primary text-gray-700"
+                    className="block select-none rounded-md px-3 py-2.5 text-sm leading-none no-underline outline-none transition-all duration-300 ease-in-out bg-white hover:bg-gray-50 hover:text-primary text-gray-700"
                 >
                     {title}
                 </a>
