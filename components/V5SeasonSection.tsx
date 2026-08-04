@@ -1,10 +1,9 @@
 'use client'
 
-import React from 'react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Play, Trophy, Calendar, Users } from 'lucide-react'
+import { ArrowRight, Trophy, Calendar, Users } from 'lucide-react'
 
 interface V5SeasonSectionProps {
     language: 'TR' | 'EN'
@@ -134,4 +133,4 @@ export function V5SeasonSection({ language }: V5SeasonSectionProps) {
             </div>
         </section>
     )
-}
+}

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import {
     Users,
@@ -22,7 +22,6 @@ import {
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Progress } from '@/components/ui/progress'
 import { AdminLayout } from '@/components/admin'
 import { cn } from '@/lib/utils'
 
@@ -556,4 +555,4 @@ export default function AdminDashboardPage() {
             </div>
         </AdminLayout>
     )
-}
+}

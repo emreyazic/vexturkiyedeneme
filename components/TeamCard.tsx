@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -261,4 +261,4 @@ export function TeamGrid({ teams }: TeamGridProps) {
             ))}
         </div>
     )
-}
+}

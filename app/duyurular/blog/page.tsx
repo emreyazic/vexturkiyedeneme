@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -304,4 +304,4 @@ export default function BlogPage() {
             <Footer language={language} />
         </div>
     )
-}
+}

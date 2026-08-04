@@ -1,6 +1,5 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -8,7 +7,7 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
 import { SanityNewsGrid } from '@/components/SanityNewsComponents'
-import type { SanityNews } from '@/lib/sanity-queries'
+import { SanityNews } from '@/lib/sanity-queries'
 import { ArrowLeft, Newspaper, Calendar, Filter } from 'lucide-react'
 
 interface TumHaberlerClientProps {
@@ -121,4 +120,4 @@ export function TumHaberlerClient({ news }: TumHaberlerClientProps) {
             <Footer language={language} />
         </div>
     )
-}
+}

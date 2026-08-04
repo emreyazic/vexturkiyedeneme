@@ -1,8 +1,7 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
-import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -10,7 +9,7 @@ import { CorporateHero } from '@/components/CorporateHero'
 import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
 import { BasindaBizTvSection } from '@/components/BasindaBizTvSection'
-import type { SanityTvNews } from '@/lib/sanity-queries'
+import type, { SanityTvNews } from '@/lib/sanity-queries'
 import {
     Newspaper,
     Tv,
@@ -505,4 +504,4 @@ export default function BasindaBizClient({ tvNews }: BasindaBizClientProps) {
             <Footer language={language} />
         </div>
     )
-}
+}

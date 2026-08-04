@@ -1,11 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
 import { Input } from '@/components/ui/input'
-import { Search, MapPin, Building2, Filter, ShieldCheck, Database } from 'lucide-react'
+import { Search, MapPin, Filter, ShieldCheck, Database } from 'lucide-react'
 
 // Veri tabanı hazır olana kadar ve KVKK onayları tamamlanana kadar liste boş tutulur.
 const verifiedTeams: any[] = [] 
@@ -86,4 +85,4 @@ export default function TakimDiziniPage() {
             </section>
         </div>
     )
-}
+}

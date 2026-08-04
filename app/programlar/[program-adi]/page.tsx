@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
@@ -663,4 +663,4 @@ export default function ProgramDetailPage() {
             <Footer />
         </div>
     )
-}
+}

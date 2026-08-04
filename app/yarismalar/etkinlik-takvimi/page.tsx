@@ -1,12 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
-import Link from 'next/link'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
 import { Input } from '@/components/ui/input'
-import { Search, MapPin, Filter, Calendar, ExternalLink, CalendarDays, Clock, Users, ArrowRight, ShieldAlert } from 'lucide-react'
+import { Search, MapPin, Filter, Calendar, CalendarDays, Clock } from 'lucide-react'
 
 // Veritabanı hazır olana kadar ve sezon planlaması bitene kadar liste boş tutulur.
 const upcomingEvents: any[] = []
@@ -105,4 +103,4 @@ export default function EtkinlikTakvimiPage() {
             </section>
         </div>
     )
-}
+}

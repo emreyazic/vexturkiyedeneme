@@ -1,12 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
-import Link from 'next/link'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
-import { Button } from '@/components/ui/button'
-import { ExternalLink, BookOpen, Users, ShieldCheck, GraduationCap, Calendar, Settings, AlertTriangle, UserCheck, ChevronRight } from 'lucide-react'
+import { ExternalLink, BookOpen, ShieldCheck, GraduationCap, AlertTriangle, UserCheck, ChevronRight } from 'lucide-react'
 
 const mentorResources = [
     {
@@ -151,4 +148,4 @@ export default function MentorPage() {
             </section>
         </div>
     )
-}
+}

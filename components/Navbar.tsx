@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
@@ -433,4 +433,4 @@ function NavItem({ href, title }: { href: string; title: string }) {
     )
 }
 
-export default Navbar
+export default Navbar

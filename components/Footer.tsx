@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 import Link from 'next/link'
 import { Instagram, Linkedin, Youtube, MapPin, Phone, Mail } from 'lucide-react'
 
@@ -221,4 +220,4 @@ export function Footer({ language = 'TR' }: FooterProps) {
             </div>
         </footer>
     )
-}
+}

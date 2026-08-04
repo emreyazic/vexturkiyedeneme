@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import {
     Search,
@@ -204,4 +204,4 @@ export function AdminHeader({ sidebarCollapsed, onToggleSidebar }: AdminHeaderPr
     )
 }
 
-export default AdminHeader
+export default AdminHeader

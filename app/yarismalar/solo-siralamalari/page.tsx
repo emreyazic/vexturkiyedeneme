@@ -1,11 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
 import { Button } from '@/components/ui/button'
-import { Filter, Trophy, ExternalLink, ShieldCheck, Calculator, AlertCircle, Gamepad2, Code2 } from 'lucide-react'
+import { Filter, ExternalLink, ShieldCheck, Calculator, AlertCircle, Gamepad2, Code2 } from 'lucide-react'
 
 // Veri gelene kadar liste boş kalacak
 const soloRankings: any[] = []
@@ -110,4 +109,4 @@ export default function SoloSiralamalariPage() {
             </section>
         </div>
     )
-}
+}

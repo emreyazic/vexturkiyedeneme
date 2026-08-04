@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next'
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: 'VEX Command Center - Admin Panel',
@@ -12,4 +12,4 @@ export default function AdminRootLayout({
     children: React.ReactNode
 }) {
     return children
-}
+}

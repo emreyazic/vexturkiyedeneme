@@ -1,5 +1,3 @@
-import React from 'react'
-import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { CorporateHero } from '@/components/CorporateHero'
@@ -66,4 +64,4 @@ export default async function TeknikBelgelerPage() {
             <Footer />
         </div>
     )
-}
+}

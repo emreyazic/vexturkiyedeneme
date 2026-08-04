@@ -1,11 +1,11 @@
 'use client'
 
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { ChevronRight, ChevronLeft, Facebook, Twitter, Instagram, Linkedin, Youtube, MapPin, Calendar, ArrowRight, Users, GraduationCap, School, Building2, Mail, Phone, User, MessageSquare, Bot, Gamepad2 } from 'lucide-react'
+import { ChevronRight, ChevronLeft, MapPin, Calendar, ArrowRight, School, Mail, Phone, User, MessageSquare } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
@@ -1314,4 +1314,4 @@ export default function VEXTurkiyeLanding() {
   )
 }
 
-
+

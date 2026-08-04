@@ -1,10 +1,10 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Tv, X, Play, Loader2 } from 'lucide-react'
-import type { SanityTvNews } from '@/lib/sanity-queries'
+import { SanityTvNews } from '@/lib/sanity-queries'
 import { formatTvNewsDate } from '@/lib/sanity-queries'
 
 // Dynamic import for react-player to avoid SSR issues
@@ -197,4 +197,4 @@ export function BasindaBizTvSection({ tvNews }: BasindaBizTvSectionProps) {
             </AnimatePresence>
         </>
     )
-}
+}

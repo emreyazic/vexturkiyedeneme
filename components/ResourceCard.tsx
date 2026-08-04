@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 import { motion } from 'framer-motion'
 import { FileText, Download, Eye } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -172,4 +171,4 @@ export function ResourceCard({ resource, index = 0 }: ResourceCardProps) {
             </div>
         </motion.div>
     )
-}
+}

@@ -1,12 +1,11 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { Button } from '@/components/ui/button'
-import { Linkedin, ArrowRight, UserCircle, Briefcase, Mail } from 'lucide-react'
+import { Linkedin, ArrowRight, UserCircle, Briefcase } from 'lucide-react'
 import Link from 'next/link'
 
 const teamMembers = [
@@ -116,4 +115,4 @@ export default function EkibimizPage() {
             <Footer language={language} />
         </div>
     )
-}
+}

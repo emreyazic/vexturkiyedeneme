@@ -1,12 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
-import { Button } from '@/components/ui/button'
-import { Users, FileText, Globe, School, Building2, CheckCircle2, ArrowRight, ExternalLink, LifeBuoy, MapPin, Compass } from 'lucide-react'
+import { Users, FileText, Globe, Building2, ArrowRight, ExternalLink, LifeBuoy, MapPin, Compass } from 'lucide-react'
 
 const registerSteps = [
     {
@@ -158,4 +156,4 @@ export default function TakimKayitPage() {
             </section>
         </div>
     )
-}
+}

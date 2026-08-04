@@ -1,6 +1,5 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -10,7 +9,7 @@ import { Footer } from '@/components/Footer'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Button } from '@/components/ui/button'
 import { SanityNewsCard } from '@/components/SanityNewsComponents'
-import type { SanityNews } from '@/lib/sanity-queries'
+import type, { SanityNews } from '@/lib/sanity-queries'
 import { getImageUrl, formatNewsDate, getCategoryLabel } from '@/lib/sanity-queries'
 import {
     Facebook, Twitter, Instagram, Linkedin, Youtube,
@@ -212,4 +211,4 @@ export function HaberlerVitrinClient({ featuredNews, latestNews }: HaberlerVitri
             <Footer language={language} />
         </div>
     )
-}
+}

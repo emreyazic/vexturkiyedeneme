@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Search, X, Calendar, Layers, Tag } from 'lucide-react'
 import { Input } from '@/components/ui/input'
@@ -271,4 +271,4 @@ export function TeknikBelgelerClient({ resources }: TeknikBelgelerClientProps) {
             )}
         </div>
     )
-}
+}

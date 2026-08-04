@@ -1,11 +1,8 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
-import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { CorporateHero } from '@/components/CorporateHero'
-import { Button } from '@/components/ui/button'
 import {
     Code2, Cpu, GitBranch, LineChart, Box, Terminal,
     ExternalLink, Layers, CheckCircle2, Monitor, Shield,
@@ -261,4 +258,4 @@ export default function YazilimPage() {
             </section>
         </div>
     )
-}
+}

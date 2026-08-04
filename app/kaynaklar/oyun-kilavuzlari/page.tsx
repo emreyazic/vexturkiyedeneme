@@ -1,11 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
-import { Button } from '@/components/ui/button'
-import { Book, MessageCircleQuestion, ClipboardCheck, Wrench, ExternalLink, Download, FileText, AlertCircle, FileStack } from 'lucide-react'
+import { Book, MessageCircleQuestion, ClipboardCheck, Wrench, ExternalLink, FileText, AlertCircle, FileStack } from 'lucide-react'
 
 const manualSections = [
     {
@@ -144,4 +142,4 @@ export default function OyunKilavuzlariPage() {
             </section>
         </div>
     )
-}
+}

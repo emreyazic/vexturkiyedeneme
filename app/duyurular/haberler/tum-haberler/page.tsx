@@ -1,6 +1,6 @@
-﻿import { getAllNews } from '@/lib/sanity-queries'
+import { getAllNews } from '@/lib/sanity-queries'
 import { TumHaberlerClient } from '@/components/TumHaberlerClient'
-import type { Metadata } from 'next'
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: 'Haber Arşivi | RECF TÜRKİYE',
@@ -13,4 +13,4 @@ export default async function TumHaberlerPage() {
     const allNews = await getAllNews()
 
     return <TumHaberlerClient news={allNews} />
-}
+}

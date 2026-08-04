@@ -1,12 +1,10 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
-import { Button } from '@/components/ui/button'
-import { ExternalLink, BookOpen, Clock, UserPlus, FileText, Target } from 'lucide-react'
+import { BookOpen, Clock, UserPlus, FileText, Target } from 'lucide-react'
 
 const seasonGames = [
     {
@@ -148,4 +146,4 @@ export default function SezonOyunlariPage() {
             </section>
         </div>
     )
-}
+}

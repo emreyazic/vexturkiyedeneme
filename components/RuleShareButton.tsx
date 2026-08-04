@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Share2, Link, Copy, Check } from 'lucide-react'
+import { Share2, Link, Check } from 'lucide-react'
 
 interface RuleShareButtonProps {
     ruleNumber: string
@@ -98,4 +98,4 @@ export function RuleShareButton({ ruleNumber, ruleTitle }: RuleShareButtonProps)
             </AnimatePresence>
         </div>
     )
-}
+}

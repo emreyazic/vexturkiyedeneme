@@ -19,7 +19,6 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { cn } from '@/lib/utils'
 
 export default function AdminLoginPage() {
     const router = useRouter()
@@ -227,4 +226,4 @@ export default function AdminLoginPage() {
             </div>
         </div>
     )
-}
+}

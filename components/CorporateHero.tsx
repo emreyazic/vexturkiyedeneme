@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 
 interface CorporateHeroProps {
     title: string
@@ -58,4 +57,4 @@ export function CorporateHero({ title, subtitle, backgroundImage }: CorporateHer
             </div>
         </section>
     )
-}
+}

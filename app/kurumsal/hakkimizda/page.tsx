@@ -1,6 +1,5 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
@@ -411,4 +410,4 @@ export default function HakkimizdaPage() {
             <Footer language={language} />
         </div>
     )
-}
+}

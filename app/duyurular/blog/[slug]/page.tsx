@@ -1,13 +1,12 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Button } from '@/components/ui/button'
-import { ArrowLeft, Clock, Calendar, User, Share2, Facebook, Twitter, Linkedin, Timer } from 'lucide-react'
+import { ArrowLeft, Calendar, User, Share2, Facebook, Twitter, Linkedin, Timer } from 'lucide-react'
 
 // Dummy data generator based on slug (since we don't have a backend for this yet)
 const getPostData = (slug: string) => {
@@ -137,4 +136,4 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
             <Footer language={language} />
         </div>
     )
-}
+}

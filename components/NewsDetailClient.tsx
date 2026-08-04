@@ -1,10 +1,9 @@
 'use client'
 
-import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { PortableText, type PortableTextReactComponents } from '@portabletext/react'
+import { PortableText } from '@portabletext/react'
 import { Navbar } from '@/components/Navbar'
 import { Button } from '@/components/ui/button'
 import {
@@ -274,4 +273,4 @@ export function NewsDetailClient({ news }: NewsDetailClientProps) {
             <div className="h-20" />
         </div>
     )
-}
+}

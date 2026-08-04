@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 import { motion } from 'framer-motion'
 import { GAME_RULE_PLATFORMS } from '@/lib/sanity-queries'
 
@@ -63,4 +62,4 @@ export function PlatformSwitcherCompact({ selectedPlatform, onPlatformChange }: 
             ))}
         </div>
     )
-}
+}

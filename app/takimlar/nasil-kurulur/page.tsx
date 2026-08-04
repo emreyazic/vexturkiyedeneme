@@ -1,12 +1,11 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
 import { Button } from '@/components/ui/button'
-import { Users, FileText, Package, Code, Target, Flag, Zap, Compass, CheckCircle2, Share2, Sparkles, MonitorSmartphone } from 'lucide-react'
+import { Users, FileText, Package, Flag, Compass, CheckCircle2, Sparkles, MonitorSmartphone } from 'lucide-react'
 
 const questLevels = [
     {
@@ -239,4 +238,4 @@ export default function NasilTakimKurulurPage() {
             </section>
         </div>
     )
-}
+}

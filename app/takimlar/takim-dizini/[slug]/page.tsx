@@ -1,12 +1,11 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
 import { Button } from '@/components/ui/button'
-import { ShieldCheck, ArrowLeft, Database, UserX } from 'lucide-react'
+import { ShieldCheck, ArrowLeft } from 'lucide-react'
 
 export default function TakimDetayPage({ params }: { params: { slug: string } }) {
     const { language, setLanguage } = useLanguage()
@@ -45,4 +44,4 @@ export default function TakimDetayPage({ params }: { params: { slug: string } })
             </section>
         </div>
     )
-}
+}

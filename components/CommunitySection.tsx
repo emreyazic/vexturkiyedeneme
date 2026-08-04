@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Users, GraduationCap, Heart, BookOpen, CheckCircle2, Trophy, Award, Home } from 'lucide-react'
+import { ArrowRight, Users, GraduationCap, Heart, BookOpen, CheckCircle2, Trophy, Home } from 'lucide-react'
 
 interface CommunitySectionProps {
     language: 'TR' | 'EN'
@@ -345,4 +345,4 @@ export function CommunitySection({ language }: CommunitySectionProps) {
             </div>
         </section>
     )
-}
+}

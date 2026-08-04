@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -640,4 +640,4 @@ export default function DunyaSampiyonasiPage() {
             <Footer language={language} />
         </div>
     )
-}
+}

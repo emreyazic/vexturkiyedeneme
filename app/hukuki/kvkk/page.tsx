@@ -1,6 +1,5 @@
 'use client'
 
-import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import { Navbar } from '@/components/Navbar'
 import { CorporateHero } from '@/components/CorporateHero'
@@ -51,4 +50,4 @@ export default function KVKKPage() {
             </section>
         </div>
     )
-}
+}

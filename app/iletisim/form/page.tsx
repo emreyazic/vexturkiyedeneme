@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Button } from '@/components/ui/button'
@@ -307,4 +307,4 @@ export default function IletisimFormPage() {
             </section>
         </div>
     )
-}
+}

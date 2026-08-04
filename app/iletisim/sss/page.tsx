@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -303,4 +303,4 @@ export default function SSSPage() {
             <Footer language={language} />
         </div>
     )
-}
+}
