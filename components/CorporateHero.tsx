@@ -1,5 +1,4 @@
-'use client'
-
+import Image from 'next/image'
 
 interface CorporateHeroProps {
     title: string
@@ -13,13 +12,13 @@ export function CorporateHero({ title, subtitle, backgroundImage }: CorporateHer
             {/* Background with gradient overlay */}
             <div className="absolute inset-0">
                 {backgroundImage ? (
-                    <div
-                        className="absolute inset-0"
-                        style={{
-                            backgroundImage: `url(${backgroundImage})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center'
-                        }}
+                    <Image
+                        src={backgroundImage}
+                        alt={title}
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="object-cover"
                     />
                 ) : (
                     <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />

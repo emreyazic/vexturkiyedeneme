@@ -16,6 +16,7 @@ const nextConfig = {
   experimental: {
     taint: true,
     optimizePackageImports: ['lucide-react', 'framer-motion', 'date-fns', '@radix-ui/react-select', '@radix-ui/react-dialog'],
+    optimizeCss: true,
   },
   async redirects() {
     return [

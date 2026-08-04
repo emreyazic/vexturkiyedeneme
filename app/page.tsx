@@ -470,14 +470,16 @@ export default function VEXTurkiyeLanding() {
                 </m.div>
               </m.div>
             ) : (
-              <div
-                className="absolute inset-0 opacity-70"
-                style={{
-                  backgroundImage: 'url(/hero-vex.jpg)',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }}
-              />
+              <div className="absolute inset-0 opacity-70">
+                <Image
+                  src="/hero-vex.jpg"
+                  alt="RECF Türkiye"
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="object-cover"
+                />
+              </div>
             )}
             {/* Overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/80 to-white z-20" />
