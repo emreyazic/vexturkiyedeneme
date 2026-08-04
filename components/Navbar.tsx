@@ -198,7 +198,14 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
                     <Link href="/">
-                        <img src="/recf-turkiye-logo.png" alt="RECF Türkiye" className="h-12 md:h-16 w-auto object-contain py-1" />
+                        <Image
+                            src="/recf-turkiye-logo.png"
+                            alt="RECF Türkiye"
+                            width={232}
+                            height={54}
+                            priority
+                            className="h-12 md:h-16 w-auto object-contain py-1"
+                        />
                     </Link>
 
                     {/* Desktop Navigation */}
