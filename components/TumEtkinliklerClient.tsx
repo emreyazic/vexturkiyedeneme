@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useMemo } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -170,6 +171,7 @@ function EventCard({ event, index, isPast = false }: { event: SanityEvent; index
 }
 
 export function TumEtkinliklerClient({ allEvents, upcomingEvents, pastEvents }: TumEtkinliklerClientProps) {
+    const { language, setLanguage } = useLanguage()
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedCity, setSelectedCity] = useState<string>('all')
     const [selectedEventType, setSelectedEventType] = useState<string>('all')
@@ -239,7 +241,8 @@ export function TumEtkinliklerClient({ allEvents, upcomingEvents, pastEvents }: 
 
     return (
         <div className="min-h-screen bg-gray-50 text-foreground">
-            <Navbar language="TR" onLanguageToggle={() => { }} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={language === 'EN'} />
 
             <div className="h-20" />
 
@@ -467,7 +470,7 @@ export function TumEtkinliklerClient({ allEvents, upcomingEvents, pastEvents }: 
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

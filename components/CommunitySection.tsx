@@ -119,15 +119,12 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     title: 'Competitor',
                     icon: Trophy,
                     heading: 'Competitors',
-
-
-
-                    description: 'RECF competitors embark on an exciting STEM journey where they develop leadership, teamwork, and problem-solving skills. Be part of a team and shape your future!',
+                    description: 'RECF contestants experience design, production, programming, and teamwork through real-world tasks.',
                     benefits: [
-                        'Team Experience: Design, build, and program robots with your peers',
-                        'Leadership Skills: Gain project management and team coordination experience',
-                        'Problem Solving: Face real engineering challenges and create solutions',
-                        'Global Competitions: Embark on a journey that leads to the World Championship'
+                        'Team Experience: Develop robot or drone systems with your team.',
+                        'Leadership Skills: Gain experience in task sharing, time management, and team coordination.',
+                        'Problem Solving: Analyze, test, and improve engineering challenges.',
+                        'Global Competitions: Be part of an experience that spans from local events to international competition opportunities.'
                     ],
                     cta: 'Build Your Team',
                     href: '/takimlar/nasil-kurulur'
@@ -150,12 +147,12 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     title: 'Volunteer',
                     icon: Users,
                     heading: 'Volunteers',
-                    description: 'RECF volunteers make STEM come to life — from setting up events to cheering on teams. No experience is required, just a passion for helping students succeed.',
+                    description: 'Contribute to the safe, fair, and professional conduct of RECF events. Take on a role that aligns with your experience and interests.',
                     benefits: [
-                        'Tournament Experience: Take active roles in operations, refereeing, and field setup',
-                        'Volunteer Certificate: Document your experience with an official certificate',
-                        'Inspire Students: Be an inspiration through hands-on support',
-                        'Flexible Roles: Tasks suitable for every interest and schedule'
+                        'Event Experience: Take on roles in field setup, operations, refereeing, judging, and team support.',
+                        'Role-Based Training: Access up-to-date training and informational content tailored to your role.',
+                        'Inspire: Help students have an unforgettable competition experience.',
+                        'Flexible Participation: Take on roles at local, regional, or national events according to your availability.'
                     ],
                     cta: 'Volunteer',
                     href: '/kurumsal/gonullu-olun'
@@ -164,12 +161,12 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     title: 'Mentor',
                     icon: GraduationCap,
                     heading: 'Mentors',
-                    description: 'Mentors provide technical guidance to teams, manage the engineering process, and inspire students with their field knowledge and experience. Shape the engineers of the future.',
+                    description: 'Mentors do not provide solutions on behalf of students; they guide the team to develop their own solution by asking the right questions.',
                     benefits: [
-                        'Technical Guidance: Support teams in robot design and coding',
-                        'Engineering Process: Teach students systematic problem-solving approaches',
-                        'Career Mentorship: Share your STEM field experiences',
-                        'Professional Network: Connect with other mentors and industry professionals'
+                        'Technical Guidance: Guide students through design, programming, and testing processes.',
+                        'Engineering Process: Support a culture of problem definition, prototyping, testing, and improvement.',
+                        'Team Management:  Coordinate the season plan, security, task allocation, and event preparation.',
+                        'Career Inspiration: Contribute to students\' exploration of STEM fields by sharing your experiences.'
                     ],
                     cta: 'Become a Mentor',
                     href: '/takimlar/mentor'
@@ -178,12 +175,12 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     title: 'Sponsor & Donor',
                     icon: Heart,
                     heading: 'Sponsors & Donors',
-                    description: 'Invest in future engineers by providing financial or equipment support to the ecosystem. Align your corporate social responsibility goals with RECF Turkey.',
+                    description: 'Invest in future technology producers by providing resources, expertise, or event support to the RECF Turkey ecosystem.',
                     benefits: [
-                        'Strategic Partnership: Increase your brand visibility at national and international competitions',
-                        'Talent Pool: Early access to future engineers',
-                        'CSR Impact: Document your project with measurable social impact reports',
-                        'Customized Packages: Sponsorship options tailored to your budget and goals'
+                        'Strategic Collaboration: Develop long-term partnerships in education, technology, and youth-focused projects.',
+                        'Meeting Talents: Get to know future engineers and technology professionals early on.',
+                        'Measurable Social Impact: Track supported students, teams, and activities with concrete outcomes.',
+                        'Flexible Support Models: Offer financial support, equipment, space, training, or expertise contributions.'
                     ],
                     cta: 'Become a Sponsor',
                     href: '/kurumsal/sponsorlar-ve-partnerler'
@@ -192,12 +189,12 @@ export function CommunitySection({ language }: CommunitySectionProps) {
                     title: 'Educator',
                     icon: BookOpen,
                     heading: 'Educators',
-                    description: 'Integrate RECF into your school curriculum, participate in certified educator training, and access comprehensive resources for classroom applications.',
+                    description: 'nhance students\' hands-on STEM experience by integrating RECF programs into your classroom, club, and laboratory activities.',
                     benefits: [
-                        'Curriculum Integration: Integrate RECF platforms into your existing STEM courses',
-                        'Certified Training: Obtain official RECF educator certification',
-                        'Lesson Resources: Ready-made lesson plans and activity guides',
-                        'Technical Support: Ongoing technical support for classroom applications'
+                        'Program Integration: Adapt robotics and drone activities to existing course and club structures.',
+                        'Educational Resources: Access up-to-date educational content.',
+                        'Hands-On Learning: Supplement lessons with real tasks, design processes, and team projects.',
+                        'Mentor Support: Benefit from resources for team management, season planning, and event preparation.'
                     ],
                     cta: 'Educator Resources',
                     href: 'https://educathub.com/mufredatlarimiz/'

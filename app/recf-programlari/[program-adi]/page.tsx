@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { motion } from 'framer-motion'
@@ -337,7 +338,7 @@ const programsData: Record<string, {
 export default function ProgramDetailPage() {
     const params = useParams()
     const programSlug = params['program-adi'] as string
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
 
     const program = programsData[programSlug]
 
@@ -362,7 +363,8 @@ export default function ProgramDetailPage() {
 
     return (
         <div className="min-h-screen bg-white text-foreground">
-            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={language === 'EN'} />
 
             <div className="h-20" />
 
@@ -650,7 +652,7 @@ export default function ProgramDetailPage() {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

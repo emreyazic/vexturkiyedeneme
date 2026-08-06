@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
@@ -16,7 +17,7 @@ import {
 import Link from 'next/link'
 
 export default function IsBirlikleriPage() {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
 
     const categories = [
         {
@@ -85,7 +86,8 @@ export default function IsBirlikleriPage() {
 
     return (
         <div className="min-h-screen bg-white text-foreground">
-            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={language === 'EN'} />
 
             <div className="h-20" />
             <CorporateHero
@@ -197,7 +199,7 @@ export default function IsBirlikleriPage() {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

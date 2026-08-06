@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useMemo } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -30,6 +31,7 @@ interface TumTakimlarClientProps {
 }
 
 export function TumTakimlarClient({ teams }: TumTakimlarClientProps) {
+    const { language, setLanguage } = useLanguage()
     // Filter states
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedCity, setSelectedCity] = useState<string>('all')
@@ -90,7 +92,8 @@ export function TumTakimlarClient({ teams }: TumTakimlarClientProps) {
 
     return (
         <div className="min-h-screen bg-gray-50 text-foreground">
-            <Navbar language="TR" onLanguageToggle={() => { }} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={language === 'EN'} />
 
             <div className="h-20" />
 
@@ -285,7 +288,7 @@ export function TumTakimlarClient({ teams }: TumTakimlarClientProps) {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

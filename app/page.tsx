@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from "react"
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
@@ -41,15 +42,13 @@ import {
 } from '@/lib/sanity-queries'
 
 export default function VEXTurkiyeLanding() {
-  const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+  const { language, setLanguage } = useLanguage()
   const [events, setEvents] = useState<SanityEvent[]>([])
   const [news, setNews] = useState<SanityNews[]>([])
   const [heroSlides, setHeroSlides] = useState<SanityHero[]>([])
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0)
   const [currentNewsSlide, setCurrentNewsSlide] = useState(0)
   const [currentMobileNewsSlide, setCurrentMobileNewsSlide] = useState(0) // New State for Mobile
-  const [activeCategory, setActiveCategory] = useState<'robotics' | 'drone'>('robotics')
-
   // Fetch Data
   useEffect(() => {
     const fetchData = async () => {
@@ -229,8 +228,8 @@ export default function VEXTurkiyeLanding() {
         contact: 'Contact'
       },
       hero: {
-        headline: 'Design the Future. Build Your Team. Step into the Arena.',
-        subheadline: 'RECF Türkiye brings robotics, drone, engineering, and technology competitions to students, educators, and institutions in Turkey.',
+        headline: 'Build your team. Compete with your technology. Shape the future.',
+        subheadline: 'RECF Turkey brings together different age groups, from primary school to university, with robotics programming, applied engineering, coding, and teamwork. These programs, which meet the needs of the sector and the workforce of the future, encourage participants to consider education and career options in science, technology, engineering, and mathematics fields after high school.institutions in Turkey.',
         cta: 'Register Team',
         learn: 'Choose Program',
         eventsBtn: 'View Events'
@@ -286,14 +285,14 @@ export default function VEXTurkiyeLanding() {
       },
       whyVex: {
         label: 'WHY VEX?',
-        title: 'Robotics Experience Shaping the Future',
-        subtitle: 'VEX Robotics equips students with real-world engineering skills, nurturing them to become future leaders, innovators, and problem-solvers.',
-        cta: 'Discover VEX Impact',
+        title: 'More than a Competition',
+        subtitle: 'Each task is a genuine learning experience that equips students with the skills of the future.',
+        cta: 'Discover RECF Impact',
         cards: [
           {
             title: 'Core Skill Development',
             description: 'Hands-on projects that develop engineering, mathematics, and critical thinking skills. Students sharpen problem-solving abilities by building real robots.',
-            link: 'About VEX',
+            link: 'About RECF',
             linkHref: '/about-vex'
           },
           {
@@ -331,7 +330,6 @@ export default function VEXTurkiyeLanding() {
         ? 'İlkokul öğrencileri için tasarlanmış, eğlenceli ve eğitici robotik başlangıç programı.'
         : 'Fun and educational robotics starter program designed for elementary students.',
       ageGroup: language === 'TR' ? 'İlkokul' : 'Elementary',
-      level: language === 'TR' ? 'Başlangıç' : 'Beginner',
       image: '/vex-go.jpg'
     },
     {
@@ -342,7 +340,6 @@ export default function VEXTurkiyeLanding() {
         ? 'Ortaokul ve lise seviyesi için takım çalışması ve problem çözme odaklı program.'
         : 'Teamwork and problem-solving focused program for middle and high school levels.',
       ageGroup: language === 'TR' ? 'Ortaokul/Lise' : 'Middle/High School',
-      level: language === 'TR' ? 'Orta' : 'Intermediate',
       image: '/vex-iq.jpg'
     },
     {
@@ -353,7 +350,6 @@ export default function VEXTurkiyeLanding() {
         ? 'Gelişmiş robotik projeleriyle öğrencilere mühendislik becerileri kazandıran program.'
         : 'Program providing engineering skills to students through advanced robotics projects.',
       ageGroup: language === 'TR' ? 'Lise/Üniversite' : 'High School/University',
-      level: language === 'TR' ? 'İleri' : 'Advanced',
       image: '/vex-v5.jpg'
     },
     {
@@ -364,7 +360,6 @@ export default function VEXTurkiyeLanding() {
         ? 'Öğrencileri drone teknolojisi ve programlama ile buluşturan heyecan verici yarışma.'
         : 'Exciting competition bringing students together with drone technology and programming.',
       ageGroup: language === 'TR' ? 'Ortaokul/Lise' : 'Middle/High School',
-      level: language === 'TR' ? 'Tüm Seviyeler' : 'All Levels',
       image: '/vex-u.jpg'
     },
     {
@@ -375,7 +370,6 @@ export default function VEXTurkiyeLanding() {
         ? 'Üniversite öğrencileri için profesyonel seviye otonom drone yarışması.'
         : 'Professional level autonomous drone competition for university students.',
       ageGroup: language === 'TR' ? 'Üniversite' : 'University',
-      level: language === 'TR' ? 'Profesyonel' : 'Professional',
       image: '/vex-u.jpg'
     }
   ]
@@ -779,105 +773,64 @@ export default function VEXTurkiyeLanding() {
               </p>
             </div>
 
-            {/* Category Tabs */}
-            <div className="flex justify-center mb-12">
-              <div className="inline-flex p-1.5 bg-gray-100/80 backdrop-blur-md border border-gray-200/50 rounded-2xl shadow-inner">
-                <button
-                  onClick={() => setActiveCategory('robotics')}
-                  className={`flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${activeCategory === 'robotics'
-                    ? 'bg-white text-primary shadow-md scale-[1.02]'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50/50'
-                    }`}
-                >
-                  <Bot className={`h-4 w-4 transition-transform duration-300 ${activeCategory === 'robotics' ? 'scale-110' : ''}`} />
-                  {language === 'TR' ? 'Robotik Yarışmaları' : 'Robotics Competitions'}
-                </button>
-                <button
-                  onClick={() => setActiveCategory('drone')}
-                  className={`flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${activeCategory === 'drone'
-                    ? 'bg-white text-primary shadow-md scale-[1.02]'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50/50'
-                    }`}
-                >
-                  <Gamepad2 className={`h-4 w-4 transition-transform duration-300 ${activeCategory === 'drone' ? 'scale-110' : ''}`} />
-                  {language === 'TR' ? 'Drone Yarışmaları' : 'Drone Competitions'}
-                </button>
-              </div>
-            </div>
-
             {/* Programs Grid */}
             <div className="relative">
               <LazyMotion features={domAnimation}>
                 <m.div
-                  key={activeCategory}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className={
-                    programs.filter((p) => p.category === activeCategory).length === 2
-                      ? "grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto"
-                      : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
-                  }
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
                 >
-                  {programs
-                    .filter((program) => program.category === activeCategory)
-                    .map((program) => (
-                      <div
-                        key={program.id}
-                        className="group relative bg-white rounded-3xl overflow-hidden border border-gray-200/60 hover:border-primary/40 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 flex flex-col h-full shadow-sm"
-                      >
-                        {/* Image */}
-                        <div className="relative h-60 overflow-hidden bg-gray-100 shrink-0">
-                          <Image
-                            src={program.image || "/placeholder.svg"}
-                            alt={program.name}
-                            fill
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+                  {programs.map((program) => (
+                    <div
+                      key={program.id}
+                      className="group relative bg-white rounded-3xl overflow-hidden border border-gray-200/60 hover:border-primary/40 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 flex flex-col h-full shadow-sm"
+                    >
+                      {/* Image */}
+                      <div className="relative h-60 overflow-hidden bg-gray-100 shrink-0">
+                        <Image
+                          src={program.image || "/placeholder.svg"}
+                          alt={program.name}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
 
-                          {/* Age Group floating badge */}
-                          <div className="absolute top-4 left-4">
-                            <span className="px-3.5 py-1.5 bg-white/95 backdrop-blur-md text-gray-900 text-xs font-semibold rounded-xl shadow-sm border border-gray-100/50">
-                              {program.ageGroup}
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="p-8 flex flex-col flex-1">
-                          {/* Level badge and name */}
-                          <div className="flex items-center gap-2.5 mb-3">
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
-                              {program.level}
-                            </span>
-                          </div>
-
-                          <h3 className="text-2xl font-bold mb-3.5 text-gray-900 group-hover:text-primary transition-colors duration-300 leading-tight">
-                            {program.name}
-                          </h3>
-
-                          {/* Description */}
-                          <p className="text-gray-600 leading-relaxed mb-8 text-sm flex-grow">
-                            {program.description}
-                          </p>
-
-                          {/* CTA Button */}
-                          <div className="mt-auto">
-                            <Link href={`/programlar/${program.id === 'adc' ? 'aerial-drone-competition' : (program.id === 'engage' ? 'recf-engage' : (program.id === 'achieve' ? 'recf-achieve' : (program.id === 'inspire' ? 'recf-inspire' : program.id)))}`}>
-                              <Button
-                                variant="outline"
-                                className="w-full border-gray-200/80 text-gray-700 hover:bg-primary hover:text-white hover:border-primary bg-white shadow-sm hover:shadow transition-all duration-300 py-6 rounded-xl font-semibold flex items-center justify-center gap-2 group/btn"
-                              >
-                                {t.programs.detailButton}
-                                <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300 text-gray-400 group-hover:text-white" />
-                              </Button>
-                            </Link>
-                          </div>
+                        {/* Age Group floating badge */}
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3.5 py-1.5 bg-white/95 backdrop-blur-md text-gray-900 text-xs font-semibold rounded-xl shadow-sm border border-gray-100/50">
+                            {program.ageGroup}
+                          </span>
                         </div>
                       </div>
-                    ))}
+
+                      <div className="p-8 flex flex-col flex-1">
+                        <h3 className="text-2xl font-bold mb-3.5 text-gray-900 group-hover:text-primary transition-colors duration-300 leading-tight">
+                          {program.name}
+                        </h3>
+
+                        {/* Description */}
+                        <p className="text-gray-600 leading-relaxed mb-8 text-sm flex-grow">
+                          {program.description}
+                        </p>
+
+                        {/* CTA Button */}
+                        <div className="mt-auto">
+                          <Link href={`/programlar/${program.id === 'adc' ? 'aerial-drone-competition' : (program.id === 'engage' ? 'recf-engage' : (program.id === 'achieve' ? 'recf-achieve' : (program.id === 'inspire' ? 'recf-inspire' : program.id)))}`}>
+                            <Button
+                              variant="outline"
+                              className="w-full border-gray-200/80 text-gray-700 hover:bg-primary hover:text-white hover:border-primary bg-white shadow-sm hover:shadow transition-all duration-300 py-6 rounded-xl font-semibold flex items-center justify-center gap-2 group/btn"
+                            >
+                              {t.programs.detailButton}
+                              <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300 text-gray-400 group-hover:text-white" />
+                            </Button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </m.div>
               </LazyMotion>
             </div>
@@ -1362,7 +1315,7 @@ export default function VEXTurkiyeLanding() {
           </div>
         </section >
 
-        <Footer />
+        <Footer language={language} />
       </div >
     </LazyMotion>
   )

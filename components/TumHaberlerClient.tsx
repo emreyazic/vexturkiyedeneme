@@ -1,6 +1,7 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -15,9 +16,11 @@ interface TumHaberlerClientProps {
 }
 
 export function TumHaberlerClient({ news }: TumHaberlerClientProps) {
+    const { language, setLanguage } = useLanguage()
     return (
         <div className="min-h-screen bg-gray-50 text-foreground">
-            <Navbar language="TR" onLanguageToggle={() => { }} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={language === 'EN'} />
 
             <div className="h-20" />
 
@@ -115,7 +118,7 @@ export function TumHaberlerClient({ news }: TumHaberlerClientProps) {
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

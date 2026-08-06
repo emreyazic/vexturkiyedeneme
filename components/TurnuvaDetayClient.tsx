@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -87,7 +88,7 @@ function AddToCalendarButton({ event }: { event: SanityEvent }) {
 }
 
 export function TurnuvaDetayClient({ event }: TurnuvaDetayClientProps) {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const typeColors = getEventTypeColor(event.eventType)
     const platformColors = getPlatformColor(event.platform)
 
@@ -111,7 +112,8 @@ export function TurnuvaDetayClient({ event }: TurnuvaDetayClientProps) {
 
     return (
         <div className="min-h-screen bg-white text-foreground">
-            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={language === 'EN'} />
 
             <div className="h-20" />
             <CorporateHero
@@ -362,7 +364,7 @@ export function TurnuvaDetayClient({ event }: TurnuvaDetayClientProps) {
             </section>
 
             {/* Footer */}
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

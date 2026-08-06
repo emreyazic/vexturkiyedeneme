@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect, useMemo } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -361,7 +362,7 @@ function CompactEventCard({ event, index }: { event: SanityEvent; index: number 
 }
 
 export function EtkinlikTakvimiClient({ upcomingEvents, allEvents, countdownSettings }: EtkinlikTakvimiClientProps) {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date())
     const [month, setMonth] = useState<Date>(new Date('2026-02-01'))
     const [countdownEventEnded, setCountdownEventEnded] = useState(false)
@@ -493,7 +494,8 @@ export function EtkinlikTakvimiClient({ upcomingEvents, allEvents, countdownSett
 
     return (
         <div className="min-h-screen bg-white text-foreground">
-            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={language === 'EN'} />
 
             <div className="h-20" />
             <CorporateHero
@@ -743,7 +745,7 @@ export function EtkinlikTakvimiClient({ upcomingEvents, allEvents, countdownSett
                 </div>
             </section>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

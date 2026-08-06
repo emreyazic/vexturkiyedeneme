@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -144,7 +145,7 @@ interface BasindaBizClientProps {
 type TabType = 'news' | 'releases' | 'mediakit'
 
 export default function BasindaBizClient({ tvNews }: BasindaBizClientProps) {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const [activeTab, setActiveTab] = useState<TabType>('news')
     const [copiedColor, setCopiedColor] = useState<string | null>(null)
 
@@ -229,7 +230,8 @@ export default function BasindaBizClient({ tvNews }: BasindaBizClientProps) {
 
     return (
         <div className="min-h-screen bg-white text-foreground font-sans">
-            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={language === 'EN'} />
 
             <div className="h-20" />
             <CorporateHero
@@ -500,7 +502,7 @@ export default function BasindaBizClient({ tvNews }: BasindaBizClientProps) {
                 </div>
             </main>
 
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

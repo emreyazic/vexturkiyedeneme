@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { CorporateHero } from '@/components/CorporateHero'
@@ -72,129 +73,10 @@ function ContactCard({ item, language }: { item: ContactItem; language: 'TR' | '
 export default function BilgilerPage() {
     const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
 
-    const content = {
-        TR: {
-            hero: {
-                title: "RECF Türkiye İletişim Bilgileri",
-                subtitle:
-                    "Resmi iletişim kanalları, temsilcilik adresi ve destek saatleri",
-            },
-
-            contactInfo: [
-                {
-                    icon: Phone,
-                    label: "Telefon Destek Hattı",
-                    value: "+90 (212) 909 23 10",
-                    action: "tel:+902129092310",
-                    copyable: true,
-                },
-                {
-                    icon: Mail,
-                    label: "E-Posta Adresi",
-                    value: "info@recfturkiye.org",
-                    action: "mailto:info@recfturkiye.org",
-                    copyable: true,
-                },
-                {
-                    icon: MapPin,
-                    label: "Temsilcilik Adresi",
-                    value: "Maslak Mah. Büyükdere Cad. No:237, Sarıyer / İstanbul",
-                    action:
-                        "https://maps.google.com/?q=Maslak+Mahallesi+Büyükdere+Caddesi+Sarıyer+İstanbul",
-                    copyable: true,
-                },
-                {
-                    icon: Clock,
-                    label: "Çalışma Saatleri",
-                    value: "Pazartesi - Cuma: 09:00 - 18:00",
-                    copyable: false,
-                },
-            ],
-
-            switch: {
-                button: "English Sürüme Geç",
-                short: "EN",
-            },
-
-            representative: {
-                badge: "Resmi Temsilcilik",
-                title: "Intechne Teknoloji - RECF Türkiye Temsilciliği",
-                text:
-                    "RECF programları, takım kayıtları ve turnuva organizasyonları Türkiye resmi temsilcisi Intechne Teknoloji tarafından yürütülmektedir.",
-            },
-
-            buttons: {
-                openLink: "Bağlantıyı Aç",
-                copy: "Kopyala",
-                copied: "Kopyalandı",
-                contact: "İletişim Formuna Git",
-            },
-        },
-
-        EN: {
-            hero: {
-                title: "RECF Turkey Contact Information",
-                subtitle: "Official communication channels, representative office address, and support hours",
-            },
-
-            contactInfo: [
-                {
-                    icon: Phone,
-                    label: "Phone Support Line",
-                    value: "+90 (212) 909 23 10",
-                    action: "tel:+902129092310",
-                    copyable: true,
-                },
-                {
-                    icon: Mail,
-                    label: "Email Address",
-                    value: "info@recfturkiye.org",
-                    action: "mailto:info@recfturkiye.org",
-                    copyable: true,
-                },
-                {
-                    icon: MapPin,
-                    label: "Representative Office Address",
-                    value: "Maslak Mah. Büyükdere Cad. No:237, Sarıyer / İstanbul",
-                    action:
-                        "https://maps.google.com/?q=Maslak+Mahallesi+Büyükdere+Caddesi+Sarıyer+İstanbul",
-                    copyable: true,
-                },
-                {
-                    icon: Clock,
-                    label: "Working Hours",
-                    value: "Monday - Friday: 09:00 - 18:00",
-                    copyable: false,
-                },
-            ],
-
-            switch: {
-                button: "Switch to Turkish",
-                short: "TR",
-            },
-
-            representative: {
-                badge: "Official Representative",
-                title: "Intechne Technology - RECF Turkey Representative",
-                text: "RECF programs, team registrations, and tournament organizations are carried out by the official representative of Turkey, Intechne Technology.",
-            },
-
-            buttons: {
-                openLink: "Open Link",
-                copy: "Copy",
-                copied: "Copied",
-                contact: "Go to Contact Form",
-            },
-        },
-    } as const
-
-    const t = content[language]
-
     return (
-        <div className="min-h-screen bg-gray-50 text-foreground flex flex-col justify-between">
-            <div>
-                <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
-                <div className="h-20" />
+        <div className="min-h-screen bg-gray-50 text-foreground">
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
+            <div className="h-20" />
 
                 <CorporateHero
                     title={t.hero.title}
@@ -248,7 +130,7 @@ export default function BilgilerPage() {
                 </section>
             </div>
             <Footer />
-        </div>
+        </div >
     )
 }
 

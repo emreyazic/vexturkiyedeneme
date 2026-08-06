@@ -25,9 +25,9 @@ export function V5SeasonSection({ language }: V5SeasonSectionProps) {
         },
         EN: {
             label: '2026-2027 RECF TURKEY SEASON',
-            title: 'Discover the Future with RECF',
-            description: 'Explore this season\'s theme, rules, and engineering challenges designed for high school students. Build your team and prepare for global competition.',
-            cta: 'View Details',
+            title: 'New Season. New Missions.',
+            description: 'Discover the 2026–2027 games, missions, and current rules for the RECF Engage, Achieve, Inspire, Aerial Drone Competition, and ADC Pro programs. Build your team, upgrade your robot, and take your place at RECF Turkey events throughout the season.',
+            cta: 'View the Season Games',
             features: [
                 { icon: Trophy, text: 'World Championship Path' },
                 { icon: Calendar, text: '2026-2027 Season' },

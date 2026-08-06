@@ -1,6 +1,7 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -23,9 +24,11 @@ interface HaberlerVitrinClientProps {
 }
 
 export function HaberlerVitrinClient({ featuredNews, latestNews }: HaberlerVitrinClientProps) {
+    const { language, setLanguage } = useLanguage()
     return (
         <div className="min-h-screen bg-white text-foreground">
-            <Navbar language="TR" onLanguageToggle={() => { }} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={language === 'EN'} />
 
             <div className="h-20" />
             <CorporateHero
@@ -206,7 +209,7 @@ export function HaberlerVitrinClient({ featuredNews, latestNews }: HaberlerVitri
             </section>
 
             {/* Footer */}
-            <Footer />
+            <Footer language={language} />
         </div>
     )
 }

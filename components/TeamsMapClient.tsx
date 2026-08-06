@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect, useRef, useMemo } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -63,7 +64,7 @@ interface TeamsMapClientProps {
 // TurkeyMap SVG Component moved to @/components/turkey-map
 
 export function TeamsMapClient({ teams }: TeamsMapClientProps) {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const [selectedCity, setSelectedCity] = useState<string | null>('İstanbul')
     const [searchQuery, setSearchQuery] = useState('')
 
@@ -106,7 +107,8 @@ export function TeamsMapClient({ teams }: TeamsMapClientProps) {
 
     return (
         <div className="min-h-screen bg-white text-foreground">
-            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={language === 'EN'} />
 
             <div className="h-20" />
 

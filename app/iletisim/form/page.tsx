@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useLanguage } from '@/components/LanguageProvider'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
@@ -25,7 +26,7 @@ const subjectOptions = [
 ]
 
 export default function IletisimFormPage() {
-    const [language, setLanguage] = useState<'TR' | 'EN'>('TR')
+    const { language, setLanguage } = useLanguage()
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -57,7 +58,8 @@ export default function IletisimFormPage() {
 
     return (
         <div className="min-h-screen bg-gray-50 text-foreground">
-            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')} />
+            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
+                showTranslationWarning={language === 'EN'} />
             <div className="h-20" />
 
             <CorporateHero
