@@ -37,7 +37,7 @@ const programSoftware = [
         subtitle: 'Ortaokul ve Lise Düzeyi',
         options: [
             {
-                name: 'VEXcode (Python / C++)',
+                name: 'Resmi RECF Kodlama Ortamı (Python / C++)',
                 desc: 'Resmi API entegrasyonuna sahip, blok ve metin tabanlı geliştirme ortamı.',
                 type: 'Resmi Ortam'
             },
@@ -48,7 +48,7 @@ const programSoftware = [
             },
             {
                 name: 'VS Code Eklentileri',
-                desc: 'Profesyonel IDE deneyimi sunan VEX ve PROS geliştirme eklentileri.',
+                desc: 'Profesyonel IDE deneyimi sunan PROS ve çeşitli robotik geliştirme eklentileri.',
                 type: 'Geliştirici Araçları'
             }
         ]
@@ -110,10 +110,10 @@ const cadSimTools = [
         url: 'https://www.tinkercad.com'
     },
     {
-        name: 'VEXcode VR & Gazebo Simülatörleri',
+        name: 'Gazebo & Webots Simülatörleri',
         category: 'Robotik Simülasyon',
-        desc: 'Fiziksel saha olmadan otonom kod ve algoritma testleri gerçekleştirmeye olanak tanıyan dijital simülasyon ortamları.',
-        url: 'https://vr.vex.com'
+        desc: 'Fiziksel saha olmadan otonom kod ve algoritma testleri gerçekleştirmeye olanak tanıyan açık kaynaklı dijital simülasyon ortamları.',
+        url: 'https://gazebosim.org'
     }
 ]
 

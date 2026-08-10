@@ -775,7 +775,7 @@ export interface SanityResource {
     _id: string
     title: string
     slug: { current: string }
-    platform: 'vex-123' | 'vex-go' | 'vex-iq' | 'vex-v5' | 'vex-u' | 'vex-ai' | 'general'
+    platform: 'engage' | 'achieve' | 'inspire' | 'adc' | 'adc-pro' | 'online-challenges' | 'general'
     categories: ('game-rules' | 'field-setup')[]
     description?: string
     resourceType: 'pdf' | 'video' | 'link' | 'zip'
@@ -922,30 +922,50 @@ export function getResourceCategoryColor(category: string): { bg: string; text: 
 
 // Platform etiketi
 export function getResourcePlatformLabel(platform: string): string {
+    // Legacy mapping: eski VEX değerlerini yeni RECF platformlarına yönlendir
+    const legacyMap: Record<string, string> = {
+        'vex-v5': 'engage',
+        'vex-iq': 'engage',
+        'vex-go': 'engage',
+        'vex-123': 'engage',
+        'vex-u': 'inspire',
+        'vex-ai': 'achieve',
+    }
+    const mapped = legacyMap[platform] || platform
     const labels: Record<string, string> = {
-        'vex-123': 'VEX 123',
-        'vex-go': 'VEX GO',
-        'vex-iq': 'VEX IQ',
-        'vex-v5': 'VEX V5',
-        'vex-u': 'VEX U',
-        'vex-ai': 'VEX AI',
+        'engage': 'RECF Engage',
+        'achieve': 'RECF Achieve',
+        'inspire': 'RECF Inspire',
+        'adc': 'ADC',
+        'adc-pro': 'ADC Pro',
+        'online-challenges': 'Online Challenges',
         'general': 'Genel',
     }
-    return labels[platform] || platform
+    return labels[mapped] || platform
 }
 
 // Platform renkleri
 export function getResourcePlatformColor(platform: string): { bg: string; text: string; border: string } {
+    // Legacy mapping
+    const legacyMap: Record<string, string> = {
+        'vex-v5': 'engage',
+        'vex-iq': 'engage',
+        'vex-go': 'engage',
+        'vex-123': 'engage',
+        'vex-u': 'inspire',
+        'vex-ai': 'achieve',
+    }
+    const mapped = legacyMap[platform] || platform
     const colors: Record<string, { bg: string; text: string; border: string }> = {
-        'vex-123': { bg: 'bg-pink-100', text: 'text-pink-700', border: 'border-pink-300' },
-        'vex-go': { bg: 'bg-orange-100', text: 'text-orange-700', border: 'border-orange-300' },
-        'vex-iq': { bg: 'bg-purple-100', text: 'text-purple-700', border: 'border-purple-300' },
-        'vex-v5': { bg: 'bg-red-100', text: 'text-red-700', border: 'border-red-300' },
-        'vex-u': { bg: 'bg-blue-100', text: 'text-blue-700', border: 'border-blue-300' },
-        'vex-ai': { bg: 'bg-cyan-100', text: 'text-cyan-700', border: 'border-cyan-300' },
+        'engage': { bg: 'bg-red-100', text: 'text-red-700', border: 'border-red-300' },
+        'achieve': { bg: 'bg-blue-100', text: 'text-blue-700', border: 'border-blue-300' },
+        'inspire': { bg: 'bg-purple-100', text: 'text-purple-700', border: 'border-purple-300' },
+        'adc': { bg: 'bg-orange-100', text: 'text-orange-700', border: 'border-orange-300' },
+        'adc-pro': { bg: 'bg-cyan-100', text: 'text-cyan-700', border: 'border-cyan-300' },
+        'online-challenges': { bg: 'bg-emerald-100', text: 'text-emerald-700', border: 'border-emerald-300' },
         'general': { bg: 'bg-gray-100', text: 'text-gray-700', border: 'border-gray-300' },
     }
-    return colors[platform] || { bg: 'bg-gray-100', text: 'text-gray-700', border: 'border-gray-300' }
+    return colors[mapped] || { bg: 'bg-gray-100', text: 'text-gray-700', border: 'border-gray-300' }
 }
 
 // ============================================
@@ -956,7 +976,7 @@ export function getResourcePlatformColor(platform: string): { bg: string; text: 
 export interface SanityGameRule {
     _id: string
     ruleNumber: string
-    platform: 'vex-123' | 'vex-go' | 'vex-iq' | 'vex-v5' | 'vex-u' | 'vex-ai' | 'general'
+    platform: 'engage' | 'achieve' | 'inspire' | 'adc' | 'adc-pro' | 'online-challenges' | 'general'
     category: 'scoring' | 'robot' | 'general' | 'game' | 'field'
     titleTR: string
     titleEN: string

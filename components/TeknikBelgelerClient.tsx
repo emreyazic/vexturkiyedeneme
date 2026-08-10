@@ -11,14 +11,14 @@ interface TeknikBelgelerClientProps {
     resources: (SanityResource & { fileUrl?: string })[]
 }
 
-// Platform filters (all 7 platforms)
+// Platform filters (RECF Programs)
 const PLATFORMS = [
-    { value: 'vex-123', label: 'VEX 123' },
-    { value: 'vex-go', label: 'VEX GO' },
-    { value: 'vex-iq', label: 'VEX IQ' },
-    { value: 'vex-v5', label: 'VEX V5 (VRC)' },
-    { value: 'vex-u', label: 'VEX U' },
-    { value: 'vex-ai', label: 'VEX AI' },
+    { value: 'engage', label: 'RECF Engage' },
+    { value: 'achieve', label: 'RECF Achieve' },
+    { value: 'inspire', label: 'RECF Inspire' },
+    { value: 'adc', label: 'ADC' },
+    { value: 'adc-pro', label: 'ADC Pro' },
+    { value: 'online-challenges', label: 'Online Challenges' },
     { value: 'general', label: 'Genel' },
 ]
 
