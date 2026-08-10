@@ -22,7 +22,7 @@ export default function IsBirlikleriPage() {
     const categories = [
         {
             title: language === 'TR' ? 'Eğitim & Akademi İş Birlikleri' : 'Education & Academy Partnerships',
-            description: language === 'TR' 
+            description: language === 'TR'
                 ? 'Okullar, üniversiteler ve akademilerle müfredat entegrasyonu ve eğitmen eğitimleri.'
                 : 'Curriculum integration and educator training with schools, universities, and academies.',
             icon: GraduationCap,
@@ -72,8 +72,8 @@ export default function IsBirlikleriPage() {
                 ? 'RECF programlarının Türkiye operasyonlarını, eğitimlerini ve turnuva yönetimini üstlenen yetkili mercidir.'
                 : 'The authorized body undertaking Turkey operations, training, and tournament management of RECF programs.',
             url: 'https://intechne.com.tr'
-        },
-        {
+        }
+        /*{
             id: 'vex',
             name: 'VEX Robotics',
             role: language === 'TR' ? 'Donanım Sponsoru' : 'Hardware Sponsor',
@@ -81,7 +81,7 @@ export default function IsBirlikleriPage() {
                 ? 'Dünya standartlarında STEM ve robotik yarışma setleri sağlayan resmi donanım üreticisidir.'
                 : 'Official hardware manufacturer providing world-class STEM and robotics competition sets.',
             url: 'https://vexrobotics.com'
-        }
+        }*/
     ]
 
     return (
@@ -92,7 +92,7 @@ export default function IsBirlikleriPage() {
             <div className="h-20" />
             <CorporateHero
                 title={language === 'TR' ? 'İş Birliklerimiz ve Partnerlerimiz' : 'Our Partnerships & Sponsors'}
-                subtitle={language === 'TR' 
+                subtitle={language === 'TR'
                     ? 'RECF Türkiye ekosistemini büyütmek, genç yetenekleri desteklemek ve STEM eğitimini yaygınlaştırmak için kamu kurumları, üniversiteler, özel sektör ve sivil toplum kuruluşlarıyla stratejik ortaklıklar kuruyoruz.'
                     : 'We build strategic partnerships with public institutions, universities, private sector, and NGOs to expand the RECF Turkey ecosystem, support young talents, and generalize STEM education.'
                 }
@@ -167,7 +167,7 @@ export default function IsBirlikleriPage() {
                                 </h3>
                                 <p className="text-sm font-semibold text-primary mb-4">{partner.role}</p>
                                 <p className="text-gray-600 text-sm mb-6 leading-relaxed flex-grow">{partner.description}</p>
-                                
+
                                 <div className="flex items-center gap-2 text-sm font-medium text-gray-500 group-hover:text-primary transition-colors mt-auto">
                                     <span>{language === 'TR' ? 'Ziyaret Et' : 'Visit Website'}</span>
                                     <ExternalLink className="w-4 h-4" />
@@ -185,7 +185,7 @@ export default function IsBirlikleriPage() {
                         {language === 'TR' ? 'RECF Türkiye Partneri Olun' : 'Become a RECF Turkey Partner'}
                     </h2>
                     <p className="text-lg text-gray-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-                        {language === 'TR' 
+                        {language === 'TR'
                             ? 'Geleceğin teknoloji üreticilerini desteklemek ve ekosistemimize katkı sağlamak için bizimle iletişime geçin.'
                             : 'Contact us to support the technology producers of the future and contribute to our ecosystem.'
                         }

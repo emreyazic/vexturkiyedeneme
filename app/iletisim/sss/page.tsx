@@ -16,14 +16,20 @@ import {
 
 // FAQ Categories
 const faqCategories = [
-    { id: 'all', label: 'Tümü', icon: HelpCircle },
-    { id: 'technical', label: 'Teknik Sorunlar', icon: Wrench },
-    { id: 'registration', label: 'Kayıt Süreçleri', icon: UserPlus },
-    { id: 'championship', label: '28 Şubat 2026 Türkiye Şampiyonası', icon: Calendar }
+    { id: 'all', icon: HelpCircle },
+    { id: 'technical', icon: Wrench },
+    { id: 'registration', icon: UserPlus },
+    { id: 'championship', icon: Calendar },
 ]
 
-// FAQ Items
-const faqItems = [
+interface FAQItem {
+    id: number
+    category: 'technical' | 'registration' | 'championship'
+    question: string
+    answer: string
+}
+
+const faqItemsTR: FAQItem[] = [
     // Technical
     {
         id: 1,
@@ -49,6 +55,7 @@ const faqItems = [
         question: 'İnertial Sensor kalibrasyon hatası veriyor',
         answer: 'Kalibrasyon sırasında robotu düz ve sabit bir zemine yerleştirin. Kalibrasyon bitmeden robotu hareket ettirmeyin (yaklaşık 5 saniye). Sensörün Brain\'e düzgün bağlandığını kontrol edin. Kalibrasyon kodunu program başında çağırdığınızdan emin olun.'
     },
+
     // Registration
     {
         id: 5,
@@ -74,6 +81,7 @@ const faqItems = [
         question: 'Takım numaramı nasıl öğrenebilirim?',
         answer: 'recfevents.org hesabınıza giriş yaptığınızda kullanıcı panelinizden takımlarınızı görebilirsiniz. Takım numarası genellikle "12345A" formatındadır.'
     },
+
     // Championship
     {
         id: 9,
@@ -101,10 +109,110 @@ const faqItems = [
     }
 ]
 
+const faqItemsEN: FAQItem[] = [
+    // Technical
+    {
+        id: 1,
+        category: 'technical',
+        question: 'VEXcode is not opening. What should I do?',
+        answer: 'First, make sure that you are using the latest version of the program. Try completely uninstalling and reinstalling VEXcode. If the problem continues, temporarily disable your antivirus software and try again. For further assistance, contact our technical support team.'
+    },
+    {
+        id: 2,
+        category: 'technical',
+        question: 'I cannot upload a program to the V5 Brain',
+        answer: 'Make sure the USB cable is properly connected. Check that the Brain is charged. Verify that the correct port is selected in VEXcode. Try restarting the Brain. You can also try using a different USB cable.'
+    },
+    {
+        id: 3,
+        category: 'technical',
+        question: 'My motors are not working properly',
+        answer: 'Check that the motor cables are securely connected. Make sure the motor ports are assigned correctly in VEXcode. Check the motor direction (forward/reverse). Try another port to determine whether there is a port failure.'
+    },
+    {
+        id: 4,
+        category: 'technical',
+        question: 'I am getting an Inertial Sensor calibration error',
+        answer: 'Place the robot on a flat and stable surface during calibration. Do not move the robot before calibration is complete (approximately 5 seconds). Make sure the sensor is properly connected to the Brain. Also make sure that the calibration code is called at the beginning of the program.'
+    },
+
+    // Registration
+    {
+        id: 5,
+        category: 'registration',
+        question: 'How do I register a team?',
+        answer: 'Go to recfevents.org and create a REC Foundation account. Select "Register a Team" and register your team. Add your school or organization information and complete the registration process online. Your team number will be assigned by the system.'
+    },
+    {
+        id: 6,
+        category: 'registration',
+        question: 'How much is the registration fee?',
+        answer: 'Team registration fees are determined annually by RECF and are valid throughout the season. Official event and tournament participation conditions in Turkey are announced by our representative, Intechne Technology.'
+    },
+    {
+        id: 7,
+        category: 'registration',
+        question: 'How do I register for an event?',
+        answer: 'Go to the relevant event page on recfevents.org and click the "Register" button. Select your team and complete the required registration steps.'
+    },
+    {
+        id: 8,
+        category: 'registration',
+        question: 'How can I find my team number?',
+        answer: 'After logging into your recfevents.org account, you can view your teams from your user dashboard. Team numbers are generally in the "12345A" format.'
+    },
+
+    // Championship
+    {
+        id: 9,
+        category: 'championship',
+        question: 'How can I participate in the Turkey Championship?',
+        answer: 'To participate in the Turkey Championship, teams generally need to achieve a qualifying result or ranking in official tournaments during the season. Detailed participation criteria are published in RECF Turkey announcements.'
+    },
+    {
+        id: 10,
+        category: 'championship',
+        question: 'Where will the championship be held?',
+        answer: 'The address and venue details for the February 28, 2026 Turkey Championship will be officially announced through RECF Turkey and Intechne Technology channels.'
+    },
+    {
+        id: 11,
+        category: 'championship',
+        question: 'How many teams will compete in the championship?',
+        answer: 'A large-scale national championship is planned, with officially registered teams across all age groups and categories.'
+    },
+    {
+        id: 12,
+        category: 'championship',
+        question: 'How can I qualify for the World Championship?',
+        answer: 'Teams that achieve strong results at the Turkey Championship or rank highly in Skills rankings may become candidates for the RECF STEM World Championship international qualification process. The event is held in Dallas, Texas in April.'
+    }
+]
+
 // Accordion Item Component
-function AccordionItem({ item, isOpen, onToggle }: {
-    item: typeof faqItems[0];
-    isOpen: boolean;
+// Accordion Item Component
+interface FAQItem {
+    id: number
+    category: 'technical' | 'registration' | 'championship'
+    question: string
+    answer: string
+}
+
+// Accordion Item Component
+interface FAQItem {
+    id: number
+    category: 'technical' | 'registration' | 'championship'
+    question: string
+    answer: string
+}
+
+function AccordionItem({
+    item,
+    isOpen,
+    onToggle
+}: {
+    item: FAQItem
+    isOpen: boolean
     onToggle: () => void
 }) {
     return (
@@ -118,7 +226,10 @@ function AccordionItem({ item, isOpen, onToggle }: {
                 onClick={onToggle}
                 className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
             >
-                <span className="font-medium text-gray-900 pr-4">{item.question}</span>
+                <span className="font-medium text-gray-900 pr-4">
+                    {item.question}
+                </span>
+
                 <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
@@ -152,17 +263,23 @@ export default function SSSPage() {
     const [selectedCategory, setSelectedCategory] = useState('all')
     const [openItems, setOpenItems] = useState<number[]>([])
 
+    const currentFaqItems =
+        language === 'TR' ? faqItemsTR : faqItemsEN
+
     const filteredFAQs = useMemo(() => {
-        let results = faqItems
+        let results = currentFaqItems
 
         // Filter by category
         if (selectedCategory !== 'all') {
-            results = results.filter(item => item.category === selectedCategory)
+            results = results.filter(
+                item => item.category === selectedCategory
+            )
         }
 
         // Filter by search query
         if (searchQuery.trim()) {
             const query = searchQuery.toLowerCase()
+
             results = results.filter(
                 item =>
                     item.question.toLowerCase().includes(query) ||
@@ -171,13 +288,77 @@ export default function SSSPage() {
         }
 
         return results
-    }, [selectedCategory, searchQuery])
+    }, [selectedCategory, searchQuery, language])
 
     const toggleItem = (id: number) => {
         setOpenItems(prev =>
             prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
         )
     }
+
+    const content = {
+        TR: {
+            hero: {
+                title: "Hızlı Çözüm İstasyonu",
+                subtitle: "Sıkça sorulan sorular ve anında cevaplar",
+            },
+
+            search: {
+                placeholder:
+                    "Sorununuzu arayın... (örn: motor, kayıt, şampiyona)",
+                results: "sonuç bulundu",
+                noResult: "Aramanızla eşleşen sonuç bulunamadı",
+                clear: "Filtreleri Temizle",
+            },
+
+            categories: {
+                all: "Tümü",
+                technical: "Teknik Sorunlar",
+                registration: "Kayıt Süreçleri",
+                championship: "28 Şubat 2026 Türkiye Şampiyonası",
+            },
+
+            cta: {
+                title: "Hâlâ Yardıma İhtiyacınız Var mı?",
+                description:
+                    "Sorununuzun cevabını bulamadıysanız, size yardımcı olmaktan mutluluk duyarız",
+                form: "Form ile Ulaşın",
+                email: "E-posta Gönderin",
+            },
+        },
+
+        EN: {
+            hero: {
+                title: "Quick Solution Center",
+                subtitle: "Frequently asked questions and instant answers",
+            },
+
+            search: {
+                placeholder:
+                    "Search your question... (e.g. motor, registration, championship)",
+                results: "results found",
+                noResult: "No matching results were found",
+                clear: "Clear Filters",
+            },
+
+            categories: {
+                all: "All",
+                technical: "Technical Issues",
+                registration: "Registration",
+                championship: "February 28, 2026 Turkey Championship",
+            },
+
+            cta: {
+                title: "Still Need Help?",
+                description:
+                    "If you couldn't find the answer you're looking for, we'd be happy to help.",
+                form: "Contact via Form",
+                email: "Send Email",
+            },
+        },
+    } as const
+
+    const t = content[language]
 
     return (
         <div className="min-h-screen bg-white text-foreground">
@@ -186,8 +367,8 @@ export default function SSSPage() {
 
             <div className="h-20" />
             <CorporateHero
-                title="Hızlı Çözüm İstasyonu"
-                subtitle="Sıkça sorulan sorular ve anında cevaplar"
+                title={t.hero.title}
+                subtitle={t.hero.subtitle}
             />
 
             {/* Search Bar */}
@@ -220,17 +401,27 @@ export default function SSSPage() {
                     <div className="flex flex-wrap gap-3 justify-center">
                         {faqCategories.map(category => {
                             const Icon = category.icon
+
+                            const label =
+                                category.id === 'all'
+                                    ? t.categories.all
+                                    : category.id === 'technical'
+                                        ? t.categories.technical
+                                        : category.id === 'registration'
+                                            ? t.categories.registration
+                                            : t.categories.championship
+
                             return (
                                 <button
                                     key={category.id}
                                     onClick={() => setSelectedCategory(category.id)}
                                     className={`px-4 py-2 rounded-lg font-medium flex items-center gap-2 transition-colors ${selectedCategory === category.id
-                                            ? 'bg-primary text-white'
-                                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                        ? 'bg-primary text-white'
+                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                         }`}
                                 >
                                     <Icon className="w-4 h-4" />
-                                    {category.label}
+                                    {label}
                                 </button>
                             )
                         })}
@@ -243,7 +434,7 @@ export default function SSSPage() {
                 <div className="container mx-auto px-6 max-w-3xl">
                     {/* Results count */}
                     <div className="mb-6 text-sm text-gray-500">
-                        {filteredFAQs.length} sonuç bulundu
+                        {filteredFAQs.length} {t.search.results}
                     </div>
 
                     {/* FAQ Items */}
@@ -265,12 +456,12 @@ export default function SSSPage() {
                             className="text-center py-12"
                         >
                             <HelpCircle className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                            <p className="text-gray-500 mb-4">Aramanızla eşleşen sonuç bulunamadı</p>
+                            <p className="text-gray-500 mb-4">{t.search.noResult}</p>
                             <Button
                                 variant="outline"
                                 onClick={() => { setSearchQuery(''); setSelectedCategory('all'); }}
                             >
-                                Filtreleri Temizle
+                                {t.search.clear}
                             </Button>
                         </motion.div>
                     )}
@@ -281,19 +472,19 @@ export default function SSSPage() {
             <section className="py-16 md:py-20 bg-gradient-to-r from-primary to-red-700 text-white">
                 <div className="container mx-auto px-6 max-w-4xl text-center">
                     <MessageCircle className="w-12 h-12 mx-auto mb-4 opacity-80" />
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Hâlâ Yardıma İhtiyacınız Var mı?</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.cta.title}</h2>
                     <p className="text-xl text-white/90 mb-8">
-                        Sorununuzun cevabını bulamadıysanız, size yardımcı olmaktan mutluluk duyarız
+                        {t.cta.description}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link href="/iletisim/form">
                             <Button className="bg-white text-primary hover:bg-gray-100 font-bold">
-                                Form ile Ulaşın
+                                {t.cta.form}
                             </Button>
                         </Link>
                         <a href="mailto:info@recfturkiye.org">
                             <Button variant="outline" className="border-white text-white hover:bg-white/10 font-bold">
-                                E-posta Gönderin
+                                {t.cta.email}
                             </Button>
                         </a>
                     </div>

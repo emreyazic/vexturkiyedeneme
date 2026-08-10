@@ -187,13 +187,6 @@ export function Navbar({ language = 'TR', onLanguageToggle, showTranslationWarni
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-gray-200 shadow-sm">
-            {/* Warning Banner */}
-            {language === 'EN' && showTranslationWarning && (
-                <div className="bg-amber-500/10 border-b border-amber-200 text-amber-800 py-2.5 px-6 text-center text-xs font-semibold flex items-center justify-center gap-2 select-none animate-in fade-in duration-300">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
-                    <span>This page is currently being translated. Showing content in Turkish.</span>
-                </div>
-            )}
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}

@@ -109,10 +109,10 @@ export function Footer({ language = 'TR' }: FooterProps) {
                             <a href="https://instagram.com/recfturkiye" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-primary/80 transition-colors" aria-label="Instagram">
                                 <Instagram className="h-5 w-5" />
                             </a>
-                            <a href="https://linkedin.com/company/intechne" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-primary/80 transition-colors" aria-label="LinkedIn">
+                            <a href="https://linkedin.com/company/intechne-tech" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-primary/80 transition-colors" aria-label="LinkedIn">
                                 <Linkedin className="h-5 w-5" />
                             </a>
-                            <a href="https://youtube.com/@intechetech" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-primary/80 transition-colors" aria-label="YouTube">
+                            <a href="https://youtube.com/@intechnetech" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-primary/80 transition-colors" aria-label="YouTube">
                                 <Youtube className="h-5 w-5" />
                             </a>
                         </div>
