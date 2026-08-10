@@ -119,33 +119,31 @@ export default function NasilTakimKurulurPage() {
 
             <section className="py-20 max-w-5xl mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 relative">
-                    
+
                     {/* Central/Left Vertical Timeline Line */}
                     <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 -translate-x-1/2 hidden md:block z-0" />
 
                     {questLevels.map((quest, index) => {
                         const isEven = index % 2 === 0
                         return (
-                            <div 
-                                key={quest.level} 
-                                className={`bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-gray-200/40 hover:-translate-y-1 transition-transform duration-300 w-full relative flex flex-col ${
-                                    isEven 
-                                        ? 'md:text-right md:pr-12 md:col-start-1 md:items-end' 
+                            <div
+                                key={quest.level}
+                                className={`bg-white rounded-3xl p-8 border border-gray-100 shadow-xl shadow-gray-200/40 hover:-translate-y-1 transition-transform duration-300 w-full relative flex flex-col ${isEven
+                                        ? 'md:text-right md:pr-12 md:col-start-1 md:items-end'
                                         : 'md:text-left md:pl-12 md:col-start-2 md:items-start'
-                                }`}
+                                    }`}
                                 style={{ gridRowStart: index + 1 }}
                             >
                                 {/* Center Node (Desktop) */}
-                                <div 
-                                    className={`hidden md:flex absolute top-1/2 transform -translate-y-1/2 w-16 h-16 rounded-full bg-white border-4 items-center justify-center z-20 shadow-lg ${
-                                        isEven 
-                                            ? 'right-0 translate-x-[calc(50%+24px)]' 
+                                <div
+                                    className={`hidden md:flex absolute top-1/2 transform -translate-y-1/2 w-16 h-16 rounded-full bg-white border-4 items-center justify-center z-20 shadow-lg ${isEven
+                                            ? 'right-0 translate-x-[calc(50%+24px)]'
                                             : 'left-0 -translate-x-[calc(50%+24px)]'
-                                    }`}
+                                        }`}
                                     style={{ borderColor: quest.color }}
                                 >
                                     <quest.icon className="w-7 h-7" style={{ color: quest.color }} />
-                                    <span 
+                                    <span
                                         className="absolute -top-2.5 -right-2.5 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black text-white shadow-sm"
                                         style={{ backgroundColor: quest.color }}
                                     >
@@ -155,7 +153,7 @@ export default function NasilTakimKurulurPage() {
 
                                 {/* Mobile Header */}
                                 <div className="flex items-center gap-3 mb-4 md:hidden">
-                                    <div 
+                                    <div
                                         className="w-10 h-10 rounded-xl flex items-center justify-center text-white"
                                         style={{ backgroundColor: quest.color }}
                                     >
@@ -229,7 +227,7 @@ export default function NasilTakimKurulurPage() {
                                 Takım Kaydını Başlat
                             </Button>
                         </Link>
-                        <Link href="/yarismalar/etkinlik-takvimi/tum-etkinlikler">
+                        <Link href="/yarismalar/etkinlik-takvimi">
                             <Button size="lg" variant="outline" className="border-gray-600 text-gray-900 hover:bg-white hover:text-gray-900 px-8 h-14 text-lg w-full sm:w-auto">
                                 Etkinlikleri İncele
                             </Button>
