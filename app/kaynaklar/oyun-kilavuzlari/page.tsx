@@ -106,8 +106,8 @@ const manualSections = [
     {
         id: 'achieve',
         program: {
-            TR: 'RECF Achieve & Inspire (Pinnacle)',
-            EN: 'RECF Achieve & Inspire (Pinnacle)'
+            TR: 'RECF Achieve (Pinnacle)',
+            EN: 'RECF Achieve (Pinnacle)'
         },
         version: 'Versiyon 1.0',
         versionEN: 'Version 1.0',
@@ -160,10 +160,66 @@ const manualSections = [
     },
 
     {
+        id: 'inspire',
+        program: {
+            TR: 'RECF Inspire (Pinnacle)',
+            EN: 'RECF Inspire (Pinnacle)'
+        },
+        version: 'Versiyon 1.0',
+        versionEN: 'Version 1.0',
+        date: {
+            TR: '1 Mayıs 2026',
+            EN: 'May 1, 2026'
+        },
+        theme: 'red',
+        bg: 'bg-red-50',
+        border: 'border-red-200',
+        iconColor: 'text-red-600',
+        links: [
+            {
+                title: {
+                    TR: 'Oyun Kılavuzu (Game Manual)',
+                    EN: 'Game Manual'
+                },
+                url: 'https://recf.org/documents',
+                icon: <Book className="w-5 h-5" />,
+                primary: true
+            },
+            {
+                title: {
+                    TR: 'Resmi Soru-Cevap (Q&A)',
+                    EN: 'Official Q&A'
+                },
+                url: 'https://www.robotevents.com/',
+                icon: <MessageCircleQuestion className="w-5 h-5" />,
+                primary: false
+            },
+            {
+                title: {
+                    TR: 'Saha Muayene Formu (Inspection Checklist)',
+                    EN: 'Inspection Checklist'
+                },
+                url: 'https://recf.org/documents',
+                icon: <ClipboardCheck className="w-5 h-5" />,
+                primary: false
+            },
+            {
+                title: {
+                    TR: 'İzin Verilen Parçalar (Legal Parts)',
+                    EN: 'Legal Parts'
+                },
+                url: 'https://recf.org/documents',
+                icon: <Wrench className="w-5 h-5" />,
+                primary: false
+            }
+        ]
+    },
+
+    {
         id: 'adc',
         program: {
-            TR: 'Aerial Drone Competition (ADC / ADC Pro)',
-            EN: 'Aerial Drone Competition (ADC / ADC Pro)'
+            TR: 'Aerial Drone Competition (ADC)',
+            EN: 'Aerial Drone Competition (ADC)'
         },
         version: 'Versiyon 1.0',
         versionEN: 'Version 1.0',
@@ -207,6 +263,62 @@ const manualSections = [
                 title: {
                     TR: 'Drone ve Parça Standartları',
                     EN: 'Drone and Part Standards'
+                },
+                url: 'https://recf.org/documents',
+                icon: <Wrench className="w-5 h-5" />,
+                primary: false
+            }
+        ]
+    },
+
+    {
+        id: 'adc-pro',
+        program: {
+            TR: 'Aerial Drone Competition (ADC Pro)',
+            EN: 'Aerial Drone Competition (ADC Pro)'
+        },
+        version: 'Versiyon 1.0',
+        versionEN: 'Version 1.0',
+        date: {
+            TR: '1 Mayıs 2026',
+            EN: 'May 1, 2026'
+        },
+        theme: 'red',
+        bg: 'bg-red-50',
+        border: 'border-red-200',
+        iconColor: 'text-red-600',
+        links: [
+            {
+                title: {
+                    TR: 'Oyun Kılavuzu (Game Manual)',
+                    EN: 'Game Manual'
+                },
+                url: 'https://recf.org/documents',
+                icon: <Book className="w-5 h-5" />,
+                primary: true
+            },
+            {
+                title: {
+                    TR: 'Resmi Soru-Cevap (Q&A)',
+                    EN: 'Official Q&A'
+                },
+                url: 'https://www.robotevents.com/',
+                icon: <MessageCircleQuestion className="w-5 h-5" />,
+                primary: false
+            },
+            {
+                title: {
+                    TR: 'Saha Muayene Formu (Inspection Checklist)',
+                    EN: 'Inspection Checklist'
+                },
+                url: 'https://recf.org/documents',
+                icon: <ClipboardCheck className="w-5 h-5" />,
+                primary: false
+            },
+            {
+                title: {
+                    TR: 'İzin Verilen Parçalar (Legal Parts)',
+                    EN: 'Legal Parts'
                 },
                 url: 'https://recf.org/documents',
                 icon: <Wrench className="w-5 h-5" />,
@@ -279,8 +391,8 @@ export default function OyunKilavuzlariPage() {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className={`flex items-center justify-between p-4 rounded-xl transition-all ${link.primary
-                                                    ? `bg-${section.theme}-600 text-white hover:bg-${section.theme}-700 shadow-md`
-                                                    : 'bg-gray-50 text-gray-800 hover:bg-gray-100 border border-gray-200'
+                                                ? `bg-${section.theme}-600 text-white hover:bg-${section.theme}-700 shadow-md`
+                                                : 'bg-gray-50 text-gray-800 hover:bg-gray-100 border border-gray-200'
                                                 }`}
                                         >
                                             <div className="flex items-center gap-3 font-semibold">
