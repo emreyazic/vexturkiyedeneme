@@ -64,7 +64,6 @@ const manualSections = [
         border: 'border-red-200',
         iconColor: 'text-red-600',
         links: [
-<<<<<<< HEAD
             {
                 title: {
                     TR: 'Oyun Kılavuzu (Game Manual)',
@@ -101,25 +100,15 @@ const manualSections = [
                 icon: <Wrench className="w-5 h-5" />,
                 primary: false
             }
-=======
-            { title: 'Oyun Kılavuzu (Game Manual)', url: 'https://recf.org/documents', icon: <Book className="w-5 h-5" />, primary: true },
-            { title: 'Resmi Soru-Cevap (Q&A)', url: 'https://games.recf.org/engage/qa', icon: <MessageCircleQuestion className="w-5 h-5" />, primary: false },
-            { title: 'Saha Muayene Formu (Inspection Checklist)', url: 'https://recf.org/documents', icon: <ClipboardCheck className="w-5 h-5" />, primary: false },
-            { title: 'İzin Verilen Parçalar (Legal Parts)', url: 'https://recf.org/documents', icon: <Wrench className="w-5 h-5" />, primary: false }
->>>>>>> b2e8b07e6fbfbf5551b53a7e432d79086a871264
         ]
     },
 
     {
         id: 'achieve',
-<<<<<<< HEAD
         program: {
             TR: 'RECF Achieve & Inspire (Pinnacle)',
             EN: 'RECF Achieve & Inspire (Pinnacle)'
         },
-=======
-        program: 'RECF Achieve (Pinnacle)',
->>>>>>> b2e8b07e6fbfbf5551b53a7e432d79086a871264
         version: 'Versiyon 1.0',
         versionEN: 'Version 1.0',
         date: {
@@ -171,31 +160,11 @@ const manualSections = [
     },
 
     {
-        id: 'inspire',
-        program: 'RECF Inspire',
-        version: 'Versiyon 1.0',
-        date: '15 Mayıs 2026',
-        theme: 'yellow',
-        bg: 'bg-yellow-50',
-        border: 'border-yellow-200',
-        iconColor: 'text-yellow-600',
-        links: [
-            { title: 'Oyun Kılavuzu (Game Manual)', url: 'https://recf.org/documents', icon: <Book className="w-5 h-5" />, primary: true },
-            { title: 'Resmi Soru-Cevap (Q&A)', url: 'https://www.robotevents.com/', icon: <MessageCircleQuestion className="w-5 h-5" />, primary: false },
-            { title: 'Saha Muayene Formu (Inspection Checklist)', url: 'https://recf.org/documents', icon: <ClipboardCheck className="w-5 h-5" />, primary: false },
-            { title: 'İzin Verilen Parçalar (Legal Parts)', url: 'https://recf.org/documents', icon: <Wrench className="w-5 h-5" />, primary: false }
-        ]
-    },
-    {
         id: 'adc',
-<<<<<<< HEAD
         program: {
             TR: 'Aerial Drone Competition (ADC / ADC Pro)',
             EN: 'Aerial Drone Competition (ADC / ADC Pro)'
         },
-=======
-        program: 'Aerial Drone Competition (ADC)',
->>>>>>> b2e8b07e6fbfbf5551b53a7e432d79086a871264
         version: 'Versiyon 1.0',
         versionEN: 'Version 1.0',
         date: {
@@ -244,22 +213,6 @@ const manualSections = [
                 primary: false
             }
         ]
-    },
-    {
-        id: 'adcpro',
-        program: 'Aerial Drone Competition PRO(ADC Pro)',
-        version: 'Versiyon 1.0',
-        date: '15 Mayıs 2026',
-        theme: 'purple',
-        bg: 'bg-purple-50',
-        border: 'border-purple-200',
-        iconColor: 'text-purple-600',
-        links: [
-            { title: 'Oyun Kılavuzu (Game Manual)', url: 'https://recf.org/documents', icon: <Book className="w-5 h-5" />, primary: true },
-            { title: 'Resmi Soru-Cevap (Q&A)', url: 'https://www.robotevents.com/', icon: <MessageCircleQuestion className="w-5 h-5" />, primary: false },
-            { title: 'Saha Muayene Formu (Inspection Checklist)', url: 'https://recf.org/documents', icon: <ClipboardCheck className="w-5 h-5" />, primary: false },
-            { title: 'Drone ve Parça Standartları', url: 'https://recf.org/documents', icon: <Wrench className="w-5 h-5" />, primary: false }
-        ]
     }
 ]
 
@@ -287,70 +240,66 @@ export default function OyunKilavuzlariPage() {
                         <div>
                             <h4 className="font-bold text-amber-900 mb-2 text-lg">{t.disclaimer.title}</h4>
                             <p className="text-amber-800 leading-relaxed text-sm md:text-base">
-<<<<<<< HEAD
-    { t.disclaimer.text }
-=======
-                                Aşağıda sunulan kılavuzlar, 2026-2027 sezonu yarışmaları için resmi kuralları içerir. Bu kurallar sezon içerisinde "Version" güncellemeleri alabilir.
->>>>>>> b2e8b07e6fbfbf5551b53a7e432d79086a871264
-    <strong className="block mt-2 font-bold text-amber-900 underline decoration-amber-300 decoration-2 underline-offset-2">
-        {t.disclaimer.important}
-    </strong>
-                            </p >
-                        </div >
-                    </div >
-
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mb-16">
-            {manualSections.map((section) => (
-                <div key={section.id} className={`rounded-3xl border flex flex-col overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-white ${section.border}`}>
-
-                    {/* Header */}
-                    <div className={`p-8 pb-6 border-b ${section.bg} ${section.border}`}>
-                        <div className={`w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm ${section.iconColor}`}>
-                            <FileStack className="w-8 h-8" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">{language === 'TR' ? section.program.TR : section.program.EN}</h3>
-                        <div className="flex items-center gap-4 text-sm font-medium text-gray-700 bg-white/60 p-3 rounded-xl inline-flex">
-                            <div className="flex items-center gap-2">
-                                <FileText className="w-4 h-4" />
-                                {language === 'TR' ? section.version : section.versionEN}
-                            </div>
-                            <div className="w-1 h-1 rounded-full bg-gray-400" />
-                            <div className="flex items-center gap-2">
-                                {t.updated}: {language === 'TR' ? section.date.TR : section.date.EN}
-                            </div>
+                                {t.disclaimer.text}
+                                <strong className="block mt-2 font-bold text-amber-900 underline decoration-amber-300 decoration-2 underline-offset-2">
+                                    {t.disclaimer.important}
+                                </strong>
+                            </p>
                         </div>
                     </div>
 
-                    {/* Links */}
-                    <div className="p-8 flex-grow flex flex-col gap-4">
-                        {section.links.map((link, i) => (
-                            <a
-                                key={i}
-                                href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`flex items-center justify-between p-4 rounded-xl transition-all ${link.primary
-                                    ? `bg-${section.theme}-600 text-white hover:bg-${section.theme}-700 shadow-md`
-                                    : 'bg-gray-50 text-gray-800 hover:bg-gray-100 border border-gray-200'
-                                    }`}
-                            >
-                                <div className="flex items-center gap-3 font-semibold">
-                                    <div className={`${link.primary ? 'text-white/90' : 'text-gray-500'}`}>
-                                        {link.icon}
+                    <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mb-16">
+                        {manualSections.map((section) => (
+                            <div key={section.id} className={`rounded-3xl border flex flex-col overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-white ${section.border}`}>
+
+                                {/* Header */}
+                                <div className={`p-8 pb-6 border-b ${section.bg} ${section.border}`}>
+                                    <div className={`w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm ${section.iconColor}`}>
+                                        <FileStack className="w-8 h-8" />
                                     </div>
-                                    {language === 'TR' ? link.title.TR : link.title.EN}
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">{language === 'TR' ? section.program.TR : section.program.EN}</h3>
+                                    <div className="flex items-center gap-4 text-sm font-medium text-gray-700 bg-white/60 p-3 rounded-xl inline-flex">
+                                        <div className="flex items-center gap-2">
+                                            <FileText className="w-4 h-4" />
+                                            {language === 'TR' ? section.version : section.versionEN}
+                                        </div>
+                                        <div className="w-1 h-1 rounded-full bg-gray-400" />
+                                        <div className="flex items-center gap-2">
+                                            {t.updated}: {language === 'TR' ? section.date.TR : section.date.EN}
+                                        </div>
+                                    </div>
                                 </div>
-                                <ExternalLink className={`w-4 h-4 ${link.primary ? 'text-white/70' : 'text-gray-400'}`} />
-                            </a>
+
+                                {/* Links */}
+                                <div className="p-8 flex-grow flex flex-col gap-4">
+                                    {section.links.map((link, i) => (
+                                        <a
+                                            key={i}
+                                            href={link.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={`flex items-center justify-between p-4 rounded-xl transition-all ${link.primary
+                                                    ? `bg-${section.theme}-600 text-white hover:bg-${section.theme}-700 shadow-md`
+                                                    : 'bg-gray-50 text-gray-800 hover:bg-gray-100 border border-gray-200'
+                                                }`}
+                                        >
+                                            <div className="flex items-center gap-3 font-semibold">
+                                                <div className={`${link.primary ? 'text-white/90' : 'text-gray-500'}`}>
+                                                    {link.icon}
+                                                </div>
+                                                {language === 'TR' ? link.title.TR : link.title.EN}
+                                            </div>
+                                            <ExternalLink className={`w-4 h-4 ${link.primary ? 'text-white/70' : 'text-gray-400'}`} />
+                                        </a>
+                                    ))}
+                                </div>
+
+                            </div>
                         ))}
                     </div>
 
                 </div>
-            ))}
+            </section>
         </div>
-
-                </div >
-            </section >
-        </div >
     )
 }
