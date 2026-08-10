@@ -13,131 +13,369 @@ import {
 } from 'lucide-react'
 
 // Resource Categories Data
-const resourceCategories = [
-    {
-        id: 'robotics',
-        title: 'Robotik Temelleri',
-        subtitle: 'Mekanik, dişliler, şasi tasarımları ve donanım seçim ilkeleri',
-        icon: <Cpu className="w-8 h-8 text-blue-600" />,
-        color: 'bg-blue-50 border-blue-200 text-blue-900',
-        items: [
+const content = {
+    TR: {
+        hero: {
+            title: "Eğitim ve Öğrenme Kaynakları",
+            subtitle:
+                "Robotik, programlama, mühendislik tasarımı, drone ve koç eğitimleri için kaynaklar",
+        },
+
+        intro: {
+            title: "Esnek ve Kapsayıcı Öğrenme Yaklaşımı",
+            description:
+                "RECF Türkiye ekosisteminde eğitim kaynakları tek bir markaya veya hazır ders paketine bağımlı değildir. Okullar, öğretmenler ve koçlar kendi müfredat disiplinlerine uygun açık kaynaklı materyalleri, modüler ders içeriklerini ve uygulama rehberlerini serbestçe entegre edebilirler.",
+        },
+
+        categories: [
             {
-                title: 'Basit Makineler & Dişli Oranları',
-                desc: 'Tork ve hız dengesi, dişli aktarım sistemleri ve tork hesaplama temelleri.',
-                tag: 'Mekanik'
+                id: "robotics",
+                title: "Robotik Temelleri",
+                subtitle:
+                    "Mekanik, dişliler, şasi tasarımları ve donanım seçim ilkeleri",
+                items: [
+                    {
+                        title: "Basit Makineler & Dişli Oranları",
+                        desc:
+                            "Tork ve hız dengesi, dişli aktarım sistemleri ve tork hesaplama temelleri.",
+                        tag: "Mekanik",
+                    },
+                    {
+                        title: "Şasi ve Sürüş Sistemleri (Drivetrain)",
+                        desc:
+                            "Tank sürüşü, omni tekerlek konfigürasyonları ve holonomik hareket mekanizmaları.",
+                        tag: "Tasarım",
+                    },
+                    {
+                        title: "Kaldıraç ve Asansör Mekanizmaları",
+                        desc:
+                            "4-bar, 6-bar ve kaskad doğrusal asansör sistemlerinin geometrik analizleri.",
+                        tag: "İleri Seviye",
+                    },
+                ],
             },
+
             {
-                title: 'Şasi ve Sürüş Sistemleri (Drivetrain)',
-                desc: 'Tank sürüşü, omni tekerlek konfigürasyonları ve holonomik hareket mekanizmaları.',
-                tag: 'Tasarım'
+                id: "programming",
+                title: "Programlama Kaynakları",
+                subtitle:
+                    "Blok tabanlı kodlamadan Python, C++ ve otonom algoritmalara geçiş",
+                items: [
+                    {
+                        title: "Blok Tabanlı Algoritma Mantığı",
+                        desc:
+                            "Döngüler, karar mekanizmaları ve sensör girdileriyle kontrol mantığı.",
+                        tag: "Başlangıç",
+                    },
+                    {
+                        title: "Python ve C++ ile Robot Kontrolü",
+                        desc:
+                            "Nesne yönelimli kodlama, kütüphane kullanımı ve gerçek zamanlı veri işleme.",
+                        tag: "Metin Tabanlı",
+                    },
+                    {
+                        title: "PID ve Otonom Kontrol Algoritmaları",
+                        desc:
+                            "Hassas konumlandırma, çizgi takip ve jiroskop destekli otonom rotalar.",
+                        tag: "Otonom Sistemler",
+                    },
+                ],
             },
+
             {
-                title: 'Kaldıraç ve Asansör Mekanizmaları',
-                desc: '4-bar, 6-bar ve kaskad doğrusal asansör sistemlerinin geometrik analizleri.',
-                tag: 'İleri Seviye'
-            }
-        ]
+                id: "design-process",
+                title: "Mühendislik Tasarım Süreci & Defter Rehberi",
+                subtitle:
+                    "Problem tanımlamadan prototiplemeye, Mühendislik Defteri standartları",
+                items: [
+                    {
+                        title: "Mühendislik Tasarım Döngüsü (EDP)",
+                        desc:
+                            "Problem analizi, araştırma, beyin fırtınası, prototip ve test aşamaları.",
+                        tag: "Metodoloji",
+                    },
+                    {
+                        title: "Resmi Mühendislik Defteri Rehberi",
+                        desc:
+                            "Jüri değerlendirme kriterlerine (Rubric) uygun kronolojik belgeleme ve tarihli kayıtlar.",
+                        tag: "Belgeleme",
+                    },
+                    {
+                        title: "CAD ve 3D Modelleme Giriş",
+                        desc:
+                            "Özel parça tasarımı, simülasyon ve 3D baskı imalat standartları.",
+                        tag: "Dijital Tasarım",
+                    },
+                ],
+            },
+
+            {
+                id: "drones",
+                title: "Drone Pilotluğu ve Otonom Sistemler",
+                subtitle:
+                    "Hava robotiği, emniyet protokolleri, manuel uçuş ve otonom görevler",
+                items: [
+                    {
+                        title: "Uçuş Güvenliği & Muayene Protokolleri",
+                        desc:
+                            "Pervane emniyeti, batarya yönetimi ve saha güvenlik standartları.",
+                        tag: "Güvenlik",
+                    },
+                    {
+                        title: "Hassas Pilotaj ve Engel Parkurları",
+                        desc:
+                            "Manuel uçuş teknikleri, 3D uzamsal algılama ve parkur tamamlama stratejileri.",
+                        tag: "Pilotluk",
+                    },
+                    {
+                        title: "Otonom Görsel Kodlama ve Uçuş",
+                        desc:
+                            "Optik akış sensörleri, görsel matrisler ve otonom rota planlaması.",
+                        tag: "Otonom Uçuş",
+                    },
+                ],
+            },
+
+            {
+                id: "coaching",
+                title: "Koç Eğitimleri ve Takım Yönetimi",
+                subtitle:
+                    "Öğrenci merkezli yaklaşım, mentorluk ilkeleri ve kulüp yönetimi",
+                items: [
+                    {
+                        title: "Student-Centered (Öğrenci Merkezli) Politika",
+                        desc:
+                            "Öğrencilerin tasarladığı, kodladığı ve sürdürdüğü etik takım yapısı rehberi.",
+                        tag: "Etik & Politika",
+                    },
+                    {
+                        title: "RECF Coach Academy Sertifikasyon",
+                        desc:
+                            "Sezon hazırlığı, turnuva prosedürleri ve resmi koç eğitim modülleri.",
+                        tag: "Sertifika",
+                    },
+                    {
+                        title: "Takım Bütçesi ve Kulüp Organizasyonu",
+                        desc:
+                            "Sponsorluk dosyası hazırlığı, görev dağılımı ve sezonsal takvim planlaması.",
+                        tag: "Yönetim",
+                    },
+                ],
+            },
+        ],
+
+        academy: {
+            badge: "Intechne Akademi Öğretmen ve Koç Programları",
+            title: "Intechne Akademi Eğitim Kaynakları",
+            description:
+                "RECF Türkiye temsilcisi Intechne Teknoloji bünyesinde düzenlenen Intechne Akademi; öğretmen eğitimi atölyeleri, koçluk uzmanlık modülleri ve okullara özel STEM laboratuvarı kurulum rehberleri sunar.",
+
+            workshops: {
+                title: "Yüz Yüze Atölyeler",
+                description:
+                    "Uygulamalı robotik ve otonom kodlama eğitimleri.",
+            },
+
+            certification: {
+                title: "Akademi Sertifikası",
+                description:
+                    "Katılım sağlayan eğitmenlere onaylı sertifika.",
+            },
+
+            schoolSupport: {
+                title: "Okul & Kulüp Desteği",
+                description:
+                    "Robotik kulübü kurulum ve müfredat desteği.",
+            },
+
+            academyPortal: "Intechne Akademi Portalı",
+            mentorCenter: "Koç ve Mentor Merkezine Git",
+        },
     },
-    {
-        id: 'programming',
-        title: 'Programlama Kaynakları',
-        subtitle: 'Blok tabanlı kodlamadan Python, C++ ve otonom algoritmalara geçiş',
-        icon: <Code2 className="w-8 h-8 text-indigo-600" />,
-        color: 'bg-indigo-50 border-indigo-200 text-indigo-900',
-        items: [
+
+    EN: {
+        hero: {
+            title: "Education and Learning Resources",
+            subtitle:
+                "Resources for robotics, programming, engineering design, drones, and coach training",
+        },
+
+        intro: {
+            title: "Flexible and Inclusive Learning Approach",
+            description:
+                "Within the RECF Turkey ecosystem, educational resources are not dependent on a single brand or ready-made lesson package. Schools, teachers, and coaches can freely integrate open-source materials, modular lesson content, and practical guides that fit their own curriculum disciplines.",
+        },
+
+        categories: [
             {
-                title: 'Blok Tabanlı Algoritma Mantığı',
-                desc: 'Döngüler, karar mekanizmaları ve sensör girdileriyle kontrol mantığı.',
-                tag: 'Başlangıç'
+                id: "robotics",
+                title: "Robotics Fundamentals",
+                subtitle:
+                    "Mechanics, gears, chassis designs, and hardware selection principles",
+                items: [
+                    {
+                        title: "Simple Machines & Gear Ratios",
+                        desc:
+                            "Torque and speed balance, gear transmission systems, and fundamentals of torque calculations.",
+                        tag: "Mechanics",
+                    },
+                    {
+                        title: "Chassis and Drivetrain Systems",
+                        desc:
+                            "Tank drive, omni-wheel configurations, and holonomic movement mechanisms.",
+                        tag: "Design",
+                    },
+                    {
+                        title: "Lever and Lift Mechanisms",
+                        desc:
+                            "Geometric analysis of 4-bar, 6-bar, and cascading linear lift systems.",
+                        tag: "Advanced",
+                    },
+                ],
             },
+
             {
-                title: 'Python ve C++ ile Robot Kontrolü',
-                desc: 'Nesne yönelimli kodlama, kütüphane kullanımı ve gerçek zamanlı veri işleme.',
-                tag: 'Metin Tabanlı'
+                id: "programming",
+                title: "Programming Resources",
+                subtitle:
+                    "From block-based coding to Python, C++, and autonomous algorithms",
+                items: [
+                    {
+                        title: "Block-Based Algorithm Logic",
+                        desc:
+                            "Control logic using loops, decision mechanisms, and sensor inputs.",
+                        tag: "Beginner",
+                    },
+                    {
+                        title: "Robot Control with Python and C++",
+                        desc:
+                            "Object-oriented programming, library usage, and real-time data processing.",
+                        tag: "Text-Based",
+                    },
+                    {
+                        title: "PID and Autonomous Control Algorithms",
+                        desc:
+                            "Precision positioning, line following, and gyroscope-assisted autonomous routes.",
+                        tag: "Autonomous Systems",
+                    },
+                ],
             },
+
             {
-                title: 'PID ve Otonom Kontrol Algoritmaları',
-                desc: 'Hassas konumlandırma, çizgi takip ve jiroskop destekli otonom rotalar.',
-                tag: 'Otonom Sistemler'
-            }
-        ]
+                id: "design-process",
+                title: "Engineering Design Process & Notebook Guide",
+                subtitle:
+                    "Engineering Notebook standards from problem definition to prototyping",
+                items: [
+                    {
+                        title: "Engineering Design Process (EDP)",
+                        desc:
+                            "Problem analysis, research, brainstorming, prototyping, and testing stages.",
+                        tag: "Methodology",
+                    },
+                    {
+                        title: "Official Engineering Notebook Guide",
+                        desc:
+                            "Chronological documentation and dated records aligned with judging evaluation criteria (Rubric).",
+                        tag: "Documentation",
+                    },
+                    {
+                        title: "Introduction to CAD and 3D Modeling",
+                        desc:
+                            "Custom part design, simulation, and 3D printing manufacturing standards.",
+                        tag: "Digital Design",
+                    },
+                ],
+            },
+
+            {
+                id: "drones",
+                title: "Drone Piloting and Autonomous Systems",
+                subtitle:
+                    "Aerial robotics, safety protocols, manual flight, and autonomous missions",
+                items: [
+                    {
+                        title: "Flight Safety & Inspection Protocols",
+                        desc:
+                            "Propeller safety, battery management, and field safety standards.",
+                        tag: "Safety",
+                    },
+                    {
+                        title: "Precision Piloting and Obstacle Courses",
+                        desc:
+                            "Manual flight techniques, 3D spatial perception, and course completion strategies.",
+                        tag: "Piloting",
+                    },
+                    {
+                        title: "Autonomous Visual Coding and Flight",
+                        desc:
+                            "Optical flow sensors, visual matrices, and autonomous route planning.",
+                        tag: "Autonomous Flight",
+                    },
+                ],
+            },
+
+            {
+                id: "coaching",
+                title: "Coach Training and Team Management",
+                subtitle:
+                    "Student-centered approach, mentoring principles, and club management",
+                items: [
+                    {
+                        title: "Student-Centered Policy",
+                        desc:
+                            "A guide to an ethical team structure designed, coded, and maintained by students.",
+                        tag: "Ethics & Policy",
+                    },
+                    {
+                        title: "RECF Coach Academy Certification",
+                        desc:
+                            "Season preparation, tournament procedures, and official coach training modules.",
+                        tag: "Certification",
+                    },
+                    {
+                        title: "Team Budget and Club Organization",
+                        desc:
+                            "Sponsorship proposal preparation, role distribution, and seasonal schedule planning.",
+                        tag: "Management",
+                    },
+                ],
+            },
+        ],
+
+        academy: {
+            badge: "Intechne Academy Teacher and Coach Programs",
+            title: "Intechne Academy Educational Resources",
+            description:
+                "Organized by Intechne Technology, the RECF Turkey representative, Intechne Academy offers teacher training workshops, coaching specialization modules, and STEM laboratory setup guides for schools.",
+
+            workshops: {
+                title: "In-Person Workshops",
+                description:
+                    "Hands-on robotics and autonomous coding training.",
+            },
+
+            certification: {
+                title: "Academy Certification",
+                description:
+                    "Approved certificates for participating educators.",
+            },
+
+            schoolSupport: {
+                title: "School & Club Support",
+                description:
+                    "Robotics club setup and curriculum support.",
+            },
+
+            academyPortal: "Intechne Academy Portal",
+            mentorCenter: "Go to Coach and Mentor Center",
+        },
     },
-    {
-        id: 'design-process',
-        title: 'Mühendislik Tasarım Süreci & Defter Rehberi',
-        subtitle: 'Problem tanımlamadan prototiplemeye, Mühendislik Defteri standartları',
-        icon: <Compass className="w-8 h-8 text-emerald-600" />,
-        color: 'bg-emerald-50 border-emerald-200 text-emerald-900',
-        items: [
-            {
-                title: 'Mühendislik Tasarım Döngüsü (EDP)',
-                desc: 'Problem analizi, araştırma, beyin fırtınası, prototip ve test aşamaları.',
-                tag: 'Metodoloji'
-            },
-            {
-                title: 'Resmi Mühendislik Defteri Rehberi',
-                desc: 'Jüri değerlendirme kriterlerine (Rubric) uygun kronolojik belgeleme ve tarihli kayıtlar.',
-                tag: 'Belgeleme'
-            },
-            {
-                title: 'CAD ve 3D Modelleme Giriş',
-                desc: 'Özel parça tasarımı, simülasyon ve 3D baskı imalat standartları.',
-                tag: 'Dijital Tasarım'
-            }
-        ]
-    },
-    {
-        id: 'drones',
-        title: 'Drone Pilotluğu ve Otonom Sistemler',
-        subtitle: 'Hava robotiği, emniyet protokolleri, manuel uçuş ve otonom görevler',
-        icon: <Navigation className="w-8 h-8 text-amber-600" />,
-        color: 'bg-amber-50 border-amber-200 text-amber-900',
-        items: [
-            {
-                title: 'Uçuş Güvenliği & Muayene Protokolleri',
-                desc: 'Pervane emniyeti, batarya yönetimi ve saha güvenlik standartları.',
-                tag: 'Güvenlik'
-            },
-            {
-                title: 'Hassas Pilotaj ve Engel Parkurları',
-                desc: 'Manuel uçuş teknikleri, 3D uzamsal algılama ve parkur tamamlama stratejileri.',
-                tag: 'Pilotluk'
-            },
-            {
-                title: 'Otonom Görsel Kodlama ve Uçuş',
-                desc: 'Optik akış sensörleri, görsel matrisler ve otonom rota planlaması.',
-                tag: 'Otonom Uçuş'
-            }
-        ]
-    },
-    {
-        id: 'coaching',
-        title: 'Koç Eğitimleri ve Takım Yönetimi',
-        subtitle: 'Öğrenci merkezli yaklaşım, mentorluk ilkeleri ve kulüp yönetimi',
-        icon: <GraduationCap className="w-8 h-8 text-purple-600" />,
-        color: 'bg-purple-50 border-purple-200 text-purple-900',
-        items: [
-            {
-                title: 'Student-Centered (Öğrenci Merkezli) Politika',
-                desc: 'Öğrencilerin tasarladığı, kodladığı ve sürdürdüğü etik takım yapısı rehberi.',
-                tag: 'Etik & Politika'
-            },
-            {
-                title: 'RECF Coach Academy Sertifikasyon',
-                desc: 'Sezon hazırlığı, turnuva prosedürleri ve resmi koç eğitim modülleri.',
-                tag: 'Sertifika'
-            },
-            {
-                title: 'Takım Bütçesi ve Kulüp Organizasyonu',
-                desc: 'Sponsorluk dosyası hazırlığı, görev dağılımı ve sezonsal takvim planlaması.',
-                tag: 'Yönetim'
-            }
-        ]
-    }
-]
+} as const
 
 export default function MufredatPage() {
     const { language, setLanguage } = useLanguage()
+    const t = content[language]
 
     return (
         <div className="min-h-screen bg-gray-50 text-foreground">
@@ -146,34 +384,63 @@ export default function MufredatPage() {
             <div className="h-20" />
 
             <CorporateHero
-                title="Eğitim ve Öğrenme Kaynakları"
-                subtitle="Robotik, programlama, mühendislik tasarımı, drone ve koç eğitimleri için kaynaklar"
+                title={t.hero.title}
+                subtitle={t.hero.subtitle}
             />
 
             <section className="py-16 bg-white min-h-[50vh]">
                 <div className="container mx-auto px-6 max-w-7xl">
-                    
+
                     {/* Intro Note */}
                     <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 mb-16 flex flex-col md:flex-row gap-6 items-start shadow-sm">
                         <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-1">
                             <BookOpen className="w-6 h-6" />
                         </div>
                         <div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Esnek ve Kapsayıcı Öğrenme Yaklaşımı</h3>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">{t.intro.title}</h3>
                             <p className="text-gray-600 leading-relaxed">
-                                RECF Türkiye ekosisteminde eğitim kaynakları tek bir markaya veya hazır ders paketine bağımlı değildir. Okullar, öğretmenler ve koçlar kendi müfredat disiplinlerine uygun açık kaynaklı materyalleri, modüler ders içeriklerini ve uygulama rehberlerini serbestçe entegre edebilirler.
+                                {t.intro.description}
                             </p>
                         </div>
                     </div>
 
                     {/* Main Categories Grid */}
                     <div className="space-y-12 mb-20">
-                        {resourceCategories.map((cat) => (
+                        {t.categories.map((cat) => (
                             <div key={cat.id} className="rounded-3xl border border-gray-200 p-8 bg-white shadow-sm hover:shadow-md transition-shadow">
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-gray-100">
                                     <div className="flex items-center gap-4">
-                                        <div className={`p-4 rounded-2xl border ${cat.color}`}>
-                                            {cat.icon}
+                                        <div
+                                            className={`p-4 rounded-2xl border ${cat.id === 'robotics'
+                                                ? 'bg-blue-50 border-blue-200 text-blue-900'
+                                                : cat.id === 'programming'
+                                                    ? 'bg-indigo-50 border-indigo-200 text-indigo-900'
+                                                    : cat.id === 'design-process'
+                                                        ? 'bg-emerald-50 border-emerald-200 text-emerald-900'
+                                                        : cat.id === 'drones'
+                                                            ? 'bg-amber-50 border-amber-200 text-amber-900'
+                                                            : 'bg-purple-50 border-purple-200 text-purple-900'
+                                                }`}
+                                        >
+                                            {cat.id === 'robotics' && (
+                                                <Cpu className="w-8 h-8 text-blue-600" />
+                                            )}
+
+                                            {cat.id === 'programming' && (
+                                                <Code2 className="w-8 h-8 text-indigo-600" />
+                                            )}
+
+                                            {cat.id === 'design-process' && (
+                                                <Compass className="w-8 h-8 text-emerald-600" />
+                                            )}
+
+                                            {cat.id === 'drones' && (
+                                                <Navigation className="w-8 h-8 text-amber-600" />
+                                            )}
+
+                                            {cat.id === 'coaching' && (
+                                                <GraduationCap className="w-8 h-8 text-purple-600" />
+                                            )}
                                         </div>
                                         <div>
                                             <h3 className="text-2xl font-bold text-gray-900">{cat.title}</h3>
@@ -206,40 +473,40 @@ export default function MufredatPage() {
                             <div className="max-w-3xl">
                                 <div className="inline-flex items-center gap-2 bg-indigo-500/20 border border-indigo-400/30 px-4 py-1.5 rounded-full text-indigo-300 text-sm font-semibold mb-6">
                                     <GraduationCap className="w-4 h-4" />
-                                    Intechne Akademi Öğretmen ve Koç Programları
+                                    {t.academy.badge}
                                 </div>
-                                <h3 className="text-3xl font-extrabold mb-4 text-white">Intechne Akademi Eğitim Kaynakları</h3>
+                                <h3 className="text-3xl font-extrabold mb-4 text-white">{t.academy.title}</h3>
                                 <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                                    RECF Türkiye temsilcisi Intechne Teknoloji bünyesinde düzenlenen Intechne Akademi; öğretmen eğitimi atölyeleri, koçluk uzmanlık modülleri ve okullara özel STEM laboratuvarı kurulum rehberleri sunar.
+                                    {t.academy.description}
                                 </p>
                                 <div className="grid sm:grid-cols-3 gap-4 mb-8">
                                     <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
                                         <CheckCircle2 className="w-5 h-5 text-indigo-400 mb-2" />
-                                        <h5 className="font-bold text-sm">Yüz Yüze Atölyeler</h5>
-                                        <p className="text-xs text-slate-300 mt-1">Uygulamalı robotik ve otonom kodlama eğitimleri.</p>
+                                        <h5 className="font-bold text-sm">{t.academy.workshops.title}</h5>
+                                        <p className="text-xs text-slate-300 mt-1">{t.academy.workshops.description}</p>
                                     </div>
                                     <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
                                         <Shield className="w-5 h-5 text-indigo-400 mb-2" />
-                                        <h5 className="font-bold text-sm">Akademi Sertifikası</h5>
-                                        <p className="text-xs text-slate-300 mt-1">Katılım sağlayan eğitmenlere onaylı sertifika.</p>
+                                        <h5 className="font-bold text-sm">{t.academy.certification.title}</h5>
+                                        <p className="text-xs text-slate-300 mt-1">{t.academy.certification.description}</p>
                                     </div>
                                     <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
                                         <Lightbulb className="w-5 h-5 text-indigo-400 mb-2" />
-                                        <h5 className="font-bold text-sm">Okul & Kulüp Desteği</h5>
-                                        <p className="text-xs text-slate-300 mt-1">Robotik kulübü kurulum ve müfredat desteği.</p>
+                                        <h5 className="font-bold text-sm">{t.academy.schoolSupport.title}</h5>
+                                        <p className="text-xs text-slate-300 mt-1">{t.academy.schoolSupport.description}</p>
                                     </div>
                                 </div>
                             </div>
                             <div className="shrink-0 flex flex-col gap-4 w-full sm:w-auto">
                                 <a href="https://www.intechne.com.tr" target="_blank" rel="noopener noreferrer">
                                     <Button className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-bold h-14 px-8 rounded-2xl shadow-lg shadow-indigo-600/30 text-base">
-                                        Intechne Akademi Portalı
+                                        {t.academy.academyPortal}
                                         <ExternalLink className="w-5 h-5 ml-2" />
                                     </Button>
                                 </a>
                                 <Link href="/takimlar/koc-ve-mentor-merkezi">
-                                    <Button variant="outline" className="w-full sm:w-auto border-white/20 text-white hover:bg-white/10 font-bold h-14 px-8 rounded-2xl text-base">
-                                        Koç ve Mentor Merkezine Git
+                                    <Button className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-bold h-14 px-8 rounded-2xl shadow-lg shadow-indigo-600/30 text-base">
+                                        {t.academy.mentorCenter}
                                         <ArrowRight className="w-5 h-5 ml-2" />
                                     </Button>
                                 </Link>
