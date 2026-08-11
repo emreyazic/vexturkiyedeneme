@@ -9,193 +9,449 @@ import { Footer } from '@/components/Footer'
 import { CorporateHero } from '@/components/CorporateHero'
 import { Button } from '@/components/ui/button'
 import {
-    Instagram,
     ArrowRight,
     Sparkles,
     Puzzle,
     Bot,
     Gamepad2,
     Cpu,
-    Factory,
-    MapPin,
-    Phone
+    Factory
 } from 'lucide-react'
+
+type Language = 'TR' | 'EN'
 
 const recfPrograms = [
     {
         id: 'recf-engage',
         name: 'RECF Engage',
-        ageLevel: 'İlkokul (4-7 Yaş)',
-        focusArea: 'Temel Kodlama ve Robotik Farkındalığı',
-        structure: 'Görev Odaklı Sınıf Etkinlikleri',
+        ageLevel: {
+            TR: 'İlkokul (4-7 Yaş)',
+            EN: 'Elementary (Ages 4-7)'
+        },
+        focusArea: {
+            TR: 'Temel Kodlama ve Robotik Farkındalığı',
+            EN: 'Basic Coding & Robotics Awareness'
+        },
+        structure: {
+            TR: 'Görev Odaklı Sınıf Etkinlikleri',
+            EN: 'Task-Oriented Classroom Activities'
+        },
         color: '#00A651',
         icon: Sparkles,
-        description: 'Öğrencileri robotik ve mühendislikle tanıştıran temel düzey eğitim.'
+        description: {
+            TR: 'Öğrencileri robotik ve mühendislikle tanıştıran temel düzey eğitim.',
+            EN: 'Foundational training introducing students to robotics and engineering.'
+        }
     },
     {
         id: 'recf-achieve',
         name: 'RECF Achieve',
-        ageLevel: 'Ortaokul (8-14 Yaş)',
-        focusArea: 'Takım Çalışması ve Mekanik Tasarım',
-        structure: 'Yerel ve Ulusal Turnuvalar',
+        ageLevel: {
+            TR: 'Ortaokul (8-14 Yaş)',
+            EN: 'Middle School (Ages 8-14)'
+        },
+        focusArea: {
+            TR: 'Takım Çalışması ve Mekanik Tasarım',
+            EN: 'Teamwork & Mechanical Design'
+        },
+        structure: {
+            TR: 'Yerel ve Ulusal Turnuvalar',
+            EN: 'Local & National Tournaments'
+        },
         color: '#F7941D',
         icon: Puzzle,
-        description: 'Ortaokul öğrencilerinin mühendislik ve takım çalışması becerilerini geliştiren yarışmalar.'
+        description: {
+            TR: 'Ortaokul öğrencilerinin mühendislik ve takım çalışması becerilerini geliştiren yarışmalar.',
+            EN: 'Competitions developing engineering and teamwork skills for middle school students.'
+        }
     },
     {
         id: 'recf-inspire',
         name: 'RECF Inspire',
-        ageLevel: 'Lise (14-18 Yaş)',
-        focusArea: 'İleri Seviye Mühendislik ve Programlama',
-        structure: 'Küresel Çaplı Rekabetçi Lig',
+        ageLevel: {
+            TR: 'Lise (14-18 Yaş)',
+            EN: 'High School (Ages 14-18)'
+        },
+        focusArea: {
+            TR: 'İleri Seviye Mühendislik ve Programlama',
+            EN: 'Advanced Engineering & Programming'
+        },
+        structure: {
+            TR: 'Küresel Çaplı Rekabetçi Lig',
+            EN: 'Global Competitive League'
+        },
         color: '#E31837',
         icon: Bot,
-        description: 'Lise düzeyinde profesyonel metal robot yapımı ve karmaşık algoritmik görevler.'
+        description: {
+            TR: 'Lise düzeyinde profesyonel metal robot yapımı ve karmaşık algoritmik görevler.',
+            EN: 'Professional metal robot construction and complex algorithmic challenges at the high school level.'
+        }
     },
     {
         id: 'aerial-drone-competition',
         name: 'Aerial Drone Competition (ADC)',
-        ageLevel: 'Ortaokul ve Lise',
-        focusArea: 'Havacılık, Uçuş Dinamikleri ve Kodlama',
-        structure: 'Görev ve Uçuş Odaklı Turnuvalar',
+        ageLevel: {
+            TR: 'Ortaokul ve Lise',
+            EN: 'Middle & High School'
+        },
+        focusArea: {
+            TR: 'Havacılık, Uçuş Dinamikleri ve Kodlama',
+            EN: 'Aeronautics, Flight Dynamics & Coding'
+        },
+        structure: {
+            TR: 'Görev ve Uçuş Odaklı Turnuvalar',
+            EN: 'Mission & Flight-Oriented Tournaments'
+        },
         color: '#00AEEF',
         icon: Gamepad2,
-        description: 'Drone teknolojisi ve programlamayı birleştiren yenilikçi uçuş yarışmaları.'
+        description: {
+            TR: 'Drone teknolojisi ve programlamayı birleştiren yenilikçi uçuş yarışmaları.',
+            EN: 'Innovative flight competitions combining drone technology and programming.'
+        }
     },
     {
         id: 'adc-pro',
         name: 'ADC Pro',
-        ageLevel: 'Üniversite',
-        focusArea: 'Otonom Sistemler ve İleri Havacılık',
-        structure: 'Otonom Uçuş ve Proje Odaklı',
+        ageLevel: {
+            TR: 'Üniversite',
+            EN: 'University'
+        },
+        focusArea: {
+            TR: 'Otonom Sistemler ve İleri Havacılık',
+            EN: 'Autonomous Systems & Advanced Aeronautics'
+        },
+        structure: {
+            TR: 'Otonom Uçuş ve Proje Odaklı',
+            EN: 'Autonomous Flight & Project-Based'
+        },
         color: '#6B21A8',
         icon: Cpu,
-        description: 'Üniversite öğrencilerine yönelik yapay zeka ve tamamen otonom drone görevleri.'
+        description: {
+            TR: 'Üniversite öğrencilerine yönelik yapay zeka ve tamamen otonom drone görevleri.',
+            EN: 'AI and fully autonomous drone missions designed for university students.'
+        }
     },
     {
         id: 'online-challenges',
         name: 'Online Challenges',
-        ageLevel: 'Tüm Seviyeler',
-        focusArea: 'Tasarım, Medya, CAD ve Mühendislik',
-        structure: 'Çevrimiçi Gönderim ve Değerlendirme',
+        ageLevel: {
+            TR: 'Tüm Seviyeler',
+            EN: 'All Levels'
+        },
+        focusArea: {
+            TR: 'Tasarım, Medya, CAD ve Mühendislik',
+            EN: 'Design, Media, CAD & Engineering'
+        },
+        structure: {
+            TR: 'Çevrimiçi Gönderim ve Değerlendirme',
+            EN: 'Online Submissions & Evaluation'
+        },
         color: '#1E3A8A',
         icon: Factory,
-        description: 'Fiziksel robot tasarlamanın ötesinde sanal ortamda ve teorik alanda yarışma fırsatı.'
+        description: {
+            TR: 'Fiziksel robot tasarlamanın ötesinde sanal ortamda ve teorik alanda yarışma fırsatı.',
+            EN: 'Opportunities to compete virtually and theoretically beyond physical robot building.'
+        }
     }
 ]
 
+const filters = [
+    {
+        id: 'all',
+        TR: 'Tümü',
+        EN: 'All'
+    },
+    {
+        id: 'elementary',
+        TR: 'İlkokul (4-7 Yaş)',
+        EN: 'Elementary (Ages 4-7)'
+    },
+    {
+        id: 'middle-school',
+        TR: 'Ortaokul (8-14 Yaş)',
+        EN: 'Middle School (Ages 8-14)'
+    },
+    {
+        id: 'high-school',
+        TR: 'Lise (14-18 Yaş)',
+        EN: 'High School (Ages 14-18)'
+    },
+    {
+        id: 'middle-high',
+        TR: 'Ortaokul ve Lise',
+        EN: 'Middle & High School'
+    },
+    {
+        id: 'university',
+        TR: 'Üniversite',
+        EN: 'University'
+    },
+    {
+        id: 'all-levels',
+        TR: 'Tüm Seviyeler',
+        EN: 'All Levels'
+    }
+]
+
+const translations = {
+    TR: {
+        heroTitle: 'RECF Programları',
+        heroSubtitle:
+            'Yaşınıza, eğitim seviyenize ve teknoloji ilgi alanınıza uygun RECF programını keşfedin.',
+        filterTitle: 'Seviyenize Uygun Programı Bulun',
+        filterSubtitle:
+            'İlgilendiğiniz eğitim seviyesini seçerek size uygun programları görüntüleyin',
+        focusArea: 'Ana Odak Alanı',
+        structure: 'Yarışma Yapısı',
+        details: 'Detayları İncele'
+    },
+
+    EN: {
+        heroTitle: 'RECF Programs',
+        heroSubtitle:
+            'Discover the RECF program suited to your age, education level, and technology interests.',
+        filterTitle: 'Find the Right Program for Your Level',
+        filterSubtitle:
+            'Select your education level to view the programs that match your interests',
+        focusArea: 'Primary Focus Area',
+        structure: 'Competition Structure',
+        details: 'View Details'
+    }
+}
+
 export default function RecfProgramsPage() {
     const { language, setLanguage } = useLanguage()
-    const [selectedFilter, setSelectedFilter] = useState<string>('Tümü')
 
-    const filters = ['Tümü', 'İlkokul (4-7 Yaş)', 'Ortaokul (8-14 Yaş)', 'Lise (14-18 Yaş)', 'Ortaokul ve Lise', 'Üniversite', 'Tüm Seviyeler']
+    const [selectedFilter, setSelectedFilter] = useState('all')
 
-    const filteredPrograms = selectedFilter === 'Tümü' 
-        ? recfPrograms 
-        : recfPrograms.filter(p => p.ageLevel.includes(selectedFilter))
+    const t = translations[language]
+
+    const filteredPrograms =
+        selectedFilter === 'all'
+            ? recfPrograms
+            : recfPrograms.filter(program => {
+
+                if (selectedFilter === 'elementary') {
+                    return program.id === 'recf-engage'
+                }
+
+                if (selectedFilter === 'middle-school') {
+                    return program.id === 'recf-achieve'
+                }
+
+                if (selectedFilter === 'high-school') {
+                    return program.id === 'recf-inspire'
+                }
+
+                if (selectedFilter === 'middle-high') {
+                    return program.id === 'aerial-drone-competition'
+                }
+
+                if (selectedFilter === 'university') {
+                    return program.id === 'adc-pro'
+                }
+
+                if (selectedFilter === 'all-levels') {
+                    return program.id === 'online-challenges'
+                }
+
+                return true
+            })
 
     return (
         <div className="min-h-screen bg-white text-foreground">
-            <Navbar language={language} onLanguageToggle={() => setLanguage(l => l === 'TR' ? 'EN' : 'TR')}
-                showTranslationWarning={language === 'EN'} />
 
-            <div className="h-20" />
-            <CorporateHero
-                title="RECF Programları"
-                subtitle="Yaşınıza, eğitim seviyenize ve teknoloji ilgi alanınıza uygun RECF programını keşfedin."
+            <Navbar
+                language={language}
+                onLanguageToggle={() =>
+                    setLanguage(l =>
+                        l === 'TR' ? 'EN' : 'TR'
+                    )
+                }
+                showTranslationWarning={language === 'EN'}
             />
 
-            {/* Program Seçici (Filter/Selector) */}
+            <div className="h-20" />
+
+            <CorporateHero
+                title={t.heroTitle}
+                subtitle={t.heroSubtitle}
+            />
+
+            {/* Program Selector */}
             <section className="py-12 bg-white border-b border-gray-200">
+
                 <div className="container mx-auto px-6 max-w-7xl">
+
                     <div className="text-center mb-8">
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Seviyenize Uygun Programı Bulun</h2>
-                        <p className="text-gray-600">İlgilendiğiniz eğitim seviyesini seçerek size uygun programları görüntüleyin</p>
+
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                            {t.filterTitle}
+                        </h2>
+
+                        <p className="text-gray-600">
+                            {t.filterSubtitle}
+                        </p>
+
                     </div>
 
                     <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-                        {filters.map((filter) => (
+
+                        {filters.map(filter => (
+
                             <button
-                                key={filter}
-                                onClick={() => setSelectedFilter(filter)}
-                                className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${
-                                    selectedFilter === filter
+                                key={filter.id}
+                                onClick={() =>
+                                    setSelectedFilter(filter.id)
+                                }
+                                className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${selectedFilter === filter.id
                                         ? 'bg-primary text-white shadow-lg scale-105'
                                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                                }`}
+                                    }`}
                             >
-                                {filter}
+                                {filter[language]}
                             </button>
+
                         ))}
+
                     </div>
+
                 </div>
+
             </section>
 
-            {/* Program Cards Grid */}
+            {/* Program Cards */}
             <section className="py-16 md:py-24 bg-gray-50">
+
                 <div className="container mx-auto px-6 max-w-7xl">
+
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
                         {filteredPrograms.map((program, index) => {
+
                             const Icon = program.icon
+
                             return (
                                 <motion.div
                                     key={program.id}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.1 }}
+                                    initial={{
+                                        opacity: 0,
+                                        y: 30
+                                    }}
+                                    animate={{
+                                        opacity: 1,
+                                        y: 0
+                                    }}
+                                    transition={{
+                                        delay: index * 0.1
+                                    }}
                                     className="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-xl hover:border-primary/50 transition-all duration-300 flex flex-col h-full"
                                 >
+
                                     {/* Color bar */}
-                                    <div className="h-2 w-full" style={{ backgroundColor: program.color }} />
+                                    <div
+                                        className="h-2 w-full"
+                                        style={{
+                                            backgroundColor: program.color
+                                        }}
+                                    />
 
                                     <div className="p-8 flex flex-col flex-1">
+
                                         <div className="flex items-start justify-between mb-6">
+
                                             <div
                                                 className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110"
-                                                style={{ backgroundColor: `${program.color}15` }}
+                                                style={{
+                                                    backgroundColor:
+                                                        `${program.color}15`
+                                                }}
                                             >
-                                                <Icon className="w-8 h-8" style={{ color: program.color }} />
+                                                <Icon
+                                                    className="w-8 h-8"
+                                                    style={{
+                                                        color: program.color
+                                                    }}
+                                                />
                                             </div>
+
                                             <span
                                                 className="px-4 py-2 rounded-full text-xs font-bold"
-                                                style={{ backgroundColor: `${program.color}15`, color: program.color }}
+                                                style={{
+                                                    backgroundColor:
+                                                        `${program.color}15`,
+                                                    color: program.color
+                                                }}
                                             >
-                                                {program.ageLevel}
+                                                {program.ageLevel[language]}
                                             </span>
+
                                         </div>
 
-                                        <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">{program.name}</h3>
-                                        <p className="text-gray-600 mb-6 flex-1 text-sm leading-relaxed">{program.description}</p>
+                                        <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">
+                                            {program.name}
+                                        </h3>
+
+                                        <p className="text-gray-600 mb-6 flex-1 text-sm leading-relaxed">
+                                            {program.description[language]}
+                                        </p>
 
                                         <div className="space-y-4 mb-8">
+
                                             <div>
-                                                <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Ana Odak Alanı</div>
-                                                <div className="text-sm font-medium text-gray-800">{program.focusArea}</div>
+
+                                                <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">
+                                                    {t.focusArea}
+                                                </div>
+
+                                                <div className="text-sm font-medium text-gray-800">
+                                                    {program.focusArea[language]}
+                                                </div>
+
                                             </div>
+
                                             <div>
-                                                <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Yarışma Yapısı</div>
-                                                <div className="text-sm font-medium text-gray-800">{program.structure}</div>
+
+                                                <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">
+                                                    {t.structure}
+                                                </div>
+
+                                                <div className="text-sm font-medium text-gray-800">
+                                                    {program.structure[language]}
+                                                </div>
+
                                             </div>
+
                                         </div>
 
-                                        <Link href={`/programlar/${program.id}`} className="mt-auto block">
+                                        <Link
+                                            href={`/programlar/${program.id}`}
+                                            className="mt-auto block"
+                                        >
                                             <Button
                                                 variant="outline"
                                                 className="w-full border-gray-300 text-gray-700 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all"
                                             >
-                                                Detayları İncele
+                                                {t.details}
+
                                                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                                             </Button>
                                         </Link>
+
                                     </div>
+
                                 </motion.div>
                             )
                         })}
+
                     </div>
+
                 </div>
+
             </section>
 
             <Footer />
+
         </div>
     )
 }

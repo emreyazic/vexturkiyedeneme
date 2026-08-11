@@ -220,11 +220,10 @@ export default function RecfProgramsPage() {
                             <button
                                 key={filter.id}
                                 onClick={() => setSelectedFilterId(filter.id)}
-                                className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${
-                                    selectedFilterId === filter.id
-                                        ? 'bg-primary text-white shadow-lg scale-105'
-                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                                }`}
+                                className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${selectedFilterId === filter.id
+                                    ? 'bg-primary text-white shadow-lg scale-105'
+                                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                    }`}
                             >
                                 {filter.label[language]}
                             </button>

@@ -11,6 +11,7 @@ import {
     getResourcePlatformLabel,
     getResourcePlatformColor
 } from '@/lib/sanity-queries'
+import { useLanguage } from '@/components/LanguageProvider'
 
 interface ResourceCardProps {
     resource: SanityResource & { fileUrl?: string }
@@ -21,6 +22,7 @@ export function ResourceCard({ resource, index = 0 }: ResourceCardProps) {
     // Get platform info
     const platformColors = getResourcePlatformColor(resource.platform)
     const platformLabel = getResourcePlatformLabel(resource.platform)
+    const { language } = useLanguage()
 
     // Get file URL
     const fileUrl = resource.fileUrl || resource.externalUrl || null
@@ -63,6 +65,23 @@ export function ResourceCard({ resource, index = 0 }: ResourceCardProps) {
             document.body.removeChild(link)
         }
     }
+
+    const cardText = {
+        TR: {
+            preview: 'Göz At',
+            download: 'İndir',
+            pages: 'sayfa',
+            pdf: 'PDF',
+        },
+
+        EN: {
+            preview: 'Preview',
+            download: 'Download',
+            pages: 'pages',
+            pdf: 'PDF',
+        },
+    } as const
+    const t = cardText[language]
 
     return (
         <motion.div
@@ -135,14 +154,14 @@ export function ResourceCard({ resource, index = 0 }: ResourceCardProps) {
                     {resource.resourceType === 'pdf' && (
                         <span className="inline-flex items-center gap-1 px-2 py-1 bg-red-50 text-red-600 rounded-md font-medium">
                             <FileText className="w-3 h-3" />
-                            PDF
+                            {t.pdf}
                         </span>
                     )}
                     {resource.version && (
                         <span className="text-gray-400">{resource.version}</span>
                     )}
                     {resource.pageCount && (
-                        <span className="text-gray-400">{resource.pageCount} sayfa</span>
+                        <span className="text-gray-400">{resource.pageCount} {t.pages}</span>
                     )}
                 </div>
 
@@ -156,7 +175,7 @@ export function ResourceCard({ resource, index = 0 }: ResourceCardProps) {
                         disabled={!fileUrl}
                     >
                         <Eye className="w-4 h-4" />
-                        Göz At
+                        {t.preview}
                     </Button>
                     <Button
                         variant="default"
@@ -166,7 +185,7 @@ export function ResourceCard({ resource, index = 0 }: ResourceCardProps) {
                         disabled={!fileUrl}
                     >
                         <Download className="w-4 h-4" />
-                        İndir
+                        {t.download}
                     </Button>
                 </div>
             </div>
